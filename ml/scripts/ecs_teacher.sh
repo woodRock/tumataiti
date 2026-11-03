@@ -1,30 +1,18 @@
 #!/usr/bin/env bash
-# Run the openai/privacy-filter teacher over both evaluation sets on one ECS GPU.
+# Run the openai/privacy-filter teacher over evaluation sets on one ECS GPU.
 #
-# Submit from ml/ on the laptop:
-#   task sync
 #   task submit -t "RTX A5000" -n teacher-eval -- ./scripts/ecs_teacher.sh
-#   task fetch ml/runs/openai-privacy-filter
+#   task fetch runs/m3/openai-privacy-filter
 #
-# The venv reuses the servers' system PyTorch and only adds transformers.
+# M1's runs (nz_synth_v0) came from commit b9d1dd8; the generator has changed since.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+source scripts/ecs_env.sh
 
-STORE=/vol/ecrg-solar/woodj4
-export HF_HOME="${HF_HOME:-$STORE/hf}"
-VENV="${VENV:-$STORE/venvs/tumataiti-teacher}"
-
-if [ ! -x "$VENV/bin/python" ]; then
-  python3 -m venv --system-site-packages "$VENV"
-fi
-"$VENV/bin/pip" install -q -e . "transformers>=5.6"
-"$VENV/bin/python" -c 'import torch, transformers; print("torch", torch.__version__, "transformers", transformers.__version__, torch.cuda.get_device_name())'
-
-CLI="$VENV/bin/tumataiti-ml"
-"$CLI" generate --n 1600 --seed 0 --out data/nz_synth_v0.jsonl
-"$CLI" prepare-pii300k --raw data/raw/pii300k_en_validation.jsonl --out data/pii300k_en_val.jsonl
-
-for ds in nz_synth_v0 pii300k_en_val; do
+V=data/v1
+[ -f $V/pii300k_en_val.jsonl ] || ./scripts/make_data_v1.sh "$CLI"
+# PII-Masking-300k validation predictions carry over from M1 (same data, same model).
+for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_cf_asian_nz; do
   "$CLI" predict --detector openai-privacy-filter --device cuda \
-    --gold "data/$ds.jsonl" --out "runs/openai-privacy-filter/$ds.jsonl"
+    --gold "$V/$ds.jsonl" --out "runs/m3/openai-privacy-filter/$ds.jsonl"
 done

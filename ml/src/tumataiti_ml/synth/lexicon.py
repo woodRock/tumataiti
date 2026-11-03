@@ -5,30 +5,77 @@ and Asian New Zealand communities. Combinations are random, so no generated
 person is meant to be real. Email domains use the reserved `example` names.
 """
 
-MAORI_GIVEN = [
-    "Aroha", "Hēmi", "Mere", "Tama", "Rangi", "Wiremu", "Hōhepa", "Mereana", "Rāwiri",
-    "Ngaio", "Tamati", "Kiri", "Manaia", "Nīkau", "Anahera", "Hine", "Tāne", "Ihaia",
-    "Moana", "Te Ao", "Ngāpaki", "Whetū", "Āperahama", "Rīpeka", "Pita", "Mānaia",
-    "Kahurangi", "Tūī", "Hōani", "Riria", "Kōwhai", "Ataahua", "Tamatea", "Paora",
-]
-PAKEHA_GIVEN = [
-    "Sarah", "James", "Olivia", "Jack", "Charlotte", "Liam", "Emma", "Oliver",
-    "Isla", "Noah", "Amelia", "Thomas", "Grace", "Lucas", "Ruby", "Samuel",
-]
-PASIFIKA_GIVEN = ["Sione", "Losa", "Mele", "Tavita", "Malia", "Ioane", "Salote", "Sefa", "Viliami", "Ana"]
-ASIAN_GIVEN = ["Wei", "Priya", "Arjun", "Mei", "Hiroshi", "Ji-woo", "Anika", "Minh"]
+# Each community's names are split into training and held-out lists, so test
+# documents use names the student never saw (SPEC §9.1). Held-out Māori names
+# include several that are also everyday words (Tūī, Whetū, Kōwhai, Nīkau).
+NAMES = {
+    "Māori": {
+        "given": (
+            ["Aroha", "Hēmi", "Mere", "Tama", "Rangi", "Wiremu", "Hōhepa", "Mereana", "Rāwiri", "Ngaio",
+             "Tamati", "Kiri", "Manaia", "Anahera", "Hine", "Tāne", "Ihaia", "Moana", "Te Ao", "Ngāpaki",
+             "Āperahama", "Rīpeka", "Pita", "Kahurangi", "Hōani", "Riria", "Ataahua", "Tamatea", "Paora",
+             "Huia", "Mihi", "Rewi", "Hūhana", "Matiu", "Ngaire"],
+            ["Tūī", "Whetū", "Kōwhai", "Nīkau", "Te Rina", "Wairere", "Mātai", "Rongo", "Āwhina", "Pōtiki",
+             "Tūmanako", "Ngāhuia", "Te Waimarie"],
+        ),
+        "surname": (
+            ["Ngata", "Parata", "Henare", "Tipene", "Te Whata", "Paewai", "Tāwhai", "Herewini", "Kereama",
+             "Wihongi", "Rāwiri", "Te Rangi", "Kingi", "Mātene", "Pōmare"],
+            ["Hōhaia", "Te Huia", "Waititi", "Whaanga", "Te Kanawa", "Tamihana", "Rangihuna", "Takerei"],
+        ),
+    },
+    "Pākehā": {
+        "given": (
+            ["Sarah", "James", "Olivia", "Jack", "Charlotte", "Liam", "Emma", "Oliver", "Isla", "Noah",
+             "Amelia", "Thomas"],
+            ["Grace", "Lucas", "Ruby", "Samuel", "Harper", "Hugo", "Georgia", "Finn"],
+        ),
+        "surname": (
+            ["Smith", "Wilson", "Brown", "Taylor", "Williams", "Anderson"],
+            ["Thompson", "Walker", "Campbell", "Robinson", "Clarke", "Mitchell"],
+        ),
+    },
+    "Pasifika": {
+        "given": (
+            ["Sione", "Losa", "Mele", "Tavita", "Malia", "Ioane", "Salote"],
+            ["Sefa", "Viliami", "Ana", "Lupe", "Seini", "Malakai"],
+        ),
+        "surname": (
+            ["Fonoti", "Tuilagi", "Taufa", "Fifita", "Leota"],
+            ["Faleolo", "Vaifale", "Mataele", "Havili", "Tupou"],
+        ),
+    },
+    "Asian NZ": {
+        "given": (["Wei", "Priya", "Arjun", "Mei", "Hiroshi"], ["Ji-woo", "Anika", "Minh", "Ravi", "Yuki"]),
+        "surname": (["Chen", "Patel", "Singh", "Kim"], ["Nguyen", "Wong", "Tanaka", "Li", "Sharma"]),
+    },
+}
 
-MAORI_SURNAME = [
-    "Ngata", "Parata", "Henare", "Tipene", "Te Whata", "Paewai", "Tāwhai", "Herewini",
-    "Kereama", "Wihongi", "Rāwiri", "Te Rangi", "Kingi", "Mātene", "Pōmare", "Hōhaia",
-    "Te Huia", "Waititi", "Whaanga",
-]
-PAKEHA_SURNAME = ["Smith", "Wilson", "Brown", "Taylor", "Williams", "Anderson", "Thompson", "Walker", "Campbell"]
-PASIFIKA_SURNAME = ["Fonoti", "Tuilagi", "Taufa", "Fifita", "Leota", "Faleolo", "Vaifale", "Mataele"]
-ASIAN_SURNAME = ["Chen", "Patel", "Singh", "Kim", "Nguyen", "Wong", "Tanaka"]
+# Share of synthetic people from each community.
+GROUP_WEIGHTS = {"Māori": 0.5, "Pākehā": 0.2, "Pasifika": 0.15, "Asian NZ": 0.15}
 
-GIVEN = MAORI_GIVEN * 2 + PAKEHA_GIVEN + PASIFIKA_GIVEN + ASIAN_GIVEN
-SURNAME = MAORI_SURNAME * 2 + PAKEHA_SURNAME + PASIFIKA_SURNAME + ASIAN_SURNAME
+
+def all_names(group: str, part: str) -> list[str]:
+    train, test = NAMES[group][part]
+    return train + test
+
+
+# Te reo sentences in which name-like words are ordinary words (a bird, a tree,
+# the sea, "sorry"). They are hard negatives: nothing in them is PII.
+FILLERS = [
+    "The tūī were singing in the kōwhai this morning.",
+    "Kua puāwai ngā kōwhai.",
+    "Aroha mai, I'm running a bit late.",
+    "He moana pukepuke e ekengia e te waka.",
+    "Kia kaha te aroha ki te whānau.",
+    "The nīkau palms by the awa came through the storm.",
+    "Ka kite au i ngā whetū i te pō.",
+    "There's a kererū on the power line again.",
+    "We planted harakeke and mānuka along the fence.",
+    "Mā te huruhuru ka rere te manu.",
+    "Ngā mihi o te rangi ki a koutou.",
+    "The huia is extinct, but its feathers are still treasured.",
+]
 
 STREET_NAMES = [
     "Kōwhai", "Rimu", "Pōhutukawa", "Tōtara", "Mānuka", "Kauri", "Tūī", "Kererū",

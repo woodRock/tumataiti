@@ -1,0 +1,13 @@
+id = "2026-11-04-spooler-131"
+status = "running"
+started = "2026-11-04T02:29:27+13:00"
+commit = "3e0caa4f4301ea69416c94f2ddde68e15cc2cbfe"
+base_commit = "66f3e2694328f919ab33b8b41248a6cbd9e43cf4"
+dirty = true
+command = "./scripts/ecs_student.sh 'answerdotai/ModernBERT-base modernbert-base 5e-5' '' --lr ''"
+cwd = "ml"
+host = "cuda12"
+gpus = "0"
+spooler_job = 131
+runner = "gpu-spooler"
+inputs = ["ml/scripts/ecs_student.sh"]

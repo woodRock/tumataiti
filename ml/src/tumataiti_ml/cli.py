@@ -23,21 +23,22 @@ from .taxonomy import EVAL_CATEGORIES
 def cmd_generate(a: argparse.Namespace) -> None:
     from .synth.generate import generate
 
-    n = write_jsonl(a.out, generate(a.n, a.seed))
+    n = write_jsonl(a.out, generate(a.n, a.seed, a.split, a.group))
     print(f"wrote {n} documents to {a.out}")
 
 
 def cmd_prepare_pii300k(a: argparse.Namespace) -> None:
     from .datasets import pii300k
 
-    raw = pii300k.download(a.raw)
+    a.raw = a.raw or Path(f"data/raw/pii300k_en_{a.split}.jsonl")
+    raw = pii300k.download(a.raw, a.split)
     n = write_jsonl(a.out, pii300k.load(raw, a.limit))
     print(f"wrote {n} documents to {a.out}")
 
 
 def cmd_predict(a: argparse.Namespace) -> None:
     gold = list(read_jsonl(a.gold))[: a.limit]
-    predict = detectors.load(a.detector, device=a.device, threshold=a.threshold)
+    predict = detectors.load(a.detector, device=a.device, threshold=a.threshold, model=a.model)
     preds = detectors.run(predict, gold, a.detector)
     write_jsonl(a.out, preds)
     secs = [d.meta["seconds"] for d in preds]
@@ -48,6 +49,8 @@ def cmd_predict(a: argparse.Namespace) -> None:
         "seconds_total": sum(secs),
         "seconds_median": statistics.median(secs) if secs else 0.0,
         "device": a.device,
+        "threshold": a.threshold,
+        "model": a.model,
         "host": platform.node(),
     }
     a.out.with_suffix(".meta.json").write_text(json.dumps(meta, indent=2))
@@ -147,6 +150,56 @@ def cmd_names(a: argparse.Namespace) -> None:
     print(md)
 
 
+def cmd_train(a: argparse.Namespace) -> None:
+    from .student.train import Config, train
+
+    cfg = Config(
+        backbone=a.backbone, train=[str(p) for p in a.train], dev=str(a.dev), out=str(a.out),
+        epochs=a.epochs, lr=a.lr, batch_size=a.batch_size, seed=a.seed, max_steps=a.max_steps, dev_limit=a.dev_limit,
+        bf16=not a.no_bf16, log_every=a.log_every, deterministic=not a.no_deterministic,
+    )
+    train(cfg, device=a.device)
+
+
+def cmd_counterfactual(a: argparse.Namespace) -> None:
+    """Name leak rate per community from counterfactual files (identical but for names)."""
+    groups = {"maori": "Māori", "pakeha": "Pākehā", "pasifika": "Pasifika", "asian_nz": "Asian NZ"}
+    rows: dict[str, dict[str, float]] = {}
+    for run in a.runs:
+        rows[run.name] = {}
+        for slug, label in groups.items():
+            gold = list(read_jsonl(a.data / f"nz_cf_{slug}.jsonl"))
+            preds = {d.id: d for d in read_jsonl(run / f"nz_cf_{slug}.jsonl")}
+            r = metrics.score([g for g in gold if g.id in preds], preds).as_dict()
+            rows[run.name][label] = r["span_leak_rate_by_category"]["PERSON"]
+    names = list(rows)
+    lines = ["| Names (same documents, only names swapped) | " + " | ".join(names) + " |", "|---|" + "---:|" * len(names)]
+    for label in groups.values():
+        lines.append(f"| {label} | " + " | ".join(f"{rows[n][label] * 100:.1f}%" for n in names) + " |")
+    gap = lambda n: (rows[n]["Māori"] - rows[n]["Pākehā"]) * 100  # noqa: E731
+    lines.append("| **Māori − Pākehā gap (points)** | " + " | ".join(f"**{gap(n):+.1f}**" for n in names) + " |")
+    md = "Name leak rate by community, counterfactual audit (lower is better):\n\n" + "\n".join(lines) + "\n"
+    if a.markdown:
+        a.markdown.parent.mkdir(parents=True, exist_ok=True)
+        a.markdown.write_text(md)
+    if a.json:
+        a.json.write_text(json.dumps(rows, indent=2, ensure_ascii=False))
+    print(md)
+
+
+def cmd_export(a: argparse.Namespace) -> None:
+    from .student.export import export_onnx
+
+    print(export_onnx(a.model, a.out))
+
+
+def cmd_quantise(a: argparse.Namespace) -> None:
+    from .student.export import quantise_int8
+
+    out = quantise_int8(a.onnx, a.onnx.with_name("model_int8.onnx"))
+    print(f"{out}: {out.stat().st_size / 1e6:.1f} MB (fp32 {a.onnx.stat().st_size / 1e6:.1f} MB)")
+
+
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(prog="tumataiti-ml")
     sub = ap.add_subparsers(required=True)
@@ -154,17 +207,21 @@ def main(argv: list[str] | None = None) -> None:
     g = sub.add_parser("generate", help="synthetic NZ documents with gold spans")
     g.add_argument("--n", type=int, default=1600)
     g.add_argument("--seed", type=int, default=0)
+    g.add_argument("--split", default="train", choices=["train", "dev", "test_names", "test_full"])
+    g.add_argument("--group", help="counterfactual audit: every person from this community")
     g.add_argument("--out", type=Path, required=True)
     g.set_defaults(fn=cmd_generate)
 
-    p3 = sub.add_parser("prepare-pii300k", help="download and convert PII-Masking-300k (English validation)")
-    p3.add_argument("--raw", type=Path, default=Path("data/raw/pii300k_en_validation.jsonl"))
+    p3 = sub.add_parser("prepare-pii300k", help="download and convert PII-Masking-300k (English)")
+    p3.add_argument("--split", default="validation", choices=["train", "validation"])
+    p3.add_argument("--raw", type=Path, default=None, help="default: data/raw/pii300k_en_<split>.jsonl")
     p3.add_argument("--out", type=Path, required=True)
     p3.add_argument("--limit", type=int)
     p3.set_defaults(fn=cmd_prepare_pii300k)
 
     pr = sub.add_parser("predict", help="run a detector over a dataset")
-    pr.add_argument("--detector", required=True, choices=["rules", "openai-privacy-filter"])
+    pr.add_argument("--detector", required=True, choices=["rules", "openai-privacy-filter", "student", "student-onnx"])
+    pr.add_argument("--model", help="student model directory, or .onnx file for student-onnx")
     pr.add_argument("--gold", type=Path, required=True)
     pr.add_argument("--out", type=Path, required=True)
     pr.add_argument("--limit", type=int)
@@ -180,6 +237,23 @@ def main(argv: list[str] | None = None) -> None:
     s.add_argument("--json", type=Path)
     s.set_defaults(fn=cmd_score)
 
+    t = sub.add_parser("train", help="fine-tune a student encoder")
+    t.add_argument("--backbone", required=True, help="Hugging Face model id")
+    t.add_argument("--train", type=Path, nargs="+", required=True)
+    t.add_argument("--dev", type=Path, required=True)
+    t.add_argument("--out", type=Path, required=True)
+    t.add_argument("--epochs", type=int, default=3)
+    t.add_argument("--lr", type=float, default=5e-5)
+    t.add_argument("--batch-size", type=int, default=16)
+    t.add_argument("--seed", type=int, default=0)
+    t.add_argument("--max-steps", type=int)
+    t.add_argument("--dev-limit", type=int)
+    t.add_argument("--no-bf16", action="store_true", help="train in fp32")
+    t.add_argument("--no-deterministic", action="store_true", help="allow non-deterministic CUDA kernels")
+    t.add_argument("--log-every", type=int, default=200)
+    t.add_argument("--device", default="cuda")
+    t.set_defaults(fn=cmd_train)
+
     c = sub.add_parser("combine", help="rules-first union of two prediction files")
     c.add_argument("--primary", type=Path, required=True)
     c.add_argument("--secondary", type=Path, required=True)
@@ -191,6 +265,22 @@ def main(argv: list[str] | None = None) -> None:
     nm.add_argument("--pred", type=Path, nargs="+", required=True)
     nm.add_argument("--markdown", type=Path)
     nm.set_defaults(fn=cmd_names)
+
+    ex = sub.add_parser("export", help="export a student to ONNX (needs PyTorch)")
+    ex.add_argument("--model", type=Path, required=True)
+    ex.add_argument("--out", type=Path, required=True)
+    ex.set_defaults(fn=cmd_export)
+
+    qu = sub.add_parser("quantise", help="dynamic int8 quantisation of an exported student")
+    qu.add_argument("--onnx", type=Path, required=True)
+    qu.set_defaults(fn=cmd_quantise)
+
+    cf = sub.add_parser("counterfactual", help="name leak by community from the nz_cf_* files")
+    cf.add_argument("--data", type=Path, required=True, help="directory with nz_cf_<group>.jsonl")
+    cf.add_argument("--runs", type=Path, nargs="+", required=True, help="prediction directories")
+    cf.add_argument("--markdown", type=Path)
+    cf.add_argument("--json", type=Path)
+    cf.set_defaults(fn=cmd_counterfactual)
 
     a = ap.parse_args(argv)
     a.fn(a)

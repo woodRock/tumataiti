@@ -236,7 +236,7 @@ Real calls to cloud models, accounts, saving or sharing of user text, file uploa
 
 ### 9.1 Datasets
 
-- **Public:** PII-Masking-300k (and its corrected version), plus other public NER/PII sets for comparability with the OpenAI baseline.
+- **Public:** PII-Masking-300k, plus other public NER/PII sets for comparability with the OpenAI baseline. PII-Masking-300k is itself synthetic, from a different generator, so it is reported as a cross-generator synthetic test, never as real text. No corrected release exists: OpenAI describe about 10k missing labels in its test split but have not published fixes. Missing gold labels make leakage look *better* than it is, because unlabelled PII cannot count as a leak.
 - **Tūmataiti NZ test set (new):** synthetic and consented documents covering:
   - te reo Māori and Pasifika names, with and without macrons, and code-switched English/te reo text;
   - NZ addresses, place names that are also personal names (e.g. a person and a town sharing a name);
@@ -244,14 +244,20 @@ Real calls to cloud models, accounts, saving or sharing of user text, file uploa
   - research-style text: interview transcripts, hui notes, RAG chunks.
   - Built and labelled with community input; held out from all training.
 - **NZ synthetic v0 (built in M1):** 1,600 generated documents from 16 templates (hui notes, referrals, forms, interviews, text messages, tangihanga notices, te reo paragraphs and more), with exact gold spans from the template slots and hard negatives (hui dates, IRD-shaped order references, public government URLs). Generated deterministically (`seed 0`) by `ml/src/tumataiti_ml/synth`. This is a development set for M1–M3, not the held-out community test set above.
+- **NZ synthetic v1 (built in M3):** the generator split three ways so test numbers are not flattered by memorised templates or names (the literature finds synthetic NER tests easier than human-written ones and sometimes rank models differently):
+  - `train` and `dev`: training templates and training name lists;
+  - `test_names`: training templates, held-out names (isolates name generalisation);
+  - `test_full`: held-out templates (different genres and phrasing) and held-out names (the headline synthetic number);
+  - `cf_<group>`: counterfactual name audit, the same `test_full` documents with names drawn from only one community, so groups differ in nothing but the names.
+  The generator also mixes in te reo words that are not names in context (tūī the bird, kōwhai the tree, "aroha mai") as hard negatives. The OpenAI teacher never generates or labels any test split. Headline claims still need the small human-annotated set (M2).
 - Public data is downloaded at run time and never committed (PII-Masking-300k allows academic use with citation).
 
 All datasets are mapped onto nine evaluation categories (`PERSON`, `ADDRESS`, `EMAIL`, `PHONE`, `URL`, `IP_ADDRESS`, `DATE`, `ID`, `SECRET`) in `ml/src/tumataiti_ml/taxonomy.py`. `ID` merges government IDs, card and bank numbers, and the teacher's `account_number`. Labels that are not personal on their own (generic dates and times, titles, country) are ignored: neither misses nor false positives.
 
 ### 9.2 Metrics
 
-- **Document leakage rate (headline):** share of documents with any PII in which at least one gold span leaks. A span leaks if any of its letters or digits is left uncovered by every predicted span, whatever category the prediction has. Partial redaction of a name counts as a leak.
-- **Span leak rate**, overall and per category, and per community for names (Māori, Pākehā, Pasifika, Asian NZ) on the synthetic set.
+- **Document leakage rate (headline):** share of documents with any PII in which at least one gold span leaks. A span leaks if any of its letters or digits is left uncovered by every predicted span, whatever category the prediction has. Partial redaction of a name counts as a leak. This generalises the Text Anonymization Benchmark's entity-level recall (an entity counts as protected only if every mention is masked; Pilán et al. 2022) to whole documents. Report it across operating points (confidence thresholds), not at one threshold only.
+- **Span leak rate**, overall and per category, and per community for names (Māori, Pākehā, Pasifika, Asian NZ). The name audit is counterfactual (same documents, only the names swapped) and span-level, because Māori names are often several tokens ("Te Ao", "Ngā…").
 - Character-level precision / recall / F1 over letters and digits, category-agnostic and per category; this is robust to boundary conventions and to names split into given and family parts.
 - Exact-span F1 (same start, end and category).
 - **Re-identification test:** red-team attempts to identify a person from redacted text plus public information, especially via `AFFILIATION` combinations.
@@ -260,8 +266,8 @@ All datasets are mapped onto nine evaluation categories (`PERSON`, `ADDRESS`, `E
 
 ### 9.3 Success criteria for the prototype
 
-- Recall ≥ 0.98 on `PERSON`, `NZ_GOV_ID`, `EMAIL`, `PHONE` on the NZ test set.
-- Te reo name recall within 2 points of English name recall (measuring the bias gap is a key result).
+- Recall ≥ 0.98 on `PERSON`, `NZ_GOV_ID`, `EMAIL`, `PHONE` on the NZ test set (held-out templates and names, and the human-annotated set once it exists).
+- Te reo name recall within 2 points of English name recall in the counterfactual audit (measuring the bias gap is a key result).
 - Document leakage rate reported against the OpenAI baseline, showing measurable improvement on NZ data.
 - Downstream utility loss ≤ 10% on the research-summarisation tasks.
 
@@ -283,6 +289,42 @@ Findings:
 4. **Typo'd IDs are now redacted.** The first run flagged (sent as-is) IDs with a nearby label but a failed check digit, which leaked 25% of NZ ID spans for the rules alone. These are now redacted by default (§6.1), bringing rule-side ID leakage to 0%.
 5. The teacher's median latency is about 0.24–0.28 s per document on an A5000, including a per-token Python Viterbi decoder that is likely a large share (not yet profiled); the rules take under 0.1 ms.
 
+### 9.5 M3 student results (2026-11-04)
+
+Full tables: `ml/results/m3_*`. All numbers are on synthetic data (§9.1); headline claims still need the human-annotated set (M2). Lower leak rates are better. Students ran on one RTX A5000 each; the int8 model on a laptop CPU.
+
+Held-out templates **and** held-out names (`test_full`, 1,750 documents):
+
+| Detector | Doc leak | Name span leak | Median ms / doc | Size |
+|---|---:|---:|---:|---:|
+| Rules + teacher (`openai/privacy-filter`) | 44.2% | 35.0% | 369 (GPU) | ~2.8 GB |
+| Rules + ModernBERT-base | 31.4% | 17.7% | 13 (GPU) | — |
+| Rules + DeBERTa-v3-small | 29.9% | 11.8% | 12 (GPU) | 567 MB fp32 |
+| Rules + DeBERTa-v3-small, int8 | 32.4% | 15.6% | **15 (laptop CPU)** | **165 MB** |
+| **Rules + mDeBERTa-v3-base** | **9.2%** | **3.3%** | 17 (GPU) | not exported yet |
+
+Counterfactual name audit (same documents, only names swapped; name span leak):
+
+| Names | Teacher | DeBERTa-v3-small | mDeBERTa-v3-base |
+|---|---:|---:|---:|
+| Māori | 52.4% | 11.7% | 0.2% |
+| Pākehā | 14.3% | 13.3% | 20.8% |
+| Pasifika | 37.4% | 14.3% | 3.2% |
+| Asian NZ | 14.7% | 6.4% | 7.0% |
+| Māori − Pākehā gap | +38.1 | **−1.5** | −20.6 |
+
+Findings:
+
+1. **Every student beats the teacher on held-out NZ text**, and rules + mDeBERTa-v3-base cuts document leakage from 44.2% to 9.2%. The multilingual backbone matters most for names (3.3% vs 11.8% leaked).
+2. **Held-out splits were essential.** On training templates with new names, every student leaks under 1% of documents; on new genres the same models leak 9–46%. Reporting the in-template number would have overstated quality several-fold.
+3. **Only DeBERTa-v3-small meets the 2-point name-gap target** (−1.5). mDeBERTa reverses the teacher's bias: it almost never misses Māori names but misses English surnames that are also words (Walker 41%, Campbell 33%), mostly in a held-out tribunal template. The training mix (half Māori names, six Pākehā surnames) is the likely cause; the next data version should balance the name mix and widen the surname lists. The held-out Māori names deliberately include common words (Tūī, Whetū, Kōwhai, Nīkau), which inflates the teacher's gap on this set.
+4. **No model over-flags te reo words:** none of 500 te reo filler sentences ("The tūī were singing in the kōwhai") was flagged by any student.
+5. **The rules still matter.** Alone, students leak NZ IDs (DeBERTa-small 6.3%, ModernBERT 29.2%) and some phone numbers; merged with the rules, phone, date, email and ID leaks are all 0%. Names remain the whole residual.
+6. **Remaining failure modes:** chat speaker names ("[date] Finn: …"), sign-offs after "Nāku noa,", and names in lowercase voice transcripts. None appears in the training templates.
+7. **int8 costs rare classes more than the literature suggests.** Dynamic int8 (with the embedding table quantised, needed to reach 165 MB) raised DeBERTa-small's name leak from 11.8% to 15.6% overall and from 13.3% to 22.7–28.5% on Pākehā names (per-channel to per-tensor). fp16 weights, keeping the embeddings and classifier in higher precision, or quantisation-aware training are next.
+8. **PII-Masking-300k is not a fair comparison here:** students trained on its train split (5.0% doc leak for DeBERTa-small) while the teacher did not (8.2%).
+9. Two training bugs were found and fixed: Transformers 5 loads DeBERTa-v3 checkpoints in fp16, which made AdamW produce NaN weights (now loaded in fp32); and checkpoint selection by dev leakage would have kept a broken model that redacts everything (now selected by dev F1).
+
 ## 10. Research extensions: DP and FL
 
 These are what make Tūmataiti a research project and not only a tool. They map to the DP/FL questions raised for Atamai.
@@ -291,25 +333,31 @@ These are what make Tūmataiti a research project and not only a tool. They map 
 
 Training runs on the VUW ECS GPU servers through the `task` spooler (one GPU per job, e.g. an RTX A5000; no host pinning; stay within the 5-concurrent-GPU limit).
 
-1. **Data generation:** synthetic NZ / te reo documents from templates, name and place lists, and generated NZ identifiers (valid and invalid checksums). Labels come from the template slots, the rules (§6.1), and `openai/privacy-filter` as a teacher on unlabelled text.
-2. **Fine-tune** the student encoder for token classification. Expected cost: a few GPU-hours per run.
-3. **Export and compress:** ONNX export, int8 quantisation, then re-run the evaluation (§9) on the quantised model to confirm the accuracy drop is small.
+1. **Data generation:** synthetic NZ / te reo documents from templates, name and place lists, and generated NZ identifiers (valid and invalid checksums), split by template and by name (§9.1).
+2. **Label sources.** Template-slot gold and the rules are the primary supervision, not a safety net: the teacher has no `HEALTH`, `AFFILIATION` or NZ-government-ID category, so it cannot teach those. The teacher labels *unlabelled* text (e.g. real consented NZ text from M2), with checksum-verified rule matches as high-confidence labelling functions that override or filter its pseudo-labels. Where several weak sources disagree, aggregate them with a multi-source HMM (Lison et al. 2020, `skweak`) rather than majority vote, using template gold to estimate each source's accuracy. Self-training rounds on the student's own output are capped, because recursive training erodes rare forms such as macronised Māori names.
+3. **Soft and hard labels.** The teacher is a token classifier that exposes per-token posteriors, so distillation can mix soft targets with Viterbi-decoded hard labels (structural KD, since the teacher decodes with constrained Viterbi and the student with softmax).
+4. **Backbones compared:** DeBERTa-v3 (best accuracy per parameter), ModernBERT (fastest, English-only) and a multilingual encoder (mDeBERTa-v3 or XLM-R; better coverage of code-switched te reo but a larger download). Fine-tuning the teacher itself on NZ data is the upper bound; at ~0.8 GB in 4-bit it suits the proxy (M5) rather than the browser.
+5. **Fine-tune** the student encoder for token classification. Expected cost: a few GPU-hours per run.
+6. **Export and compress:** ONNX export and int8 quantisation (dynamic int8, keeping LayerNorm and the classifier in fp32 if static int8 hurts), then re-run the evaluation (§9) on the quantised model, tracking rare classes such as IRD and NHI separately.
 4. **Retrieve** weights with `task fetch` and publish them as static files with a hash recorded in the release.
 
 Every run records its config, data version, seed and metrics so results are reproducible.
 
 ### 10.1 Differentially private fine-tuning
 
-Fine-tune the detector on sensitive community text with **DP-SGD** (e.g. Opacus) so the model weights do not memorise specific names or identifiers. Report privacy budget (ε, δ) against detection F1. Run membership-inference and canary-extraction attacks on the fine-tuned weights to check empirically.
+Fine-tune the detector on sensitive community text with **DP-SGD** (e.g. Opacus) so the model weights do not memorise specific names or identifiers. Report privacy budget (ε, δ) against detection F1, following a standard reporting template (unit of privacy, accountant, δ ≪ 1/n). Run membership-inference (LiRA, reported as TPR at low FPR), canary-exposure (synthetic IRD and NHI numbers inserted as canaries) and one-run audits on the fine-tuned weights to check empirically.
+
+Two caveats: for a token classifier the DP unit is the *example*, not the person, so a person whose details appear in many documents is less protected than ε suggests; and DP tends to cost rare classes most (te reo names, NZ IDs), so report the name-group gap under DP too. Inference latency must not depend on whether a word is in a vocabulary or gazetteer (a timing side-channel has been shown against NER redaction models).
 
 ### 10.2 Federated improvement
 
 Each organisation or iwi runs Tūmataiti locally. Reviewer corrections (§6.5) become local training signal. Model updates, not data, are aggregated (e.g. with Flower), optionally with:
 
-- secure aggregation, so the coordinator never sees an individual site's update;
-- DP noise on updates (user- or site-level DP).
+- **record-level DP enforced locally at each site** (inter-silo record-level DP, Lowy & Razaviyayn 2023), each site choosing its own ε. User- or site-level DP is not used: with 2–5 iwi it would need noise large enough to hide an entire iwi's contribution, destroying utility or giving little protection;
+- a shared encoder with per-site personalised heads or adapters, since federated NER trails centralised training under non-IID label distributions;
+- secure aggregation where it helps, noting it offers limited cover with only a handful of parties and that text can be recovered from language-model updates (hence local DP).
 
-Research questions: how much does federated adaptation close the te reo gap? What is the privacy/utility trade-off at realistic numbers of participating sites (likely few, with non-IID data)? Who governs the aggregated model? That last question goes to the kaitiaki/legal workstream.
+Research questions: how much does federated adaptation close the te reo gap? What is the privacy/utility trade-off at realistic numbers of participating sites (likely few, with non-IID data)? Who governs the aggregated model? The aggregated model is itself derived data, so governance must cover who receives it, per-iwi withdrawal and unlearning. That goes to the kaitiaki/legal workstream.
 
 ### 10.3 DP analytics
 
@@ -328,6 +376,8 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 | Local vault compromise | Encrypted at rest, short expiry, per-session scope |
 | Detector weights leak training data | DP-SGD fine-tuning (§10.1) |
 | Malicious placeholder injection in responses | Rehydrate only placeholders issued in this session |
+| A response echoes a *valid* placeholder into a dangerous context (a URL, markdown image, tool argument or code), so rehydration sends the real value somewhere | Rehydrate for display only; never inside URLs, tool calls or code; tested in M5 (no published work covers this attack) |
+| RAG chunks sent to the cloud with inconsistent placeholders across chunks | One placeholder vault per request covering the query and every retrieved chunk |
 | Demo page leaks typed text | Static hosting, no backend, CSP `connect-src 'self'`, offline mode, no analytics (§7.1) |
 | Tampered model weights on the demo site | Same-origin weights pinned by hash |
 
@@ -337,10 +387,10 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 |---|---|---|
 | M0 | Repo scaffold, policy schema, NZ rule detectors in Rust with tests, WebAssembly build, initial rules-only demo UI. **Done (prototype), 2026-11-03** | 1–2 weeks |
 | M1 | Eval harness; teacher/baseline (`openai/privacy-filter`) on public data; synthetic NZ data generator; Python bindings for the rules. **Done, 2026-11-04** (Presidio and GLiNER comparators still to add; results in §9.4) | 2 weeks |
-| M2 | NZ / te reo test set v0 (synthetic), co-designed with community and legal workstream | 3–4 weeks (parallel) |
-| M3 | Student model trained on ECS, ONNX int8 export, evaluated against teacher | 2–3 weeks |
+| M2 | NZ / te reo test set, co-designed with community and legal workstream. Brought forward: a small consented, human-annotated set (~200 documents) as early as possible, because fine-tuned encoders overtake the zero-shot teacher with roughly 100–1,000 labelled examples and only human-labelled data supports headline claims | 3–4 weeks (parallel) |
+| M3 | Generator v1 with held-out templates and names; three student backbones trained on ECS; evaluated against teacher on held-out splits and the counterfactual name audit; ONNX int8 export. **First pass done, 2026-11-04** (results §9.5). Open: export mDeBERTa, recover int8 name accuracy, data v2 with a balanced name mix and the failure-mode genres, fine-tune the teacher as an upper bound, soft-label distillation once unlabelled real text exists | 2–3 weeks |
 | M4 | Live browser demo (§7): animations, presets, offline mode; ships with rules + interim model, then swaps in the M3 student | 2–3 weeks (UI can start after M0) |
-| M5 | Local proxy with pseudonymisation, vault, streaming rehydration; minimal review UI | 2–3 weeks |
+| M5 | Local proxy with pseudonymisation, vault, streaming rehydration; minimal review UI; placeholder-echo attack tests; utility ablation of placeholders vs realistic surrogates vs generalisation, including RAG (replacing dates and numbers is known to break reasoning) | 2–3 weeks |
 | M6 | DP-SGD fine-tuning, federated simulation (2–5 synthetic sites), Atamai integration; results report | 4–6 weeks |
 
 ## 13. Open questions for the team
@@ -352,6 +402,7 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 5. **Provider agreements:** what retention/zero-data-retention terms do we have with each cloud provider? These affect how conservative the default policy must be.
 6. **Reporting:** how should redaction stats appear in Atamai's report outputs (link to the reporting workstream)?
 7. **Demo hosting and branding:** where should the public demo live (HTM, VUW, or a project domain), and what design and brand guidance applies (design team)?
+8. **Te reo data sourcing and release:** te reo lexicons and evaluation data must not come from Kaitiakitanga-licensed resources (e.g. Papa Reo) without agreement. Under what terms should Tūmataiti's own te reo artefacts (name lists, the NZ test set, a te reo-tuned model) be released? The repository is currently public under Apache 2.0.
 
 ## 14. References
 
@@ -365,3 +416,12 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 - Opacus — https://opacus.ai
 - Transformers.js — https://huggingface.co/docs/transformers.js
 - ONNX Runtime Web — https://onnxruntime.ai
+
+From the literature review (`reports/`; check each against its spot-check table before citing):
+
+- Pilán et al., *The Text Anonymization Benchmark (TAB)*, Computational Linguistics 2022 — entity-level recall over all mentions
+- Lison et al., *Named Entity Recognition without Labelled Data: A Weak Supervision Approach*, ACL 2020 — multi-source HMM aggregation
+- Lowy & Razaviyayn, *Private Federated Learning Without a Trusted Server*, ICLR 2023 — inter-silo record-level DP
+- Mansfield et al., *Behind the Mask: Demographic Bias in Name Detection for PII Masking*, LT-EDI 2022 — name-group audit method
+- Staab et al., *Beyond Memorization: Violating Privacy via Inference with LLMs*, ICLR 2024 — redaction is not anonymisation
+- Yang & Garibaldi 2015 (i2b2 2014 winner) — rules for formats, models for names, the hybrid precedent

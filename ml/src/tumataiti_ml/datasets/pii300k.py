@@ -1,4 +1,4 @@
-"""ai4privacy/pii-masking-300k, English validation split (public benchmark).
+"""ai4privacy/pii-masking-300k, English train and validation splits (public benchmark).
 
 The licence allows academic use with citation; the data is downloaded on
 demand and never committed.
@@ -13,16 +13,17 @@ from pathlib import Path
 from ..spans import Doc, Span
 from ..taxonomy import PII_MASKING_300K, map_label
 
-URL = (
-    "https://huggingface.co/datasets/ai4privacy/pii-masking-300k/resolve/main/"
-    "data/validation/1english_openpii_8k.jsonl"
-)
+BASE = "https://huggingface.co/datasets/ai4privacy/pii-masking-300k/resolve/main/data/"
+FILES = {
+    "train": "train/1english_openpii_30k.jsonl",
+    "validation": "validation/1english_openpii_8k.jsonl",
+}
 
 
-def download(dest: Path) -> Path:
+def download(dest: Path, split: str = "validation") -> Path:
     if not dest.exists():
         dest.parent.mkdir(parents=True, exist_ok=True)
-        urllib.request.urlretrieve(URL, dest)
+        urllib.request.urlretrieve(BASE + FILES[split], dest)
     return dest
 
 

@@ -1,6 +1,20 @@
-# M1 baseline results
+# Results
 
-Generated 2026-11-04. Summary and findings are in [SPEC.md §9.4](../../SPEC.md).
+## M3: student models (2026-11-04)
+
+Summary and findings are in [SPEC.md §9.5](../../SPEC.md).
+
+- [m3_nz_test_full.md](m3_nz_test_full.md): NZ synthetic v1, held-out templates **and** names (the headline synthetic test)
+- [m3_nz_test_names.md](m3_nz_test_names.md): training templates, held-out names
+- [m3_pii300k_en_val.md](m3_pii300k_en_val.md): PII-Masking-300k validation (students were trained on its train split, so this is in-distribution for them, not for the teacher)
+- [m3_names_counterfactual.md](m3_names_counterfactual.md): counterfactual name audit
+- `*.json`: full metrics
+
+Students were trained on ECS (one RTX A5000 each, 3 epochs, seed 0, deterministic CUDA, fp32 master weights with bf16 autocast) on `nz_train` (8,000 synthetic documents) plus PII-Masking-300k English train (29,908). Data: `scripts/make_data_v1.sh`. Training: `scripts/ecs_student.sh`. Teacher: `scripts/ecs_teacher.sh`. ONNX: `scripts/ecs_export.sh`, then `tumataiti-ml quantise`. Scoring: `scripts/score_m3.sh`. `deberta-v3-small-int8` was quantised per-tensor; per-channel (now the default) was slightly better and is described in SPEC §9.5.
+
+## M1: baseline results
+
+Generated 2026-11-04 from commit b9d1dd8 (the generator has changed since). Summary and findings are in [SPEC.md §9.4](../../SPEC.md).
 
 - [m1_nz_synth_v0.md](m1_nz_synth_v0.md): NZ synthetic v0, 1,600 documents
 - [m1_pii300k.md](m1_pii300k.md): PII-Masking-300k, English validation, 7,946 documents

@@ -4,8 +4,10 @@ import random
 import pytest
 import tumataiti_rules
 
+from tumataiti_ml.analysis import name_group
 from tumataiti_ml.synth import nzids
-from tumataiti_ml.synth.generate import TEMPLATES, generate
+from tumataiti_ml.synth import lexicon as lx
+from tumataiti_ml.synth.generate import TEST_TEMPLATES, TRAIN_TEMPLATES, generate
 
 
 def rule_hits(text: str) -> list[dict]:
@@ -40,18 +42,42 @@ def test_card_generator_agrees_with_rust():
 
 
 def test_gold_spans_match_text_and_are_deterministic():
-    docs = generate(len(TEMPLATES) * 3, seed=7)
-    assert {d.meta["template"] for d in docs} == set(TEMPLATES)
+    docs = generate(len(TRAIN_TEMPLATES) * 3, seed=7) + generate(len(TEST_TEMPLATES) * 3, 7, "test_full")
+    assert {d.meta["template"] for d in docs} == set(TRAIN_TEMPLATES) | set(TEST_TEMPLATES)
     for d in docs:
         assert d.spans, d.id
         for s in d.spans:
             assert 0 <= s.start < s.end <= len(d.text)
             assert d.text[s.start : s.end].strip() == d.text[s.start : s.end]
-    again = generate(len(TEMPLATES) * 3, seed=7)
-    assert [d.text for d in docs] == [d.text for d in again]
+    again = generate(len(TRAIN_TEMPLATES) * 3, seed=7)
+    assert [d.text for d in docs[: len(again)]] == [d.text for d in again]
 
 
 def test_hard_negatives_are_not_gold():
     docs = [d for d in generate(200, seed=3) if d.meta["template"] == "agenda"]
     for d in docs:
         assert all(s.category == "EMAIL" for s in d.spans)
+
+
+def _person_names(docs):
+    return {d.text[s.start : s.end] for d in docs for s in d.spans if s.label.split(".")[-1] in ("given", "surname")}
+
+
+def test_held_out_splits_share_no_names_or_templates():
+    assert not set(TRAIN_TEMPLATES) & set(TEST_TEMPLATES)
+    for group, parts in lx.NAMES.items():
+        for part, (train, test) in parts.items():
+            assert not set(train) & set(test), (group, part)
+    train_names = _person_names(generate(2000, 1, "train"))
+    test_names = _person_names(generate(700, 2, "test_full"))
+    assert train_names and test_names and not train_names & test_names
+
+
+def test_counterfactual_files_differ_only_in_names():
+    a = generate(70, 5, "test_full", group="Māori")
+    b = generate(70, 5, "test_full", group="Pākehā")
+    for x, y in zip(a, b):
+        assert [s.label for s in x.spans] == [s.label for s in y.spans]
+        assert x.meta["template"] == y.meta["template"]
+        names = [x.text[s.start : s.end] for s in x.spans if s.category == "PERSON"]
+        assert names and {name_group(n) for n in names} == {"Māori"}

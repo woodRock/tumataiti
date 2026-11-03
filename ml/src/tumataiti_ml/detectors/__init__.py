@@ -25,6 +25,10 @@ def load(name: str, **kwargs) -> Predict:
         from .rules import make
     elif name == "openai-privacy-filter":
         from .openai_privacy_filter import make
+    elif name == "student":
+        from .student import make
+    elif name == "student-onnx":
+        from .student_onnx import make
     else:
         raise ValueError(f"unknown detector {name!r}")
     return make(**kwargs)

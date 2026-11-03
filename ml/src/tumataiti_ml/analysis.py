@@ -36,12 +36,7 @@ def combine(primary: Doc, secondary: Doc) -> Doc:
     return Doc(id=primary.id, text="", spans=merged, meta={"detector": "combined"})
 
 
-GROUPS = {
-    "Māori": (lx.MAORI_GIVEN, lx.MAORI_SURNAME),
-    "Pākehā": (lx.PAKEHA_GIVEN, lx.PAKEHA_SURNAME),
-    "Pasifika": (lx.PASIFIKA_GIVEN, lx.PASIFIKA_SURNAME),
-    "Asian NZ": (lx.ASIAN_GIVEN, lx.ASIAN_SURNAME),
-}
+GROUPS = {g: (lx.all_names(g, "given"), lx.all_names(g, "surname")) for g in lx.NAMES}
 
 
 def name_group(text: str) -> str | None:

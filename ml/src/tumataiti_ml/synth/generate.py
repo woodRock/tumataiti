@@ -51,13 +51,30 @@ def format_date(rng: random.Random, d: dt.date) -> str:
 
 
 @dataclass
+class NamePool:
+    """Which names a split may use: training or held-out lists, optionally one community only."""
+
+    held_out: bool = False
+    group: str | None = None
+
+    def draw(self, rng: random.Random, part: str) -> str:
+        # Always draw the community, even when it is fixed, so counterfactual
+        # files consume the random stream identically and differ only in names.
+        groups = list(lx.GROUP_WEIGHTS)
+        drawn = rng.choices(groups, weights=[lx.GROUP_WEIGHTS[g] for g in groups])[0]
+        names = lx.NAMES[self.group or drawn][part][1 if self.held_out else 0]
+        return names[rng.randrange(len(names))]
+
+
+@dataclass
 class Person:
     rng: random.Random
+    pool: NamePool = field(default_factory=NamePool)
     values: dict[str, str] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        self.given = self.rng.choice(lx.GIVEN)
-        self.surname = self.rng.choice(lx.SURNAME)
+        self.given = self.pool.draw(self.rng, "given")
+        self.surname = self.pool.draw(self.rng, "surname")
 
     def get(self, attr: str) -> str:
         if attr not in self.values:
@@ -153,15 +170,18 @@ def global_slot(rng: random.Random, name: str) -> tuple[str, str | None]:
             return nzids.gen_card(rng, valid=False), "FINANCIAL"
         case "town":
             return rng.choice(lx.TOWNS)[0], None
+        case "filler":
+            return rng.choice(lx.FILLERS), None
     raise KeyError(name)
 
 
-TEMPLATES: dict[str, str] = {
+# Training templates. Held-out templates (different genres and phrasing) follow.
+TRAIN_TEMPLATES: dict[str, str] = {
     "hui_notes": """Hui ā-whānau: notes
 Present: {p1.given}, {p2.given}, {p3.given} ({p3.given} joined online from {ip})
 
 {p1.given} (DOB {p1.dob}) will collect the kai. Contact {p1.given} on {p1.mobile} or {p1.email}.
-Next hui: {hui_date} at {p2.marae}.""",
+Next hui: {hui_date} at {p2.marae}. {filler}""",
     "signature": """Ngā mihi,
 {p1.full}
 Kaiwhakahaere Rangahau | Research Manager
@@ -185,7 +205,7 @@ Bank account: {p1.bank}
     "interview": """Interviewer: Kia ora, can you tell me a bit about yourself?
 Participant ({p1.given}): Ko {p1.iwi} te iwi. I grew up with my nan, {p2.full}, at {p2.address}.
 Interviewer: And can we follow up later?
-Participant ({p1.given}): Yeah, text me on {p1.mobile}. My email's {p1.email}.""",
+Participant ({p1.given}): Yeah, text me on {p1.mobile}. My email's {p1.email}. {filler}""",
     "contact_list": """Whānau contact list (updated {hui_date})
 - {p1.full}: {p1.phone}, {p1.email}
 - {p2.full}: {p2.phone}
@@ -219,7 +239,7 @@ Details: {public_url}""",
     "tangihanga": """With great sadness we announce that {p1.full} passed away on {death_date}.
 I whānau mai ia i te {p1.dob}. Lying at {p1.marae}.
 Please contact {p2.full} on {p2.phone} for details.""",
-    "text_message": """kia ora its {p1.plain} lol, txt me on {p1.mobile} when ur at {p2.plain}'s place. {p2.address}""",
+    "text_message": """kia ora its {p1.plain} lol, txt me on {p1.mobile} when ur at {p2.plain}'s place. {p2.address} {filler}""",
     "tax_query": """Kia ora, I'm helping {p1.full} with a tax return.
 Their IRD number is {p1.ird}. My own IRD number is {bad_ird} (I might have typed it wrong).
 Order reference from the IRD letter: {order_ref}.""",
@@ -227,11 +247,44 @@ Order reference from the IRD letter: {order_ref}.""",
 NHI recorded on the old form: {bad_nhi}.
 Next appointment {hui_date}. Contact via {p1.email}.""",
     "te_reo_para": """Ko {p1.full} tōku ingoa. Nō {p1.iwi} ahau. E noho ana au ki {p1.address}.
-Ko {p1.mobile} taku waea pūkoro, ko {p1.email} taku īmēra.""",
+Ko {p1.mobile} taku waea pūkoro, ko {p1.email} taku īmēra. {filler}""",
+}
+
+TEST_TEMPLATES: dict[str, str] = {
+    "group_chat": """[{hui_date}] {p1.plain}: kia ora whānau, who's bringing the hāngī stones?
+[{hui_date}] {p2.given}: me and {p3.given}. {p3.given} can you flick me ur number again
+[{hui_date}] {p3.given}: {p3.mobile} bro
+{filler}""",
+    "discharge_summary": """DISCHARGE SUMMARY
+Patient: {p1.surname}, {p1.given}
+NHI: {p1.nhi}    DOB: {p1.dob}
+Residential address: {p1.address}
+Next of kin: {p2.full} (tamāhine), ph {p2.phone}
+GP to follow up. Clinic letter copied to {p3.email}.""",
+    "tenancy": """RESIDENTIAL TENANCY AGREEMENT
+Landlord: {p1.full}, of {p1.address}
+Tenant: {p2.full}
+Tenant's contact: {p2.email} / {p2.mobile}
+Bond paid from account {p2.bank}. Rent due from {hui_date}.""",
+    "cover_letter": """Tēnā koe,
+
+I am writing to apply for the kaiāwhina role advertised on {public_url}. I whakapapa to {p1.iwi} and have worked at {p1.marae} for six years.
+
+You can reach me at {p1.email} or {p1.phone}. My referee is {p2.full}.
+
+Nāku noa,
+{p1.full}""",
+    "school_newsletter": """Pānui o te Kura
+Ka mau te wehi to {p1.full} and {p2.given} {p2.surname} for their kapa haka performance! {filler}
+Questions about the trip? Contact Whaea {p3.given} on {p3.landline}.
+Permission slips are due {hui_date}.""",
+    "tribunal_summary": """The applicant, {p1.full} (born {p1.dob}), resides at {p1.address}. The applicant's IRD number is recorded as {p1.ird}. Evidence was given by {p2.full} and by Ms {p3.surname}. The hearing resumed on {hui_date}.""",
+    "voice_transcript": """um yeah so this is {p1.plain} calling about my nan {p2.plain} she lives at {p2.address} you can call me back on {p1.mobile} thanks""",
 }
 
 
-def fill(template: str, rng: random.Random) -> tuple[str, list[Span]]:
+def fill(template: str, rng: random.Random, pool: NamePool | None = None) -> tuple[str, list[Span]]:
+    pool = pool or NamePool()
     people: dict[str, Person] = {}
     out: list[str] = []
     spans: list[Span] = []
@@ -243,7 +296,9 @@ def fill(template: str, rng: random.Random) -> tuple[str, list[Span]]:
         pos += len(literal)
         name, attr = m.group(1), m.group(2)
         if attr is not None:
-            person = people.setdefault(name, Person(rng))
+            if name not in people:
+                people[name] = Person(rng, pool)
+            person = people[name]
             value, category = person.get(attr), PERSON_CATEGORY[attr]
             label = f"{name}.{attr}"
         else:
@@ -258,12 +313,27 @@ def fill(template: str, rng: random.Random) -> tuple[str, list[Span]]:
     return "".join(out), spans
 
 
-def generate(n: int, seed: int = 0) -> list[Doc]:
+SPLITS = {
+    # name: (templates, held-out names)
+    "train": (TRAIN_TEMPLATES, False),
+    "dev": (TRAIN_TEMPLATES, False),
+    "test_names": (TRAIN_TEMPLATES, True),
+    "test_full": (TEST_TEMPLATES, True),
+}
+
+
+def generate(n: int, seed: int = 0, split: str = "train", group: str | None = None) -> list[Doc]:
+    """`n` documents cycling through the split's templates. With `group`, every
+    person comes from that community (the counterfactual name audit)."""
+    templates, held_out = SPLITS[split]
+    pool = NamePool(held_out=held_out, group=group)
     rng = random.Random(seed)
-    names = sorted(TEMPLATES)
+    names = sorted(templates)
+    prefix = f"nz-{split}" + (f"-{group}" if group else "")
     docs = []
     for i in range(n):
         name = names[i % len(names)]
-        text, spans = fill(TEMPLATES[name], rng)
-        docs.append(Doc(id=f"nz-synth-{i:05d}", text=text, spans=spans, meta={"template": name}))
+        text, spans = fill(templates[name], rng, pool)
+        meta = {"template": name, "split": split, "group": group}
+        docs.append(Doc(id=f"{prefix}-{i:05d}", text=text, spans=spans, meta=meta))
     return docs
