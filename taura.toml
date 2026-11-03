@@ -1,0 +1,4 @@
+# taura (github.com/woodRock/taura): where the paper lives, plus (as they come) datasets recorded with
+# every run, settings the paper may quote, and code whose change makes earlier results suspect.
+# The Overleaf project is named without the macron, so it is set here rather than found by name.
+paper = "~/overleaf/Tumataiti"

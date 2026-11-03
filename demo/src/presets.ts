@@ -24,7 +24,7 @@ Next hui: 14/03/2027 at the marae.`,
   {
     id: "checksums",
     title: "Checksums",
-    shows: "IRD and NHI check digits: real-looking typos are flagged, random numbers ignored",
+    shows: "IRD and NHI check digits: a labelled number that fails is still redacted in case it is a typo, and unlabelled look-alikes are ignored",
     text: `Kia ora, I've updated the whānau records.
 
 Koro's IRD number: 49-091-850

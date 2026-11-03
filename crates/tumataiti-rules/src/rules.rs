@@ -8,9 +8,14 @@ use regex::Regex;
 use crate::checksum;
 use crate::span::{Category, Checksum, Source, Span};
 
-/// Confidence for a format match that fails its checksum or lacks context.
+/// Confidence for an ID-shaped code with nothing nearby saying what it is.
 /// Sits below the default policy threshold so these are flagged, not redacted.
 const WEAK: f32 = 0.4;
+
+/// Confidence for a number labelled as an ID ("IRD number: …") whose check
+/// digit fails. Most likely a typo of a real ID, which still identifies the
+/// person, so it sits above the default threshold and is redacted (recall first).
+const LABELLED_INVALID: f32 = 0.7;
 
 fn re(pattern: &str) -> Regex {
     Regex::new(pattern).expect("built-in pattern compiles")
@@ -154,10 +159,10 @@ fn ird(out: &mut Out) {
                 m.start(),
                 m.end(),
                 Category::NzGovId,
-                WEAK,
+                LABELLED_INVALID,
                 "nz_ird",
                 Checksum::Invalid,
-                Some("Labelled as an IRD number but the check digit fails: a typo, or not a real number"),
+                Some("Labelled as an IRD number but the check digit fails; redacted in case it is a mistyped real number"),
             );
         }
     }
@@ -178,10 +183,10 @@ fn nhi(out: &mut Out) {
                 m.start(),
                 m.end(),
                 Category::NzGovId,
-                WEAK,
+                LABELLED_INVALID,
                 "nz_nhi",
                 Checksum::Invalid,
-                Some("Labelled as an NHI but the check character fails: a typo, or not a real NHI"),
+                Some("Labelled as an NHI but the check character fails; redacted in case it is a mistyped real NHI"),
             );
         }
     }
@@ -233,10 +238,10 @@ fn payment_card(out: &mut Out) {
                 m.start(),
                 m.end(),
                 Category::Financial,
-                WEAK,
+                LABELLED_INVALID,
                 "payment_card",
                 Checksum::Invalid,
-                Some("Labelled as a card number but fails the Luhn check"),
+                Some("Labelled as a card number but fails the Luhn check; redacted in case it is a mistyped real card"),
             );
         }
     }

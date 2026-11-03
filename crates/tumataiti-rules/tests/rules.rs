@@ -51,11 +51,12 @@ fn ird_valid_is_redacted_without_context() {
 }
 
 #[test]
-fn ird_invalid_needs_context_and_is_weak() {
+fn ird_invalid_needs_context_and_is_redacted() {
     assert!(scan("Reference 49-091-851 attached").is_empty());
     let s = one("My IRD number is 49-091-851");
     assert_eq!(s.checksum, Checksum::Invalid);
-    assert!(s.confidence < Policy::default().threshold);
+    let r = redact("My IRD number is 49-091-851", &Policy::default());
+    assert_eq!(r.output, "My IRD number is [NZ_GOV_ID]");
 }
 
 #[test]
@@ -139,9 +140,9 @@ fn default_policy_end_to_end() {
 
 #[test]
 fn weak_spans_are_flagged_not_replaced() {
-    let r = redact("IRD 49-091-851", &Policy::default());
+    let r = redact("Code XY123456", &Policy::default());
     assert_eq!(r.findings[0].action, Action::Flag);
-    assert_eq!(r.output, "IRD 49-091-851");
+    assert_eq!(r.output, "Code XY123456");
 }
 
 #[test]

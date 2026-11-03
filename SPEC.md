@@ -104,7 +104,7 @@ Components:
 1. **Deterministic rules** (high precision, checksum-validated where possible)
    - IRD number (mod-11 checksum), NHI (old and new formats with check digit), payment card (Luhn), NZ phone (landline, mobile `02x`, `+64`), NZ driver licence and passport (told apart by a label on the same line), bank account (`BB-bbbb-AAAAAAA-SS`, format only until per-bank checksums are added), email (including macrons in the local part), URL, IPv4 address, and dates of birth or death (only next to a birth/death label, including Māori month names).
    - API keys / secrets (common provider prefixes, private keys, `password=` style assignments).
-   - A format match that fails its checksum is only reported when a label such as "IRD" sits nearby, and then below the default threshold, so it is flagged for review rather than redacted. Random numbers that happen to share the format are ignored.
+   - A format match that fails its checksum is only reported when a label such as "IRD" sits nearby. It is then redacted by default (confidence 0.7), because it is most likely a mistyped real ID, which still identifies the person; the failed check is shown for review. Random numbers that happen to share the format are ignored, and an ID-shaped code with no label is flagged, not redacted. (Decided 2026-11-04 after the M1 evaluation.)
    - Implemented once in Rust and compiled to WebAssembly for the browser (§5.1), so the demo (§7) and the proxy run identical code.
    - *Not yet:* NZ postcodes in address context, high-entropy secret detection, per-bank account checksums.
 2. **Model-based span detection** for open-ended categories (names, addresses, affiliation, health in context).
@@ -271,16 +271,16 @@ Full tables: `ml/results/`. Teacher runs on one RTX A5000 (ECS), rules on a lapt
 
 | Detector | PII-Masking-300k doc leak | NZ synthetic v0 doc leak | NZ span leak |
 |---|---:|---:|---:|
-| Rules only | 95.9% | 93.8% | 49.4% |
+| Rules only | 95.9% | 93.8% | 45.8% |
 | `openai/privacy-filter` (teacher) | 8.2% | 43.2% | 16.8% |
-| Rules + teacher (merged) | **7.8%** | **37.2%** | **11.2%** |
+| Rules + teacher (merged) | **7.8%** | **36.2%** | **11.0%** |
 
 Findings:
 
 1. **The teacher is about 5× worse on NZ text than on the public benchmark** (43.2% vs 8.2% of documents leak). It leaks 23% of names, 26% of addresses, 21% of birth/death dates, 14% of phone numbers and 14% of NZ IDs in the synthetic set.
 2. **Te reo Māori and Pasifika names leak more:** 25.5% of Māori and 27.8% of Pasifika name mentions leak, against 14.8% for Pākehā names. The gap is about 11 points, so success criterion 9.3 (within 2 points) is far off. Names that are also everyday words leak most (Tūī 71%, Whetū 61%), as do names typed in lowercase without macrons (60%).
-3. **Rules and model complement each other.** Merged, phone, email, URL, IP and date leaks on NZ text drop to 0% and NZ IDs to 1.9%, while names and addresses stay at the teacher's level. That is what M3 fine-tuning has to fix.
-4. **Policy question, typo'd IDs:** an ID with a nearby label but a failed check digit is flagged (sent as-is) under the default policy, so it leaks. Counting flagged spans as redacted removes all remaining rule-side ID leaks (25.0% → 0% for rules alone). Whether to redact these by default is a decision for the policy owners (§6.3).
+3. **Rules and model complement each other.** Merged, phone, email, URL, IP, date and NZ ID leaks on NZ text all drop to 0%, while names and addresses stay at the teacher's level. That is what M3 fine-tuning has to fix.
+4. **Typo'd IDs are now redacted.** The first run flagged (sent as-is) IDs with a nearby label but a failed check digit, which leaked 25% of NZ ID spans for the rules alone. These are now redacted by default (§6.1), bringing rule-side ID leakage to 0%.
 5. The teacher's median latency is about 0.24–0.28 s per document on an A5000, including a per-token Python Viterbi decoder that is likely a large share (not yet profiled); the rules take under 0.1 ms.
 
 ## 10. Research extensions: DP and FL

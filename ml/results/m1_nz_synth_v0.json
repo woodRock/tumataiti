@@ -5,199 +5,6 @@
       "docs": 1600,
       "docs_with_pii": 1600,
       "doc_leak_rate": 0.9375,
-      "span_leak_rate": 0.4939759036144578,
-      "char_any": {
-        "precision": 0.9009385103110581,
-        "recall": 0.5481437628905355,
-        "f1": 0.6815952886978617,
-        "tp": 57406,
-        "fp": 6312,
-        "fn": 47322
-      },
-      "char": {
-        "PERSON": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "tp": 0,
-          "fp": 0,
-          "fn": 27135
-        },
-        "ADDRESS": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "tp": 0,
-          "fp": 0,
-          "fn": 17049
-        },
-        "EMAIL": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 21137,
-          "fp": 0,
-          "fn": 0
-        },
-        "PHONE": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 11966,
-          "fp": 0,
-          "fn": 0
-        },
-        "URL": {
-          "precision": 0.34570332745931376,
-          "recall": 1.0,
-          "f1": 0.5137883222924049,
-          "tp": 3335,
-          "fp": 6312,
-          "fn": 0
-        },
-        "IP_ADDRESS": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 1963,
-          "fp": 0,
-          "fn": 0
-        },
-        "DATE": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 6496,
-          "fp": 0,
-          "fn": 0
-        },
-        "ID": {
-          "precision": 1.0,
-          "recall": 0.7484972349122385,
-          "f1": 0.8561606160616062,
-          "tp": 9339,
-          "fp": 0,
-          "fn": 3138
-        },
-        "SECRET": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 3170,
-          "fp": 0,
-          "fn": 0
-        }
-      },
-      "exact_all": {
-        "precision": 0.9162222222222223,
-        "recall": 0.4967469879518072,
-        "f1": 0.6442187500000001,
-        "tp": 4123,
-        "fp": 377,
-        "fn": 4177
-      },
-      "exact": {
-        "PERSON": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "tp": 0,
-          "fp": 0,
-          "fn": 3100
-        },
-        "ADDRESS": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "tp": 0,
-          "fp": 0,
-          "fn": 700
-        },
-        "EMAIL": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 1100,
-          "fp": 0,
-          "fn": 0
-        },
-        "PHONE": {
-          "precision": 0.9358333333333333,
-          "recall": 0.9358333333333333,
-          "f1": 0.9358333333333333,
-          "tp": 1123,
-          "fp": 77,
-          "fn": 77
-        },
-        "URL": {
-          "precision": 0.25,
-          "recall": 1.0,
-          "f1": 0.4,
-          "tp": 100,
-          "fp": 300,
-          "fn": 0
-        },
-        "IP_ADDRESS": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 200,
-          "fp": 0,
-          "fn": 0
-        },
-        "DATE": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 600,
-          "fp": 0,
-          "fn": 0
-        },
-        "ID": {
-          "precision": 1.0,
-          "recall": 0.75,
-          "f1": 0.8571428571428571,
-          "tp": 900,
-          "fp": 0,
-          "fn": 300
-        },
-        "SECRET": {
-          "precision": 1.0,
-          "recall": 1.0,
-          "f1": 1.0,
-          "tp": 100,
-          "fp": 0,
-          "fn": 0
-        }
-      },
-      "span_leak_rate_by_category": {
-        "ADDRESS": 1.0,
-        "DATE": 0.0,
-        "EMAIL": 0.0,
-        "ID": 0.25,
-        "IP_ADDRESS": 0.0,
-        "PERSON": 1.0,
-        "PHONE": 0.0,
-        "SECRET": 0.0,
-        "URL": 0.0
-      },
-      "gold_spans": {
-        "ADDRESS": 700,
-        "DATE": 600,
-        "EMAIL": 1100,
-        "ID": 1200,
-        "IP_ADDRESS": 200,
-        "PERSON": 3100,
-        "PHONE": 1200,
-        "SECRET": 100,
-        "URL": 100
-      },
-      "_name": "rules"
-    },
-    "rules-incl-flagged": {
-      "docs": 1600,
-      "docs_with_pii": 1600,
-      "doc_leak_rate": 0.9375,
       "span_leak_rate": 0.4578313253012048,
       "char_any": {
         "precision": 0.8944172785156077,
@@ -385,7 +192,7 @@
         "SECRET": 100,
         "URL": 100
       },
-      "_name": "rules-incl-flagged"
+      "_name": "rules"
     },
     "openai-privacy-filter": {
       "docs": 1600,
@@ -583,31 +390,31 @@
     "rules+openai-privacy-filter": {
       "docs": 1600,
       "docs_with_pii": 1600,
-      "doc_leak_rate": 0.3725,
-      "span_leak_rate": 0.11228915662650603,
+      "doc_leak_rate": 0.361875,
+      "span_leak_rate": 0.10951807228915662,
       "char_any": {
-        "precision": 0.8380027052593424,
-        "recall": 0.905097013215186,
-        "f1": 0.8702585830950097,
-        "tp": 94789,
-        "fp": 18324,
-        "fn": 9939
+        "precision": 0.8381880450517247,
+        "recall": 0.9067298143762891,
+        "f1": 0.8711127419502798,
+        "tp": 94960,
+        "fp": 18332,
+        "fn": 9768
       },
       "char": {
         "PERSON": {
-          "precision": 0.8202627231967278,
+          "precision": 0.820488610881624,
           "recall": 0.7686014372581537,
-          "f1": 0.793592207149788,
+          "f1": 0.7936979107204019,
           "tp": 20856,
-          "fp": 4570,
+          "fp": 4563,
           "fn": 6279
         },
         "ADDRESS": {
-          "precision": 0.8997630001394117,
+          "precision": 0.900704765892122,
           "recall": 0.7571118540676872,
-          "f1": 0.8222965440356744,
+          "f1": 0.8226896112173359,
           "tp": 12908,
-          "fp": 1438,
+          "fp": 1423,
           "fn": 4141
         },
         "EMAIL": {
@@ -619,11 +426,11 @@
           "fn": 0
         },
         "PHONE": {
-          "precision": 0.9553692614770459,
+          "precision": 0.9782537606278614,
           "recall": 1.0,
-          "f1": 0.97717528888163,
+          "f1": 0.989007355979833,
           "tp": 11966,
-          "fp": 559,
+          "fp": 266,
           "fn": 0
         },
         "URL": {
@@ -651,12 +458,12 @@
           "fn": 0
         },
         "ID": {
-          "precision": 0.8005876853212235,
-          "recall": 0.9608078865111805,
-          "f1": 0.8734108047065682,
-          "tp": 11988,
-          "fp": 2986,
-          "fn": 489
+          "precision": 0.8061805016808896,
+          "recall": 0.9994389677005691,
+          "f1": 0.8924673465736267,
+          "tp": 12470,
+          "fp": 2998,
+          "fn": 7
         },
         "SECRET": {
           "precision": 0.8558315334773218,
@@ -668,28 +475,28 @@
         }
       },
       "exact_all": {
-        "precision": 0.7282449622875155,
-        "recall": 0.7793975903614457,
-        "f1": 0.752953500552872,
-        "tp": 6469,
-        "fp": 2414,
-        "fn": 1831
+        "precision": 0.7325398607680216,
+        "recall": 0.7860240963855422,
+        "f1": 0.758340113913751,
+        "tp": 6524,
+        "fp": 2382,
+        "fn": 1776
       },
       "exact": {
         "PERSON": {
-          "precision": 0.7374260355029586,
+          "precision": 0.7376988531261561,
           "recall": 0.6432258064516129,
-          "f1": 0.6871123363197794,
+          "f1": 0.6872307427192831,
           "tp": 1994,
-          "fp": 710,
+          "fp": 709,
           "fn": 1106
         },
         "ADDRESS": {
-          "precision": 0.37290167865707435,
+          "precision": 0.3737980769230769,
           "recall": 0.4442857142857143,
-          "f1": 0.40547588005215124,
+          "f1": 0.40600522193211486,
           "tp": 311,
-          "fp": 523,
+          "fp": 521,
           "fn": 389
         },
         "EMAIL": {
@@ -701,11 +508,11 @@
           "fn": 58
         },
         "PHONE": {
-          "precision": 0.8734177215189873,
+          "precision": 0.8953771289537713,
           "recall": 0.92,
-          "f1": 0.896103896103896,
+          "f1": 0.907521578298397,
           "tp": 1104,
-          "fp": 160,
+          "fp": 129,
           "fn": 96
         },
         "URL": {
@@ -733,12 +540,12 @@
           "fn": 1
         },
         "ID": {
-          "precision": 0.7854107648725213,
-          "recall": 0.9241666666666667,
-          "f1": 0.8491577335375192,
-          "tp": 1109,
-          "fp": 303,
-          "fn": 91
+          "precision": 0.7923757658270932,
+          "recall": 0.97,
+          "f1": 0.8722367928062944,
+          "tp": 1164,
+          "fp": 305,
+          "fn": 36
         },
         "SECRET": {
           "precision": 0.1,
@@ -753,7 +560,7 @@
         "ADDRESS": 0.26285714285714284,
         "DATE": 0.0,
         "EMAIL": 0.0,
-        "ID": 0.019166666666666665,
+        "ID": 0.0,
         "IP_ADDRESS": 0.0,
         "PERSON": 0.23387096774193547,
         "PHONE": 0.0,
@@ -779,17 +586,8 @@
       "detector": "rules",
       "gold": "data/nz_synth_v0.jsonl",
       "docs": 1600,
-      "seconds_total": 0.0732221779817337,
-      "seconds_median": 4.304150024836417e-05,
-      "device": "cpu",
-      "host": "Jesses-MacBook-Air-2.local"
-    },
-    "rules-incl-flagged": {
-      "detector": "rules",
-      "gold": "data/nz_synth_v0.jsonl",
-      "docs": 1600,
-      "seconds_total": 0.07313445001636865,
-      "seconds_median": 4.2749999920488335e-05,
+      "seconds_total": 0.07249384598253528,
+      "seconds_median": 4.26875003540772e-05,
       "device": "cpu",
       "host": "Jesses-MacBook-Air-2.local"
     },
@@ -809,8 +607,8 @@
           "detector": "rules",
           "gold": "data/nz_synth_v0.jsonl",
           "docs": 1600,
-          "seconds_total": 0.0732221779817337,
-          "seconds_median": 4.304150024836417e-05,
+          "seconds_total": 0.07249384598253528,
+          "seconds_median": 4.26875003540772e-05,
           "device": "cpu",
           "host": "Jesses-MacBook-Air-2.local"
         },
@@ -824,7 +622,7 @@
           "host": "cuda13.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.24091134076843446
+      "seconds_median": 0.24091098676854017
     }
   }
 }

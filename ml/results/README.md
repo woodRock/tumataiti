@@ -9,8 +9,7 @@ Generated 2026-11-04. Summary and findings are in [SPEC.md §9.4](../../SPEC.md)
 
 Detectors:
 
-- `rules`: the Rust rules at the default threshold (0.5), so labelled-but-invalid IDs are flagged and count as leaks
-- `rules-incl-flagged`: the same, counting flagged spans as redacted (threshold 0.3)
+- `rules`: the Rust rules at the default threshold (0.5); labelled IDs that fail their check digit are redacted, unlabelled ID-shaped codes are not
 - `openai-privacy-filter`: the teacher with constrained BIOES Viterbi decoding at the released default operating point (all transition biases zero), bf16 on one RTX A5000
 - `rules+openai-privacy-filter`: both, merged as the Rust merge does (overlaps become one span)
 
