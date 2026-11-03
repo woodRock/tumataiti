@@ -1,0 +1,13 @@
+[package]
+name = "tumataiti-rules"
+description = "Deterministic PII rules for Aotearoa New Zealand, plus span merging and redaction policy"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+regex.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+serde_json.workspace = true

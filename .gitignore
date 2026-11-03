@@ -1,0 +1,6 @@
+/target
+node_modules/
+/demo/dist
+/demo/src/wasm
+.DS_Store
+*.tsbuildinfo
