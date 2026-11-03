@@ -56,12 +56,13 @@ class NamePool:
 
     held_out: bool = False
     group: str | None = None
+    weights: dict[str, float] = field(default_factory=lambda: lx.GROUP_WEIGHTS)
 
     def draw(self, rng: random.Random, part: str) -> str:
         # Always draw the community, even when it is fixed, so counterfactual
         # files consume the random stream identically and differ only in names.
-        groups = list(lx.GROUP_WEIGHTS)
-        drawn = rng.choices(groups, weights=[lx.GROUP_WEIGHTS[g] for g in groups])[0]
+        groups = list(self.weights)
+        drawn = rng.choices(groups, weights=[self.weights[g] for g in groups])[0]
         names = lx.NAMES[self.group or drawn][part][1 if self.held_out else 0]
         return names[rng.randrange(len(names))]
 
@@ -172,6 +173,10 @@ def global_slot(rng: random.Random, name: str) -> tuple[str, str | None]:
             return rng.choice(lx.TOWNS)[0], None
         case "filler":
             return rng.choice(lx.FILLERS), None
+        case "signoff":
+            return rng.choice(lx.SIGNOFFS), None
+        case "time":
+            return f"{rng.randint(6, 22)}:{rng.randrange(60):02d}", None
     raise KeyError(name)
 
 
@@ -250,6 +255,35 @@ Next appointment {hui_date}. Contact via {p1.email}.""",
 Ko {p1.mobile} taku waea pūkoro, ko {p1.email} taku īmēra. {filler}""",
 }
 
+# Added in data v2 for the M3 failure modes on held-out text: a name alone on
+# the last line after a closing, chat speakers and @-mentions, and names in
+# formal prose with no field label (bare, or after Mr/Ms/Whaea). Phrasing
+# differs from the held-out templates.
+V2_TEMPLATES: dict[str, str] = {
+    "email_reply": """Kia ora {p2.given},
+
+Thanks for sending the minutes through. I'll bring the koha on the day and can help set up from {time}.
+
+{signoff}
+{p1.full}""",
+    "short_reply": """Sounds good, see you at the hui on {hui_date}. {filler}
+
+{signoff}
+{p1.given}""",
+    "chat_log": """{time} {p1.given}: anyone got a trailer for saturday?
+{time} {p2.given}: {p3.given} has one I think
+{time} {p3.given}: yep all good, @{p1.given} I'll drop it round to {p1.address}
+{time} {p1.plain}: legend, cheers {p3.plain}""",
+    "chat_export": """{p1.full}: Mōrena whānau! Rehearsal moved to {hui_date}.
+{p2.full}: Kei te pai. Can {p3.given} still give us a ride?
+{p1.full}: Ask {p3.given} {p3.surname} directly, their number is {p3.mobile}""",
+    "hearing_notes": """Ms {p1.surname} told the panel she had lived at the property for four years. Her evidence was supported by {p2.full}, a neighbour. Mr {p3.surname} did not dispute the dates but said the agreement had been made with {p4.full} rather than with him.""",
+    "board_minutes": """Minutes of the board meeting, {hui_date}
+{p1.full} opened with a karakia. Apologies were received from {p2.given} {p2.surname}.
+Moved by {p3.full}, seconded by Whaea {p4.given}, that the accounts be accepted. Carried.
+The chair thanked {p2.surname} for the report on the {town} kaupapa.""",
+}
+
 TEST_TEMPLATES: dict[str, str] = {
     "group_chat": """[{hui_date}] {p1.plain}: kia ora whānau, who's bringing the hāngī stones?
 [{hui_date}] {p2.given}: me and {p3.given}. {p3.given} can you flick me ur number again
@@ -314,19 +348,22 @@ def fill(template: str, rng: random.Random, pool: NamePool | None = None) -> tup
 
 
 SPLITS = {
-    # name: (templates, held-out names)
-    "train": (TRAIN_TEMPLATES, False),
-    "dev": (TRAIN_TEMPLATES, False),
-    "test_names": (TRAIN_TEMPLATES, True),
-    "test_full": (TEST_TEMPLATES, True),
+    # name: (templates, held-out names, community weights)
+    # Training data is v2 (balanced names, v2 templates); the v1 training data
+    # can be regenerated from commit 5f1b73f. Held-out splits are unchanged
+    # from v1, so their files are identical and results stay comparable.
+    "train": ({**TRAIN_TEMPLATES, **V2_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "dev": ({**TRAIN_TEMPLATES, **V2_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "test_names": (TRAIN_TEMPLATES, True, lx.GROUP_WEIGHTS),
+    "test_full": (TEST_TEMPLATES, True, lx.GROUP_WEIGHTS),
 }
 
 
 def generate(n: int, seed: int = 0, split: str = "train", group: str | None = None) -> list[Doc]:
     """`n` documents cycling through the split's templates. With `group`, every
     person comes from that community (the counterfactual name audit)."""
-    templates, held_out = SPLITS[split]
-    pool = NamePool(held_out=held_out, group=group)
+    templates, held_out, weights = SPLITS[split]
+    pool = NamePool(held_out=held_out, group=group, weights=weights)
     rng = random.Random(seed)
     names = sorted(templates)
     prefix = f"nz-{split}" + (f"-{group}" if group else "")

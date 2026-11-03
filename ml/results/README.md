@@ -1,5 +1,16 @@
 # Results
 
+## M3: data v2 students (2026-11-04)
+
+Summary and findings are in [SPEC.md §9.6](../../SPEC.md). Same evaluation files as M3 v1; each table shows the v1 student (`<model>-v1`) beside the v2 one.
+
+- [m3v2_nz_test_full.md](m3v2_nz_test_full.md): held-out templates and names
+- [m3v2_nz_test_names.md](m3v2_nz_test_names.md): training templates, held-out names
+- [m3v2_pii300k_en_val.md](m3v2_pii300k_en_val.md): PII-Masking-300k validation
+- [m3v2_names_counterfactual.md](m3v2_names_counterfactual.md): counterfactual name audit
+
+Data: `scripts/make_data_v2.sh`. Training: `DATA=v2 scripts/ecs_student.sh` (writes `runs/m3-v2/`). Scoring: `RUNS=runs/m3-v2 TAG=m3v2 MODELS="openai-privacy-filter deberta-v3-small-v1 deberta-v3-small modernbert-base-v1 modernbert-base mdeberta-v3-base-v1 mdeberta-v3-base" scripts/score_m3.sh`.
+
 ## M3: student models (2026-11-04)
 
 Summary and findings are in [SPEC.md §9.5](../../SPEC.md).

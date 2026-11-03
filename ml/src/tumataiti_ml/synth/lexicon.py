@@ -27,32 +27,49 @@ NAMES = {
     "Pākehā": {
         "given": (
             ["Sarah", "James", "Olivia", "Jack", "Charlotte", "Liam", "Emma", "Oliver", "Isla", "Noah",
-             "Amelia", "Thomas"],
+             "Amelia", "Thomas", "William", "Sophie", "Henry", "Ella", "George", "Mia", "Jacob", "Zoe",
+             "Ben", "Lucy", "Max", "Hannah", "Ethan", "Chloe", "Daniel", "Kate"],
             ["Grace", "Lucas", "Ruby", "Samuel", "Harper", "Hugo", "Georgia", "Finn"],
         ),
         "surname": (
-            ["Smith", "Wilson", "Brown", "Taylor", "Williams", "Anderson"],
+            # v2 adds surnames that are also English words (Baker, Hunter, Young), the
+            # case v1 students missed most.
+            ["Smith", "Wilson", "Brown", "Taylor", "Williams", "Anderson", "Baker", "Fisher", "Hunter",
+             "Wood", "Young", "King", "Bell", "Hill", "Green", "White", "Cook", "Mason", "Shepherd",
+             "Marshall", "Stewart", "Hall", "Turner", "Wright", "Bishop", "Fox", "Stone", "Brooks"],
             ["Thompson", "Walker", "Campbell", "Robinson", "Clarke", "Mitchell"],
         ),
     },
     "Pasifika": {
         "given": (
-            ["Sione", "Losa", "Mele", "Tavita", "Malia", "Ioane", "Salote"],
+            ["Sione", "Losa", "Mele", "Tavita", "Malia", "Ioane", "Salote", "Tevita", "Sina", "Paulo",
+             "Iosefa", "Semisi", "Lavinia", "Siaosi", "Fetu"],
             ["Sefa", "Viliami", "Ana", "Lupe", "Seini", "Malakai"],
         ),
         "surname": (
-            ["Fonoti", "Tuilagi", "Taufa", "Fifita", "Leota"],
+            ["Fonoti", "Tuilagi", "Taufa", "Fifita", "Leota", "Aumua", "Seiuli", "Pouono", "Vea", "Kioa",
+             "Lolohea", "Fa'alogo", "Lealaiauloto"],
             ["Faleolo", "Vaifale", "Mataele", "Havili", "Tupou"],
         ),
     },
     "Asian NZ": {
-        "given": (["Wei", "Priya", "Arjun", "Mei", "Hiroshi"], ["Ji-woo", "Anika", "Minh", "Ravi", "Yuki"]),
-        "surname": (["Chen", "Patel", "Singh", "Kim"], ["Nguyen", "Wong", "Tanaka", "Li", "Sharma"]),
+        "given": (
+            ["Wei", "Priya", "Arjun", "Mei", "Hiroshi", "Jing", "Aditya", "Hana", "Sung-min", "Kavya", "Tao",
+             "Rohan", "Kenji"],
+            ["Ji-woo", "Anika", "Minh", "Ravi", "Yuki"],
+        ),
+        "surname": (
+            ["Chen", "Patel", "Singh", "Kim", "Zhang", "Liu", "Wang", "Gupta", "Lee", "Park", "Yamamoto",
+             "Tran", "Reddy", "Choi"],
+            ["Nguyen", "Wong", "Tanaka", "Li", "Sharma"],
+        ),
     },
 }
 
-# Share of synthetic people from each community.
+# Share of synthetic people from each community. Held-out splits keep the v1
+# mix so their files stay identical; v2 training data is balanced.
 GROUP_WEIGHTS = {"Māori": 0.5, "Pākehā": 0.2, "Pasifika": 0.15, "Asian NZ": 0.15}
+BALANCED_WEIGHTS = {g: 0.25 for g in GROUP_WEIGHTS}
 
 
 def all_names(group: str, part: str) -> list[str]:
@@ -75,6 +92,13 @@ FILLERS = [
     "Mā te huruhuru ka rere te manu.",
     "Ngā mihi o te rangi ki a koutou.",
     "The huia is extinct, but its feathers are still treasured.",
+]
+
+# Closings before a name on its own line. "Nāku noa," is left out: the held-out
+# cover letter uses it.
+SIGNOFFS = [
+    "Ngā mihi,", "Ngā mihi nui,", "Nāku iti nei,", "Mauri ora,", "Noho ora mai,", "Kia pai tō rā,",
+    "Kind regards,", "Regards,", "Cheers,", "Thanks,", "Many thanks,", "Best wishes,", "Yours sincerely,",
 ]
 
 STREET_NAMES = [

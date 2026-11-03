@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Build every M3 dataset (SPEC §9.1). Deterministic: the same files on any machine.
+# The evaluation sets still regenerate from HEAD; nz_train and nz_dev are v1
+# only at commit 5f1b73f (HEAD's generator writes v2 training data).
 # Usage: scripts/make_data_v1.sh [path-to-tumataiti-ml]
 set -euo pipefail
 cd "$(dirname "$0")/.."

@@ -7,7 +7,7 @@ import tumataiti_rules
 from tumataiti_ml.analysis import name_group
 from tumataiti_ml.synth import nzids
 from tumataiti_ml.synth import lexicon as lx
-from tumataiti_ml.synth.generate import TEST_TEMPLATES, TRAIN_TEMPLATES, generate
+from tumataiti_ml.synth.generate import TEST_TEMPLATES, TRAIN_TEMPLATES, V2_TEMPLATES, generate
 
 
 def rule_hits(text: str) -> list[dict]:
@@ -42,14 +42,15 @@ def test_card_generator_agrees_with_rust():
 
 
 def test_gold_spans_match_text_and_are_deterministic():
-    docs = generate(len(TRAIN_TEMPLATES) * 3, seed=7) + generate(len(TEST_TEMPLATES) * 3, 7, "test_full")
-    assert {d.meta["template"] for d in docs} == set(TRAIN_TEMPLATES) | set(TEST_TEMPLATES)
+    n_train = len(TRAIN_TEMPLATES) + len(V2_TEMPLATES)
+    docs = generate(n_train * 3, seed=7) + generate(len(TEST_TEMPLATES) * 3, 7, "test_full")
+    assert {d.meta["template"] for d in docs} == set(TRAIN_TEMPLATES) | set(V2_TEMPLATES) | set(TEST_TEMPLATES)
     for d in docs:
         assert d.spans, d.id
         for s in d.spans:
             assert 0 <= s.start < s.end <= len(d.text)
             assert d.text[s.start : s.end].strip() == d.text[s.start : s.end]
-    again = generate(len(TRAIN_TEMPLATES) * 3, seed=7)
+    again = generate(n_train * 3, seed=7)
     assert [d.text for d in docs[: len(again)]] == [d.text for d in again]
 
 
@@ -64,7 +65,7 @@ def _person_names(docs):
 
 
 def test_held_out_splits_share_no_names_or_templates():
-    assert not set(TRAIN_TEMPLATES) & set(TEST_TEMPLATES)
+    assert not (set(TRAIN_TEMPLATES) | set(V2_TEMPLATES)) & set(TEST_TEMPLATES)
     for group, parts in lx.NAMES.items():
         for part, (train, test) in parts.items():
             assert not set(train) & set(test), (group, part)
@@ -81,3 +82,25 @@ def test_counterfactual_files_differ_only_in_names():
         assert x.meta["template"] == y.meta["template"]
         names = [x.text[s.start : s.end] for s in x.spans if s.category == "PERSON"]
         assert names and {name_group(n) for n in names} == {"Māori"}
+
+
+def test_each_name_belongs_to_one_community():
+    seen = {}
+    for group in lx.NAMES:
+        for part in ("given", "surname"):
+            for name in lx.all_names(group, part):
+                assert seen.setdefault(name, group) == group, name
+
+
+def test_training_names_are_balanced():
+    docs = generate(4000, 1, "train")
+    groups = [name_group(d.text[s.start : s.end]) for d in docs for s in d.spans if s.label.endswith(".given")]
+    for g in lx.NAMES:
+        assert 0.2 < groups.count(g) / len(groups) < 0.3, g
+
+
+def test_v2_closings_put_the_name_last():
+    for d in generate(200, 0, "train"):
+        if d.meta["template"] in ("email_reply", "short_reply"):
+            last = d.spans[-1]
+            assert last.category == "PERSON" and d.text[last.start :] == d.text[last.start : last.end]

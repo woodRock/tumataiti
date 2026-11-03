@@ -4,7 +4,7 @@ Local redaction for the Atamai AI portal: strip personal information from text o
 
 Live demo: https://woodrock.github.io/tumataiti/
 
-Done so far: milestone 0 (deterministic rules for NZ identifiers, compiled from Rust to WebAssembly, and a browser demo that runs them with no server) milestone 1 (synthetic NZ data, an evaluation harness and baseline results for the rules and the `openai/privacy-filter` teacher), and a first pass of milestone 3 (small student models trained on held-out NZ splits; rules + mDeBERTa-v3-base leaks 9.2% of held-out NZ documents against 44.2% for rules + teacher). See [ml/results](ml/results/README.md).
+Done so far: milestone 0 (deterministic rules for NZ identifiers, compiled from Rust to WebAssembly, and a browser demo that runs them with no server) milestone 1 (synthetic NZ data, an evaluation harness and baseline results for the rules and the `openai/privacy-filter` teacher), and milestone 3 so far (small student models evaluated on held-out NZ templates and names; with the v2 training data, rules + mDeBERTa-v3-base leaks 1.1% of held-out NZ documents and rules + DeBERTa-v3-small 4.9%, against 44.2% for rules + teacher). See [ml/results](ml/results/README.md).
 
 ## Layout
 

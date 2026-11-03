@@ -250,6 +250,10 @@ Real calls to cloud models, accounts, saving or sharing of user text, file uploa
   - `test_full`: held-out templates (different genres and phrasing) and held-out names (the headline synthetic number);
   - `cf_<group>`: counterfactual name audit, the same `test_full` documents with names drawn from only one community, so groups differ in nothing but the names.
   The generator also mixes in te reo words that are not names in context (tūī the bird, kōwhai the tree, "aroha mai") as hard negatives. The OpenAI teacher never generates or labels any test split. Headline claims still need the small human-annotated set (M2).
+- **NZ synthetic v2 training data (M3):** changes `train` and `dev` only; every evaluation split regenerates byte-identical to v1, so v1 and v2 students are scored on the same files. Two changes, both aimed at what v1 students missed on `test_full`:
+  - **balanced names:** people are drawn 25% from each community (v1: 50% Māori, 20% Pākehā, 15% Pasifika, 15% Asian NZ), and the Pākehā, Pasifika and Asian NZ training lists are 2–5× longer. The Pākehā surnames now include ones that are also English words (Baker, Hunter, Young, White), the case behind v1 mDeBERTa's reverse name gap;
+  - **six new training templates** for the slots that leaked: a name alone on the last line after a closing (v1 DeBERTa-small leaked 90% of these), chat speakers and @-mentions, and names in formal prose with no field label (bare, or after Mr, Ms or Whaea).
+  The new templates share genres with some held-out templates but not their wording; the "Nāku noa," closing is kept out of training. So v2's `test_full` gain is partly in-genre and partly phrasing transfer, not wholly unseen genres. Same size as v1 (8,000 training documents), so any change comes from the mix, not the volume.
 - Public data is downloaded at run time and never committed (PII-Masking-300k allows academic use with citation).
 
 All datasets are mapped onto nine evaluation categories (`PERSON`, `ADDRESS`, `EMAIL`, `PHONE`, `URL`, `IP_ADDRESS`, `DATE`, `ID`, `SECRET`) in `ml/src/tumataiti_ml/taxonomy.py`. `ID` merges government IDs, card and bank numbers, and the teacher's `account_number`. Labels that are not personal on their own (generic dates and times, titles, country) are ignored: neither misses nor false positives.
@@ -320,10 +324,41 @@ Findings:
 3. **Only DeBERTa-v3-small meets the 2-point name-gap target** (−1.5). mDeBERTa reverses the teacher's bias: it almost never misses Māori names but misses English surnames that are also words (Walker 41%, Campbell 33%), mostly in a held-out tribunal template. The training mix (half Māori names, six Pākehā surnames) is the likely cause; the next data version should balance the name mix and widen the surname lists. The held-out Māori names deliberately include common words (Tūī, Whetū, Kōwhai, Nīkau), which inflates the teacher's gap on this set.
 4. **No model over-flags te reo words:** none of 500 te reo filler sentences ("The tūī were singing in the kōwhai") was flagged by any student.
 5. **The rules still matter.** Alone, students leak NZ IDs (DeBERTa-small 6.3%, ModernBERT 29.2%) and some phone numbers; merged with the rules, phone, date, email and ID leaks are all 0%. Names remain the whole residual.
-6. **Remaining failure modes:** chat speaker names ("[date] Finn: …"), sign-offs after "Nāku noa,", and names in lowercase voice transcripts. None appears in the training templates.
+6. **Remaining failure modes:** a per-slot breakdown (done for v2, §9.6) located them: a name alone on the last line after "Nāku noa," (DeBERTa-small leaked 90% of these), chat speakers and mentions ("[date] Finn: …"), and names in formal prose with no field label (the tribunal summary). None appears in the training templates. Lowercase voice transcripts, first suspected, leak nothing once merged with the rules.
 7. **int8 costs rare classes more than the literature suggests.** Dynamic int8 (with the embedding table quantised, needed to reach 165 MB) raised DeBERTa-small's name leak from 11.8% to 15.6% overall and from 13.3% to 22.7–28.5% on Pākehā names (per-channel to per-tensor). fp16 weights, keeping the embeddings and classifier in higher precision, or quantisation-aware training are next.
 8. **PII-Masking-300k is not a fair comparison here:** students trained on its train split (5.0% doc leak for DeBERTa-small) while the teacher did not (8.2%).
 9. Two training bugs were found and fixed: Transformers 5 loads DeBERTa-v3 checkpoints in fp16, which made AdamW produce NaN weights (now loaded in fp32); and checkpoint selection by dev leakage would have kept a broken model that redacts everything (now selected by dev F1).
+
+### 9.6 M3 data v2 results (2026-11-04)
+
+Full tables: `ml/results/m3v2_*` (v1 students shown beside v2 as `<model>-v1`). Same backbones, hyperparameters, seed, data size and evaluation files as §9.5; only the training data changed (§9.1, v2: balanced names and six templates for the leaking slots).
+
+Held-out templates and names (`test_full`), each student merged with the rules:
+
+| Detector | Doc leak v1 → v2 | Name span leak v1 → v2 | Any-PII char precision v1 → v2 |
+|---|---:|---:|---:|
+| Rules + teacher | 44.2% | 35.0% | 85.6 |
+| Rules + DeBERTa-v3-small | 29.9% → **4.9%** | 11.8% → **1.6%** | 91.0 → 93.4 |
+| Rules + ModernBERT-base | 31.4% → **2.6%** | 17.7% → **1.1%** | 92.8 → 93.3 |
+| Rules + mDeBERTa-v3-base | 9.2% → **1.1%** | 3.3% → **0.4%** | 90.3 → 93.7 |
+
+Counterfactual name audit (name span leak, v2 students):
+
+| Names | Teacher | DeBERTa-v3-small | ModernBERT-base | mDeBERTa-v3-base |
+|---|---:|---:|---:|---:|
+| Māori | 52.4% | 2.1% | 0.2% | 0.1% |
+| Pākehā | 14.3% | 1.4% | 6.5% | 7.1% |
+| Pasifika | 37.4% | 2.0% | 0.4% | 0.2% |
+| Asian NZ | 14.7% | 0.0% | 0.1% | 0.0% |
+| Māori − Pākehā gap | +38.1 | **+0.7** (v1 −1.5) | −6.3 (v1 −6.8) | −7.0 (v1 −20.6) |
+
+Findings:
+
+1. **v2 cuts held-out document leakage 4–12× for every backbone**, and precision rises too, so the gain is not from redacting more text. Rules + mDeBERTa leaks 1.1% of documents (19 of 1,750); rules + DeBERTa-small, the browser-sized model, 4.9%.
+2. **The targeted slots are mostly fixed.** A name after a closing went from 90% leaked to 0% (DeBERTa-small) and from 28% to 4% (mDeBERTa); chat speakers from up to 32% to 2%. Names in formal prose are the main residual: "Evidence was given by {name}" still leaks 29% for DeBERTa-small and 14% for ModernBERT.
+3. **mDeBERTa's reverse name gap shrank from −20.6 to −7.0 points** but still misses the 2-point target. Its remaining Pākehā misses are held-out surnames that are also words or rare as names in multilingual text (Thompson 17%, Clarke 14%, Walker 12%) and the given name Grace (12%). DeBERTa-small is the only model within target (+0.7).
+4. **Caveat:** v2 templates share genres (closings, chat, formal prose) with held-out templates, though not their wording, so part of the gain is in-genre rather than transfer to unseen genres. A fresh held-out set with genres absent from both v1 and v2 would measure that; the human-annotated set (M2) is the real check.
+5. In-template splits are saturated (dev char F1 is 1.0 from epoch 0 for every run, so checkpoint selection keeps epoch 0) and PII-Masking-300k is unchanged (4.6–5.5% doc leak), as expected for a change that only touches NZ data.
 
 ## 10. Research extensions: DP and FL
 
@@ -388,7 +423,7 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 | M0 | Repo scaffold, policy schema, NZ rule detectors in Rust with tests, WebAssembly build, initial rules-only demo UI. **Done (prototype), 2026-11-03** | 1–2 weeks |
 | M1 | Eval harness; teacher/baseline (`openai/privacy-filter`) on public data; synthetic NZ data generator; Python bindings for the rules. **Done, 2026-11-04** (Presidio and GLiNER comparators still to add; results in §9.4) | 2 weeks |
 | M2 | NZ / te reo test set, co-designed with community and legal workstream. Brought forward: a small consented, human-annotated set (~200 documents) as early as possible, because fine-tuned encoders overtake the zero-shot teacher with roughly 100–1,000 labelled examples and only human-labelled data supports headline claims | 3–4 weeks (parallel) |
-| M3 | Generator v1 with held-out templates and names; three student backbones trained on ECS; evaluated against teacher on held-out splits and the counterfactual name audit; ONNX int8 export. **First pass done, 2026-11-04** (results §9.5). Open: export mDeBERTa, recover int8 name accuracy, data v2 with a balanced name mix and the failure-mode genres, fine-tune the teacher as an upper bound, soft-label distillation once unlabelled real text exists | 2–3 weeks |
+| M3 | Generator v1 with held-out templates and names; three student backbones trained on ECS; evaluated against teacher on held-out splits and the counterfactual name audit; ONNX int8 export. **First pass done, 2026-11-04** (results §9.5); **data v2 done** (balanced names and failure-mode templates; held-out doc leak 1.1–4.9%, §9.6). Open: export the v2 students (mDeBERTa for the first time), recover int8 name accuracy, a held-out set with genres unseen by v1 and v2, fine-tune the teacher as an upper bound, soft-label distillation once unlabelled real text exists | 2–3 weeks |
 | M4 | Live browser demo (§7): animations, presets, offline mode; ships with rules + interim model, then swaps in the M3 student | 2–3 weeks (UI can start after M0) |
 | M5 | Local proxy with pseudonymisation, vault, streaming rehydration; minimal review UI; placeholder-echo attack tests; utility ablation of placeholders vs realistic surrogates vs generalisation, including RAG (replacing dates and numbers is known to break reasoning) | 2–3 weeks |
 | M6 | DP-SGD fine-tuning, federated simulation (2–5 synthetic sites), Atamai integration; results report | 4–6 weeks |
