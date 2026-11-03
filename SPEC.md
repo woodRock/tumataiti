@@ -112,7 +112,7 @@ Components:
    - **Comparators:** GLiNER-based PII models, Microsoft Presidio + spaCy.
    - **Tūmataiti model (student):** a small encoder (~100–150M params, e.g. DeBERTa-v3-small or ModernBERT-base) fine-tuned for token classification (BIO tags over the §6.2 categories) on NZ / te reo data. Exported to ONNX and int8-quantised to ~70–150 MB so it runs in a browser and on a laptop CPU. Training pipeline in §10.0.
 3. **Gazetteers** (optional, per project): known participant names, marae, hapū, local place names supplied by the data steward. Stored locally only.
-4. **Merge step:** each detection outputs `{start, end, text, category, confidence, source: rule|model|gazetteer}`. Overlapping spans are merged, preferring the widest span with the highest-priority category. A checksum-verified rule match always wins over a model span on the same characters. Rule matches also serve as weak labels for model training.
+4. **Merge step:** each detection outputs `{start, end, text, category, confidence, source: rule|model|gazetteer}`. Overlapping spans merge into one span covering all of them, so no overlapping text is left exposed; it takes the label of the best-ranked span (checksum-verified first, then confidence at or above 0.5, then category priority, then width). A checksum-verified rule match therefore always wins over a model span on the same characters. (M1 found that dropping the losing span instead leaked the model span's extra characters.) Rule matches also serve as weak labels for model training.
 
 ### 6.2 Categories (v0)
 
@@ -243,11 +243,17 @@ Real calls to cloud models, accounts, saving or sharing of user text, file uploa
   - NZ identifiers with valid and invalid checksums;
   - research-style text: interview transcripts, hui notes, RAG chunks.
   - Built and labelled with community input; held out from all training.
+- **NZ synthetic v0 (built in M1):** 1,600 generated documents from 16 templates (hui notes, referrals, forms, interviews, text messages, tangihanga notices, te reo paragraphs and more), with exact gold spans from the template slots and hard negatives (hui dates, IRD-shaped order references, public government URLs). Generated deterministically (`seed 0`) by `ml/src/tumataiti_ml/synth`. This is a development set for M1–M3, not the held-out community test set above.
+- Public data is downloaded at run time and never committed (PII-Masking-300k allows academic use with citation).
+
+All datasets are mapped onto nine evaluation categories (`PERSON`, `ADDRESS`, `EMAIL`, `PHONE`, `URL`, `IP_ADDRESS`, `DATE`, `ID`, `SECRET`) in `ml/src/tumataiti_ml/taxonomy.py`. `ID` merges government IDs, card and bank numbers, and the teacher's `account_number`. Labels that are not personal on their own (generic dates and times, titles, country) are ignored: neither misses nor false positives.
 
 ### 9.2 Metrics
 
-- Span-level precision / recall / F1, per category and overall (exact and partial overlap).
-- **Document leakage rate:** share of documents where at least one true PII span reaches the cloud. This is the headline metric.
+- **Document leakage rate (headline):** share of documents with any PII in which at least one gold span leaks. A span leaks if any of its letters or digits is left uncovered by every predicted span, whatever category the prediction has. Partial redaction of a name counts as a leak.
+- **Span leak rate**, overall and per category, and per community for names (Māori, Pākehā, Pasifika, Asian NZ) on the synthetic set.
+- Character-level precision / recall / F1 over letters and digits, category-agnostic and per category; this is robust to boundary conventions and to names split into given and family parts.
+- Exact-span F1 (same start, end and category).
 - **Re-identification test:** red-team attempts to identify a person from redacted text plus public information, especially via `AFFILIATION` combinations.
 - **Utility:** answer quality of the downstream LLM on redacted vs. original prompts (LLM-judge + human spot checks).
 - Latency and memory on reference hardware.
@@ -258,6 +264,24 @@ Real calls to cloud models, accounts, saving or sharing of user text, file uploa
 - Te reo name recall within 2 points of English name recall (measuring the bias gap is a key result).
 - Document leakage rate reported against the OpenAI baseline, showing measurable improvement on NZ data.
 - Downstream utility loss ≤ 10% on the research-summarisation tasks.
+
+### 9.4 M1 baseline results (2026-11-04)
+
+Full tables: `ml/results/`. Teacher runs on one RTX A5000 (ECS), rules on a laptop. Lower leak rates are better.
+
+| Detector | PII-Masking-300k doc leak | NZ synthetic v0 doc leak | NZ span leak |
+|---|---:|---:|---:|
+| Rules only | 95.9% | 93.8% | 49.4% |
+| `openai/privacy-filter` (teacher) | 8.2% | 43.2% | 16.8% |
+| Rules + teacher (merged) | **7.8%** | **37.2%** | **11.2%** |
+
+Findings:
+
+1. **The teacher is about 5× worse on NZ text than on the public benchmark** (43.2% vs 8.2% of documents leak). It leaks 23% of names, 26% of addresses, 21% of birth/death dates, 14% of phone numbers and 14% of NZ IDs in the synthetic set.
+2. **Te reo Māori and Pasifika names leak more:** 25.5% of Māori and 27.8% of Pasifika name mentions leak, against 14.8% for Pākehā names. The gap is about 11 points, so success criterion 9.3 (within 2 points) is far off. Names that are also everyday words leak most (Tūī 71%, Whetū 61%), as do names typed in lowercase without macrons (60%).
+3. **Rules and model complement each other.** Merged, phone, email, URL, IP and date leaks on NZ text drop to 0% and NZ IDs to 1.9%, while names and addresses stay at the teacher's level. That is what M3 fine-tuning has to fix.
+4. **Policy question, typo'd IDs:** an ID with a nearby label but a failed check digit is flagged (sent as-is) under the default policy, so it leaks. Counting flagged spans as redacted removes all remaining rule-side ID leaks (25.0% → 0% for rules alone). Whether to redact these by default is a decision for the policy owners (§6.3).
+5. The teacher's median latency is about 0.24–0.28 s per document on an A5000, including a per-token Python Viterbi decoder that is likely a large share (not yet profiled); the rules take under 0.1 ms.
 
 ## 10. Research extensions: DP and FL
 
@@ -312,7 +336,7 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 | Phase | Deliverable | Rough effort |
 |---|---|---|
 | M0 | Repo scaffold, policy schema, NZ rule detectors in Rust with tests, WebAssembly build, initial rules-only demo UI. **Done (prototype), 2026-11-03** | 1–2 weeks |
-| M1 | Eval harness; teacher/baseline (`openai/privacy-filter`) + comparators on public data; synthetic NZ data generator | 2 weeks |
+| M1 | Eval harness; teacher/baseline (`openai/privacy-filter`) on public data; synthetic NZ data generator; Python bindings for the rules. **Done, 2026-11-04** (Presidio and GLiNER comparators still to add; results in §9.4) | 2 weeks |
 | M2 | NZ / te reo test set v0 (synthetic), co-designed with community and legal workstream | 3–4 weeks (parallel) |
 | M3 | Student model trained on ECS, ONNX int8 export, evaluated against teacher | 2–3 weeks |
 | M4 | Live browser demo (§7): animations, presets, offline mode; ships with rules + interim model, then swaps in the M3 student | 2–3 weeks (UI can start after M0) |

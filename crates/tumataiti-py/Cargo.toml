@@ -1,0 +1,15 @@
+[package]
+name = "tumataiti-py"
+description = "Python bindings for tumataiti-rules"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "tumataiti_rules"
+crate-type = ["cdylib"]
+
+[dependencies]
+rules = { package = "tumataiti-rules", path = "../tumataiti-rules" }
+serde_json.workspace = true
+pyo3 = { version = "0.30", features = ["abi3-py310"] }

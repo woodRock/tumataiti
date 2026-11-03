@@ -266,6 +266,7 @@ static DATE: LazyLock<Regex> = LazyLock::new(|| {
         r"\d{1,2}[/.-]\d{1,2}[/.-](?:\d{4}|\d{2})",
         r"|\d{4}-\d{2}-\d{2}",
         r"|\d{1,2}(?:st|nd|rd|th)?\s+(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?,?\s+\d{4}",
+        r"|(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4}",
         // Māori month names, with or without macrons.
         r"|\d{1,2}\s+(?:o\s+)?(?:te\s+marama\s+)?(?:kohit[āa]tea|huitanguru|pout[ūu]terangi|paengawh[āa]wh[āa]|haratua|pipiri|h[ōo]ngongoi|here-turi-k[ōo]k[āa]|mahuru|whiringa-[āa]-nuku|whiringa-[āa]-rangi|hakihea)\s+\d{4}",
         r")\b"
@@ -306,7 +307,9 @@ static SECRET_ASSIGNMENT: LazyLock<Regex> = LazyLock::new(|| {
 fn secrets(out: &mut Out) {
     for (detector, pattern) in SECRET_TOKENS.iter() {
         for m in pattern.find_iter(out.text) {
-            out.push(m.start(), m.end(), Category::Secret, 0.99, detector, Checksum::None, None);
+            // The generic `sk-` pattern also matches Anthropic keys; let the specific one win.
+            let confidence = if *detector == "openai_api_key" { 0.98 } else { 0.99 };
+            out.push(m.start(), m.end(), Category::Secret, confidence, detector, Checksum::None, None);
         }
     }
     for caps in SECRET_ASSIGNMENT.captures_iter(out.text) {

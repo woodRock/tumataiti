@@ -19,7 +19,7 @@ pub use span::{Category, Checksum, Source, Span};
 
 /// Detect spans with the rules only, merged and sorted.
 pub fn scan(text: &str) -> Vec<Span> {
-    merge(rules::candidates(text))
+    merge(text, rules::candidates(text))
 }
 
 /// Detect with the rules and apply `policy`.

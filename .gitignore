@@ -4,3 +4,8 @@ node_modules/
 /demo/src/wasm
 .DS_Store
 *.tsbuildinfo
+/ml/data/
+/ml/runs/
+.venv/
+__pycache__/
+.pytest_cache/

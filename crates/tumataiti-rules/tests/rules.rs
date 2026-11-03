@@ -104,6 +104,7 @@ fn dates_only_with_birth_or_death_context() {
     assert!(scan("The hui is on 14/03/2027").is_empty());
     assert_eq!(one("DOB 14/03/1987").detector, "date_of_birth");
     assert_eq!(one("born 3 March 1952").text, "3 March 1952");
+    assert_eq!(one("Born: May 7, 1978").text, "May 7, 1978");
     assert_eq!(one("I whānau mai ia i te 12 o Hōngongoi 1948").text, "12 o Hōngongoi 1948");
 }
 

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["crates/tumataiti-rules", "crates/tumataiti-wasm"]
+members = ["crates/tumataiti-rules", "crates/tumataiti-wasm", "crates/tumataiti-py"]
 
 [workspace.package]
 version = "0.1.0"

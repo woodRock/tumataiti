@@ -2,14 +2,18 @@
 
 Local redaction for the Atamai AI portal: strip personal information from text on the user's own device before anything reaches a cloud model. See [SPEC.md](SPEC.md) for the full design.
 
-This is milestone 0: deterministic rules for NZ identifiers, compiled from Rust to WebAssembly, and a browser demo that runs them with no server.
+Live demo: https://woodrock.github.io/tumataiti/
+
+Done so far: milestone 0 (deterministic rules for NZ identifiers, compiled from Rust to WebAssembly, and a browser demo that runs them with no server) and milestone 1 (synthetic NZ data, an evaluation harness and baseline results for the rules and the `openai/privacy-filter` teacher; see [ml/results](ml/results/README.md)).
 
 ## Layout
 
 ```
 crates/tumataiti-rules   Rust rules, checksums, span merging, policy, pseudonymisation
 crates/tumataiti-wasm    WebAssembly bindings for the browser
+crates/tumataiti-py      Python bindings (PyO3), used for evaluation and training labels
 demo/                    React + Vite demo site (static, no backend)
+ml/                      Python: synthetic NZ data, detectors, evaluation (uv project)
 scripts/build-wasm.sh    Builds the WebAssembly module into demo/src/wasm
 ```
 
@@ -35,6 +39,12 @@ npm --prefix demo install
 
 ```bash
 npm --prefix demo run dev
+```
+
+For the ML side, from `ml/` (needs uv):
+
+```bash
+uv sync --extra rules && uv run pytest
 ```
 
 `npm --prefix demo run build` produces a static site in `demo/dist`, with a Content-Security-Policy that stops the page contacting any other origin.
