@@ -45,6 +45,17 @@ by = ""
 decided = "2026-11-04T23:19:51+13:00"
 result_hash = ""
 
+[decisions.0c43d8c925]
+file = "supplementary/supplementary.tex"
+literal = "2"
+context = "the published students (NZ data version~2 with the open English sets): test\\_full"
+verdict = "not-a-result"
+key = ""
+reason = "Data version label (version 2 of the NZ generator), not a result."
+by = ""
+decided = "2026-11-05T00:16:19+13:00"
+result_hash = ""
+
 [decisions.0c764db4a3]
 file = "TAI_template.tex"
 literal = "2014"
@@ -285,6 +296,17 @@ key = ""
 reason = "Data version label (version 2 of the NZ generator), not a result."
 by = ""
 decided = "2026-11-04T22:43:07+13:00"
+result_hash = ""
+
+[decisions.75da65e9bd]
+file = "TAI_template.tex"
+literal = "2"
+context = "the published students (NZ data version~2 with the open English sets): test\\_full"
+verdict = "not-a-result"
+key = ""
+reason = "Data version label (version 2 of the NZ generator), not a result."
+by = ""
+decided = "2026-11-05T00:16:19+13:00"
 result_hash = ""
 
 [decisions.785f1bd93b]
