@@ -195,7 +195,7 @@ bold = "min"
 kind = "table"
 output = "generated/table_quant.tex"
 script = "artifacts/table_quant.py"
-results = ["inventory", "m3v2_int8_nz_test_full", "m3v2_fp16_nz_test_full", "m3v2_int4_nz_test_full"]
+results = ["inventory", "m3open_quant_nz_test_full"]
 colspec = "@{}lrrrrrrrr@{}"
 
 [artifacts.table_false_alarms]
@@ -227,7 +227,7 @@ results = ["m3open_names_counterfactual", "m3open_int4_names_counterfactual"]
 kind = "figure"
 output = "generated/fig_quant.pdf"
 script = "artifacts/fig_quant.py"
-results = ["inventory", "m3v2_int8_nz_test_full", "m3v2_fp16_nz_test_full", "m3v2_int4_nz_test_full"]
+results = ["inventory", "m3open_quant_nz_test_full"]
 
 [artifacts.fig_data_versions]
 kind = "figure"

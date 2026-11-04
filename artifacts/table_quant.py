@@ -1,4 +1,4 @@
-"""Table: quantisation of the data-v2 students. Held-out NZ document leak rate
+"""Table: quantisation of the published (open-data) students. Held-out NZ document leak rate
 (merged with the rules), file size and laptop-CPU time for dynamic int8, and for
 int8 embeddings with an fp16 or block-wise int4 encoder.
 
@@ -10,17 +10,15 @@ import json
 import os
 from pathlib import Path
 
-STUDENTS = [("DeBERTa-v3-small", "deberta-v3-small"),
-            ("ModernBERT-base", "modernbert-base"),
-            ("mDeBERTa-v3-base", "mdeberta-v3-base")]
+STUDENTS = [("DeBERTa-v3-small", "deberta-v3-small-open"),
+            ("ModernBERT-base", "modernbert-base-open"),
+            ("mDeBERTa-v3-base", "mdeberta-v3-base-open")]
 
 
 def main() -> None:
     R = json.loads(Path(os.environ["TAURA_RESULTS"]).read_text())
     mb = R["inventory"]["metrics"]["mb"]
-    i8 = R["m3v2_int8_nz_test_full"]["metrics"]
-    f16 = R["m3v2_fp16_nz_test_full"]["metrics"]
-    i4 = R["m3v2_int4_nz_test_full"]["metrics"]
+    i8 = f16 = i4 = R["m3open_quant_nz_test_full"]["metrics"]
 
     cols = [{"label": "Student"}, {"label": "fp32", "metric": "doc_leak", "bold": "none"}]
     for what in ("int8", "fp16 enc.", "int4 enc."):

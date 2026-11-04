@@ -1,4 +1,4 @@
-"""Figure: quantisation trade-off for the data-v2 students. Held-out NZ document
+"""Figure: quantisation trade-off for the published (open-data) students. Held-out NZ document
 leakage rate (merged with the rules) against ONNX file size, for fp32, dynamic
 int8, and int8 embeddings with an fp16 or int4 encoder. Reads $TAURA_RESULTS;
 writes a PDF to $TAURA_OUTPUT.
@@ -14,13 +14,14 @@ sys.path.insert(0, str(Path(__file__).parent))
 from _style import COLUMN, INK2, METADATA, SERIES, plt  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 
-STUDENTS = [("DeBERTa-v3-small", "deberta-v3-small"), ("ModernBERT-base", "modernbert-base"),
-            ("mDeBERTa-v3-base", "mdeberta-v3-base")]
+STUDENTS = [("DeBERTa-v3-small", "deberta-v3-small-open"), ("ModernBERT-base", "modernbert-base-open"),
+            ("mDeBERTa-v3-base", "mdeberta-v3-base-open")]
 # (label, marker, result, detector suffix, size suffix)
-VARIANTS = [("fp32", "o", "m3v2_int8_nz_test_full", "", "fp32"),
-            ("dynamic int8", "X", "m3v2_int8_nz_test_full", "-int8", "int8"),
-            ("fp16 encoder", "s", "m3v2_fp16_nz_test_full", "-int8-fp16", "fp16"),
-            ("int4 encoder", "^", "m3v2_int4_nz_test_full", "-int8-int4-block", "int4")]
+RESULT = "m3open_quant_nz_test_full"
+VARIANTS = [("fp32", "o", RESULT, "", "fp32"),
+            ("dynamic int8", "X", RESULT, "-int8", "int8"),
+            ("fp16 encoder", "s", RESULT, "-int8-fp16", "fp16"),
+            ("int4 encoder", "^", RESULT, "-int8-int4-block", "int4")]
 
 
 def main() -> None:
