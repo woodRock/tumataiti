@@ -1,0 +1,32 @@
+id = "2026-11-04-180323-929d"
+status = "done"
+started = "2026-11-04T18:03:23+13:00"
+finished = "2026-11-04T18:42:07+13:00"
+exit_code = 0
+commit = "4f841f4dfdc76e9dc9ec479bd7791fb71fb9de98"
+dirty = true
+changed_code = ["ml/scripts/ecs_student.sh", "ml/scripts/local_int8.sh"]
+changed_outputs = ["ml/scripts/ecs_teacher.sh"]
+command = "ml/scripts/local_int8.sh runs/m3-v2 modernbert-base-open int4-block"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/local_int8.sh"]
+
+[outputs]
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_asian_nz.jsonl" = "sha256:5e64ac8492d5cbf8099ae2351451fd5677d89fd4b668ee4feb0c5b0446c1e8e4"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_asian_nz.meta.json" = "sha256:35efcc7f528d003d4421b2929c6ff5f30f38ae197ae4a7445815936e171d8fa0"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_maori.jsonl" = "sha256:0747011626fcccc4279d705f3443eebe875cf6df2b8b5aaf5a3b0f2a1f01e76d"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_maori.meta.json" = "sha256:f635a66edd4b9f0f4c4dbcf4146b375c7c45053a13a14e7078d94b4c3256563c"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_pakeha.jsonl" = "sha256:4e75083ff9b01acfbcf8d2bf99139a9bac41c5511fd76df5d3b080de0a43d528"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_pakeha.meta.json" = "sha256:8266fbf0228d179f709bbfce528fc9be05a115cc60681b5701727740279b576c"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_pasifika.jsonl" = "sha256:eb967a42db9782fa8a7267bf0cc876976ac6fc9296c4bcbad7e015bbf6a3c2f4"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_cf_pasifika.meta.json" = "sha256:fba1fc5c0c4127c1d367149db15ec28087aab3cc332cbfc3199d8fd0c5d5d5b1"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_test_full.jsonl" = "sha256:1265f08d0e07897cf07440a0eb44e688066b27c2f309791e6ed522dbe6012c97"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_test_full.meta.json" = "sha256:30504363d7ca6bd18fa9e009c669dddc0a607ff608c0dee6049f3ec05187a1b1"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_test_names.jsonl" = "sha256:c9a1d5756e8c46abaaada84fa1754e78f75e021d45dabcf5ea499df99bc6af0f"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/nz_test_names.meta.json" = "sha256:61574bb18069eb51cf3e40a1e6b3987dc17aac04c55c5035f63dc11ca823b357"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/open_en_test.jsonl" = "sha256:1895b322c090a51ed434dcb6067b3d045ecd4af649670ba489c979dad3b8da91"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/open_en_test.meta.json" = "sha256:dfe9ac4a49757e553e92d539e55ebc7cff8452a57b5ddd0f2f46a01dc7e8794e"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/pii300k_en_val.jsonl" = "sha256:dada09a81b35f13420978ca14a9ce42363aef80ac3b70a1e2625e6a5941de59b"
+"ml/runs/m3-v2/modernbert-base-open-int8-int4-block/pii300k_en_val.meta.json" = "sha256:316451eb7aeb9df1ba6586863f9609a452f4365179da5392704a139e9563c26b"
+"ml/runs/m3-v2/modernbert-base-open/onnx/model_int8_int4-block.onnx" = "sha256:f3c2123f11d01b83da972a43773418458923a3fb9644c5736142c6cb00d7deb4"

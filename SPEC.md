@@ -386,6 +386,35 @@ Findings:
    int4 matches fp32 within noise on every set, including the name audit (DeBERTa-small's Māori − Pākehā gap +1.2 points against +0.7 in fp32) and PII-Masking-300k. It is the default for shipping. It is 2–3× slower than the broken dynamic int8 because activations stay fp32, but under 0.1 s per document on a laptop. These students were trained with PII-Masking-300k, so they are timing and method results only (§9.1); latency and size carry over to the open-data students (same architectures and recipe), and their quantised accuracy is re-checked. DeBERTa-small's int4 timing overlapped a few minutes of in-browser testing and may be slightly high.
 9. **Spans now widen to whole words** (both decoders: `student/encode.py` and `crates/tumataiti-student`). The demo showed the model splitting words, e.g. redacting only the "I" of "NHI" (tokenised "NH" + "I"). Applied to the stored v2 predictions, widening a span that starts or ends inside a run of letters and digits to the whole run lowered leakage everywhere: held-out document leak, merged with the rules, from 4.9% to 3.0% for DeBERTa-small and from 1.1% to 1.0% for mDeBERTa, and on PII-Masking-300k from 4.7% to 4.2% and 5.5% to 4.9%, with precision within a point. So most partial-word spans were real PII cut short. Trimming spans to whole words instead raised leakage, and so did dropping low-confidence mid-word spans before widening. The cost is that a stray fragment redacts its whole word: in the demo's checksum example the "I" of "NHI" turned the label itself into an ID redaction. So a span that is exactly an identifier field label (NHI, IRD, DOB, DL, SSN and similar; `FIELD_LABELS`) is dropped, which left leakage and precision unchanged on both test sets. Dropping every short span without digits instead was tested and rejected: it raised PII-Masking-300k leakage from 4.2% to 5.5%, because the model there splits IDs such as "ZZ 08 33 44 T" into pieces whose letter-only parts are real PII. Kinship terms tagged as names (Koro, Nan) still need hard negatives in the training data. Results in the tables above predate this change; runs from now on include it.
 
+### 9.7 M3 open-data students (2026-11-04)
+
+The three backbones retrained with the same recipe on NZ data v2 plus 30k openly licensed English documents (20k Nemotron-PII, 10k Gretel-en; §9.1) in place of PII-Masking-300k, so the weights can be published (Nemotron-PII is CC BY 4.0: attribute it). PII-Masking-300k validation becomes a cross-generator test. The open English test set (`open_en_test`: 1k Nemotron-PII + 1k Gretel-en test documents, disjoint from training) is new. Decoding includes whole-word widening and the field-label drop (§9.6, finding 9). Full tables: `ml/results/m3open_*` (fp32 on GPU) and `m3open_int4_*` (int8 embeddings with an int4 encoder, laptop CPU, 4 threads).
+
+Document leak, each detector merged with the rules:
+
+| Detector | NZ held-out (`test_full`) | Open English test | PII-Masking-300k val | Māori − Pākehā gap |
+|---|---:|---:|---:|---:|
+| Rules + teacher | 44.2% | 32.3% | 7.8% | +38.1 |
+| Rules + DeBERTa-v3-small-open | **0.3%** | 3.1% | 31.4% | **+0.1** |
+| Rules + ModernBERT-base-open | 4.1% | **1.7%** | 35.9% | −1.8 |
+| Rules + mDeBERTa-v3-base-open | 2.7% | 3.5% | 38.4% | +0.6 |
+
+int4 (the shipping recipe), merged with the rules:
+
+| Student | NZ held-out | Open English test | PII-Masking-300k val | Māori − Pākehā gap | Size | ms / doc (CPU) |
+|---|---:|---:|---:|---:|---:|---:|
+| DeBERTa-v3-small-open | **0.7%** | 3.2% | 33.2% | −0.3 | 152 MB | 29 |
+| ModernBERT-base-open | 2.7% | **1.6%** | 36.7% | −4.3 | 111 MB | 104 |
+| mDeBERTa-v3-base-open | 1.4% | 4.7% | 37.3% | −0.5 | 298 MB | 78 |
+
+Findings:
+
+1. **Open data is better for NZ text, and DeBERTa-small is now the best student.** It leaks 0.3% of held-out NZ documents (5 of 1,750) against 4.9% when trained with PII-Masking-300k (3.0% with the new decoding), and every community's name leak is 0.2% or less, so the name gap is within target for the first time with margin. It holds after int4 (0.7%, gap −0.3). It is the model for the demo.
+2. **The bigger students fall short on NZ text alone mostly on dates.** ModernBERT-open misses 30% of NZ birth dates and mDeBERTa-open 10% (the rules catch them all when merged); the open sets label only dates the context marks as a birth date, so the students learn a narrower notion. ModernBERT-open after int4 has the only gap outside target (−4.3: Pākehā names leak 5.0%).
+3. **On the open English test the students beat the teacher by 10–20×** (1.6–4.7% against 32.3%, precision 99%), but this is in-distribution for them.
+4. **PII-Masking-300k leakage rises to 31–38%** (teacher 7.8%; students trained on it 4.2–4.9%). Most of the gap is label convention, not missed identities: 54% of its gold birth dates leak, many being any date in a JSON field (`"maximumAge": "May 5th, 1966"`); bare building numbers (42%), postcodes and secondary-address fragments are gold ADDRESS spans; unusual password strings are SECRET (35%); a few gold spans are placeholders such as "N/A". Real misses are a smaller share: surnames leak 11–16%, mostly unusual European names in markup (`Name:</strong> Csordás`). Treat it as a convention-shift test from now on, not a headline.
+5. **Seen in the demo:** kinship words used as names are tagged as PERSON ("Koro's IRD number", "Nan's"), and an unlabelled IRD look-alike ("Order reference: 49-091-857") is redacted as an ID, which the rules deliberately leave. Both need hard negatives in the generator (kinship and title words such as Koro, Nan, Nanny, Kuia, Aunty, Whaea; reference numbers shaped like IDs).
+
 ## 10. Research extensions: DP and FL
 
 These are what make Tūmataiti a research project and not only a tool. They map to the DP/FL questions raised for Atamai.
@@ -449,7 +478,7 @@ Any usage statistics shared back to the Atamai team (e.g. "how often is `HEALTH`
 | M0 | Repo scaffold, policy schema, NZ rule detectors in Rust with tests, WebAssembly build, initial rules-only demo UI. **Done (prototype), 2026-11-03** | 1–2 weeks |
 | M1 | Eval harness; teacher/baseline (`openai/privacy-filter`) on public data; synthetic NZ data generator; Python bindings for the rules. **Done, 2026-11-04** (Presidio and GLiNER comparators still to add; results in §9.4) | 2 weeks |
 | M2 | NZ / te reo test set, co-designed with community and legal workstream. Brought forward: a small consented, human-annotated set (~200 documents) as early as possible, because fine-tuned encoders overtake the zero-shot teacher with roughly 100–1,000 labelled examples and only human-labelled data supports headline claims | 3–4 weeks (parallel) |
-| M3 | Generator v1 with held-out templates and names; three student backbones trained on ECS; evaluated against teacher on held-out splits and the counterfactual name audit; ONNX int8 export. **First pass done, 2026-11-04** (results §9.5); **data v2 done** (balanced names and failure-mode templates; held-out doc leak 1.1–4.9%, §9.6). v2 students exported to ONNX: dynamic int8 doubles DeBERTa-small's leakage and breaks ModernBERT and mDeBERTa, and the encoder MatMuls, not the embeddings, are the cause (§9.6). Open: int8 embeddings with an fp16 or calibrated encoder, a held-out set with genres unseen by v1 and v2, fine-tune the teacher as an upper bound, soft-label distillation once unlabelled real text exists | 2–3 weeks |
+| M3 | Generator v1 with held-out templates and names; three student backbones trained on ECS; evaluated against teacher on held-out splits and the counterfactual name audit; ONNX int8 export. **First pass done, 2026-11-04** (results §9.5); **data v2 done** (balanced names and failure-mode templates; held-out doc leak 1.1–4.9%, §9.6). v2 students exported to ONNX: dynamic int8 doubles DeBERTa-small's leakage and breaks ModernBERT and mDeBERTa, and the encoder MatMuls, not the embeddings, are the cause (§9.6). int8 embeddings with an int4 encoder fix quantisation (§9.6). **Open-data family done** (publishable weights; DeBERTa-small 0.7% held-out doc leak at int4, 152 MB, §9.7). Open: kinship and ID look-alike hard negatives, a held-out set with genres unseen by v1 and v2, fine-tune the teacher as an upper bound, soft-label distillation once unlabelled real text exists | 2–3 weeks |
 | M4 | Live browser demo (§7): animations, presets, offline mode; ships with rules + interim model, then swaps in the M3 student | 2–3 weeks (UI can start after M0) |
 | M5 | Local proxy with pseudonymisation, vault, streaming rehydration; minimal review UI; placeholder-echo attack tests; utility ablation of placeholders vs realistic surrogates vs generalisation, including RAG (replacing dates and numbers is known to break reasoning) | 2–3 weeks |
 | M6 | DP-SGD fine-tuning, federated simulation (2–5 synthetic sites), Atamai integration; results report | 4–6 weeks |

@@ -1,0 +1,32 @@
+id = "2026-11-04-184231-154a"
+status = "done"
+started = "2026-11-04T18:42:31+13:00"
+finished = "2026-11-04T19:11:50+13:00"
+exit_code = 0
+commit = "4f841f4dfdc76e9dc9ec479bd7791fb71fb9de98"
+dirty = true
+changed_code = ["ml/scripts/ecs_student.sh", "ml/scripts/local_int8.sh"]
+changed_outputs = ["ml/scripts/ecs_teacher.sh"]
+command = "ml/scripts/local_int8.sh runs/m3-v2 mdeberta-v3-base-open int4-block"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/local_int8.sh"]
+
+[outputs]
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_asian_nz.jsonl" = "sha256:7c940eda88492b5215c38c78ac1505f6219c496c581636108563cc192e3b9a4b"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_asian_nz.meta.json" = "sha256:1134f7fbaceaf140f003c1507b008f8865f15eba7e27ce44aa7e10798bf140d0"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_maori.jsonl" = "sha256:9fc7de7ec5161a1b70701e05279b2b8ea6de2e32f957cec6f0e599913e9a5263"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_maori.meta.json" = "sha256:5e23a118582d769f84cd9e3330daeb0d09ad31cbc2e3f4ba721108efc8da54c1"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_pakeha.jsonl" = "sha256:e87c1c829e0c9e071f9ec4dadbab0aa52994770d57fd4f21b1c9c5cd6f9a3611"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_pakeha.meta.json" = "sha256:a45a7d45292d60af641f477e0320e5a88d69aec612704f028ef2a8e192906674"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_pasifika.jsonl" = "sha256:4969ae4b40f8ac018850a666ee6f9c79d253bf7a6a7d87284aef466419949ea2"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_cf_pasifika.meta.json" = "sha256:5a2b65773b5c214eb023a039cc787f9ab1eaabad5a30af087ba62c1a604e9705"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_test_full.jsonl" = "sha256:1f7394433212a2f34657fc4ecd50d2826eccaa6c1463549522dfb7bd2e09e175"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_test_full.meta.json" = "sha256:e11c52a7377b54cef0175e493151fc1eac9dadf9b469fc7b3057666ff9568950"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_test_names.jsonl" = "sha256:4c4a6c7ee1e2ecce3fc72e6cde0de715a1fd1f569fc36453f9d58b8e385c0c33"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/nz_test_names.meta.json" = "sha256:78cf6f8abdbfe8cb8119bcd8b6e5138c1bd928eb206e9ee33bc04f2769f803d7"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/open_en_test.jsonl" = "sha256:b0e500c904f0d927ae6e1ccbf2b9504de26a7042862ac38f4483c4c01ae78a4a"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/open_en_test.meta.json" = "sha256:706004d42b6de7070b1c8b40d22aaf0bfd6b27a50dfd2990a5932f5ee933229a"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/pii300k_en_val.jsonl" = "sha256:000b1c258328cad49794517553b6be066c4ebacda582742afb31b49fc83cfc98"
+"ml/runs/m3-v2/mdeberta-v3-base-open-int8-int4-block/pii300k_en_val.meta.json" = "sha256:67522fa52c5f4c566dd3afba850294d7894efb3fc55e983b1b419e60cb28a64d"
+"ml/runs/m3-v2/mdeberta-v3-base-open/onnx/model_int8_int4-block.onnx" = "sha256:e12da1b4ea3cedcb2600eae4efa161188b6833de6fb9828f955a17f3a3d5ed69"

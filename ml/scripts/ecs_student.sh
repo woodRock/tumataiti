@@ -5,6 +5,7 @@
 #   task fetch runs/m3/deberta-v3-small
 #
 # Extra arguments after NAME go to `tumataiti-ml train` (e.g. --max-steps 30 for a smoke test).
+# PREDICT_ONLY=1 skips training and re-predicts with the existing model (e.g. after a decoder change).
 # DATA=v2 trains on data/v2 and writes runs/m3-v2/NAME; evaluation sets are always data/v1.
 # EXTRA picks the English data trained alongside the NZ set: open (default:
 # Nemotron-PII + Gretel, scripts/make_data_open.sh), none, or pii300k. pii300k
@@ -32,7 +33,7 @@ case "${EXTRA:-open}" in
   none) ;;
   *) echo "EXTRA must be pii300k, open or none" >&2; exit 2 ;;
 esac
-"$CLI" train --backbone "$BACKBONE" --train "${TRAIN[@]}" --dev $T/nz_dev.jsonl --out "$OUT" "$@"
+[ -n "${PREDICT_ONLY:-}" ] || "$CLI" train --backbone "$BACKBONE" --train "${TRAIN[@]}" --dev $T/nz_dev.jsonl --out "$OUT" "$@"
 
 LIMIT=()
 [[ " $* " == *" --max-steps "* ]] && LIMIT=(--limit 50)

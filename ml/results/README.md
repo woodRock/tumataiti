@@ -1,5 +1,14 @@
 # Results
 
+## M3: open-data students (2026-11-04)
+
+Summary and findings are in [SPEC.md §9.7](../../SPEC.md). Students trained on NZ data v2 plus Nemotron-PII and Gretel-en (publishable), scored on the M3 sets plus the open English test set.
+
+- `m3open_*`: fp32 on GPU, with the teacher
+- `m3open_int4_*`: int8 embeddings with an int4 encoder (laptop CPU)
+
+Data: `scripts/make_data_open.sh`. Training: `DATA=v2 EXTRA=open scripts/ecs_student.sh` (`PREDICT_ONLY=1` re-predicts an existing model). Teacher on the open test: `SETS=open_en_test scripts/ecs_teacher.sh`. Scoring: `RUNS=runs/m3-v2 TAG=m3open MODELS="openai-privacy-filter deberta-v3-small-open modernbert-base-open mdeberta-v3-base-open" scripts/score_m3.sh`; int4: `scripts/local_int8.sh runs/m3-v2 NAME int4-block`, then `TAG=m3open_int4` with the `-int8-int4-block` names.
+
 ## M3: data v2 students (2026-11-04)
 
 Summary and findings are in [SPEC.md §9.6](../../SPEC.md). Same evaluation files as M3 v1; each table shows the v1 student (`<model>-v1`) beside the v2 one.

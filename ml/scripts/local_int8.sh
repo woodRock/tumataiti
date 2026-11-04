@@ -13,4 +13,8 @@ for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_
   uv run tumataiti-ml predict --detector student-onnx --model "$R/$NAME/onnx/$MODEL" \
     --gold "$V/$ds.jsonl" --out "$R/$OUT/$ds.jsonl" > /dev/null
 done
+if [ -f data/open/open_en_test.jsonl ]; then
+  uv run tumataiti-ml predict --detector student-onnx --model "$R/$NAME/onnx/$MODEL" \
+    --gold data/open/open_en_test.jsonl --out "$R/$OUT/open_en_test.jsonl" > /dev/null
+fi
 echo "done: $R/$OUT"
