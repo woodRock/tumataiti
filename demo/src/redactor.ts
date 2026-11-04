@@ -1,4 +1,5 @@
-import init, { defaultPolicy, redact } from "./wasm/tumataiti_wasm.js";
+import init, { defaultPolicy, redact, redactWith } from "./wasm/tumataiti_wasm.js";
+import type { ModelSpan } from "./student";
 
 export type Category =
   | "PERSON"
@@ -44,15 +45,21 @@ export interface Policy {
 }
 
 export interface Redactor {
-  redact(text: string, policy: Policy): Redaction;
+  /** Rules only, or rules merged with the student model's spans for `text`. */
+  redact(text: string, policy: Policy, model?: ModelSpan[]): Redaction;
   defaultPolicy: Policy;
 }
 
-/** Load the WebAssembly rules. This is the only network request the redactor makes. */
+/** Load the WebAssembly rules. The student model is loaded separately, on request (student.ts). */
 export async function loadRedactor(): Promise<Redactor> {
   await init();
   return {
-    redact: (text, policy) => JSON.parse(redact(text, JSON.stringify(policy))),
+    redact: (text, policy, model) =>
+      JSON.parse(
+        model
+          ? redactWith(text, JSON.stringify(policy), JSON.stringify(model), "student")
+          : redact(text, JSON.stringify(policy)),
+      ),
     defaultPolicy: JSON.parse(defaultPolicy()),
   };
 }

@@ -2,6 +2,8 @@
 node_modules/
 /demo/dist
 /demo/src/wasm
+/demo/src/wasm-student
+/demo/public/models/
 .DS_Store
 *.tsbuildinfo
 /ml/data/

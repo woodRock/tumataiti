@@ -52,6 +52,15 @@ def test_adjacent_entities_stay_separate():
     assert [(a, b) for a, b, *_ in spans] == [(0, 5), (6, 10)]
 
 
+def test_spans_widen_to_whole_words():
+    # "I" alone inside "NHI", and "Nga" inside "Ngata's" (the Rust decoder has the same test).
+    text = "NHI ZZZ0016, Ngata's"
+    tags = [TAGS.index("B-ID"), 0, TAGS.index("B-PERSON"), 0]
+    spans = decode(text, [(2, 3), (3, 4), (13, 16), (16, 18)], one_hot(tags))
+    # "NHI" widens to a whole word, then is dropped as a field label.
+    assert [(a, b) for a, b, *_ in spans] == [(13, 18)]
+
+
 def test_windows_cover_long_documents_and_union_merges_overlaps():
     doc = Doc("d", TEXT, GOLD)
     tok = WordTokenizer()

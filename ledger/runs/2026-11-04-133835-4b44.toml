@@ -1,0 +1,16 @@
+id = "2026-11-04-133835-4b44"
+status = "done"
+started = "2026-11-04T13:38:35+13:00"
+finished = "2026-11-04T13:38:36+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = [".github/workflows/pages.yml", "ml/pyproject.toml", "ml/scripts/ecs_student.sh", "ml/scripts/int8_ablation.sh", "ml/scripts/local_int8.sh", "ml/scripts/score_m3.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/student/export.py", "ml/src/tumataiti_ml/taxonomy.py"]
+changed_outputs = [".gitignore", "Cargo.lock", "Cargo.toml", "README.md", "SPEC.md", "crates/tumataiti-wasm/src/lib.rs", "demo/package-lock.json", "demo/package.json", "demo/src/App.tsx", "demo/src/components/NetworkMeter.tsx", "demo/src/components/PolicyPanel.tsx", "demo/src/labels.ts", "demo/src/redactor.ts", "demo/src/styles.css", "demo/vite.config.ts", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/uv.lock", "scripts/build-wasm.sh"]
+command = "bash -c 'cd ml && .venv/bin/tumataiti-ml predict --detector rules --gold data/open/open_en_test.jsonl --out runs/m3/rules/open_en_test.jsonl >/dev/null && .venv/bin/tumataiti-ml score --gold data/open/open_en_test.jsonl --pred runs/m3/rules/open_en_test.jsonl --title rules'"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+
+[outputs]
+"ml/runs/m3/rules/open_en_test.jsonl" = "sha256:0ea2998d81fe592af7b0fa16d7f78bfc3e9fd1c3ec50d8628fb0b97ffc7b68e5"
+"ml/runs/m3/rules/open_en_test.meta.json" = "sha256:7069565a0b37d8ea411f16d853ceb9ddae16439f8a5d9eaacddc03d76cc59a68"

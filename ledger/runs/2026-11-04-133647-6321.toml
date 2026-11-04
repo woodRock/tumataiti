@@ -1,0 +1,22 @@
+id = "2026-11-04-133647-6321"
+status = "done"
+started = "2026-11-04T13:36:47+13:00"
+finished = "2026-11-04T13:37:54+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = [".github/workflows/pages.yml", "ml/pyproject.toml", "ml/scripts/ecs_student.sh", "ml/scripts/int8_ablation.sh", "ml/scripts/local_int8.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/student/export.py", "ml/src/tumataiti_ml/taxonomy.py"]
+changed_outputs = [".gitignore", "Cargo.lock", "Cargo.toml", "README.md", "SPEC.md", "crates/tumataiti-wasm/src/lib.rs", "demo/package-lock.json", "demo/package.json", "demo/src/App.tsx", "demo/src/components/NetworkMeter.tsx", "demo/src/components/PolicyPanel.tsx", "demo/src/labels.ts", "demo/src/redactor.ts", "demo/src/styles.css", "demo/vite.config.ts", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/uv.lock", "scripts/build-wasm.sh"]
+command = "ml/scripts/make_data_open.sh .venv/bin/tumataiti-ml"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/make_data_open.sh"]
+
+[outputs]
+"ml/data/open/gretel_en_test.jsonl" = "sha256:e4f16f3e760e018601e46359c381bc829ea1ebc8d7d29cb82993b6a56666929e"
+"ml/data/open/gretel_en_train.jsonl" = "sha256:73d5e504d7308c02f81b5f31ac975a66f63eab3514c7c9b2636283c1a64c8a9d"
+"ml/data/open/nemotron_test.jsonl" = "sha256:d580bfcc61a4c87442b2c2df61456e6ecded369c6fce0a913c4721c2b426675b"
+"ml/data/open/nemotron_train.jsonl" = "sha256:2797ba499834fb8e9297e6f2e7751e66bb5d13d8237172ab8ac4f0c60578b198"
+"ml/data/open/open_en_test.jsonl" = "sha256:01a7aba4a675154777faa881b89475e4d39e3eeffabfa87bdd174937caed8b74"
+"ml/data/open/open_en_train.jsonl" = "sha256:c85954019e9eb2f0202116e1709822f1e0ef08d954c081130fd846242240c77f"
+"ml/data/raw/open/nemotron_test.parquet" = "sha256:1a4b0512ecb5370f0992d29d0f9c07351e6de13f0d7ea33bb18cecb984780247"

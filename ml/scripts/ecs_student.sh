@@ -6,6 +6,10 @@
 #
 # Extra arguments after NAME go to `tumataiti-ml train` (e.g. --max-steps 30 for a smoke test).
 # DATA=v2 trains on data/v2 and writes runs/m3-v2/NAME; evaluation sets are always data/v1.
+# EXTRA picks the English data trained alongside the NZ set: open (default:
+# Nemotron-PII + Gretel, scripts/make_data_open.sh), none, or pii300k. pii300k
+# only reproduces the M3 v1/v2 results: PII-Masking-300k's licence forbids
+# distributing derivative works such as trained weights (SPEC §9.1).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 source scripts/ecs_env.sh
@@ -19,7 +23,16 @@ OUT=runs/m3$([ "$DATA" = v1 ] || echo "-$DATA")/$NAME
 [ -f $V/pii300k_en_val.jsonl ] || ./scripts/make_data_v1.sh "$CLI"
 # Jobs submitted together would race to write the same files.
 ( flock 9; [ -f $T/nz_dev.jsonl ] || "./scripts/make_data_$DATA.sh" "$CLI" ) 9>"$STORE/venvs/.tumataiti-data.lock"
-"$CLI" train --backbone "$BACKBONE" --train $T/nz_train.jsonl $V/pii300k_en_train.jsonl --dev $T/nz_dev.jsonl --out "$OUT" "$@"
+TRAIN=($T/nz_train.jsonl)
+case "${EXTRA:-open}" in
+  pii300k) TRAIN+=($V/pii300k_en_train.jsonl) ;;
+  open)
+    ( flock 9; [ -f data/open/open_en_train.jsonl ] || ./scripts/make_data_open.sh "$CLI" ) 9>"$STORE/venvs/.tumataiti-data.lock"
+    TRAIN+=(data/open/open_en_train.jsonl) ;;
+  none) ;;
+  *) echo "EXTRA must be pii300k, open or none" >&2; exit 2 ;;
+esac
+"$CLI" train --backbone "$BACKBONE" --train "${TRAIN[@]}" --dev $T/nz_dev.jsonl --out "$OUT" "$@"
 
 LIMIT=()
 [[ " $* " == *" --max-steps "* ]] && LIMIT=(--limit 50)
@@ -27,4 +40,9 @@ for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
     --gold "$V/$ds.jsonl" --out "$OUT/pred/$ds.jsonl" > /dev/null
 done
+# Open English test set (none of the students trains on it), when it has been built.
+if [ -f data/open/open_en_test.jsonl ]; then
+  "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
+    --gold data/open/open_en_test.jsonl --out "$OUT/pred/open_en_test.jsonl" > /dev/null
+fi
 echo "done: $OUT"

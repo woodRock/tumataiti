@@ -3,13 +3,16 @@ import type { Action, Category, Policy } from "../redactor";
 
 interface Props {
   policy: Policy;
+  /** Whether the student model is running, enabling the categories it detects. */
+  model: boolean;
   onChange(policy: Policy): void;
   onReset(): void;
 }
 
 const ORDER = Object.keys(CATEGORIES) as Category[];
 
-export function PolicyPanel({ policy, onChange, onReset }: Props) {
+export function PolicyPanel({ policy, model, onChange, onReset }: Props) {
+  const active = (c: Category) => CATEGORIES[c].rules || (model && CATEGORIES[c].model);
   const setAction = (category: Category, action: Action) =>
     onChange({ ...policy, actions: { ...policy.actions, [category]: action } });
 
@@ -32,10 +35,10 @@ export function PolicyPanel({ policy, onChange, onReset }: Props) {
 
       <ul className="policy-list">
         {ORDER.map((c) => (
-          <li key={c} style={hue(c)} className={CATEGORIES[c].rules ? "" : "policy-later"}>
+          <li key={c} style={hue(c)} className={active(c) ? "" : "policy-later"}>
             <span className="swatch" aria-hidden="true" />
             <label htmlFor={`policy-${c}`}>{CATEGORIES[c].label}</label>
-            {CATEGORIES[c].rules ? (
+            {active(c) ? (
               <select
                 id={`policy-${c}`}
                 value={policy.actions[c]}

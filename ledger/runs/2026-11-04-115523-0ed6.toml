@@ -1,0 +1,28 @@
+id = "2026-11-04-115523-0ed6"
+status = "done"
+started = "2026-11-04T11:55:23+13:00"
+finished = "2026-11-04T12:01:35+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = false
+command = "ml/scripts/local_int8.sh runs/m3-v2 deberta-v3-small"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/local_int8.sh"]
+
+[outputs]
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_asian_nz.jsonl" = "sha256:ba4a207f6794b805c969f5b7c483a79c706ae85a0d9174ff68e434fcee41e2f9"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_asian_nz.meta.json" = "sha256:a513aa15d8dbb0371adad75bb20d28c14c1a32a15cce1a03437054b85eb5a131"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_maori.jsonl" = "sha256:f1cf26d96bd21f4c5fb4e9ffa397f6481ad676eb592d281fc374f4569509342c"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_maori.meta.json" = "sha256:d55452f0c9889c7ee0775ecb22844bae757960ab36d9b5d64adc7af178ce289c"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_pakeha.jsonl" = "sha256:7831ace184cf94ad56442cf1ddd27e86c4b882f57e326fe8f48946aea34f2c2e"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_pakeha.meta.json" = "sha256:878fb8688c105c71ae14b87a0b275c520a11a6d139549d1ebcc791d32881eaa2"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_pasifika.jsonl" = "sha256:13ce82c34ae5207d118f75230af983116569b7a58c2f46f5de8146f8b67cad21"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_cf_pasifika.meta.json" = "sha256:7769cbf8f848570eb56bc121dd765b465cf9f21a80409e4b2259d786a924beb3"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_test_full.jsonl" = "sha256:f8ac8bfde60ec2c4d1f2ae4475e7177405a9cd64b8271f5d0d1b25579aae16f1"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_test_full.meta.json" = "sha256:ec514fa63a36b4d68dea19833746c8a466795f4e2dc92b039c374e47036147f6"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_test_names.jsonl" = "sha256:98abed6274602b7d92cc7a3a043c6e1b9b83e3a90dd67669c3462d79f3ef0599"
+"ml/runs/m3-v2/deberta-v3-small-int8/nz_test_names.meta.json" = "sha256:c3c6204ce7693fc8f86f65dc915ff6b5840f7c1792bfa2397352526e76725bb4"
+"ml/runs/m3-v2/deberta-v3-small-int8/pii300k_en_val.jsonl" = "sha256:002c09e98e1829964e09cc8d8a78d04e5f789c78d679893814c955eb82d81bf1"
+"ml/runs/m3-v2/deberta-v3-small-int8/pii300k_en_val.meta.json" = "sha256:0167195bb77e0d9fac9721792d29aca550c8484780b5c20a9c24626b5637e5d7"
+"ml/runs/m3-v2/deberta-v3-small/onnx/model_int8.onnx" = "sha256:628364b77ffab6e4987db359e141cc98702a9a583542093a8773caccddefedf7"

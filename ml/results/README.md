@@ -8,8 +8,10 @@ Summary and findings are in [SPEC.md §9.6](../../SPEC.md). Same evaluation file
 - [m3v2_nz_test_names.md](m3v2_nz_test_names.md): training templates, held-out names
 - [m3v2_pii300k_en_val.md](m3v2_pii300k_en_val.md): PII-Masking-300k validation
 - [m3v2_names_counterfactual.md](m3v2_names_counterfactual.md): counterfactual name audit
+- `m3v2_int8_*`: the same sets for the v2 students against their dynamic int8 ONNX versions (run on a laptop CPU)
+- `m3v2_int4_*`: against int8 embeddings with a block-wise int4 encoder (the shipping recipe); `m3v2_fp16_nz_test_full.*`: an fp16 encoder (held-out set only)
 
-Data: `scripts/make_data_v2.sh`. Training: `DATA=v2 scripts/ecs_student.sh` (writes `runs/m3-v2/`). Scoring: `RUNS=runs/m3-v2 TAG=m3v2 MODELS="openai-privacy-filter deberta-v3-small-v1 deberta-v3-small modernbert-base-v1 modernbert-base mdeberta-v3-base-v1 mdeberta-v3-base" scripts/score_m3.sh`.
+Data: `scripts/make_data_v2.sh`. Training: `DATA=v2 scripts/ecs_student.sh` (writes `runs/m3-v2/`). Scoring: `RUNS=runs/m3-v2 TAG=m3v2 MODELS="openai-privacy-filter deberta-v3-small-v1 deberta-v3-small modernbert-base-v1 modernbert-base mdeberta-v3-base-v1 mdeberta-v3-base" scripts/score_m3.sh`. ONNX: `RUNS=runs/m3-v2 scripts/ecs_export.sh NAME` on ECS, then `scripts/local_int8.sh runs/m3-v2 NAME` locally (quantise and predict; scored with `TAG=m3v2_int8`). `scripts/int8_ablation.sh` quantises only the embeddings or only the matrix multiplies.
 
 ## M3: student models (2026-11-04)
 

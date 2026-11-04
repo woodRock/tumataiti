@@ -1,0 +1,28 @@
+id = "2026-11-04-121615-5b9d"
+status = "done"
+started = "2026-11-04T12:16:15+13:00"
+finished = "2026-11-04T12:31:38+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = false
+command = "ml/scripts/local_int8.sh runs/m3-v2 modernbert-base"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/local_int8.sh"]
+
+[outputs]
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_asian_nz.jsonl" = "sha256:164c63b4064b8ffd8456f9db5475176142a9b687cdb37382ed83f1d76a52381b"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_asian_nz.meta.json" = "sha256:4cfb835ac5c0924d0d44156d770c6cb2dace76cde406aa466d8a47d58ea84580"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_maori.jsonl" = "sha256:5164b6783945c6494e50f972625af29b3fbc9f179b418a50cadf058ca23c824c"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_maori.meta.json" = "sha256:c438fbdd04bed845ce2566f4229b12fdde6f4689b77856b6268b49054ad739a2"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_pakeha.jsonl" = "sha256:15f255c50224857243e1b5ff666195706cdd2f9fe1efb85963dc521e90b09b9a"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_pakeha.meta.json" = "sha256:47b30ccaf441ac194ad78a7ea565b0d656e1a7c66a3299fe666e950978e10a5c"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_pasifika.jsonl" = "sha256:e3c73b70452144709a533c26fce182ec1e6c8adfc6f4a9193d40bea7ca727315"
+"ml/runs/m3-v2/modernbert-base-int8/nz_cf_pasifika.meta.json" = "sha256:ff5b439495a5eabdd12bbfeed717f15fbab84997c8698ef414ab5b330f172e51"
+"ml/runs/m3-v2/modernbert-base-int8/nz_test_full.jsonl" = "sha256:d4b0e17926e9dbca35645f8f375b62a8f2f2c76317239f54fc9efc63e2c8e65b"
+"ml/runs/m3-v2/modernbert-base-int8/nz_test_full.meta.json" = "sha256:928e6b30698cb500da86bfa7eb5d6bdce83b429a009a43612a3adde64473c626"
+"ml/runs/m3-v2/modernbert-base-int8/nz_test_names.jsonl" = "sha256:d50cb7ba92ce76b0d8eeea1eb24f091b424f1a950b6785887dda358ba3456b32"
+"ml/runs/m3-v2/modernbert-base-int8/nz_test_names.meta.json" = "sha256:eaf3ed732be1091ad56dfc17e7c552adf6f764e5c283583a6002659116fe4363"
+"ml/runs/m3-v2/modernbert-base-int8/pii300k_en_val.jsonl" = "sha256:ee894dc0b5c4007cfac322e627dd4a4737dc3b4a0d9b1205405b32224cb226db"
+"ml/runs/m3-v2/modernbert-base-int8/pii300k_en_val.meta.json" = "sha256:b096ee92177d2cf577f8a6c44892e2dace2b8ebaa1d2ddbfba2116f2fd16be28"
+"ml/runs/m3-v2/modernbert-base/onnx/model_int8.onnx" = "sha256:3f29e0b5ce75c8c4ceeee24cbe184b49947e984b2390ccd52c01677ec17af0c9"

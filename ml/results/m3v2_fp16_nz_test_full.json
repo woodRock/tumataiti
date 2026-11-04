@@ -1,0 +1,556 @@
+{
+  "gold": "data/v1/nz_test_full.jsonl",
+  "results": {
+    "rules+deberta-v3-small-int8-fp16": {
+      "docs": 1750,
+      "docs_with_pii": 1750,
+      "doc_leak_rate": 0.046285714285714284,
+      "span_leak_rate": 0.00841025641025641,
+      "char_any": {
+        "precision": 0.9341064972801297,
+        "recall": 0.9970517698396956,
+        "f1": 0.9645532965259789,
+        "tp": 110587,
+        "fp": 7801,
+        "fn": 327
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.9758683314415437,
+          "recall": 0.9910776040946189,
+          "f1": 0.9834141654465592,
+          "tp": 42987,
+          "fp": 1063,
+          "fn": 387
+        },
+        "ADDRESS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 24719,
+          "fp": 0,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 14700,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9956544992646076,
+          "recall": 1.0,
+          "f1": 0.9978225185085927,
+          "tp": 14893,
+          "fp": 65,
+          "fn": 0
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 5375,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.8112274578243165,
+          "recall": 1.0,
+          "f1": 0.8957764573630963,
+          "tp": 5578,
+          "fp": 1298,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 7650,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.8757493714948753,
+        "recall": 0.928923076923077,
+        "f1": 0.9015528568584512,
+        "tp": 9057,
+        "fp": 1285,
+        "fn": 693
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.8479717156680313,
+          "recall": 0.868,
+          "f1": 0.8578689759036146,
+          "tp": 4557,
+          "fp": 817,
+          "fn": 693
+        },
+        "ADDRESS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1000,
+          "fp": 0,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 750,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9900990099009901,
+          "recall": 1.0,
+          "f1": 0.9950248756218906,
+          "tp": 1500,
+          "fp": 15,
+          "fn": 0
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 250,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.7112375533428165,
+          "recall": 1.0,
+          "f1": 0.8312551953449708,
+          "tp": 500,
+          "fp": 203,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 750,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "DATE": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.01561904761904762,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 1000,
+        "DATE": 500,
+        "EMAIL": 750,
+        "ID": 750,
+        "PERSON": 5250,
+        "PHONE": 1500
+      },
+      "_name": "rules+deberta-v3-small-int8-fp16"
+    },
+    "rules+modernbert-base-int8-fp16": {
+      "docs": 1750,
+      "docs_with_pii": 1750,
+      "doc_leak_rate": 0.025714285714285714,
+      "span_leak_rate": 0.005743589743589744,
+      "char_any": {
+        "precision": 0.9325364377418295,
+        "recall": 0.9973853616315344,
+        "f1": 0.9638713780980305,
+        "tp": 110624,
+        "fp": 8003,
+        "fn": 290
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.9497516282150348,
+          "recall": 0.9918153732650897,
+          "f1": 0.9703278485152647,
+          "tp": 43019,
+          "fp": 2276,
+          "fn": 355
+        },
+        "ADDRESS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 24719,
+          "fp": 0,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 14700,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9823878627968338,
+          "recall": 1.0,
+          "f1": 0.9911156956044322,
+          "tp": 14893,
+          "fp": 267,
+          "fn": 0
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 5375,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.9849902878333039,
+          "recall": 1.0,
+          "f1": 0.9924383951605729,
+          "tp": 5578,
+          "fp": 85,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 7650,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.8811382274478806,
+        "recall": 0.9146666666666666,
+        "f1": 0.8975894519651754,
+        "tp": 8918,
+        "fp": 1203,
+        "fn": 832
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.843375748502994,
+          "recall": 0.8584761904761905,
+          "f1": 0.850858976779309,
+          "tp": 4507,
+          "fp": 837,
+          "fn": 743
+        },
+        "ADDRESS": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1000,
+          "fp": 0,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 750,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9406666666666667,
+          "recall": 0.9406666666666667,
+          "f1": 0.9406666666666667,
+          "tp": 1411,
+          "fp": 89,
+          "fn": 89
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 250,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.9487666034155597,
+          "recall": 1.0,
+          "f1": 0.9737098344693281,
+          "tp": 500,
+          "fp": 27,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 750,
+          "fp": 0,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "DATE": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.010666666666666666,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 1000,
+        "DATE": 500,
+        "EMAIL": 750,
+        "ID": 750,
+        "PERSON": 5250,
+        "PHONE": 1500
+      },
+      "_name": "rules+modernbert-base-int8-fp16"
+    },
+    "rules+mdeberta-v3-base-int8-fp16": {
+      "docs": 1750,
+      "docs_with_pii": 1750,
+      "doc_leak_rate": 0.010857142857142857,
+      "span_leak_rate": 0.0019487179487179488,
+      "char_any": {
+        "precision": 0.9371236213546248,
+        "recall": 0.9989541446526138,
+        "f1": 0.9670515741055921,
+        "tp": 110798,
+        "fp": 7434,
+        "fn": 116
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.9955582150008055,
+          "recall": 0.9973255867570434,
+          "f1": 0.9964411171897495,
+          "tp": 43258,
+          "fp": 193,
+          "fn": 116
+        },
+        "ADDRESS": {
+          "precision": 0.9999190971239027,
+          "recall": 1.0,
+          "f1": 0.9999595469255663,
+          "tp": 24719,
+          "fp": 2,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 14700,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.997722248274938,
+          "recall": 1.0,
+          "f1": 0.9988598256203891,
+          "tp": 14893,
+          "fp": 34,
+          "fn": 0
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 5375,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.7539875642065423,
+          "recall": 1.0,
+          "f1": 0.8597410604192355,
+          "tp": 5578,
+          "fp": 1820,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.9986945169712794,
+          "recall": 1.0,
+          "f1": 0.9993468321358588,
+          "tp": 7650,
+          "fp": 10,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.6560076675089309,
+        "recall": 0.7722051282051282,
+        "f1": 0.7093795637631319,
+        "tp": 7529,
+        "fp": 3948,
+        "fn": 2221
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.7605004468275246,
+          "recall": 0.8104761904761905,
+          "f1": 0.7846934071000461,
+          "tp": 4255,
+          "fp": 1340,
+          "fn": 995
+        },
+        "ADDRESS": {
+          "precision": 0.1601343784994401,
+          "recall": 0.286,
+          "f1": 0.20531227566403445,
+          "tp": 286,
+          "fp": 1500,
+          "fn": 714
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 750,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.8493333333333334,
+          "recall": 0.8493333333333334,
+          "f1": 0.8493333333333334,
+          "tp": 1274,
+          "fp": 226,
+          "fn": 226
+        },
+        "URL": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tp": 0,
+          "fp": 250,
+          "fn": 0
+        },
+        "DATE": {
+          "precision": 0.4803804994054697,
+          "recall": 0.808,
+          "f1": 0.6025354213273676,
+          "tp": 404,
+          "fp": 437,
+          "fn": 96
+        },
+        "ID": {
+          "precision": 0.7417218543046358,
+          "recall": 0.7466666666666667,
+          "f1": 0.7441860465116278,
+          "tp": 560,
+          "fp": 195,
+          "fn": 190
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "DATE": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.003619047619047619,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 1000,
+        "DATE": 500,
+        "EMAIL": 750,
+        "ID": 750,
+        "PERSON": 5250,
+        "PHONE": 1500
+      },
+      "_name": "rules+mdeberta-v3-base-int8-fp16"
+    }
+  },
+  "timings": {
+    "rules+deberta-v3-small-int8-fp16": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 0.08475028498469328,
+          "seconds_median": 4.654199983633589e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student-onnx",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 68.44570318797196,
+          "seconds_median": 0.038719916501577245,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/deberta-v3-small/onnx/model_int8_fp16.onnx",
+          "host": "Jesses-MacBook-Air-2.local"
+        }
+      ],
+      "seconds_median": 0.03876645850141358
+    },
+    "rules+modernbert-base-int8-fp16": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 0.08475028498469328,
+          "seconds_median": 4.654199983633589e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student-onnx",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 203.2294601549729,
+          "seconds_median": 0.11479187549775816,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/modernbert-base/onnx/model_int8_fp16.onnx",
+          "host": "Jesses-MacBook-Air-2.local"
+        }
+      ],
+      "seconds_median": 0.11483841749759449
+    },
+    "rules+mdeberta-v3-base-int8-fp16": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 0.08475028498469328,
+          "seconds_median": 4.654199983633589e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student-onnx",
+          "gold": "data/v1/nz_test_full.jsonl",
+          "docs": 1750,
+          "seconds_total": 100.57838150187308,
+          "seconds_median": 0.05930177049958729,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/mdeberta-v3-base/onnx/model_int8_fp16.onnx",
+          "host": "Jesses-MacBook-Air-2.local"
+        }
+      ],
+      "seconds_median": 0.05934831249942363
+    }
+  }
+}

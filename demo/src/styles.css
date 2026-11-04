@@ -231,6 +231,29 @@ main,
   min-height: 1.4em;
 }
 
+.student {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: -6px 0 18px;
+}
+.student-ready {
+  display: block;
+}
+.student progress {
+  width: min(240px, 100%);
+  accent-color: var(--accent);
+}
+.student-on {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
 /* ---------- panes ---------- */
 
 .panes {

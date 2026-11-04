@@ -36,6 +36,15 @@ def cmd_prepare_pii300k(a: argparse.Namespace) -> None:
     print(f"wrote {n} documents to {a.out}")
 
 
+def cmd_prepare_open(a: argparse.Namespace) -> None:
+    from .datasets import open_pii
+
+    raw = open_pii.download(a.source, a.split, a.raw_dir)
+    docs, dropped = open_pii.load(a.source, raw)
+    n = write_jsonl(a.out, open_pii.sample(docs, a.n, a.seed))
+    print(f"wrote {n} of {len(docs)} documents to {a.out} ({dropped} dropped: entities not found in the text)")
+
+
 def cmd_predict(a: argparse.Namespace) -> None:
     gold = list(read_jsonl(a.gold))[: a.limit]
     predict = detectors.load(a.detector, device=a.device, threshold=a.threshold, model=a.model)
@@ -196,7 +205,8 @@ def cmd_export(a: argparse.Namespace) -> None:
 def cmd_quantise(a: argparse.Namespace) -> None:
     from .student.export import quantise_int8
 
-    out = quantise_int8(a.onnx, a.onnx.with_name("model_int8.onnx"))
+    name = "model_int8.onnx" if a.encoder == "dynamic" else f"model_int8_{a.encoder}.onnx"
+    out = quantise_int8(a.onnx, a.onnx.with_name(name), a.encoder)
     print(f"{out}: {out.stat().st_size / 1e6:.1f} MB (fp32 {a.onnx.stat().st_size / 1e6:.1f} MB)")
 
 
@@ -218,6 +228,15 @@ def main(argv: list[str] | None = None) -> None:
     p3.add_argument("--out", type=Path, required=True)
     p3.add_argument("--limit", type=int)
     p3.set_defaults(fn=cmd_prepare_pii300k)
+
+    po = sub.add_parser("prepare-open", help="download and convert an openly licensed PII set (English)")
+    po.add_argument("--source", required=True, choices=["nemotron", "gretel-en", "gretel-finance"])
+    po.add_argument("--split", default="train", choices=["train", "test"])
+    po.add_argument("--raw-dir", type=Path, default=Path("data/raw/open"))
+    po.add_argument("--n", type=int, help="random sample of this many documents")
+    po.add_argument("--seed", type=int, default=0)
+    po.add_argument("--out", type=Path, required=True)
+    po.set_defaults(fn=cmd_prepare_open)
 
     pr = sub.add_parser("predict", help="run a detector over a dataset")
     pr.add_argument("--detector", required=True, choices=["rules", "openai-privacy-filter", "student", "student-onnx"])
@@ -271,8 +290,10 @@ def main(argv: list[str] | None = None) -> None:
     ex.add_argument("--out", type=Path, required=True)
     ex.set_defaults(fn=cmd_export)
 
-    qu = sub.add_parser("quantise", help="dynamic int8 quantisation of an exported student")
+    qu = sub.add_parser("quantise", help="int8 quantisation of an exported student")
     qu.add_argument("--onnx", type=Path, required=True)
+    qu.add_argument("--encoder", default="dynamic", choices=["dynamic", "fp16", "int8-block", "int4-block"],
+                    help="encoder weights; the embedding table is always int8 (SPEC §9.6)")
     qu.set_defaults(fn=cmd_quantise)
 
     cf = sub.add_parser("counterfactual", help="name leak by community from the nz_cf_* files")

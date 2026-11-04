@@ -11,10 +11,12 @@ Done so far: milestone 0 (deterministic rules for NZ identifiers, compiled from 
 ```
 crates/tumataiti-rules   Rust rules, checksums, span merging, policy, pseudonymisation
 crates/tumataiti-wasm    WebAssembly bindings for the browser
+crates/tumataiti-student Student model tokeniser and span decoder for the browser (WebAssembly)
 crates/tumataiti-py      Python bindings (PyO3), used for evaluation and training labels
 demo/                    React + Vite demo site (static, no backend)
 ml/                      Python: synthetic NZ data, detectors, evaluation (uv project)
-scripts/build-wasm.sh    Builds the WebAssembly module into demo/src/wasm
+scripts/build-wasm.sh    Builds the WebAssembly modules into demo/src/wasm and demo/src/wasm-student
+scripts/copy-model.sh    Copies an exported student model into the demo
 ```
 
 ## Requirements
@@ -48,6 +50,16 @@ uv sync --extra rules && uv run pytest
 ```
 
 `npm --prefix demo run build` produces a static site in `demo/dist`, with a Content-Security-Policy that stops the page contacting any other origin.
+
+### The student model in the demo
+
+The demo runs the rules on their own unless a student model is copied in. The model is not committed or published yet. With an exported model (see [ml/results](ml/results/README.md)):
+
+```bash
+./scripts/copy-model.sh ml/runs/m3-v2/deberta-v3-small/onnx model_int8_int4-block.onnx "int8 embeddings, int4 encoder"
+```
+
+Then restart `npm --prefix demo run dev`. The page offers an "Add the name model" button. It downloads the model from the page's own origin, runs it with ONNX Runtime Web (WebAssembly, one thread), and merges its spans with the rules in Rust. The tokeniser is the Hugging Face `tokenizers` crate compiled to WebAssembly. It matches the Python tokeniser exactly (`cargo test -p tumataiti-student -- --ignored`, with `TUMATAITI_TOKENIZER` and `TUMATAITI_EXPECTED` set; see the test).
 
 ## What the rules detect
 

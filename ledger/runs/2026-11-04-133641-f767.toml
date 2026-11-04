@@ -1,0 +1,13 @@
+id = "2026-11-04-133641-f767"
+status = "failed"
+started = "2026-11-04T13:36:41+13:00"
+finished = "2026-11-04T13:36:42+13:00"
+exit_code = 127
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = [".github/workflows/pages.yml", "ml/pyproject.toml", "ml/scripts/ecs_student.sh", "ml/scripts/int8_ablation.sh", "ml/scripts/local_int8.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/student/export.py", "ml/src/tumataiti_ml/taxonomy.py"]
+changed_outputs = [".gitignore", "Cargo.lock", "Cargo.toml", "README.md", "SPEC.md", "crates/tumataiti-wasm/src/lib.rs", "demo/package-lock.json", "demo/package.json", "demo/src/App.tsx", "demo/src/components/NetworkMeter.tsx", "demo/src/components/PolicyPanel.tsx", "demo/src/labels.ts", "demo/src/redactor.ts", "demo/src/styles.css", "demo/vite.config.ts", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/uv.lock", "scripts/build-wasm.sh"]
+command = "ml/scripts/make_data_open.sh 'uv run tumataiti-ml'"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/make_data_open.sh"]

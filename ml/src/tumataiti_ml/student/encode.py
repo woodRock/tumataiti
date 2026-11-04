@@ -18,6 +18,14 @@ TAGS = ("O", *(f"{p}-{c}" for c in LABELS for p in ("B", "I")))
 TAG_ID = {t: i for i, t in enumerate(TAGS)}
 IGNORE_INDEX = -100
 
+# Identifier field labels. They are never PII themselves, but after spans widen
+# to whole words a stray tag on part of one (the "I" of "NHI") would redact the
+# label, so a span that is exactly one of these is dropped. The Rust decoder
+# (crates/tumataiti-student) has the same list.
+FIELD_LABELS = frozenset(
+    "NHI IRD GST DOB DL SSN PIN CVV CVC IBAN BSB TFN NZBN ACC NI ID SIN EIN ITIN MRN VIN".split()
+)
+
 
 def student_label(span: Span) -> str | None:
     """Training label for a gold span, or None to train it as background."""
@@ -84,6 +92,10 @@ def decode(
     A token is part of an entity when P(not O) >= threshold; its label is the
     most likely non-O tag. Lower thresholds redact more (an operating point).
     An I- tag that does not continue a span of the same label starts a new one.
+    Spans are trimmed of whitespace, then widened to whole words: a span that
+    starts or ends inside a run of letters and digits takes the whole run, so
+    no part of a word is left exposed (M3: this cut held-out document leakage
+    for DeBERTa-small from 4.9% to 3.0%; trimming to whole words instead raised it).
     """
     o = TAG_ID["O"]
     spans: list[list] = []
@@ -112,7 +124,12 @@ def decode(
         while b > a and text[b - 1].isspace():
             b -= 1
         if a < b:
-            out.append((a, b, label, conf))
+            while a > 0 and text[a - 1].isalnum() and text[a].isalnum():
+                a -= 1
+            while b < len(text) and text[b].isalnum() and text[b - 1].isalnum():
+                b += 1
+            if text[a:b].upper() not in FIELD_LABELS:
+                out.append((a, b, label, conf))
     return out
 
 

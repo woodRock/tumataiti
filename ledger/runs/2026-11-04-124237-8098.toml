@@ -1,0 +1,24 @@
+id = "2026-11-04-124237-8098"
+status = "done"
+started = "2026-11-04T12:42:37+13:00"
+finished = "2026-11-04T12:50:40+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = ["ml/pyproject.toml", "ml/scripts/int8_ablation.sh", "ml/scripts/local_int8.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/student/export.py"]
+changed_outputs = ["SPEC.md", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/uv.lock"]
+command = "ml/scripts/int8_variants.sh runs/m3-v2 mdeberta-v3-base"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/int8_variants.sh"]
+
+[outputs]
+"ml/runs/m3-v2/mdeberta-v3-base-int8-fp16/nz_test_full.jsonl" = "sha256:4ac6b9264ea59b4034d00540d1990be1c651f566dd5d9c049b678ae2b7eb069d"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-fp16/nz_test_full.meta.json" = "sha256:f2348adc86c22b64fa5f9d776f3dcc7f3f3f28f9dbc79823f0dc8b7ca6d829af"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_full.jsonl" = "sha256:002c76a618f10682e35d8379832062c31fb4f337780788ab531b00eb3b9d3466"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_full.meta.json" = "sha256:e65a114ddd9e4a85e2827fac9ffa7c9cc437ab3c9d8ae8384d5c4e493bfef574"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int8-block/nz_test_full.jsonl" = "sha256:3a4369addda1a6b7f36b96880ed929c825d99b4104796d458210de7e11e63a25"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int8-block/nz_test_full.meta.json" = "sha256:91b4041aab0d039c6d3f9c9aff58cb88c6d0aba504b7a67aa7579295e0ec5c58"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_fp16.onnx" = "sha256:43726c20d1421b223c9c24554f68bc881bf2e1f07711a01bf15fd705c42c2f30"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_int4-block.onnx" = "sha256:d002b8b43175ac9de95d8285b6a97d6c25d7024d54d9c222e57225bd92e62a6a"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_int8-block.onnx" = "sha256:f8fdff7498cee2e5cbf890957993c6d69de6ccb2b8cb3ab1e9ffa971a6652f43"

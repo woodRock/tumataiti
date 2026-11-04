@@ -1,0 +1,19 @@
+id = "2026-11-04-123225-f03a"
+status = "done"
+started = "2026-11-04T12:32:25+13:00"
+finished = "2026-11-04T12:36:15+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = false
+command = "ml/scripts/int8_ablation.sh runs/m3-v2 mdeberta-v3-base"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/int8_ablation.sh"]
+
+[outputs]
+"ml/runs/m3-v2/mdeberta-v3-base-int8-gather/nz_test_full.jsonl" = "sha256:ee4c531bd3e73e1e1fbc4287c26ee6ce43354b22d55cb1c84c238e0b4d4383ac"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-gather/nz_test_full.meta.json" = "sha256:9c4066a668f9ce99d4c3826911b8e54bbc2b3f582aa1e9f83cf6d7593dac4493"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-matmul/nz_test_full.jsonl" = "sha256:9d5ea0b70d13d49a916a6e4edccb8eb79fed12d7ad1c9984a27b94c56bbaf1f8"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-matmul/nz_test_full.meta.json" = "sha256:ae1522b0d0162255b4f285adbb531888a3e8a3d51165a37a2a3d97471a9bf115"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_gather.onnx" = "sha256:28e91486c6cb972d28d5fb854d1e38fdfb0ec3c759905933e87a0f37718c6fd7"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_matmul.onnx" = "sha256:a3948cf65b0bbef5a7f3b4a6aa62e0ba17565603000f8d19eb33e51e6ffc64e1"

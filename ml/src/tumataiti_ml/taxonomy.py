@@ -85,6 +85,46 @@ PII_MASKING_300K = {
 }
 
 
+# Labels of the openly licensed sets (datasets/open_pii.py): Nemotron-PII and
+# Gretel's two PII sets, which mostly share names. Mapped as for
+# PII-Masking-300k: city, postcode and coordinates count as address; only
+# birth dates count as DATE; identifiers that point at a person (customer and
+# employee numbers, health and licence numbers, plates) count as ID; PINs,
+# card security codes and cookies count as SECRET. Companies, jobs, places
+# larger than a city, generic dates and times, usernames, and demographic or
+# belief attributes are not scored (they train as background).
+OPEN_PII = {
+    **dict.fromkeys(["first_name", "last_name", "name"], "PERSON"),
+    **dict.fromkeys(["street_address", "address", "city", "postcode", "coordinate", "local_latlng"], "ADDRESS"),
+    "email": "EMAIL",
+    **dict.fromkeys(["phone_number", "fax_number"], "PHONE"),
+    "url": "URL",
+    **dict.fromkeys(["ipv4", "ipv6"], "IP_ADDRESS"),
+    "date_of_birth": "DATE",
+    **dict.fromkeys(
+        [
+            "ssn", "national_id", "tax_id", "passport_number", "driver_license_number",
+            "certificate_license_number", "medical_record_number", "health_plan_beneficiary_number",
+            "credit_debit_card", "credit_card_number", "account_number", "bank_routing_number", "iban", "bban",
+            "customer_id", "employee_id", "unique_id", "unique_identifier", "license_plate", "vehicle_identifier",
+        ],
+        "ID",
+    ),
+    **dict.fromkeys(
+        ["password", "api_key", "pin", "account_pin", "cvv", "credit_card_security_code", "http_cookie"], "SECRET"
+    ),
+    **dict.fromkeys(
+        [
+            "company", "company_name", "occupation", "country", "state", "county", "date", "time", "date_time",
+            "user_name", "swift_bic", "swift_bic_code", "mac_address", "device_identifier", "biometric_identifier",
+            "education_level", "employment_status", "race_ethnicity", "religious_belief", "political_view",
+            "sexuality", "gender", "age", "blood_type", "language",
+        ],
+        None,
+    ),
+}
+
+
 def map_label(table: dict[str, str | None], label: str) -> str | None:
     """Look up a label, failing loudly on labels the table does not know."""
     if label not in table:

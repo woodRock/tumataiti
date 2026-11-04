@@ -1,0 +1,30 @@
+id = "2026-11-04-134511-5b80"
+status = "done"
+started = "2026-11-04T13:45:11+13:00"
+finished = "2026-11-04T14:15:14+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = [".github/workflows/pages.yml", "ml/scripts/int8_ablation.sh", "ml/scripts/int8_variants.sh", "ml/scripts/local_int8.sh", "ml/src/tumataiti_ml/student/export.py"]
+changed_outputs = [".gitignore", "Cargo.lock", "Cargo.toml", "README.md", "SPEC.md", "crates/tumataiti-student/Cargo.toml", "crates/tumataiti-student/src/lib.rs", "crates/tumataiti-wasm/src/lib.rs", "demo/package-lock.json", "demo/package.json", "demo/src/App.tsx", "demo/src/components/NetworkMeter.tsx", "demo/src/components/PolicyPanel.tsx", "demo/src/components/StudentPanel.tsx", "demo/src/env.d.ts", "demo/src/labels.ts", "demo/src/redactor.ts", "demo/src/student.ts", "demo/src/styles.css", "demo/vite.config.ts", "ml/pyproject.toml", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/scripts/ecs_student.sh", "ml/scripts/make_data_open.sh", "ml/scripts/score_m3.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/datasets/open_pii.py", "ml/src/tumataiti_ml/taxonomy.py", "ml/tests/test_export.py", "ml/tests/test_open_pii.py", "ml/uv.lock", "scripts/build-wasm.sh", "scripts/copy-model.sh"]
+command = "ml/scripts/local_int8.sh runs/m3-v2 mdeberta-v3-base int4-block"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/local_int8.sh"]
+
+[outputs]
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_asian_nz.jsonl" = "sha256:39f71f498ebc24a60fcab8c888ca509d6e07951bfa2e11c57fc119817e6e8abb"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_asian_nz.meta.json" = "sha256:e7a472b6b96c3b1473362df53f268a9831c3f5d06fdbc88adfbcfbf36a529ce1"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_maori.jsonl" = "sha256:78f53cba25f4b004d72fbcf94618ae9aad4181ecf4a7b8d8d02c3ab2b7d6653a"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_maori.meta.json" = "sha256:1a63a48b5bc1fab1df1cbf05d3222a00393d4538a7d4883a8b17c51053c74468"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_pakeha.jsonl" = "sha256:e72aaee47237d67687e38098aa5890b53fcc0aba4761fe43a019b1e6b6229c7d"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_pakeha.meta.json" = "sha256:e2c4046ef64094760a48d0a9bab77d0959cd14576e8d658297a5768463499f0b"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_pasifika.jsonl" = "sha256:12ea719c377c837b1401943da43a0774f1f5cc726e965dccaab0f3def976b919"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_cf_pasifika.meta.json" = "sha256:d5c417e51c86393ebc0bd8b2014118dbc97386337992ecaed6c278928d3c5458"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_full.jsonl" = "sha256:42cbc537646dccb2ee2527d9e5d0503938773f5e26432691cc677d88e2b8df03"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_full.meta.json" = "sha256:598e889ec419c9eec05d040eb1e7c951624871bb761443091c2dd9655211322e"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_names.jsonl" = "sha256:ecb013faf8cd7343aaaa731ed92c99d41c8a499cdf36bfece479a30614109bcf"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/nz_test_names.meta.json" = "sha256:6b48d2ff03fb6ab3ea2c0c4c55e7600a0d8b32376f9a463916f9d174dc602a38"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/pii300k_en_val.jsonl" = "sha256:04bc26e7651349599c57e605b8314f36acb2752d241da307fc1cebe7ea118f62"
+"ml/runs/m3-v2/mdeberta-v3-base-int8-int4-block/pii300k_en_val.meta.json" = "sha256:0591dbe922010a597560803e55892c2eba277476f0e3d756e0468370ade3a4de"
+"ml/runs/m3-v2/mdeberta-v3-base/onnx/model_int8_int4-block.onnx" = "sha256:d002b8b43175ac9de95d8285b6a97d6c25d7024d54d9c222e57225bd92e62a6a"

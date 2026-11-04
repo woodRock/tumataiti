@@ -1,0 +1,18 @@
+id = "2026-11-04-141514-7082"
+status = "done"
+started = "2026-11-04T14:15:14+13:00"
+finished = "2026-11-04T14:16:30+13:00"
+exit_code = 0
+commit = "9a10bb48f5f3152af9eec1ae873aa2a5fc32f336"
+dirty = true
+changed_code = [".github/workflows/pages.yml", "ml/scripts/int8_ablation.sh", "ml/scripts/int8_variants.sh", "ml/scripts/local_int8.sh", "ml/src/tumataiti_ml/student/export.py"]
+changed_outputs = [".gitignore", "Cargo.lock", "Cargo.toml", "README.md", "SPEC.md", "crates/tumataiti-student/Cargo.toml", "crates/tumataiti-student/src/lib.rs", "crates/tumataiti-wasm/src/lib.rs", "demo/package-lock.json", "demo/package.json", "demo/src/App.tsx", "demo/src/components/NetworkMeter.tsx", "demo/src/components/PolicyPanel.tsx", "demo/src/components/StudentPanel.tsx", "demo/src/env.d.ts", "demo/src/labels.ts", "demo/src/redactor.ts", "demo/src/student.ts", "demo/src/styles.css", "demo/vite.config.ts", "ml/pyproject.toml", "ml/results/README.md", "ml/results/m3v2_int8_names_counterfactual.json", "ml/results/m3v2_int8_names_counterfactual.md", "ml/results/m3v2_int8_nz_test_full.json", "ml/results/m3v2_int8_nz_test_full.md", "ml/results/m3v2_int8_nz_test_names.json", "ml/results/m3v2_int8_nz_test_names.md", "ml/results/m3v2_int8_pii300k_en_val.json", "ml/results/m3v2_int8_pii300k_en_val.md", "ml/scripts/ecs_student.sh", "ml/scripts/make_data_open.sh", "ml/scripts/score_m3.sh", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/datasets/open_pii.py", "ml/src/tumataiti_ml/taxonomy.py", "ml/tests/test_export.py", "ml/tests/test_open_pii.py", "ml/uv.lock", "scripts/build-wasm.sh", "scripts/copy-model.sh"]
+command = "ml/scripts/int8_variants.sh runs/m3-v2 deberta-v3-small fp16"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/int8_variants.sh"]
+
+[outputs]
+"ml/runs/m3-v2/deberta-v3-small-int8-fp16/nz_test_full.jsonl" = "sha256:c63b51ca39a008070f79ecc85295c12c8a587ee2ab2135033dc808df9200da6f"
+"ml/runs/m3-v2/deberta-v3-small-int8-fp16/nz_test_full.meta.json" = "sha256:0e993824ccabf975c3171524338e7cca51cc74a1baf2d182f54edc36d0de8116"
+"ml/runs/m3-v2/deberta-v3-small/onnx/model_int8_fp16.onnx" = "sha256:fba28e7df5e1270df19b9d0859a791edcd86bae68a69d7ad898dcb8fe1ab5e24"

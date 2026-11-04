@@ -7,6 +7,8 @@ export interface CategoryInfo {
   hue: number;
   /** False for categories that need the model (M3). */
   rules: boolean;
+  /** True for categories the current student model detects. */
+  model?: boolean;
 }
 
 export const CATEGORIES: Record<Category, CategoryInfo> = {
@@ -18,9 +20,9 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
   URL: { label: "Web link", hue: 295, rules: true },
   IP_ADDRESS: { label: "IP address", hue: 215, rules: true },
   DATE: { label: "Birth or death date", hue: 90, rules: true },
-  PERSON: { label: "Name", hue: 145, rules: false },
-  ADDRESS: { label: "Address", hue: 120, rules: false },
-  AFFILIATION: { label: "Iwi, hapū, marae", hue: 70, rules: false },
+  PERSON: { label: "Name", hue: 145, rules: false, model: true },
+  ADDRESS: { label: "Address", hue: 120, rules: false, model: true },
+  AFFILIATION: { label: "Iwi, hapū, marae", hue: 70, rules: false, model: true },
   HEALTH: { label: "Health", hue: 0, rules: false },
   CULTURAL_RESTRICTED: { label: "Restricted mātauranga", hue: 40, rules: false },
 };
@@ -46,6 +48,7 @@ export const DETECTORS: Record<string, string> = {
   google_api_key: "Google API key",
   private_key: "Private key",
   secret_assignment: "Password or secret value",
+  student: "Tūmataiti model",
 };
 
 export const ACTIONS: Record<Action, { label: string; hint: string }> = {

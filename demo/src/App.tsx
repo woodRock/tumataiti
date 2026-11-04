@@ -1,11 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CloudView } from "./components/CloudView";
 import { Editor } from "./components/Editor";
 import { Findings } from "./components/Findings";
 import { NetworkMeter } from "./components/NetworkMeter";
 import { PolicyPanel } from "./components/PolicyPanel";
+import { StudentPanel, type StudentState } from "./components/StudentPanel";
 import { PRESETS } from "./presets";
 import type { Policy, Redactor } from "./redactor";
+import type { ModelSpan } from "./student";
 
 const SETTLE_MS = 450;
 
@@ -17,16 +19,48 @@ export function App({ redactor }: { redactor: Redactor }) {
   const [run, setRun] = useState(0);
   const [stagger, setStagger] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [student, setStudent] = useState<StudentState>({ status: "off" });
+  const [detected, setDetected] = useState<{ text: string; spans: ModelSpan[] } | null>(null);
+  const model = student.status === "ready" ? student.model : null;
+  // A preset settles at once and replays its animation once the model (if on) has run.
+  const presetPending = useRef(false);
 
-  // The outbound view waits for typing to pause, so the sweep plays once per edit.
+  // The outbound view waits for typing to pause, and for the model if it is on,
+  // so it changes once per edit and never shows names the model has yet to find.
   useEffect(() => {
-    if (settled === text) return;
-    const t = setTimeout(() => setSettled(text), SETTLE_MS);
-    return () => clearTimeout(t);
-  }, [text, settled]);
+    if (settled === text && (!model || detected?.text === text)) return;
+    let cancelled = false;
+    const delay = presetPending.current || settled === text ? 0 : SETTLE_MS;
+    const t = setTimeout(async () => {
+      if (model) {
+        try {
+          const spans = await model.detect(text);
+          if (cancelled) return;
+          setDetected({ text, spans });
+        } catch (err) {
+          console.error(err);
+          if (!cancelled) setStudent({ status: "error", message: "The model stopped working in this browser." });
+          return;
+        }
+      }
+      setSettled(text);
+      if (presetPending.current) {
+        presetPending.current = false;
+        replay();
+      }
+    }, delay);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [text, settled, model, detected]);
 
-  const live = useMemo(() => redactor.redact(text, policy), [redactor, text, policy]);
-  const outbound = useMemo(() => redactor.redact(settled, policy), [redactor, settled, policy]);
+  const spansFor = (t: string) => (model && detected?.text === t ? detected.spans : undefined);
+  const live = useMemo(() => redactor.redact(text, policy, spansFor(text)), [redactor, text, policy, model, detected]);
+  const outbound = useMemo(
+    () => redactor.redact(settled, policy, spansFor(settled)),
+    [redactor, settled, policy, model, detected],
+  );
 
   const replay = () => {
     setStagger(true);
@@ -37,8 +71,12 @@ export function App({ redactor }: { redactor: Redactor }) {
     const p = PRESETS.find((p) => p.id === id)!;
     setPreset(id);
     setText(p.text);
-    setSettled(p.text);
-    replay();
+    if (model) {
+      presetPending.current = true;
+    } else {
+      setSettled(p.text);
+      replay();
+    }
   };
 
   const edit = (value: string) => {
@@ -72,7 +110,7 @@ export function App({ redactor }: { redactor: Redactor }) {
             <span className="muted"> · local redaction for Atamai</span>
           </span>
         </div>
-        <NetworkMeter />
+        <NetworkMeter since={model ? "the model loaded" : "the redactor loaded"} />
       </header>
 
       <main>
@@ -98,6 +136,8 @@ export function App({ redactor }: { redactor: Redactor }) {
           ))}
         </nav>
         <p className="preset-note muted">{active ? `Shows: ${active.shows}.` : "Your own text."}</p>
+
+        <StudentPanel state={student} onChange={setStudent} />
 
         <div className="panes">
           <section className="pane">
@@ -136,6 +176,7 @@ export function App({ redactor }: { redactor: Redactor }) {
             <h2>Policy</h2>
             <PolicyPanel
               policy={policy}
+              model={model !== null}
               onChange={setPolicy}
               onReset={() => setPolicy(redactor.defaultPolicy)}
             />
@@ -148,8 +189,8 @@ export function App({ redactor }: { redactor: Redactor }) {
             <article>
               <h3>It runs in your browser</h3>
               <p>
-                The rules are Rust compiled to WebAssembly. Once the page has loaded, redaction needs no server. You can
-                switch your wifi off and keep typing.
+                The rules are Rust compiled to WebAssembly, and the optional model runs with ONNX Runtime in the page.
+                Once they have loaded, redaction needs no server. You can switch your wifi off and keep typing.
               </p>
             </article>
             <article>
@@ -172,9 +213,10 @@ export function App({ redactor }: { redactor: Redactor }) {
 
       <footer className="bottom muted small">
         <p>
-          Milestone 0: deterministic rules only. Names, addresses, iwi and hapū affiliation and health details need the
-          model, which arrives in milestone 3. All examples are synthetic. Part of the Hiringa Te Mahara Atamai research
-          programme.
+          Deterministic rules for structured identifiers, plus an optional small model (milestone 3) for names,
+          addresses and iwi, hapū and marae. Health details and restricted mātauranga are not detected yet. The model is
+          a research prototype trained on synthetic data. All examples are synthetic. Part of the Hiringa Te Mahara
+          Atamai research programme.
         </p>
       </footer>
     </>
