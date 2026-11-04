@@ -1,0 +1,20 @@
+{
+  "name": "browser_latency",
+  "metrics": {
+    "docs": 1750,
+    "ms": {
+      "rules": 0.09999999403953552,
+      "deberta-v3-small-open-int4": 224.79999999701977,
+      "rules_deberta-v3-small-open-int4": 224.89999999850988
+    },
+    "ms_p90": {
+      "rules": 0.19999998807907104,
+      "deberta-v3-small-open-int4": 280.8299999982119,
+      "rules_deberta-v3-small-open-int4": 281.029999999702
+    }
+  },
+  "source": {
+    "path": "ml/results/browser_latency.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

@@ -1,0 +1,15 @@
+id = "2026-11-04-browser-latency"
+status = "done"
+note = "In-browser latency of the shipped int4 student: Chromium 152 (Claude desktop browser pane), ONNX Runtime Web, WebAssembly, one thread, on this laptop (8 logical cores). The page POSTs timings to the dev server, which writes ml/results/browser_latency.json. The pane reported 'hidden' when this run ended; an earlier run at commit before 3ffac45 with the pane visible gave the same median (225.2 ms against 224.9 ms here), so throttling did not affect compute."
+started = "2026-11-04T23:33:14+13:00"
+finished = "2026-11-04T23:39:19+13:00"
+exit_code = 0
+commit = "3ffac4518b54d8f52d5cad0de4023e79a34cf814"
+dirty = false
+command = "open http://localhost:5175/bench.html (npm --prefix demo run dev; demo/src/bench.ts)"
+cwd = "demo"
+host = "Jesses-MacBook-Air-2.local"
+runner = "claude-desktop-browser"
+
+[outputs]
+"ml/results/browser_latency.json" = "sha256:bc7cf0cd196e3e57344eedbc89db92771a27d7d3d854b403bee8aefa3c03bcff"

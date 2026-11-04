@@ -1,0 +1,169 @@
+{
+  "name": "m3fa_kinwords_false_alarms",
+  "metrics": {
+    "kin_auntie_redacted": {
+      "deberta-small-open-v2": 0.5411764705882353,
+      "deberta-small-open-v2-1ep": 0.8117647058823529,
+      "deberta-small-open-v2-1ep-s1": 0.7529411764705882,
+      "deberta-small-open-v3": 0.11764705882352941,
+      "deberta-small-open-v3-s1": 0.16470588235294117,
+      "deberta-small-open-v3ids": 0.058823529411764705
+    },
+    "kin_auntie_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_english_redacted": {
+      "deberta-small-open-v2": 0.5116279069767442,
+      "deberta-small-open-v2-1ep": 0.8294573643410853,
+      "deberta-small-open-v2-1ep-s1": 0.8410852713178295,
+      "deberta-small-open-v3": 0.05426356589147287,
+      "deberta-small-open-v3-s1": 0.08139534883720931,
+      "deberta-small-open-v3ids": 0.023255813953488372
+    },
+    "kin_english_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_grandad_redacted": {
+      "deberta-small-open-v2": 0.4,
+      "deberta-small-open-v2-1ep": 0.825,
+      "deberta-small-open-v2-1ep-s1": 0.8125,
+      "deberta-small-open-v3": 0.0125,
+      "deberta-small-open-v3-s1": 0.0125,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_grandad_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_granny_redacted": {
+      "deberta-small-open-v2": 0.5806451612903226,
+      "deberta-small-open-v2-1ep": 0.8494623655913979,
+      "deberta-small-open-v2-1ep-s1": 0.946236559139785,
+      "deberta-small-open-v3": 0.03225806451612903,
+      "deberta-small-open-v3-s1": 0.06451612903225806,
+      "deberta-small-open-v3ids": 0.010752688172043012
+    },
+    "kin_granny_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_kaumatua_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 1.0,
+      "deberta-small-open-v3-s1": 0.9895833333333334,
+      "deberta-small-open-v3ids": 0.96875
+    },
+    "kin_kaumatua_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_koroua_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 1.0,
+      "deberta-small-open-v3-s1": 1.0,
+      "deberta-small-open-v3ids": 1.0
+    },
+    "kin_koroua_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_nana_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 0.863013698630137,
+      "deberta-small-open-v3-s1": 0.8082191780821918,
+      "deberta-small-open-v3ids": 0.8767123287671232
+    },
+    "kin_nana_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_poua_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 1.0,
+      "deberta-small-open-v3-s1": 0.9393939393939394,
+      "deberta-small-open-v3ids": 1.0
+    },
+    "kin_poua_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_taua_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 1.0,
+      "deberta-small-open-v3-s1": 1.0,
+      "deberta-small-open-v3ids": 1.0
+    },
+    "kin_taua_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    },
+    "kin_te_reo_redacted": {
+      "deberta-small-open-v2": 1.0,
+      "deberta-small-open-v2-1ep": 1.0,
+      "deberta-small-open-v2-1ep-s1": 1.0,
+      "deberta-small-open-v3": 1.0,
+      "deberta-small-open-v3-s1": 0.981029810298103,
+      "deberta-small-open-v3ids": 0.991869918699187
+    },
+    "kin_te_reo_flagged": {
+      "deberta-small-open-v2": 0.0,
+      "deberta-small-open-v2-1ep": 0.0,
+      "deberta-small-open-v2-1ep-s1": 0.0,
+      "deberta-small-open-v3": 0.0,
+      "deberta-small-open-v3-s1": 0.0,
+      "deberta-small-open-v3ids": 0.0
+    }
+  },
+  "source": {
+    "path": "ml/results/m3fa_kinwords_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

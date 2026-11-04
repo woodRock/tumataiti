@@ -1,0 +1,314 @@
+{
+  "deberta-small-open-v2": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.5411764705882353,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.5116279069767442,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.4,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.5806451612903226,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 1.0,
+      "flagged": 0.0
+    }
+  },
+  "deberta-small-open-v2-1ep": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.8117647058823529,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.8294573643410853,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.825,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.8494623655913979,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 1.0,
+      "flagged": 0.0
+    }
+  },
+  "deberta-small-open-v2-1ep-s1": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.7529411764705882,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.8410852713178295,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.8125,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.946236559139785,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 1.0,
+      "flagged": 0.0
+    }
+  },
+  "deberta-small-open-v3": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.11764705882352941,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.05426356589147287,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.0125,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.03225806451612903,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 0.863013698630137,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 1.0,
+      "flagged": 0.0
+    }
+  },
+  "deberta-small-open-v3-s1": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.16470588235294117,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.08139534883720931,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.0125,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.06451612903225806,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 0.9895833333333334,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 0.8082191780821918,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 0.9393939393939394,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 0.981029810298103,
+      "flagged": 0.0
+    }
+  },
+  "deberta-small-open-v3ids": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.058823529411764705,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.023255813953488372,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.010752688172043012,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 0.96875,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 0.8767123287671232,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 0.991869918699187,
+      "flagged": 0.0
+    }
+  }
+}
