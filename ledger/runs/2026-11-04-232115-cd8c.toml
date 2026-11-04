@@ -1,0 +1,22 @@
+id = "2026-11-04-232115-cd8c"
+status = "done"
+started = "2026-11-04T23:21:15+13:00"
+finished = "2026-11-04T23:21:17+13:00"
+exit_code = 0
+commit = "fbaee7e5d3437f6824bd68b34a3f523a86bedd5a"
+dirty = false
+command = "bash -c 'cd ml && PATH=$PWD/.venv/bin:$PATH ./scripts/score_quant_parts.sh'"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+
+[outputs]
+"ml/results/m3v2_quantparts_nz_test_full.json" = "sha256:ac4500749fdcde1654b0774a052012a7fcccc5a4d30512992c856d53c3cb0e14"
+"ml/results/m3v2_quantparts_nz_test_full.md" = "sha256:d4682ce7f8e079308a61f86b8d9db5aa3fce8a3142e6b984378a4b75e7e7129d"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8-gather/nz_test_full.jsonl" = "sha256:9f935e7a196e9eca276f521f87dea68415d18e87992a6dd7a2871a0fde330174"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8-gather/nz_test_full.meta.json" = "sha256:66fc0932b7568c9ed0c4686aefcd1fae68cfde5b5cb26684e0b7a328f59cd8b3"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8-matmul/nz_test_full.jsonl" = "sha256:9951ba419f04f167d4559ca72ca4b95ab635f913746abbac174837436f1b3072"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8-matmul/nz_test_full.meta.json" = "sha256:1422c6c79720e2f5a6858aaa4ea12e6449e534df2d45d16e9215aa60db4fc4f3"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8/nz_test_full.jsonl" = "sha256:87383e88190316651b01b0702e7355a7d78af57aee096ea102a63e8852d689d0"
+"ml/runs/m3-v2/rules+mdeberta-v3-base-int8/nz_test_full.meta.json" = "sha256:924be0d849aab020cf11eab487079afb3029a5dbe55e9c46535526490aa17e9e"
+"ml/runs/m3-v2/rules+mdeberta-v3-base/nz_test_full.jsonl" = "sha256:f85e4836a6ecfd6056ac9d08cfdf46640d87c2a88a5803aa38af5ebe25c0de2b"
+"ml/runs/m3-v2/rules+mdeberta-v3-base/nz_test_full.meta.json" = "sha256:aec0173802dcf3d97595c7289b2440db8a047847097e70483b50cecf38329310"
