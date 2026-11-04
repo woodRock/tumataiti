@@ -7,6 +7,8 @@ Summary and findings are in [SPEC.md §9.8](../../SPEC.md). The false-alarm set 
 - `fa_baseline_*`: the published int4 model, alone and with the review layer (`tumataiti-ml review`)
 - `m3fa_*`: the current v2 model against a one-epoch v2 control (`-1ep`, seeds 0 and 1) and the rejected v3 (seeds 0 and 1) and v3ids retrains (fp32, GPU) on every set
 
+- `txn_*`: the review layer without and with `--transaction-labels` (flag unverified IDs labelled as order or booking codes), on the current fp32 model
+
 Scoring: `RUNS=runs/m3-fa TAG=m3fa MODELS="deberta-small-open-v2 deberta-small-open-v2-1ep deberta-small-open-v2-1ep-s1 deberta-small-open-v3 deberta-small-open-v3-s1 deberta-small-open-v3ids" scripts/score_m3.sh`, then the same with `scripts/score_false_alarms.sh` (`runs/m3-fa` links to the runs).
 
 ## M3: open-data students (2026-11-04)

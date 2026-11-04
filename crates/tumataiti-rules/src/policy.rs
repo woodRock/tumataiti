@@ -51,6 +51,7 @@ impl Default for Policy {
             (Date, Generalise),
             (NzGovId, Mask),
             (Financial, Mask),
+            (OtherId, Mask),
             (Secret, Block),
             (Affiliation, Flag),
             (Health, Flag),

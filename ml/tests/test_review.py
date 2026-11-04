@@ -53,3 +53,11 @@ def test_false_alarms_counts_redacted_and_flagged():
     rows = false_alarms([gold], {"d": pred})
     assert rows["not PII: kin"] == {"n": 1, "redacted": 0.0, "flagged": 1.0}
     assert rows["not PII: invoice"]["redacted"] == 1.0
+
+
+def test_transaction_labels_flag_only_unverified_ids_and_are_off_by_default():
+    text = "Order no. 61-283-509. Order no. 49-091-850. Customer number 724831965."
+    spans = [Span(text.index(w), text.index(w) + len(w), "ID", "ID") for w in ("283-", "49-091-850", "724831965")]
+    assert not review(Doc("d", text, spans), text).meta["flagged"]
+    out = review(Doc("d", text, spans), text, transaction_labels=True)
+    assert [text[a:b] for a, b, *_ in out.meta["flagged"]] == ["283-"]

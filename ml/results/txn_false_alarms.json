@@ -1,0 +1,154 @@
+{
+  "rules+deberta-v3-small-open+review": {
+    "not PII: booking_code": {
+      "n": 200,
+      "redacted": 0.995,
+      "flagged": 0.0
+    },
+    "not PII: hui_date": {
+      "n": 300,
+      "redacted": 0.0,
+      "flagged": 0.0
+    },
+    "not PII: invoice": {
+      "n": 100,
+      "redacted": 0.0,
+      "flagged": 0.0
+    },
+    "not PII: kin": {
+      "n": 700,
+      "redacted": 0.2357142857142857,
+      "flagged": 0.5842857142857143
+    },
+    "not PII: order_ref": {
+      "n": 200,
+      "redacted": 0.99,
+      "flagged": 0.0
+    },
+    "not PII: town": {
+      "n": 100,
+      "redacted": 0.14,
+      "flagged": 0.0
+    },
+    "PII: address": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: email": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: full": {
+      "n": 200,
+      "leaked": 0.0
+    },
+    "PII: given": {
+      "n": 300,
+      "leaked": 0.0
+    },
+    "PII: ird": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: landline": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: mobile": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: nan_full": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: nhi": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: plain": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: surname": {
+      "n": 100,
+      "leaked": 0.0
+    }
+  },
+  "rules+deberta-v3-small-open+review+txn": {
+    "not PII: booking_code": {
+      "n": 200,
+      "redacted": 0.995,
+      "flagged": 0.0
+    },
+    "not PII: hui_date": {
+      "n": 300,
+      "redacted": 0.0,
+      "flagged": 0.0
+    },
+    "not PII: invoice": {
+      "n": 100,
+      "redacted": 0.0,
+      "flagged": 0.0
+    },
+    "not PII: kin": {
+      "n": 700,
+      "redacted": 0.2357142857142857,
+      "flagged": 0.5842857142857143
+    },
+    "not PII: order_ref": {
+      "n": 200,
+      "redacted": 0.5,
+      "flagged": 0.49
+    },
+    "not PII: town": {
+      "n": 100,
+      "redacted": 0.14,
+      "flagged": 0.0
+    },
+    "PII: address": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: email": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: full": {
+      "n": 200,
+      "leaked": 0.0
+    },
+    "PII: given": {
+      "n": 300,
+      "leaked": 0.0
+    },
+    "PII: ird": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: landline": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: mobile": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: nan_full": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: nhi": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: plain": {
+      "n": 100,
+      "leaked": 0.0
+    },
+    "PII: surname": {
+      "n": 100,
+      "leaked": 0.0
+    }
+  }
+}

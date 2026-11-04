@@ -1,0 +1,305 @@
+{
+  "gold": "data/v1/nz_test_false_alarm.jsonl",
+  "results": {
+    "rules+deberta-v3-small-open+review": {
+      "docs": 600,
+      "docs_with_pii": 600,
+      "doc_leak_rate": 0.0,
+      "span_leak_rate": 0.0,
+      "char_any": {
+        "precision": 0.7699512303258701,
+        "recall": 1.0,
+        "f1": 0.8700253624322886,
+        "tp": 13893,
+        "fp": 4151,
+        "fn": 0
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.8485840330155116,
+          "recall": 0.9959913145147821,
+          "f1": 0.9163977255263561,
+          "tp": 5963,
+          "fp": 1064,
+          "fn": 24
+        },
+        "ADDRESS": {
+          "precision": 0.9512839879154078,
+          "recall": 1.0,
+          "f1": 0.9750338687826592,
+          "tp": 2519,
+          "fp": 129,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1913,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9984559958826557,
+          "recall": 1.0,
+          "f1": 0.9992274014936904,
+          "tp": 1940,
+          "fp": 3,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.3409646588130696,
+          "recall": 1.0,
+          "f1": 0.5085363832255926,
+          "tp": 1534,
+          "fp": 2965,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.5909610983981693,
+        "recall": 0.7378571428571429,
+        "f1": 0.6562897077509531,
+        "tp": 1033,
+        "fp": 715,
+        "fn": 367
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.5907230559345157,
+          "recall": 0.54125,
+          "f1": 0.5649054142204828,
+          "tp": 433,
+          "fp": 300,
+          "fn": 367
+        },
+        "ADDRESS": {
+          "precision": 0.8695652173913043,
+          "recall": 1.0,
+          "f1": 0.9302325581395349,
+          "tp": 100,
+          "fp": 15,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 100,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9950248756218906,
+          "recall": 1.0,
+          "f1": 0.9975062344139651,
+          "tp": 200,
+          "fp": 1,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.333889816360601,
+          "recall": 1.0,
+          "f1": 0.5006257822277848,
+          "tp": 200,
+          "fp": 399,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.0,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 100,
+        "EMAIL": 100,
+        "ID": 200,
+        "PERSON": 800,
+        "PHONE": 200
+      },
+      "_name": "rules+deberta-v3-small-open+review"
+    },
+    "rules+deberta-v3-small-open+review+txn": {
+      "docs": 600,
+      "docs_with_pii": 600,
+      "doc_leak_rate": 0.0,
+      "span_leak_rate": 0.0,
+      "char_any": {
+        "precision": 0.8028779472954231,
+        "recall": 1.0,
+        "f1": 0.8906625637080489,
+        "tp": 13893,
+        "fp": 3411,
+        "fn": 0
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.8485840330155116,
+          "recall": 0.9959913145147821,
+          "f1": 0.9163977255263561,
+          "tp": 5963,
+          "fp": 1064,
+          "fn": 24
+        },
+        "ADDRESS": {
+          "precision": 0.9512839879154078,
+          "recall": 1.0,
+          "f1": 0.9750338687826592,
+          "tp": 2519,
+          "fp": 129,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1913,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9984559958826557,
+          "recall": 1.0,
+          "f1": 0.9992274014936904,
+          "tp": 1940,
+          "fp": 3,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.4080872572492684,
+          "recall": 1.0,
+          "f1": 0.5796334781787266,
+          "tp": 1534,
+          "fp": 2225,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.6268203883495146,
+        "recall": 0.7378571428571429,
+        "f1": 0.6778215223097114,
+        "tp": 1033,
+        "fp": 615,
+        "fn": 367
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.5907230559345157,
+          "recall": 0.54125,
+          "f1": 0.5649054142204828,
+          "tp": 433,
+          "fp": 300,
+          "fn": 367
+        },
+        "ADDRESS": {
+          "precision": 0.8695652173913043,
+          "recall": 1.0,
+          "f1": 0.9302325581395349,
+          "tp": 100,
+          "fp": 15,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 100,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9950248756218906,
+          "recall": 1.0,
+          "f1": 0.9975062344139651,
+          "tp": 200,
+          "fp": 1,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.40080160320641284,
+          "recall": 1.0,
+          "f1": 0.5722460658082976,
+          "tp": 200,
+          "fp": 299,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.0,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 100,
+        "EMAIL": 100,
+        "ID": 200,
+        "PERSON": 800,
+        "PHONE": 200
+      },
+      "_name": "rules+deberta-v3-small-open+review+txn"
+    }
+  },
+  "timings": {
+    "rules+deberta-v3-small-open+review": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 0.023591856923303567,
+          "seconds_median": 2.7166504878550768e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 7.609409585595131,
+          "seconds_median": 0.010684526525437832,
+          "device": "cuda",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/deberta-v3-small-open/model",
+          "host": "cuda08.ecs.vuw.ac.nz"
+        }
+      ],
+      "seconds_median": 0.010711693030316383
+    },
+    "rules+deberta-v3-small-open+review+txn": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 0.023591856923303567,
+          "seconds_median": 2.7166504878550768e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 7.609409585595131,
+          "seconds_median": 0.010684526525437832,
+          "device": "cuda",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/deberta-v3-small-open/model",
+          "host": "cuda08.ecs.vuw.ac.nz"
+        }
+      ],
+      "seconds_median": 0.010711693030316383
+    }
+  }
+}

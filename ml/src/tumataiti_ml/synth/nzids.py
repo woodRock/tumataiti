@@ -59,6 +59,16 @@ def nhi_check(first6: str, new_format: bool) -> str | None:
     return None if r == 0 else str((11 - r) % 10)
 
 
+def nhi_is_valid(s: str) -> bool:
+    if len(s) != 7 or any(c not in NHI_ALPHABET for c in s[:3]) or not s[3:5].isdigit():
+        return False
+    if s[5].isdigit() and s[6].isdigit():
+        return nhi_check(s[:6], False) == s[6]
+    if s[5] in NHI_ALPHABET and s[6] in NHI_ALPHABET:
+        return nhi_check(s[:6], True) == s[6]
+    return False
+
+
 def gen_nhi(rng: random.Random, valid: bool = True, new_format: bool = False) -> str:
     while True:
         letters = "".join(rng.choice(NHI_ALPHABET) for _ in range(3))

@@ -14,6 +14,7 @@ export interface CategoryInfo {
 export const CATEGORIES: Record<Category, CategoryInfo> = {
   NZ_GOV_ID: { label: "NZ government ID", hue: 25, rules: true },
   FINANCIAL: { label: "Card or bank account", hue: 335, rules: true },
+  OTHER_ID: { label: "Other ID", hue: 10, rules: false, model: true },
   SECRET: { label: "Password or API key", hue: 55, rules: true },
   EMAIL: { label: "Email", hue: 255, rules: true },
   PHONE: { label: "Phone", hue: 175, rules: true },

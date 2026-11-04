@@ -32,6 +32,7 @@ TUMATAITI = {
     "DATE": "DATE",
     "NZ_GOV_ID": "ID",
     "FINANCIAL": "ID",
+    "OTHER_ID": "ID",
     "SECRET": "SECRET",
     # Not yet scored: no detector covers these, so they are reported separately.
     "AFFILIATION": None,

@@ -146,7 +146,7 @@ def cmd_review(a: argparse.Namespace) -> None:
     from .review import review
 
     text = {d.id: d.text for d in read_jsonl(a.gold)}
-    out = [review(d, text[d.id]) for d in read_jsonl(a.pred) if d.id in text]
+    out = [review(d, text[d.id], a.transaction_labels) for d in read_jsonl(a.pred) if d.id in text]
     write_jsonl(a.out, out)
     meta = a.pred.with_suffix(".meta.json")
     if meta.exists():
@@ -321,6 +321,8 @@ def main(argv: list[str] | None = None) -> None:
     rv.add_argument("--gold", type=Path, required=True, help="the documents the predictions are for")
     rv.add_argument("--pred", type=Path, required=True)
     rv.add_argument("--out", type=Path, required=True)
+    rv.add_argument("--transaction-labels", action="store_true",
+                    help="also flag unverified IDs labelled as order or booking codes (SPEC §9.8)")
     rv.set_defaults(fn=cmd_review)
 
     fa = sub.add_parser("false-alarms", help="false alarms and leaks on the false-alarm set")

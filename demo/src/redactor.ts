@@ -11,6 +11,7 @@ export type Category =
   | "DATE"
   | "NZ_GOV_ID"
   | "FINANCIAL"
+  | "OTHER_ID"
   | "SECRET"
   | "AFFILIATION"
   | "HEALTH"

@@ -14,6 +14,9 @@ pub enum Category {
     Date,
     NzGovId,
     Financial,
+    /// An ID the model found that is not a valid NZ ID or card number: a
+    /// foreign or unknown identifier, or a code that only looks like one.
+    OtherId,
     Secret,
     Affiliation,
     Health,
@@ -21,7 +24,7 @@ pub enum Category {
 }
 
 impl Category {
-    pub const ALL: [Category; 13] = [
+    pub const ALL: [Category; 14] = [
         Category::Person,
         Category::Address,
         Category::Email,
@@ -31,6 +34,7 @@ impl Category {
         Category::Date,
         Category::NzGovId,
         Category::Financial,
+        Category::OtherId,
         Category::Secret,
         Category::Affiliation,
         Category::Health,
@@ -49,6 +53,7 @@ impl Category {
             Category::Date => "DATE",
             Category::NzGovId => "NZ_GOV_ID",
             Category::Financial => "FINANCIAL",
+            Category::OtherId => "ID",
             Category::Secret => "SECRET",
             Category::Affiliation => "AFFILIATION",
             Category::Health => "HEALTH",
@@ -62,6 +67,7 @@ impl Category {
             Category::Secret => 100,
             Category::NzGovId => 90,
             Category::Financial => 85,
+            Category::OtherId => 84,
             Category::CulturalRestricted => 80,
             Category::Health => 70,
             Category::Email => 60,
