@@ -2,3 +2,20 @@
 # every run, settings the paper may quote, and code whose change makes earlier results suspect.
 # The Overleaf project is named without the macron, so it is set here rather than found by name.
 paper = "~/overleaf/Tumataiti"
+
+# Settings the paper states (\res{settings-<name>/...}); read with ast, never run.
+[settings.train]           # student fine-tuning (student/train.py Config; the CLI defaults match)
+path = "ml/src/tumataiti_ml/student/train.py"
+names = ["Config"]
+
+[settings.quantise]        # block-wise weight-only quantisation of the encoder
+path = "ml/src/tumataiti_ml/student/export.py"
+names = ["quantise_int8.block_size"]
+
+[settings.onnx]            # CPU timings of the exported students
+path = "ml/src/tumataiti_ml/detectors/student_onnx.py"
+names = ["THREADS"]
+
+[settings.lexicon]         # community weights of the generated names (v1 test splits; v2 training)
+path = "ml/src/tumataiti_ml/synth/lexicon.py"
+names = ["GROUP_WEIGHTS"]

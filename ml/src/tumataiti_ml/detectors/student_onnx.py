@@ -14,6 +14,7 @@ from ..spans import Span
 from ..student.encode import decode, union, windows
 
 EVAL_CATEGORY = {"AFFILIATION": None}
+THREADS = 4  # ONNX Runtime intra-op threads, for the laptop CPU timings
 
 
 def make(model: str, threshold: float = 0.5, **_):
@@ -23,7 +24,7 @@ def make(model: str, threshold: float = 0.5, **_):
     path = Path(model)
     tokenizer = AutoTokenizer.from_pretrained(path.parent)
     opts = ort.SessionOptions()
-    opts.intra_op_num_threads = 4
+    opts.intra_op_num_threads = THREADS
     session = ort.InferenceSession(str(path), opts, providers=["CPUExecutionProvider"])
 
     def predict(text: str) -> list[Span]:

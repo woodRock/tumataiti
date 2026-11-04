@@ -1,0 +1,140 @@
+{
+  "id": "nz-test_full-00001",
+  "text": "DISCHARGE SUMMARY\nPatient: Mataele, Tūī\nNHI: GFK2965    DOB: 1st April 1994\nResidential address: 217 Te Rauparaha Crescent, Porirua 5022\nNext of kin: Rongo Te Kanawa (tamāhine), ph +64 27 686 6107\nGP to follow up. Clinic letter copied to gtekanawa@example.ac.nz.",
+  "gold": [
+    {
+      "start": 27,
+      "end": 34,
+      "category": "PERSON"
+    },
+    {
+      "start": 36,
+      "end": 39,
+      "category": "PERSON"
+    },
+    {
+      "start": 45,
+      "end": 52,
+      "category": "ID"
+    },
+    {
+      "start": 61,
+      "end": 75,
+      "category": "DATE"
+    },
+    {
+      "start": 97,
+      "end": 136,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 150,
+      "end": 165,
+      "category": "PERSON"
+    },
+    {
+      "start": 181,
+      "end": 196,
+      "category": "PHONE"
+    },
+    {
+      "start": 238,
+      "end": 261,
+      "category": "EMAIL"
+    }
+  ],
+  "teacher": [
+    {
+      "start": 45,
+      "end": 52,
+      "category": "ID"
+    },
+    {
+      "start": 61,
+      "end": 75,
+      "category": "DATE"
+    },
+    {
+      "start": 97,
+      "end": 100,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 101,
+      "end": 122,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 124,
+      "end": 131,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 132,
+      "end": 136,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 150,
+      "end": 165,
+      "category": "PERSON"
+    },
+    {
+      "start": 181,
+      "end": 196,
+      "category": "PHONE"
+    },
+    {
+      "start": 238,
+      "end": 261,
+      "category": "EMAIL"
+    }
+  ],
+  "student": [
+    {
+      "start": 27,
+      "end": 34,
+      "category": "PERSON"
+    },
+    {
+      "start": 36,
+      "end": 39,
+      "category": "PERSON"
+    },
+    {
+      "start": 45,
+      "end": 52,
+      "category": "ID"
+    },
+    {
+      "start": 61,
+      "end": 75,
+      "category": "DATE"
+    },
+    {
+      "start": 97,
+      "end": 136,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 150,
+      "end": 165,
+      "category": "PERSON"
+    },
+    {
+      "start": 181,
+      "end": 196,
+      "category": "PHONE"
+    },
+    {
+      "start": 238,
+      "end": 261,
+      "category": "EMAIL"
+    }
+  ],
+  "source": {
+    "gold": "ml/data/v1/nz_test_full.jsonl",
+    "teacher": "ml/runs/m3-v2/rules+openai-privacy-filter/nz_test_full.jsonl",
+    "student": "ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_full.jsonl"
+  }
+}

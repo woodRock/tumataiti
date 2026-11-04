@@ -1,0 +1,88 @@
+{
+  "name": "m3v2_quantparts_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules_mdeberta-v3-base": 0.010857142857142857,
+      "rules_mdeberta-v3-base-int8-gather": 0.011428571428571429,
+      "rules_mdeberta-v3-base-int8-matmul": 0.6285714285714286,
+      "rules_mdeberta-v3-base-int8": 0.6365714285714286
+    },
+    "span_leak": {
+      "rules_mdeberta-v3-base": 0.0019487179487179488,
+      "rules_mdeberta-v3-base-int8-gather": 0.0020512820512820513,
+      "rules_mdeberta-v3-base-int8-matmul": 0.23015384615384615,
+      "rules_mdeberta-v3-base-int8": 0.2315897435897436
+    },
+    "precision": {
+      "rules_mdeberta-v3-base": 0.9370285173032036,
+      "rules_mdeberta-v3-base-int8-gather": 0.9371220258988912,
+      "rules_mdeberta-v3-base-int8-matmul": 0.9421982457650626,
+      "rules_mdeberta-v3-base-int8": 0.9429757692565851
+    },
+    "recall": {
+      "rules_mdeberta-v3-base": 0.9989541446526138,
+      "rules_mdeberta-v3-base-int8-gather": 0.9989270966694916,
+      "rules_mdeberta-v3-base-int8-matmul": 0.8881115098184179,
+      "rules_mdeberta-v3-base-int8": 0.8866509187298267
+    },
+    "f1": {
+      "rules_mdeberta-v3-base": 0.9670009338534985,
+      "rules_mdeberta-v3-base-int8-gather": 0.9670380504750309,
+      "rules_mdeberta-v3-base-int8-matmul": 0.9143557302713717,
+      "rules_mdeberta-v3-base-int8": 0.9139463669186768
+    },
+    "exact_f1": {
+      "rules_mdeberta-v3-base": 0.7086413939251235,
+      "rules_mdeberta-v3-base-int8-gather": 0.7092519314113435,
+      "rules_mdeberta-v3-base-int8-matmul": 0.5048121414029242,
+      "rules_mdeberta-v3-base-int8": 0.50453871804372
+    },
+    "leak_address": {
+      "rules_mdeberta-v3-base": 0.0,
+      "rules_mdeberta-v3-base-int8-gather": 0.0,
+      "rules_mdeberta-v3-base-int8-matmul": 0.203,
+      "rules_mdeberta-v3-base-int8": 0.221
+    },
+    "leak_date": {
+      "rules_mdeberta-v3-base": 0.0,
+      "rules_mdeberta-v3-base-int8-gather": 0.0,
+      "rules_mdeberta-v3-base-int8-matmul": 0.0,
+      "rules_mdeberta-v3-base-int8": 0.0
+    },
+    "leak_email": {
+      "rules_mdeberta-v3-base": 0.0,
+      "rules_mdeberta-v3-base-int8-gather": 0.0,
+      "rules_mdeberta-v3-base-int8-matmul": 0.0,
+      "rules_mdeberta-v3-base-int8": 0.0
+    },
+    "leak_id": {
+      "rules_mdeberta-v3-base": 0.0,
+      "rules_mdeberta-v3-base-int8-gather": 0.0,
+      "rules_mdeberta-v3-base-int8-matmul": 0.0,
+      "rules_mdeberta-v3-base-int8": 0.0
+    },
+    "leak_person": {
+      "rules_mdeberta-v3-base": 0.003619047619047619,
+      "rules_mdeberta-v3-base-int8-gather": 0.0038095238095238095,
+      "rules_mdeberta-v3-base-int8-matmul": 0.38876190476190475,
+      "rules_mdeberta-v3-base-int8": 0.388
+    },
+    "leak_phone": {
+      "rules_mdeberta-v3-base": 0.0,
+      "rules_mdeberta-v3-base-int8-gather": 0.0,
+      "rules_mdeberta-v3-base-int8-matmul": 0.0,
+      "rules_mdeberta-v3-base-int8": 0.0
+    },
+    "ms": {
+      "rules_mdeberta-v3-base": 17.257439058084856,
+      "rules_mdeberta-v3-base-int8-gather": 70.88295850007853,
+      "rules_mdeberta-v3-base-int8-matmul": 44.18541750237637,
+      "rules_mdeberta-v3-base-int8": 42.04391699931875
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3v2_quantparts_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

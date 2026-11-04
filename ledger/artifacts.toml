@@ -1,55 +1,15 @@
 # What each paper artifact is built from. Outputs land in <paper>/generated/.
+
+[build]
+python = "python3.11"                # has matplotlib (fig_pipeline.py)
 # Result keys are <result>/<metric>/<stat>, e.g. \res{mba/f1/mean}.
 
 [artifacts.results]
 kind = "macros"
 output = "generated/results.tex"
-# Every score file in ml/results/ (ml/scripts/export_ledger.py).
-results = [
-    "fa_baseline_false_alarms",
-    "fa_baseline_nz_test_false_alarm",
-    "m1_nz_synth_v0",
-    "m1_pii300k",
-    "m3_names_counterfactual",
-    "m3_nz_test_full",
-    "m3_nz_test_names",
-    "m3_pii300k_en_val",
-    "m3fa_false_alarms",
-    "m3fa_names_counterfactual",
-    "m3fa_nz_test_false_alarm",
-    "m3fa_nz_test_full",
-    "m3fa_nz_test_names",
-    "m3fa_open_en_test",
-    "m3fa_pii300k_en_val",
-    "m3open_int4_names_counterfactual",
-    "m3open_int4_nz_test_full",
-    "m3open_int4_nz_test_names",
-    "m3open_int4_open_en_test",
-    "m3open_int4_pii300k_en_val",
-    "m3open_names_counterfactual",
-    "m3open_nz_test_full",
-    "m3open_nz_test_names",
-    "m3open_open_en_test",
-    "m3open_pii300k_en_val",
-    "m3v2_fp16_nz_test_full",
-    "m3v2_int4_names_counterfactual",
-    "m3v2_int4_nz_test_full",
-    "m3v2_int4_nz_test_names",
-    "m3v2_int4_pii300k_en_val",
-    "m3v2_int8_names_counterfactual",
-    "m3v2_int8_nz_test_full",
-    "m3v2_int8_nz_test_names",
-    "m3v2_int8_pii300k_en_val",
-    "m3v2_names_counterfactual",
-    "m3v2_nz_test_full",
-    "m3v2_nz_test_names",
-    "m3v2_pii300k_en_val",
-    "txn_false_alarms",
-    "txn_nz_test_false_alarm",
-    "txn_nz_test_full",
-    "txn_open_en_test",
-    "txn_pii300k_en_val",
-]
+# Every result: the score files in ml/results/ (ml/scripts/export_ledger.py), the
+# inventory (ml/scripts/export_inventory.py) and the settings in taura.toml.
+results = ["*"]
 
 # A table built straight from results (one row per result):
 # [artifacts.table_main]
@@ -145,3 +105,138 @@ percent = true
 [format."*/*_leaked/*"]
 decimals = 1
 percent = true
+
+# Inventory and settings (ml/scripts/export_inventory.py, taura.toml).
+[format."inventory/docs/*"]
+decimals = 0
+thousands = true
+
+[format.docs]                      # table column
+decimals = 0
+thousands = true
+
+[format.templates]
+decimals = 0
+
+[format."inventory/mb/*"]          # file sizes in MB
+decimals = 0
+
+[format.mb]                        # table column
+decimals = 0
+
+[format."inventory/params/*"]      # millions of parameters
+decimals = 0
+
+[format."settings-train/Config.lr"]
+sci = true
+decimals = 0
+
+[format."settings-train/Config.warmup"]
+percent = true
+decimals = 0
+
+[format."settings-train/Config.weight_decay"]
+decimals = 2
+
+[format."settings-lexicon/*"]      # community shares: 50\%
+percent = true
+decimals = 0
+
+# False-alarm table columns (shares of non-PII slots redacted).
+[format.kin_redacted]
+decimals = 0
+percent = true
+
+[format.order_ref_redacted]
+decimals = 0
+percent = true
+
+[format.booking_code_redacted]
+decimals = 0
+percent = true
+
+[format.kin_flagged]
+decimals = 0
+percent = true
+
+# Tables (artifacts/table_*.py write a taura table spec).
+[artifacts.table_data]
+kind = "table"
+output = "generated/table_data.tex"
+script = "artifacts/table_data.py"
+results = ["inventory"]
+colspec = "@{}llrr@{}"
+
+[artifacts.table_main]
+kind = "table"
+output = "generated/table_main.tex"
+script = "artifacts/table_main.py"
+results = ["inventory", "m3open_nz_test_full", "m3open_open_en_test", "m3open_pii300k_en_val",
+           "m3open_int4_nz_test_full", "m3open_int4_open_en_test", "m3open_int4_pii300k_en_val"]
+colspec = "@{}lrrrrr@{}"
+bold = "min"                       # the lowest leak rate per test set
+
+[artifacts.table_names]
+kind = "table"
+output = "generated/table_names.tex"
+script = "artifacts/table_names.py"
+results = ["m3open_names_counterfactual", "m3open_int4_names_counterfactual"]
+colspec = "@{}lrrrrr@{}"
+
+[artifacts.table_data_versions]
+kind = "table"
+output = "generated/table_data_versions.tex"
+script = "artifacts/table_data_versions.py"
+results = ["m3v2_nz_test_full", "m3open_nz_test_full"]
+colspec = "@{}lrrrrrr@{}"
+bold = "min"
+
+[artifacts.table_quant]
+kind = "table"
+output = "generated/table_quant.tex"
+script = "artifacts/table_quant.py"
+results = ["inventory", "m3v2_int8_nz_test_full", "m3v2_fp16_nz_test_full", "m3v2_int4_nz_test_full"]
+colspec = "@{}lrrrrrrrr@{}"
+
+[artifacts.table_false_alarms]
+kind = "table"
+output = "generated/table_false_alarms.tex"
+script = "artifacts/table_false_alarms.py"
+results = ["m3fa_nz_test_full", "m3fa_names_counterfactual", "m3fa_open_en_test", "m3fa_pii300k_en_val",
+           "m3fa_false_alarms"]
+colspec = "@{}lrrrrrr@{}"
+
+[artifacts.fig_pipeline]
+kind = "figure"
+output = "generated/fig_pipeline.pdf"
+script = "artifacts/fig_pipeline.py"
+
+[artifacts.fig_example]
+kind = "figure"
+output = "generated/fig_example.pdf"
+script = "artifacts/fig_example.py"
+# artifacts/data/example_redaction.json, written by ml/scripts/export_example.py
+
+[artifacts.fig_names]
+kind = "figure"
+output = "generated/fig_names.pdf"
+script = "artifacts/fig_names.py"
+results = ["m3open_names_counterfactual", "m3open_int4_names_counterfactual"]
+
+[artifacts.fig_quant]
+kind = "figure"
+output = "generated/fig_quant.pdf"
+script = "artifacts/fig_quant.py"
+results = ["inventory", "m3v2_int8_nz_test_full", "m3v2_fp16_nz_test_full", "m3v2_int4_nz_test_full"]
+
+[artifacts.fig_data_versions]
+kind = "figure"
+output = "generated/fig_data_versions.pdf"
+script = "artifacts/fig_data_versions.py"
+results = ["m3v2_nz_test_full", "m3open_nz_test_full"]
+
+[artifacts.fig_false_alarms]
+kind = "figure"
+output = "generated/fig_false_alarms.pdf"
+script = "artifacts/fig_false_alarms.py"
+results = ["m3fa_false_alarms", "m3fa_nz_test_full"]

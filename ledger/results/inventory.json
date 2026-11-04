@@ -1,0 +1,81 @@
+{
+  "name": "inventory",
+  "metrics": {
+    "docs": {
+      "nz_train": 8000,
+      "nz_dev": 800,
+      "nz_test_names": 1600,
+      "nz_test_full": 1750,
+      "nz_cf_maori": 1400,
+      "nz_test_false_alarm": 600,
+      "nemotron_train": 20000,
+      "gretel_en_train": 10000,
+      "gretel_en_train_all": 49896,
+      "open_en_train": 30000,
+      "nemotron_test": 1000,
+      "gretel_en_test": 1000,
+      "open_en_test": 2000,
+      "pii300k_en_train": 29908,
+      "pii300k_en_val": 7946,
+      "gretel_en_train_raw": 50000,
+      "gretel_en_dropped": 104
+    },
+    "templates": {
+      "train_v1": 16,
+      "v2_added": 6,
+      "train_v2": 22,
+      "test_full": 7,
+      "false_alarm": 6,
+      "v3_added": 4
+    },
+    "names": {
+      "maori.given.train": 35,
+      "maori.given.held_out": 13,
+      "maori.surname.train": 15,
+      "maori.surname.held_out": 8,
+      "pakeha.given.train": 28,
+      "pakeha.given.held_out": 8,
+      "pakeha.surname.train": 28,
+      "pakeha.surname.held_out": 6,
+      "pasifika.given.train": 15,
+      "pasifika.given.held_out": 6,
+      "pasifika.surname.train": 13,
+      "pasifika.surname.held_out": 5,
+      "asian_nz.given.train": 13,
+      "asian_nz.given.held_out": 5,
+      "asian_nz.surname.train": 14,
+      "asian_nz.surname.held_out": 5
+    },
+    "mb": {
+      "deberta-v3-small-open-fp32": 566.647208,
+      "deberta-v3-small-open-int4": 151.944048,
+      "modernbert-base-open-fp32": 601.164087,
+      "modernbert-base-open-int4": 110.64618,
+      "mdeberta-v3-base-open-fp32": 1115.544962,
+      "mdeberta-v3-base-open-int4": 298.174282,
+      "deberta-v3-small-fp32": 566.647208,
+      "modernbert-base-fp32": 601.164087,
+      "mdeberta-v3-base-fp32": 1115.544962,
+      "deberta-v3-small-int8": 165.395059,
+      "deberta-v3-small-fp16": 200.696487,
+      "modernbert-base-int8": 152.960831,
+      "modernbert-base-fp16": 263.324352,
+      "mdeberta-v3-base-int8": 325.070044,
+      "deberta-v3-small-int4": 151.944048,
+      "modernbert-base-int4": 110.64618,
+      "mdeberta-v3-base-int4": 298.174282,
+      "mdeberta-v3-base-int8-gather": 537.241723,
+      "mdeberta-v3-base-int8-matmul": 903.373713,
+      "mdeberta-v3-base-fp16": 395.656174
+    },
+    "params": {
+      "deberta-v3-small-open-fp32": 141.320504,
+      "modernbert-base-open-fp32": 149.621102,
+      "mdeberta-v3-base-open-fp32": 278.234936
+    }
+  },
+  "source": {
+    "path": "ml/scripts/export_inventory.py"
+  },
+  "produced_by": "ml/scripts/export_inventory.py"
+}
