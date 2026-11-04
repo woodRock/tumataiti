@@ -19,3 +19,11 @@ names = ["THREADS"]
 [settings.lexicon]         # community weights of the generated names (v1 test splits; v2 training)
 path = "ml/src/tumataiti_ml/synth/lexicon.py"
 names = ["GROUP_WEIGHTS"]
+
+[settings.uncertainty]     # the bootstrap (score_uncertainty.py)
+path = "ml/scripts/score_uncertainty.py"
+names = ["BOOTSTRAPS", "CONFIDENCE"]
+
+[settings.thresholds]      # decoding thresholds tried (thresholds.py)
+path = "ml/scripts/thresholds.py"
+names = ["THRESHOLDS"]

@@ -7,7 +7,8 @@ from the files rather than typed, to the taura result ledger/results/inventory.j
 - templates/<split>: generator templates per split (synth.generate);
 - names/<community>/<part>/<train|held_out>: name-list lengths (synth.lexicon);
 - mb/<run>: ONNX file sizes in MB (10^6 bytes) of the exported students (ml/runs/);
-- params/<run>: parameters of each fp32 ONNX export, in millions.
+- params/<run>: parameters of each fp32 ONNX export, in millions;
+- best_epoch/<student> and dev_char_f1/<student>: the selected checkpoint.
 
 Cite as \\res{inventory/docs/nz_train} and so on.
 """
@@ -117,6 +118,10 @@ def main() -> None:
     mb = {k: (ML / "runs" / v).stat().st_size / 1e6 for k, v in ONNX.items()}
     fp32 = {k: params(ML / "runs" / v) for k, v in ONNX.items() if k.endswith("-open-fp32")}
 
+    # Selected checkpoints (1-based epoch), and development F1 there.
+    students = ["deberta-v3-small-open", "modernbert-base-open", "mdeberta-v3-base-open"]
+    best = {m: json.loads((ML / "runs/m3-v2" / m / "best.json").read_text()) for m in students}
+
     result = {
         "name": "inventory",
         "metrics": {
@@ -125,6 +130,8 @@ def main() -> None:
             "names": names,
             "mb": mb,
             "params": fp32,
+            "best_epoch": {m: b["epoch"] + 1 for m, b in best.items()},
+            "dev_char_f1": {m: b["char_f1"] for m, b in best.items()},
         },
         "source": {"path": "ml/scripts/export_inventory.py"},
         "produced_by": "ml/scripts/export_inventory.py",

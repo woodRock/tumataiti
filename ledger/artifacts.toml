@@ -183,14 +183,6 @@ script = "artifacts/table_names.py"
 results = ["m3open_names_counterfactual", "m3open_int4_names_counterfactual"]
 colspec = "@{}lrrrrr@{}"
 
-[artifacts.table_data_versions]
-kind = "table"
-output = "generated/table_data_versions.tex"
-script = "artifacts/table_data_versions.py"
-results = ["m3v2_nz_test_full", "m3open_nz_test_full"]
-colspec = "@{}lrrrrrr@{}"
-bold = "min"
-
 [artifacts.table_quant]
 kind = "table"
 output = "generated/table_quant.tex"
@@ -229,21 +221,64 @@ output = "generated/fig_quant.pdf"
 script = "artifacts/fig_quant.py"
 results = ["inventory", "m3open_quant_nz_test_full"]
 
-[artifacts.fig_data_versions]
-kind = "figure"
-output = "generated/fig_data_versions.pdf"
-script = "artifacts/fig_data_versions.py"
-results = ["m3v2_nz_test_full", "m3open_nz_test_full"]
-
-[artifacts.fig_false_alarms]
-kind = "figure"
-output = "generated/fig_false_alarms.pdf"
-script = "artifacts/fig_false_alarms.py"
-results = ["m3fa_false_alarms", "m3fa_nz_test_full"]
-
 [format.ms_p90]
 decimals = 1
 
 [format."m3fa_kinwords_false_alarms/*"]   # kinship false alarms, per word: 54\%
 decimals = 0
 percent = true
+
+[format."uncertainty_nz_test_full/*"]
+decimals = 1
+percent = true
+
+[format."uncertainty_nz_test_full/gap*/*"]
+decimals = 1
+percent = true
+sign = true
+
+[format."uncertainty_nz_test_full/diff_*/*"]
+decimals = 1
+percent = true
+sign = true
+
+[format."settings-uncertainty/BOOTSTRAPS"]
+decimals = 0
+thousands = true
+
+[format."settings-uncertainty/CONFIDENCE"]
+decimals = 0
+percent = true
+
+[format."settings-thresholds/THRESHOLDS/*"]
+decimals = 1
+
+[format."inventory/dev_char_f1/*"]
+decimals = 1
+
+[format.tmpl]                      # table column, per-template leak rate
+decimals = 1
+percent = true
+
+[artifacts.table_templates]
+kind = "table"
+output = "generated/table_templates.tex"
+script = "artifacts/table_templates.py"
+results = ["uncertainty_nz_test_full"]
+colspec = "@{}lrrrr@{}"
+bold = "min"
+
+[artifacts.table_robust]
+kind = "table"
+output = "generated/table_robust.tex"
+script = "artifacts/table_robust.py"
+results = ["m3open_int4_nz_test_full", "m3open_int4_names_counterfactual",
+           "m3open_robust_nomacron_nz_test_full", "m3open_robust_lower_nz_test_full",
+           "m3open_robust_nomacron_names_counterfactual", "m3open_robust_lower_names_counterfactual"]
+colspec = "@{}lrrrrrr@{}"
+
+[artifacts.fig_thresholds]
+kind = "figure"
+output = "generated/fig_thresholds.pdf"
+script = "artifacts/fig_thresholds.py"
+results = ["m3open_thresholds_nz_test_full"]

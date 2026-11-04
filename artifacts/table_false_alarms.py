@@ -1,7 +1,7 @@
-"""Table: retraining against false alarms. DeBERTa-v3-small (open data) trained on
-data v2, v2 controls on v3's shortened schedule (seeds A and B), v3 with kinship negatives (seeds A and B) and
-v3ids with ID look-alikes: leak rates merged with the rules, and the share of
-standalone kinship words (model alone) and ID-shaped codes redacted.
+"""Table: retraining against false alarms. DeBERTa-v3-small as deployed, controls
+on the shortened schedule (seeds A and B), with kinship negatives added (seeds A
+and B), and with ID look-alikes also added: leak rates merged with the rules, and
+the share of standalone kinship words (model alone) and ID-shaped codes redacted.
 
 Run by `taura build`; reads $TAURA_RESULTS and writes a taura table spec to $TAURA_OUTPUT.
 """
@@ -11,12 +11,12 @@ import json
 import os
 from pathlib import Path
 
-RUNS = [("v2 (shipped)", "deberta-small-open-v2"),
-        ("v2 control A", "deberta-small-open-v2-1ep"),
-        ("v2 control B", "deberta-small-open-v2-1ep-s1"),
-        ("v3 A", "deberta-small-open-v3"),
-        ("v3 B", "deberta-small-open-v3-s1"),
-        ("v3ids", "deberta-small-open-v3ids")]
+RUNS = [("Deployed", "deberta-small-open-v2"),
+        ("Control A", "deberta-small-open-v2-1ep"),
+        ("Control B", "deberta-small-open-v2-1ep-s1"),
+        ("Kinship negatives A", "deberta-small-open-v3"),
+        ("Kinship negatives B", "deberta-small-open-v3-s1"),
+        ("Kinship and ID negatives", "deberta-small-open-v3ids")]
 
 
 def main() -> None:

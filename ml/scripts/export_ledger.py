@@ -14,7 +14,10 @@ names are as in the tables, with "+" written "_" (rules_deberta-v3-small-open).
 - false-alarm files: <slot>_redacted and <slot>_flagged for text that is
   not PII, and <slot>_leaked for the PII beside it, per detector;
 - browser latency (browser_*.json, demo/src/bench.ts): docs, ms (median per
-  document) and ms_p90, per detector (rules, the shipped student, both merged).
+  document) and ms_p90, per detector (rules, the shipped student, both merged);
+- uncertainty (uncertainty_*.json, score_uncertainty.py): doc_leak_lo/hi,
+  gap_lo/hi, diff_lo/hi (deployed student minus another) and tmpl_<template>
+  (document leak rate per held-out template), per detector.
 
 Rates are fractions; ledger/artifacts.toml formats them as percentages. Each
 result names its source file, which taura links to the run that wrote it.
@@ -100,6 +103,8 @@ def main() -> None:
             metrics = from_counterfactual(data)
         elif path.stem.startswith("browser_"):
             metrics = from_browser(data)
+        elif path.stem.startswith("uncertainty_"):
+            metrics = data["metrics"]
         else:
             continue
         result = {
