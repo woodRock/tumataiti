@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -29,8 +29,34 @@ function contentSecurityPolicy(): Plugin {
   };
 }
 
+// Latency benchmark (bench.html, src/bench.ts), dev server only: serves the
+// held-out NZ documents and writes the timings to ml/results/.
+const BENCH_DOCS = "../ml/data/v1/nz_test_full.jsonl";
+const BENCH_OUT = "../ml/results/browser_latency.json";
+
+function bench(): Plugin {
+  return {
+    name: "tumataiti-bench",
+    apply: "serve",
+    configureServer(server) {
+      server.middlewares.use("/bench/docs", (_req, res) => {
+        res.setHeader("Content-Type", "application/x-ndjson");
+        res.end(readFileSync(BENCH_DOCS));
+      });
+      server.middlewares.use("/bench/result", (req, res) => {
+        let body = "";
+        req.on("data", (c) => (body += c));
+        req.on("end", () => {
+          writeFileSync(BENCH_OUT, JSON.stringify(JSON.parse(body), null, 2) + "\n");
+          res.end("ok");
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), contentSecurityPolicy()],
+  plugins: [react(), contentSecurityPolicy(), bench()],
   define: { __STUDENT_MODEL__: JSON.stringify(studentModel) },
   build: { target: "es2022" },
 });

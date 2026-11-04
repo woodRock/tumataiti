@@ -240,3 +240,10 @@ kind = "figure"
 output = "generated/fig_false_alarms.pdf"
 script = "artifacts/fig_false_alarms.py"
 results = ["m3fa_false_alarms", "m3fa_nz_test_full"]
+
+[format.ms_p90]
+decimals = 1
+
+[format."m3fa_kinwords_false_alarms/*"]   # kinship false alarms, per word: 54\%
+decimals = 0
+percent = true

@@ -12,7 +12,9 @@ names are as in the tables, with "+" written "_" (rules_deberta-v3-small-open).
 - counterfactual audits: maori, pakeha, pasifika, asian_nz (name leak
   rate) and gap (Māori − Pākehā), per detector;
 - false-alarm files: <slot>_redacted and <slot>_flagged for text that is
-  not PII, and <slot>_leaked for the PII beside it, per detector.
+  not PII, and <slot>_leaked for the PII beside it, per detector;
+- browser latency (browser_*.json, demo/src/bench.ts): docs, ms (median per
+  document) and ms_p90, per detector (rules, the shipped student, both merged).
 
 Rates are fractions; ledger/artifacts.toml formats them as percentages. Each
 result names its source file, which taura links to the run that wrote it.
@@ -76,6 +78,16 @@ def from_false_alarms(data: dict) -> dict:
     return metrics
 
 
+def from_browser(data: dict) -> dict:
+    name = data["model"]["name"] + "-int4"
+    dets = {"rules": "rules", "student": name, "rules_student": f"rules_{name}"}
+    return {
+        "docs": data["docs"],
+        "ms": {dets[k]: v["median"] for k, v in data["ms"].items()},
+        "ms_p90": {dets[k]: v["p90"] for k, v in data["ms"].items()},
+    }
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     for path in sorted(SRC.glob("*.json")):
@@ -86,6 +98,8 @@ def main() -> None:
             metrics = from_false_alarms(data)
         elif path.stem.endswith("_counterfactual"):
             metrics = from_counterfactual(data)
+        elif path.stem.startswith("browser_"):
+            metrics = from_browser(data)
         else:
             continue
         result = {
