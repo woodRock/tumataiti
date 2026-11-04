@@ -1,0 +1,75 @@
+{
+  "name": "m3v2_fp16_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules_deberta-v3-small-int8-fp16": 0.046285714285714284,
+      "rules_modernbert-base-int8-fp16": 0.025714285714285714,
+      "rules_mdeberta-v3-base-int8-fp16": 0.010857142857142857
+    },
+    "span_leak": {
+      "rules_deberta-v3-small-int8-fp16": 0.00841025641025641,
+      "rules_modernbert-base-int8-fp16": 0.005743589743589744,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0019487179487179488
+    },
+    "precision": {
+      "rules_deberta-v3-small-int8-fp16": 0.9341064972801297,
+      "rules_modernbert-base-int8-fp16": 0.9325364377418295,
+      "rules_mdeberta-v3-base-int8-fp16": 0.9371236213546248
+    },
+    "recall": {
+      "rules_deberta-v3-small-int8-fp16": 0.9970517698396956,
+      "rules_modernbert-base-int8-fp16": 0.9973853616315344,
+      "rules_mdeberta-v3-base-int8-fp16": 0.9989541446526138
+    },
+    "f1": {
+      "rules_deberta-v3-small-int8-fp16": 0.9645532965259789,
+      "rules_modernbert-base-int8-fp16": 0.9638713780980305,
+      "rules_mdeberta-v3-base-int8-fp16": 0.9670515741055921
+    },
+    "exact_f1": {
+      "rules_deberta-v3-small-int8-fp16": 0.9015528568584512,
+      "rules_modernbert-base-int8-fp16": 0.8975894519651754,
+      "rules_mdeberta-v3-base-int8-fp16": 0.7093795637631319
+    },
+    "leak_address": {
+      "rules_deberta-v3-small-int8-fp16": 0.0,
+      "rules_modernbert-base-int8-fp16": 0.0,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0
+    },
+    "leak_date": {
+      "rules_deberta-v3-small-int8-fp16": 0.0,
+      "rules_modernbert-base-int8-fp16": 0.0,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0
+    },
+    "leak_email": {
+      "rules_deberta-v3-small-int8-fp16": 0.0,
+      "rules_modernbert-base-int8-fp16": 0.0,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0
+    },
+    "leak_id": {
+      "rules_deberta-v3-small-int8-fp16": 0.0,
+      "rules_modernbert-base-int8-fp16": 0.0,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0
+    },
+    "leak_person": {
+      "rules_deberta-v3-small-int8-fp16": 0.01561904761904762,
+      "rules_modernbert-base-int8-fp16": 0.010666666666666666,
+      "rules_mdeberta-v3-base-int8-fp16": 0.003619047619047619
+    },
+    "leak_phone": {
+      "rules_deberta-v3-small-int8-fp16": 0.0,
+      "rules_modernbert-base-int8-fp16": 0.0,
+      "rules_mdeberta-v3-base-int8-fp16": 0.0
+    },
+    "ms": {
+      "rules_deberta-v3-small-int8-fp16": 38.76645850141358,
+      "rules_modernbert-base-int8-fp16": 114.83841749759449,
+      "rules_mdeberta-v3-base-int8-fp16": 59.34831249942363
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3v2_fp16_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

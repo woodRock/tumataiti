@@ -1,0 +1,58 @@
+{
+  "name": "txn_nz_test_false_alarm",
+  "metrics": {
+    "doc_leak": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "span_leak": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "precision": {
+      "rules_deberta-v3-small-open_review": 0.7699512303258701,
+      "rules_deberta-v3-small-open_review_txn": 0.8028779472954231
+    },
+    "recall": {
+      "rules_deberta-v3-small-open_review": 1.0,
+      "rules_deberta-v3-small-open_review_txn": 1.0
+    },
+    "f1": {
+      "rules_deberta-v3-small-open_review": 0.8700253624322886,
+      "rules_deberta-v3-small-open_review_txn": 0.8906625637080489
+    },
+    "exact_f1": {
+      "rules_deberta-v3-small-open_review": 0.6562897077509531,
+      "rules_deberta-v3-small-open_review_txn": 0.6778215223097114
+    },
+    "leak_address": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_email": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_id": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_person": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_phone": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "ms": {
+      "rules_deberta-v3-small-open_review": 10.711693030316383,
+      "rules_deberta-v3-small-open_review_txn": 10.711693030316383
+    },
+    "docs": 600
+  },
+  "source": {
+    "path": "ml/results/txn_nz_test_false_alarm.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

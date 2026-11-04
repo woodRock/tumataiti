@@ -1,5 +1,7 @@
 # Results
 
+Every score file here is exported to `ledger/results/` for the paper (`taura run -- python3 ml/scripts/export_ledger.py`), cited as `\res{<file>/<measure>/<detector>}`, e.g. `\res{m3open_int4_nz_test_full/doc_leak/rules_deberta-v3-small-open-int8-int4-block}` (detector names with `+` written `_`). Files scored outside `taura run` were re-scored from the stored predictions with `ml/scripts/rescore.py`, so each links to a run record; only the open-data DeBERTa-small GPU timing changed (11.03 → 11.38 ms, from its re-prediction).
+
 ## M3: false alarms (2026-11-04)
 
 Summary and findings are in [SPEC.md §9.8](../../SPEC.md). The false-alarm set (`scripts/make_data_v3.sh`) has kinship words, people named Nan, and ID-shaped order and booking codes; `tumataiti-ml false-alarms` scores how often each is redacted or flagged.

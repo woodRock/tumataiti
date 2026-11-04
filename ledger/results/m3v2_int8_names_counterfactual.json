@@ -1,0 +1,79 @@
+{
+  "name": "m3v2_int8_names_counterfactual",
+  "metrics": {
+    "maori": {
+      "deberta-v3-small": 0.02119047619047619,
+      "deberta-v3-small-int8": 0.06738095238095237,
+      "modernbert-base": 0.0016666666666666668,
+      "modernbert-base-int8": 0.14238095238095239,
+      "mdeberta-v3-base": 0.0014285714285714286,
+      "mdeberta-v3-base-int8": 0.38857142857142857,
+      "rules_deberta-v3-small": 0.02119047619047619,
+      "rules_deberta-v3-small-int8": 0.06738095238095237,
+      "rules_modernbert-base": 0.0016666666666666668,
+      "rules_modernbert-base-int8": 0.14238095238095239,
+      "rules_mdeberta-v3-base": 0.0014285714285714286,
+      "rules_mdeberta-v3-base-int8": 0.38857142857142857
+    },
+    "pakeha": {
+      "deberta-v3-small": 0.01380952380952381,
+      "deberta-v3-small-int8": 0.030714285714285715,
+      "modernbert-base": 0.06452380952380952,
+      "modernbert-base-int8": 0.10023809523809524,
+      "mdeberta-v3-base": 0.07142857142857142,
+      "mdeberta-v3-base-int8": 0.72,
+      "rules_deberta-v3-small": 0.01380952380952381,
+      "rules_deberta-v3-small-int8": 0.030714285714285715,
+      "rules_modernbert-base": 0.06452380952380952,
+      "rules_modernbert-base-int8": 0.10023809523809524,
+      "rules_mdeberta-v3-base": 0.07142857142857142,
+      "rules_mdeberta-v3-base-int8": 0.72
+    },
+    "pasifika": {
+      "deberta-v3-small": 0.020476190476190478,
+      "deberta-v3-small-int8": 0.02880952380952381,
+      "modernbert-base": 0.0035714285714285713,
+      "modernbert-base-int8": 0.033095238095238094,
+      "mdeberta-v3-base": 0.002142857142857143,
+      "mdeberta-v3-base-int8": 0.39976190476190476,
+      "rules_deberta-v3-small": 0.020476190476190478,
+      "rules_deberta-v3-small-int8": 0.02880952380952381,
+      "rules_modernbert-base": 0.0035714285714285713,
+      "rules_modernbert-base-int8": 0.033095238095238094,
+      "rules_mdeberta-v3-base": 0.002142857142857143,
+      "rules_mdeberta-v3-base-int8": 0.39976190476190476
+    },
+    "asian_nz": {
+      "deberta-v3-small": 0.0,
+      "deberta-v3-small-int8": 0.0035714285714285713,
+      "modernbert-base": 0.0009523809523809524,
+      "modernbert-base-int8": 0.05619047619047619,
+      "mdeberta-v3-base": 0.0002380952380952381,
+      "mdeberta-v3-base-int8": 0.5061904761904762,
+      "rules_deberta-v3-small": 0.0,
+      "rules_deberta-v3-small-int8": 0.0035714285714285713,
+      "rules_modernbert-base": 0.0009523809523809524,
+      "rules_modernbert-base-int8": 0.05619047619047619,
+      "rules_mdeberta-v3-base": 0.0002380952380952381,
+      "rules_mdeberta-v3-base-int8": 0.5061904761904762
+    },
+    "gap": {
+      "deberta-v3-small": 0.00738095238095238,
+      "deberta-v3-small-int8": 0.03666666666666666,
+      "modernbert-base": -0.06285714285714286,
+      "modernbert-base-int8": 0.04214285714285715,
+      "mdeberta-v3-base": -0.06999999999999999,
+      "mdeberta-v3-base-int8": -0.3314285714285714,
+      "rules_deberta-v3-small": 0.00738095238095238,
+      "rules_deberta-v3-small-int8": 0.03666666666666666,
+      "rules_modernbert-base": -0.06285714285714286,
+      "rules_modernbert-base-int8": 0.04214285714285715,
+      "rules_mdeberta-v3-base": -0.06999999999999999,
+      "rules_mdeberta-v3-base-int8": -0.3314285714285714
+    }
+  },
+  "source": {
+    "path": "ml/results/m3v2_int8_names_counterfactual.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

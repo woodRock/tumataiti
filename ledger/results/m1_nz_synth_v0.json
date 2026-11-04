@@ -1,0 +1,90 @@
+{
+  "name": "m1_nz_synth_v0",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9375,
+      "openai-privacy-filter": 0.4325,
+      "rules_openai-privacy-filter": 0.361875
+    },
+    "span_leak": {
+      "rules": 0.4578313253012048,
+      "openai-privacy-filter": 0.16843373493975905,
+      "rules_openai-privacy-filter": 0.10951807228915662
+    },
+    "precision": {
+      "rules": 0.8944172785156077,
+      "openai-privacy-filter": 0.8818530539982296,
+      "rules_openai-privacy-filter": 0.8381880450517247
+    },
+    "recall": {
+      "rules": 0.5781070964784967,
+      "openai-privacy-filter": 0.8561034298372928,
+      "rules_openai-privacy-filter": 0.9067298143762891
+    },
+    "f1": {
+      "rules": 0.7022891908664358,
+      "openai-privacy-filter": 0.8687874882508552,
+      "rules_openai-privacy-filter": 0.8711127419502798
+    },
+    "exact_f1": {
+      "rules": 0.6701515151515152,
+      "openai-privacy-filter": 0.7054957093299251,
+      "rules_openai-privacy-filter": 0.758340113913751
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "openai-privacy-filter": 0.26285714285714284,
+      "rules_openai-privacy-filter": 0.26285714285714284
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.21,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.007272727272727273,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.14,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_ip_address": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.03,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "openai-privacy-filter": 0.23387096774193547,
+      "rules_openai-privacy-filter": 0.23387096774193547
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.14166666666666666,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_secret": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.0,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "leak_url": {
+      "rules": 0.0,
+      "openai-privacy-filter": 0.11,
+      "rules_openai-privacy-filter": 0.0
+    },
+    "ms": {
+      "rules": 0.0426875003540772,
+      "openai-privacy-filter": 240.8682992681861,
+      "rules_openai-privacy-filter": 240.91098676854017
+    },
+    "docs": 1600
+  },
+  "source": {
+    "path": "ml/results/m1_nz_synth_v0.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

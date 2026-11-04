@@ -1,0 +1,62 @@
+{
+  "name": "txn_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules_deberta-v3-small-open_review": 0.002857142857142857,
+      "rules_deberta-v3-small-open_review_txn": 0.002857142857142857
+    },
+    "span_leak": {
+      "rules_deberta-v3-small-open_review": 0.0005128205128205128,
+      "rules_deberta-v3-small-open_review_txn": 0.0005128205128205128
+    },
+    "precision": {
+      "rules_deberta-v3-small-open_review": 0.9444387659494727,
+      "rules_deberta-v3-small-open_review_txn": 0.9444387659494727
+    },
+    "recall": {
+      "rules_deberta-v3-small-open_review": 0.9996844401969093,
+      "rules_deberta-v3-small-open_review_txn": 0.9996844401969093
+    },
+    "f1": {
+      "rules_deberta-v3-small-open_review": 0.9712766516582281,
+      "rules_deberta-v3-small-open_review_txn": 0.9712766516582281
+    },
+    "exact_f1": {
+      "rules_deberta-v3-small-open_review": 0.9224802296882083,
+      "rules_deberta-v3-small-open_review_txn": 0.9224802296882083
+    },
+    "leak_address": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_date": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_email": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_id": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "leak_person": {
+      "rules_deberta-v3-small-open_review": 0.0009523809523809524,
+      "rules_deberta-v3-small-open_review_txn": 0.0009523809523809524
+    },
+    "leak_phone": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "ms": {
+      "rules_deberta-v3-small-open_review": 11.430220298279892,
+      "rules_deberta-v3-small-open_review_txn": 11.430220298279892
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/txn_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

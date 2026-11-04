@@ -1,0 +1,101 @@
+{
+  "name": "txn_false_alarms",
+  "metrics": {
+    "booking_code_redacted": {
+      "rules_deberta-v3-small-open_review": 0.995,
+      "rules_deberta-v3-small-open_review_txn": 0.995
+    },
+    "booking_code_flagged": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "hui_date_redacted": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "hui_date_flagged": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "invoice_redacted": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "invoice_flagged": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "kin_redacted": {
+      "rules_deberta-v3-small-open_review": 0.2357142857142857,
+      "rules_deberta-v3-small-open_review_txn": 0.2357142857142857
+    },
+    "kin_flagged": {
+      "rules_deberta-v3-small-open_review": 0.5842857142857143,
+      "rules_deberta-v3-small-open_review_txn": 0.5842857142857143
+    },
+    "order_ref_redacted": {
+      "rules_deberta-v3-small-open_review": 0.99,
+      "rules_deberta-v3-small-open_review_txn": 0.5
+    },
+    "order_ref_flagged": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.49
+    },
+    "town_redacted": {
+      "rules_deberta-v3-small-open_review": 0.14,
+      "rules_deberta-v3-small-open_review_txn": 0.14
+    },
+    "town_flagged": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "address_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "email_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "full_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "given_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "ird_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "landline_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "mobile_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "nan_full_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "nhi_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "plain_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    },
+    "surname_leaked": {
+      "rules_deberta-v3-small-open_review": 0.0,
+      "rules_deberta-v3-small-open_review_txn": 0.0
+    }
+  },
+  "source": {
+    "path": "ml/results/txn_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

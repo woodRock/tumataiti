@@ -1,0 +1,49 @@
+{
+  "name": "m3open_int4_names_counterfactual",
+  "metrics": {
+    "maori": {
+      "deberta-v3-small-open-int8-int4-block": 0.0030952380952380953,
+      "modernbert-base-open-int8-int4-block": 0.007380952380952381,
+      "mdeberta-v3-base-open-int8-int4-block": 0.004523809523809524,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0030952380952380953,
+      "rules_modernbert-base-open-int8-int4-block": 0.007380952380952381,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004523809523809524
+    },
+    "pakeha": {
+      "deberta-v3-small-open-int8-int4-block": 0.006190476190476191,
+      "modernbert-base-open-int8-int4-block": 0.05023809523809524,
+      "mdeberta-v3-base-open-int8-int4-block": 0.009285714285714286,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.006190476190476191,
+      "rules_modernbert-base-open-int8-int4-block": 0.05023809523809524,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.009285714285714286
+    },
+    "pasifika": {
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.005,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.005
+    },
+    "asian_nz": {
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.02214285714285714,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0002380952380952381,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.02214285714285714,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0002380952380952381
+    },
+    "gap": {
+      "deberta-v3-small-open-int8-int4-block": -0.0030952380952380953,
+      "modernbert-base-open-int8-int4-block": -0.04285714285714286,
+      "mdeberta-v3-base-open-int8-int4-block": -0.004761904761904762,
+      "rules_deberta-v3-small-open-int8-int4-block": -0.0030952380952380953,
+      "rules_modernbert-base-open-int8-int4-block": -0.04285714285714286,
+      "rules_mdeberta-v3-base-open-int8-int4-block": -0.004761904761904762
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_int4_names_counterfactual.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

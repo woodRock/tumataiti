@@ -1,0 +1,89 @@
+{
+  "name": "m3v2_names_counterfactual",
+  "metrics": {
+    "maori": {
+      "openai-privacy-filter": 0.5238095238095238,
+      "deberta-v3-small-v1": 0.11738095238095238,
+      "deberta-v3-small": 0.02119047619047619,
+      "modernbert-base-v1": 0.17857142857142858,
+      "modernbert-base": 0.0016666666666666668,
+      "mdeberta-v3-base-v1": 0.002142857142857143,
+      "mdeberta-v3-base": 0.0014285714285714286,
+      "rules_openai-privacy-filter": 0.5238095238095238,
+      "rules_deberta-v3-small-v1": 0.11738095238095238,
+      "rules_deberta-v3-small": 0.02119047619047619,
+      "rules_modernbert-base-v1": 0.17857142857142858,
+      "rules_modernbert-base": 0.0016666666666666668,
+      "rules_mdeberta-v3-base-v1": 0.002142857142857143,
+      "rules_mdeberta-v3-base": 0.0014285714285714286
+    },
+    "pakeha": {
+      "openai-privacy-filter": 0.14285714285714285,
+      "deberta-v3-small-v1": 0.13285714285714287,
+      "deberta-v3-small": 0.01380952380952381,
+      "modernbert-base-v1": 0.24619047619047618,
+      "modernbert-base": 0.06452380952380952,
+      "mdeberta-v3-base-v1": 0.20809523809523808,
+      "mdeberta-v3-base": 0.07142857142857142,
+      "rules_openai-privacy-filter": 0.14285714285714285,
+      "rules_deberta-v3-small-v1": 0.13285714285714287,
+      "rules_deberta-v3-small": 0.01380952380952381,
+      "rules_modernbert-base-v1": 0.24619047619047618,
+      "rules_modernbert-base": 0.06452380952380952,
+      "rules_mdeberta-v3-base-v1": 0.20809523809523808,
+      "rules_mdeberta-v3-base": 0.07142857142857142
+    },
+    "pasifika": {
+      "openai-privacy-filter": 0.3738095238095238,
+      "deberta-v3-small-v1": 0.1430952380952381,
+      "deberta-v3-small": 0.020476190476190478,
+      "modernbert-base-v1": 0.12214285714285714,
+      "modernbert-base": 0.0035714285714285713,
+      "mdeberta-v3-base-v1": 0.03238095238095238,
+      "mdeberta-v3-base": 0.002142857142857143,
+      "rules_openai-privacy-filter": 0.3738095238095238,
+      "rules_deberta-v3-small-v1": 0.1430952380952381,
+      "rules_deberta-v3-small": 0.020476190476190478,
+      "rules_modernbert-base-v1": 0.12214285714285714,
+      "rules_modernbert-base": 0.0035714285714285713,
+      "rules_mdeberta-v3-base-v1": 0.03238095238095238,
+      "rules_mdeberta-v3-base": 0.002142857142857143
+    },
+    "asian_nz": {
+      "openai-privacy-filter": 0.14714285714285713,
+      "deberta-v3-small-v1": 0.06404761904761905,
+      "deberta-v3-small": 0.0,
+      "modernbert-base-v1": 0.18119047619047618,
+      "modernbert-base": 0.0009523809523809524,
+      "mdeberta-v3-base-v1": 0.06976190476190476,
+      "mdeberta-v3-base": 0.0002380952380952381,
+      "rules_openai-privacy-filter": 0.14714285714285713,
+      "rules_deberta-v3-small-v1": 0.06404761904761905,
+      "rules_deberta-v3-small": 0.0,
+      "rules_modernbert-base-v1": 0.18119047619047618,
+      "rules_modernbert-base": 0.0009523809523809524,
+      "rules_mdeberta-v3-base-v1": 0.06976190476190476,
+      "rules_mdeberta-v3-base": 0.0002380952380952381
+    },
+    "gap": {
+      "openai-privacy-filter": 0.380952380952381,
+      "deberta-v3-small-v1": -0.01547619047619049,
+      "deberta-v3-small": 0.00738095238095238,
+      "modernbert-base-v1": -0.0676190476190476,
+      "modernbert-base": -0.06285714285714286,
+      "mdeberta-v3-base-v1": -0.20595238095238094,
+      "mdeberta-v3-base": -0.06999999999999999,
+      "rules_openai-privacy-filter": 0.380952380952381,
+      "rules_deberta-v3-small-v1": -0.01547619047619049,
+      "rules_deberta-v3-small": 0.00738095238095238,
+      "rules_modernbert-base-v1": -0.0676190476190476,
+      "rules_modernbert-base": -0.06285714285714286,
+      "rules_mdeberta-v3-base-v1": -0.20595238095238094,
+      "rules_mdeberta-v3-base": -0.06999999999999999
+    }
+  },
+  "source": {
+    "path": "ml/results/m3v2_names_counterfactual.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

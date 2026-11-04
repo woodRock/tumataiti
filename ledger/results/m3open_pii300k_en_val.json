@@ -1,0 +1,175 @@
+{
+  "name": "m3open_pii300k_en_val",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9589410272669626,
+      "openai-privacy-filter": 0.08195941661382372,
+      "deberta-v3-small-open": 0.32656943563728597,
+      "modernbert-base-open": 0.44007609384908053,
+      "mdeberta-v3-base-open": 0.4300887761572606,
+      "rules_openai-privacy-filter": 0.07783766645529486,
+      "rules_deberta-v3-small-open": 0.31357006975269497,
+      "rules_modernbert-base-open": 0.35859226379201015,
+      "rules_mdeberta-v3-base-open": 0.3841154090044388
+    },
+    "span_leak": {
+      "rules": 0.8542878112121041,
+      "openai-privacy-filter": 0.0277479817083498,
+      "deberta-v3-small-open": 0.11866990346073505,
+      "modernbert-base-open": 0.15928978716197142,
+      "mdeberta-v3-base-open": 0.15934624287246654,
+      "rules_openai-privacy-filter": 0.026703551064190142,
+      "rules_deberta-v3-small-open": 0.10994749618923955,
+      "rules_modernbert-base-open": 0.12942471631005475,
+      "rules_mdeberta-v3-base-open": 0.13978433918590866
+    },
+    "precision": {
+      "rules": 0.9652033283772856,
+      "openai-privacy-filter": 0.9336662818300925,
+      "deberta-v3-small-open": 0.9498929061835886,
+      "modernbert-base-open": 0.9460175182481751,
+      "mdeberta-v3-base-open": 0.950580171244093,
+      "rules_openai-privacy-filter": 0.9319756369208665,
+      "rules_deberta-v3-small-open": 0.9487800700575709,
+      "rules_modernbert-base-open": 0.9451267089595278,
+      "rules_mdeberta-v3-base-open": 0.9494606638027996
+    },
+    "recall": {
+      "rules": 0.20077699824741316,
+      "openai-privacy-filter": 0.9763400778083441,
+      "deberta-v3-small-open": 0.9252383355308493,
+      "modernbert-base-open": 0.8790362400230061,
+      "mdeberta-v3-base-open": 0.8819038627447788,
+      "rules_openai-privacy-filter": 0.9784507783547388,
+      "rules_deberta-v3-small-open": 0.9317657719249698,
+      "rules_modernbert-base-open": 0.9069881008578451,
+      "rules_mdeberta-v3-base-open": 0.9000374391613628
+    },
+    "f1": {
+      "rules": 0.33240805619935676,
+      "openai-privacy-filter": 0.9545264659972973,
+      "deberta-v3-small-open": 0.9374035394411162,
+      "modernbert-base-open": 0.9112977395520729,
+      "mdeberta-v3-base-open": 0.9149551202843931,
+      "rules_openai-privacy-filter": 0.9546479048462302,
+      "rules_deberta-v3-small-open": 0.9401959522903531,
+      "rules_modernbert-base-open": 0.9256647312417453,
+      "rules_mdeberta-v3-base-open": 0.9240886952670511
+    },
+    "exact_f1": {
+      "rules": 0.2394635077585785,
+      "openai-privacy-filter": 0.8181641168289291,
+      "deberta-v3-small-open": 0.7664873307879209,
+      "modernbert-base-open": 0.7300032551120055,
+      "mdeberta-v3-base-open": 0.7068618587967688,
+      "rules_openai-privacy-filter": 0.8406284293433718,
+      "rules_deberta-v3-small-open": 0.7683312399844082,
+      "rules_modernbert-base-open": 0.7477833377227636,
+      "rules_mdeberta-v3-base-open": 0.718046801419981
+    },
+    "leak_address": {
+      "rules": 0.9998870311793945,
+      "openai-privacy-filter": 0.04236330772706733,
+      "deberta-v3-small-open": 0.15070040668775417,
+      "modernbert-base-open": 0.1850429281518301,
+      "mdeberta-v3-base-open": 0.26208766380478987,
+      "rules_openai-privacy-filter": 0.04236330772706733,
+      "rules_deberta-v3-small-open": 0.15070040668775417,
+      "rules_modernbert-base-open": 0.1850429281518301,
+      "rules_mdeberta-v3-base-open": 0.26208766380478987
+    },
+    "leak_date": {
+      "rules": 0.660336642209754,
+      "openai-privacy-filter": 0.01078981441519206,
+      "deberta-v3-small-open": 0.6715580492015537,
+      "modernbert-base-open": 0.9887785930082003,
+      "mdeberta-v3-base-open": 0.8800172637030643,
+      "rules_openai-privacy-filter": 0.01078981441519206,
+      "rules_deberta-v3-small-open": 0.5429434613724644,
+      "rules_modernbert-base-open": 0.652136383254208,
+      "rules_mdeberta-v3-base-open": 0.5899870522227018
+    },
+    "leak_email": {
+      "rules": 0.005742725880551302,
+      "openai-privacy-filter": 0.010719754977029096,
+      "deberta-v3-small-open": 0.0007656967840735069,
+      "modernbert-base-open": 0.10260336906584992,
+      "mdeberta-v3-base-open": 0.002679938744257274,
+      "rules_openai-privacy-filter": 0.0007656967840735069,
+      "rules_deberta-v3-small-open": 0.0007656967840735069,
+      "rules_modernbert-base-open": 0.0011485451761102604,
+      "rules_mdeberta-v3-base-open": 0.0011485451761102604
+    },
+    "leak_id": {
+      "rules": 0.9695643524965188,
+      "openai-privacy-filter": 0.01830117366222399,
+      "deberta-v3-small-open": 0.031828128108215635,
+      "modernbert-base-open": 0.05032822757111598,
+      "mdeberta-v3-base-open": 0.07529341555599761,
+      "rules_openai-privacy-filter": 0.018102247861547644,
+      "rules_deberta-v3-small-open": 0.03162920230753929,
+      "rules_modernbert-base-open": 0.05032822757111598,
+      "rules_mdeberta-v3-base-open": 0.07390093495126318
+    },
+    "leak_ip_address": {
+      "rules": 0.5036934441366574,
+      "openai-privacy-filter": 0.022622345337026777,
+      "deberta-v3-small-open": 0.006463527239150508,
+      "modernbert-base-open": 0.012003693444136657,
+      "mdeberta-v3-base-open": 0.007386888273314866,
+      "rules_openai-privacy-filter": 0.018928901200369344,
+      "rules_deberta-v3-small-open": 0.00554016620498615,
+      "rules_modernbert-base-open": 0.007386888273314866,
+      "rules_mdeberta-v3-base-open": 0.006001846722068329
+    },
+    "leak_person": {
+      "rules": 0.9994834710743802,
+      "openai-privacy-filter": 0.03856749311294766,
+      "deberta-v3-small-open": 0.07420798898071625,
+      "modernbert-base-open": 0.12431129476584023,
+      "mdeberta-v3-base-open": 0.06422176308539945,
+      "rules_openai-privacy-filter": 0.03839531680440771,
+      "rules_deberta-v3-small-open": 0.07369146005509641,
+      "rules_modernbert-base-open": 0.12413911845730027,
+      "rules_mdeberta-v3-base-open": 0.06422176308539945
+    },
+    "leak_phone": {
+      "rules": 0.9934902353530295,
+      "openai-privacy-filter": 0.015022533800701052,
+      "deberta-v3-small-open": 0.017526289434151226,
+      "modernbert-base-open": 0.03104656985478217,
+      "mdeberta-v3-base-open": 0.021532298447671506,
+      "rules_openai-privacy-filter": 0.015022533800701052,
+      "rules_deberta-v3-small-open": 0.017526289434151226,
+      "rules_modernbert-base-open": 0.03104656985478217,
+      "rules_mdeberta-v3-base-open": 0.021532298447671506
+    },
+    "leak_secret": {
+      "rules": 0.7654320987654321,
+      "openai-privacy-filter": 0.04197530864197531,
+      "deberta-v3-small-open": 0.3160493827160494,
+      "modernbert-base-open": 0.08024691358024691,
+      "mdeberta-v3-base-open": 0.05555555555555555,
+      "rules_openai-privacy-filter": 0.04197530864197531,
+      "rules_deberta-v3-small-open": 0.3135802469135803,
+      "rules_modernbert-base-open": 0.07901234567901234,
+      "rules_mdeberta-v3-base-open": 0.05555555555555555
+    },
+    "ms": {
+      "rules": 0.009249999493476935,
+      "openai-privacy-filter": 283.56145368888974,
+      "deberta-v3-small-open": 11.904276907444,
+      "modernbert-base-open": 18.108274322003126,
+      "mdeberta-v3-base-open": 23.3920244500041,
+      "rules_openai-privacy-filter": 283.5707036883832,
+      "rules_deberta-v3-small-open": 11.913526906937477,
+      "rules_modernbert-base-open": 18.117524321496603,
+      "rules_mdeberta-v3-base-open": 23.401274449497578
+    },
+    "docs": 7946
+  },
+  "source": {
+    "path": "ml/results/m3open_pii300k_en_val.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

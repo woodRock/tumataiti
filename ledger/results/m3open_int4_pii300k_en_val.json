@@ -1,0 +1,145 @@
+{
+  "name": "m3open_int4_pii300k_en_val",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9589410272669626,
+      "deberta-v3-small-open-int8-int4-block": 0.34194673430564365,
+      "modernbert-base-open-int8-int4-block": 0.4476854787571338,
+      "mdeberta-v3-base-open-int8-int4-block": 0.42089410272669625,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.3322764743183259,
+      "rules_modernbert-base-open-int8-int4-block": 0.3668357641090679,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.37349397590361444
+    },
+    "span_leak": {
+      "rules": 0.8542878112121041,
+      "deberta-v3-small-open-int8-int4-block": 0.12530344944391125,
+      "modernbert-base-open-int8-int4-block": 0.16772991588099137,
+      "mdeberta-v3-base-open-int8-int4-block": 0.152543329757805,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.1177666120928132,
+      "rules_modernbert-base-open-int8-int4-block": 0.1380059843053125,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.13233218540055328
+    },
+    "precision": {
+      "rules": 0.9652033283772856,
+      "deberta-v3-small-open-int8-int4-block": 0.9499308359764702,
+      "modernbert-base-open-int8-int4-block": 0.9452549730338063,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9490893632772511,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9487820909264872,
+      "rules_modernbert-base-open-int8-int4-block": 0.9443136054595282,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9481990970718521
+    },
+    "recall": {
+      "rules": 0.20077699824741316,
+      "deberta-v3-small-open-int8-int4-block": 0.9222187857774594,
+      "modernbert-base-open-int8-int4-block": 0.8772890791594095,
+      "mdeberta-v3-base-open-int8-int4-block": 0.8903927856363844,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.928135801062404,
+      "rules_modernbert-base-open-int8-int4-block": 0.9039712640871627,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9088329290989099
+    },
+    "f1": {
+      "rules": 0.33240805619935676,
+      "deberta-v3-small-open-int8-int4-block": 0.9358697103558021,
+      "modernbert-base-open-int8-int4-block": 0.91000474185056,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9188045912653975,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9383453903383961,
+      "rules_modernbert-base-open-int8-int4-block": 0.9237021605130785,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9280987625589942
+    },
+    "exact_f1": {
+      "rules": 0.2394635077585785,
+      "deberta-v3-small-open-int8-int4-block": 0.7599146130723319,
+      "modernbert-base-open-int8-int4-block": 0.7229135678835986,
+      "mdeberta-v3-base-open-int8-int4-block": 0.6994358682818035,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.7615870990196647,
+      "rules_modernbert-base-open-int8-int4-block": 0.7411078717201166,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.7104703174534243
+    },
+    "leak_address": {
+      "rules": 0.9998870311793945,
+      "deberta-v3-small-open-int8-int4-block": 0.17046995029371895,
+      "modernbert-base-open-int8-int4-block": 0.2106868504292815,
+      "mdeberta-v3-base-open-int8-int4-block": 0.24604609127880706,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.17046995029371895,
+      "rules_modernbert-base-open-int8-int4-block": 0.2106868504292815,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.24604609127880706
+    },
+    "leak_date": {
+      "rules": 0.660336642209754,
+      "deberta-v3-small-open-int8-int4-block": 0.6460940871817005,
+      "modernbert-base-open-int8-int4-block": 0.9814415192058696,
+      "mdeberta-v3-base-open-int8-int4-block": 0.908933966335779,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.5369011652999568,
+      "rules_modernbert-base-open-int8-int4-block": 0.6469572723349158,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.6102719033232629
+    },
+    "leak_email": {
+      "rules": 0.005742725880551302,
+      "deberta-v3-small-open-int8-int4-block": 0.0007656967840735069,
+      "modernbert-base-open-int8-int4-block": 0.10145482388973966,
+      "mdeberta-v3-base-open-int8-int4-block": 0.004594180704441042,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0007656967840735069,
+      "rules_modernbert-base-open-int8-int4-block": 0.0007656967840735069,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0015313935681470138
+    },
+    "leak_id": {
+      "rules": 0.9695643524965188,
+      "deberta-v3-small-open-int8-int4-block": 0.03371792321464094,
+      "modernbert-base-open-int8-int4-block": 0.05092500497314502,
+      "mdeberta-v3-base-open-int8-int4-block": 0.06156753530932962,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.033518997413964594,
+      "rules_modernbert-base-open-int8-int4-block": 0.05092500497314502,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.06027451760493336
+    },
+    "leak_ip_address": {
+      "rules": 0.5036934441366574,
+      "deberta-v3-small-open-int8-int4-block": 0.006925207756232687,
+      "modernbert-base-open-int8-int4-block": 0.014773776546629732,
+      "mdeberta-v3-base-open-int8-int4-block": 0.007386888273314866,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.006001846722068329,
+      "rules_modernbert-base-open-int8-int4-block": 0.008310249307479225,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.006001846722068329
+    },
+    "leak_person": {
+      "rules": 0.9994834710743802,
+      "deberta-v3-small-open-int8-int4-block": 0.08161157024793389,
+      "modernbert-base-open-int8-int4-block": 0.12913223140495866,
+      "mdeberta-v3-base-open-int8-int4-block": 0.058884297520661155,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.08109504132231404,
+      "rules_modernbert-base-open-int8-int4-block": 0.12896005509641872,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.058884297520661155
+    },
+    "leak_phone": {
+      "rules": 0.9934902353530295,
+      "deberta-v3-small-open-int8-int4-block": 0.016524787180771158,
+      "modernbert-base-open-int8-int4-block": 0.03655483224837256,
+      "mdeberta-v3-base-open-int8-int4-block": 0.02303455182774161,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.016524787180771158,
+      "rules_modernbert-base-open-int8-int4-block": 0.03655483224837256,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.02303455182774161
+    },
+    "leak_secret": {
+      "rules": 0.7654320987654321,
+      "deberta-v3-small-open-int8-int4-block": 0.35185185185185186,
+      "modernbert-base-open-int8-int4-block": 0.10555555555555556,
+      "mdeberta-v3-base-open-int8-int4-block": 0.05246913580246913,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.3475308641975309,
+      "rules_modernbert-base-open-int8-int4-block": 0.10555555555555556,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.05246913580246913
+    },
+    "ms": {
+      "rules": 0.009249999493476935,
+      "deberta-v3-small-open-int8-int4-block": 49.27689549367642,
+      "modernbert-base-open-int8-int4-block": 131.54991649935255,
+      "mdeberta-v3-base-open-int8-int4-block": 98.90416649432154,
+      "rules_deberta-v3-small-open-int8-int4-block": 49.2861454931699,
+      "rules_modernbert-base-open-int8-int4-block": 131.55916649884603,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 98.91341649381502
+    },
+    "docs": 7946
+  },
+  "source": {
+    "path": "ml/results/m3open_int4_pii300k_en_val.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

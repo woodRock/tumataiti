@@ -1766,8 +1766,8 @@
       "detector": "student",
       "gold": "data/open/open_en_test.jsonl",
       "docs": 2000,
-      "seconds_total": 26.786627488210797,
-      "seconds_median": 0.01140875881537795,
+      "seconds_total": 23.963633772917092,
+      "seconds_median": 0.010884620249271393,
       "device": "cuda",
       "threshold": 0.5,
       "model": "runs/m3-v2/deberta-v3-small-open/model",
@@ -1841,15 +1841,15 @@
           "detector": "student",
           "gold": "data/open/open_en_test.jsonl",
           "docs": 2000,
-          "seconds_total": 26.786627488210797,
-          "seconds_median": 0.01140875881537795,
+          "seconds_total": 23.963633772917092,
+          "seconds_median": 0.010884620249271393,
           "device": "cuda",
           "threshold": 0.5,
           "model": "runs/m3-v2/deberta-v3-small-open/model",
           "host": "cuda08.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.011431508817622671
+      "seconds_median": 0.010907370251516113
     },
     "rules+modernbert-base-open": {
       "detector": "combined",

@@ -1,0 +1,26 @@
+id = "2026-11-04-222216-ecfc"
+status = "done"
+started = "2026-11-04T22:22:16+13:00"
+finished = "2026-11-04T22:22:30+13:00"
+exit_code = 0
+commit = "c426ce7c1ef7ef80c85e2d4dab5190ace5641e5d"
+dirty = false
+changed_outputs = ["ml/results/m3open_nz_test_full.json", "ml/results/m3open_nz_test_full.md", "ml/results/m3open_nz_test_names.json", "ml/results/m3open_nz_test_names.md", "ml/results/m3open_open_en_test.json", "ml/results/m3open_open_en_test.md", "ml/results/m3open_pii300k_en_val.json", "ml/results/m3open_pii300k_en_val.md"]
+command = "uv run --project ml python ml/scripts/rescore.py m1_nz_synth_v0 m1_pii300k m3_names_counterfactual m3_nz_test_full m3_nz_test_names m3_pii300k_en_val"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/rescore.py"]
+
+[outputs]
+"ml/results/m1_nz_synth_v0.json" = "sha256:b30d893f0ff622478f24757e0465ed34b5b4e1a15fc3bb9f8f822a1e3d1b8f17"
+"ml/results/m1_nz_synth_v0.md" = "sha256:8e8a3bdd80065d22012df05168c718c6b5e6ff13f92b9803873dd6016c3b5a81"
+"ml/results/m1_pii300k.json" = "sha256:33bb99c90b340011f559b83fea5a5fed43d058cb2ed5f254628524e242c6192e"
+"ml/results/m1_pii300k.md" = "sha256:46a725cd18de9b919bb4c7ab7ba6136ea0ab28b0eaa09644d6a69b4b73b46ff9"
+"ml/results/m3_names_counterfactual.json" = "sha256:2883f10374b3d5349e5869a4b7a0e36e56c41616b2ae70f356ff5b0b8bc0d36c"
+"ml/results/m3_names_counterfactual.md" = "sha256:6731b8cebe13c64e206c7649eb2c738140a9e858f3f1ebb58d946a7cf5906782"
+"ml/results/m3_nz_test_full.json" = "sha256:4b00d046f1e4bb548946805dd21e8c8faf830f3642cd0d41919d287a2c2fa423"
+"ml/results/m3_nz_test_full.md" = "sha256:9e78fa108fa9a552d276f424ecf3b29481c012e5e1d06a30d48d950eb1384de9"
+"ml/results/m3_nz_test_names.json" = "sha256:2a43af6950fa2b6b14a25a4c1a9e9ef482783e994bae77887bd4b748999ca55a"
+"ml/results/m3_nz_test_names.md" = "sha256:1780b48773b441d9f930faa2627096b2bd660c0f9289f7e6cdb4a0037e94de45"
+"ml/results/m3_pii300k_en_val.json" = "sha256:fed9269f11f872244664e46b8dc3fcf62d825e0495b615db3ac9bb15b88f2d48"
+"ml/results/m3_pii300k_en_val.md" = "sha256:777d8aacda2936388946f59d80cb2dcbdb39ec3cfd2532ff67065f322d6202b6"

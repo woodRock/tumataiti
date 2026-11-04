@@ -1,0 +1,94 @@
+{
+  "name": "fa_baseline_nz_test_false_alarm",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.8333333333333334,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "span_leak": {
+      "rules": 0.6428571428571429,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "precision": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.7002520161290322,
+      "deberta-v3-small-open-int8-int4-block_review": 0.7723482321547699,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.7002520161290322,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.7723482321547699
+    },
+    "recall": {
+      "rules": 0.3877492262290362,
+      "deberta-v3-small-open-int8-int4-block": 1.0,
+      "deberta-v3-small-open-int8-int4-block_review": 1.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 1.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 1.0
+    },
+    "f1": {
+      "rules": 0.558817427385892,
+      "deberta-v3-small-open-int8-int4-block": 0.8237037915394421,
+      "deberta-v3-small-open-int8-int4-block_review": 0.8715535899124871,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.8237037915394421,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.8715535899124871
+    },
+    "exact_f1": {
+      "rules": 0.5263157894736842,
+      "deberta-v3-small-open-int8-int4-block": 0.5937142857142856,
+      "deberta-v3-small-open-int8-int4-block_review": 0.6582198289515362,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.5937142857142856,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.6582198289515362
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+    },
+    "ms": {
+      "rules": 0.027166504878550768,
+      "deberta-v3-small-open-int8-int4-block": 16.519832992344163,
+      "deberta-v3-small-open-int8-int4-block_review": 16.519832992344163,
+      "rules_deberta-v3-small-open-int8-int4-block": 16.546999497222714,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 16.546999497222714
+    },
+    "docs": 600
+  },
+  "source": {
+    "path": "ml/results/fa_baseline_nz_test_false_alarm.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

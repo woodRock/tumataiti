@@ -1,0 +1,186 @@
+{
+  "name": "m3open_open_en_test",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9639959432048681,
+      "openai-privacy-filter": 0.3995943204868154,
+      "deberta-v3-small-open": 0.03296146044624747,
+      "modernbert-base-open": 0.018762677484787018,
+      "mdeberta-v3-base-open": 0.04006085192697769,
+      "rules_openai-privacy-filter": 0.3225152129817444,
+      "rules_deberta-v3-small-open": 0.030933062880324543,
+      "rules_modernbert-base-open": 0.017241379310344827,
+      "rules_mdeberta-v3-base-open": 0.03498985801217039
+    },
+    "span_leak": {
+      "rules": 0.7453682260305697,
+      "openai-privacy-filter": 0.16315423807318202,
+      "deberta-v3-small-open": 0.01157943492357573,
+      "modernbert-base-open": 0.007642427049559981,
+      "mdeberta-v3-base-open": 0.01366373320981936,
+      "rules_openai-privacy-filter": 0.1174154701250579,
+      "rules_deberta-v3-small-open": 0.010884668828161186,
+      "rules_modernbert-base-open": 0.007179249652616952,
+      "rules_mdeberta-v3-base-open": 0.012158406669754516
+    },
+    "precision": {
+      "rules": 0.9882371253224228,
+      "openai-privacy-filter": 0.9567158467621922,
+      "deberta-v3-small-open": 0.9896478001575335,
+      "modernbert-base-open": 0.9913251053009401,
+      "mdeberta-v3-base-open": 0.9922877612770842,
+      "rules_openai-privacy-filter": 0.9587607904027801,
+      "rules_deberta-v3-small-open": 0.9885879659625935,
+      "rules_modernbert-base-open": 0.98960176036588,
+      "rules_mdeberta-v3-base-open": 0.9908081859174471
+    },
+    "recall": {
+      "rules": 0.38583012119317983,
+      "openai-privacy-filter": 0.7813661145258186,
+      "deberta-v3-small-open": 0.9925947147272285,
+      "modernbert-base-open": 0.9950515678716533,
+      "mdeberta-v3-base-open": 0.9907716081536271,
+      "rules_openai-privacy-filter": 0.9005799215196028,
+      "rules_deberta-v3-small-open": 0.9934541792547835,
+      "rules_modernbert-base-open": 0.9955898183838594,
+      "rules_mdeberta-v3-base-open": 0.9919436052366566
+    },
+    "f1": {
+      "rules": 0.5549825174825174,
+      "openai-privacy-filter": 0.8601957336187782,
+      "deberta-v3-small-open": 0.9911190669168989,
+      "modernbert-base-open": 0.9931848411457092,
+      "mdeberta-v3-base-open": 0.9915291051259774,
+      "rules_openai-privacy-filter": 0.928760083443009,
+      "rules_deberta-v3-small-open": 0.9910150989638136,
+      "rules_modernbert-base-open": 0.9925867582971615,
+      "rules_mdeberta-v3-base-open": 0.9913755704791157
+    },
+    "exact_f1": {
+      "rules": 0.3947005244272702,
+      "openai-privacy-filter": 0.6514608859566446,
+      "deberta-v3-small-open": 0.9623329283110571,
+      "modernbert-base-open": 0.9636122484285797,
+      "mdeberta-v3-base-open": 0.8160605891852759,
+      "rules_openai-privacy-filter": 0.707713042945537,
+      "rules_deberta-v3-small-open": 0.956466439266925,
+      "rules_modernbert-base-open": 0.9574737812608044,
+      "rules_mdeberta-v3-base-open": 0.8304474926917023
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "openai-privacy-filter": 0.3361144219308701,
+      "deberta-v3-small-open": 0.025029797377830752,
+      "modernbert-base-open": 0.009535160905840286,
+      "mdeberta-v3-base-open": 0.023837902264600714,
+      "rules_openai-privacy-filter": 0.3361144219308701,
+      "rules_deberta-v3-small-open": 0.025029797377830752,
+      "rules_modernbert-base-open": 0.009535160905840286,
+      "rules_mdeberta-v3-base-open": 0.023837902264600714
+    },
+    "leak_date": {
+      "rules": 0.20349761526232116,
+      "openai-privacy-filter": 0.04292527821939587,
+      "deberta-v3-small-open": 0.01589825119236884,
+      "modernbert-base-open": 0.01589825119236884,
+      "mdeberta-v3-base-open": 0.01589825119236884,
+      "rules_openai-privacy-filter": 0.034976152623211444,
+      "rules_deberta-v3-small-open": 0.014308426073131956,
+      "rules_modernbert-base-open": 0.014308426073131956,
+      "rules_mdeberta-v3-base-open": 0.009538950715421303
+    },
+    "leak_email": {
+      "rules": 0.003787878787878788,
+      "openai-privacy-filter": 0.027777777777777776,
+      "deberta-v3-small-open": 0.003787878787878788,
+      "modernbert-base-open": 0.003787878787878788,
+      "mdeberta-v3-base-open": 0.003787878787878788,
+      "rules_openai-privacy-filter": 0.003787878787878788,
+      "rules_deberta-v3-small-open": 0.003787878787878788,
+      "rules_modernbert-base-open": 0.003787878787878788,
+      "rules_mdeberta-v3-base-open": 0.003787878787878788
+    },
+    "leak_id": {
+      "rules": 0.9151880766501065,
+      "openai-privacy-filter": 0.13413768630234207,
+      "deberta-v3-small-open": 0.0017743080198722497,
+      "modernbert-base-open": 0.0021291696238466998,
+      "mdeberta-v3-base-open": 0.00674237047551455,
+      "rules_openai-privacy-filter": 0.12526614620298085,
+      "rules_deberta-v3-small-open": 0.0017743080198722497,
+      "rules_modernbert-base-open": 0.0017743080198722497,
+      "rules_mdeberta-v3-base-open": 0.0046132008516678496
+    },
+    "leak_ip_address": {
+      "rules": 0.1592356687898089,
+      "openai-privacy-filter": 0.13694267515923567,
+      "deberta-v3-small-open": 0.006369426751592357,
+      "modernbert-base-open": 0.0,
+      "mdeberta-v3-base-open": 0.0031847133757961785,
+      "rules_openai-privacy-filter": 0.01592356687898089,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "openai-privacy-filter": 0.07260069617105917,
+      "deberta-v3-small-open": 0.018896071606166086,
+      "modernbert-base-open": 0.0139234211834908,
+      "mdeberta-v3-base-open": 0.02187966185977126,
+      "rules_openai-privacy-filter": 0.07260069617105917,
+      "rules_deberta-v3-small-open": 0.018896071606166086,
+      "rules_modernbert-base-open": 0.0139234211834908,
+      "rules_mdeberta-v3-base-open": 0.02187966185977126
+    },
+    "leak_phone": {
+      "rules": 0.9722772277227723,
+      "openai-privacy-filter": 0.12871287128712872,
+      "deberta-v3-small-open": 0.0039603960396039604,
+      "modernbert-base-open": 0.0039603960396039604,
+      "mdeberta-v3-base-open": 0.009900990099009901,
+      "rules_openai-privacy-filter": 0.12079207920792079,
+      "rules_deberta-v3-small-open": 0.0039603960396039604,
+      "rules_modernbert-base-open": 0.0039603960396039604,
+      "rules_mdeberta-v3-base-open": 0.009900990099009901
+    },
+    "leak_secret": {
+      "rules": 0.9191616766467066,
+      "openai-privacy-filter": 0.3473053892215569,
+      "deberta-v3-small-open": 0.04491017964071856,
+      "modernbert-base-open": 0.017964071856287425,
+      "mdeberta-v3-base-open": 0.041916167664670656,
+      "rules_openai-privacy-filter": 0.344311377245509,
+      "rules_deberta-v3-small-open": 0.04491017964071856,
+      "rules_modernbert-base-open": 0.017964071856287425,
+      "rules_mdeberta-v3-base-open": 0.038922155688622756
+    },
+    "leak_url": {
+      "rules": 0.07360406091370558,
+      "openai-privacy-filter": 0.8375634517766497,
+      "deberta-v3-small-open": 0.01015228426395939,
+      "modernbert-base-open": 0.007614213197969543,
+      "mdeberta-v3-base-open": 0.005076142131979695,
+      "rules_openai-privacy-filter": 0.06852791878172589,
+      "rules_deberta-v3-small-open": 0.0025380710659898475,
+      "rules_modernbert-base-open": 0.0025380710659898475,
+      "rules_mdeberta-v3-base-open": 0.0025380710659898475
+    },
+    "ms": {
+      "rules": 0.022750002244720235,
+      "openai-privacy-filter": 394.8223697952926,
+      "deberta-v3-small-open": 10.884620249271393,
+      "modernbert-base-open": 22.015611175447702,
+      "mdeberta-v3-base-open": 23.250285536050797,
+      "rules_openai-privacy-filter": 394.84511979753734,
+      "rules_deberta-v3-small-open": 10.907370251516113,
+      "rules_modernbert-base-open": 22.038361177692423,
+      "rules_mdeberta-v3-base-open": 23.273035538295517
+    },
+    "docs": 2000
+  },
+  "source": {
+    "path": "ml/results/m3open_open_en_test.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

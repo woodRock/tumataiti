@@ -1,0 +1,85 @@
+{
+  "name": "m1_pii300k",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9589410272669626,
+      "openai-privacy-filter": 0.08195941661382372,
+      "rules_openai-privacy-filter": 0.07783766645529486
+    },
+    "span_leak": {
+      "rules": 0.8542878112121041,
+      "openai-privacy-filter": 0.0277479817083498,
+      "rules_openai-privacy-filter": 0.026703551064190142
+    },
+    "precision": {
+      "rules": 0.9652033283772856,
+      "openai-privacy-filter": 0.9336662818300925,
+      "rules_openai-privacy-filter": 0.9319756369208665
+    },
+    "recall": {
+      "rules": 0.20077699824741316,
+      "openai-privacy-filter": 0.9763400778083441,
+      "rules_openai-privacy-filter": 0.9784507783547388
+    },
+    "f1": {
+      "rules": 0.33240805619935676,
+      "openai-privacy-filter": 0.9545264659972973,
+      "rules_openai-privacy-filter": 0.9546479048462302
+    },
+    "exact_f1": {
+      "rules": 0.2394635077585785,
+      "openai-privacy-filter": 0.8181641168289291,
+      "rules_openai-privacy-filter": 0.8406284293433718
+    },
+    "leak_address": {
+      "rules": 0.9998870311793945,
+      "openai-privacy-filter": 0.04236330772706733,
+      "rules_openai-privacy-filter": 0.04236330772706733
+    },
+    "leak_date": {
+      "rules": 0.660336642209754,
+      "openai-privacy-filter": 0.01078981441519206,
+      "rules_openai-privacy-filter": 0.01078981441519206
+    },
+    "leak_email": {
+      "rules": 0.005742725880551302,
+      "openai-privacy-filter": 0.010719754977029096,
+      "rules_openai-privacy-filter": 0.0007656967840735069
+    },
+    "leak_id": {
+      "rules": 0.9695643524965188,
+      "openai-privacy-filter": 0.01830117366222399,
+      "rules_openai-privacy-filter": 0.018102247861547644
+    },
+    "leak_ip_address": {
+      "rules": 0.5036934441366574,
+      "openai-privacy-filter": 0.022622345337026777,
+      "rules_openai-privacy-filter": 0.018928901200369344
+    },
+    "leak_person": {
+      "rules": 0.9994834710743802,
+      "openai-privacy-filter": 0.03856749311294766,
+      "rules_openai-privacy-filter": 0.03839531680440771
+    },
+    "leak_phone": {
+      "rules": 0.9934902353530295,
+      "openai-privacy-filter": 0.015022533800701052,
+      "rules_openai-privacy-filter": 0.015022533800701052
+    },
+    "leak_secret": {
+      "rules": 0.7654320987654321,
+      "openai-privacy-filter": 0.04197530864197531,
+      "rules_openai-privacy-filter": 0.04197530864197531
+    },
+    "ms": {
+      "rules": 0.009416999091627076,
+      "openai-privacy-filter": 283.56145368888974,
+      "rules_openai-privacy-filter": 283.57087068798137
+    },
+    "docs": 7946
+  },
+  "source": {
+    "path": "ml/results/m1_pii300k.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

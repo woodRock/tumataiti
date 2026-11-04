@@ -1,0 +1,154 @@
+{
+  "name": "m3open_int4_nz_test_names",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9375,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.01625,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.015625
+    },
+    "span_leak": {
+      "rules": 0.4578313253012048,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0033734939759036144,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.003253012048192771
+    },
+    "precision": {
+      "rules": 0.8943903043015922,
+      "deberta-v3-small-open-int8-int4-block": 1.0,
+      "modernbert-base-open-int8-int4-block": 0.9997948545798715,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9998131504699266,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9366640749897353,
+      "rules_modernbert-base-open-int8-int4-block": 0.9364840904525247,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9363932246097851
+    },
+    "recall": {
+      "rules": 0.5726503698038594,
+      "deberta-v3-small-open-int8-int4-block": 1.0,
+      "modernbert-base-open-int8-int4-block": 1.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9981253322638711,
+      "rules_deberta-v3-small-open-int8-int4-block": 1.0,
+      "rules_modernbert-base-open-int8-int4-block": 1.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9981999459051101
+    },
+    "f1": {
+      "rules": 0.6982395887824959,
+      "deberta-v3-small-open-int8-int4-block": 1.0,
+      "modernbert-base-open-int8-int4-block": 0.9998974167676956,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9989685284494788,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9672963804987189,
+      "rules_modernbert-base-open-int8-int4-block": 0.9672003969148888,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9663092792813128
+    },
+    "exact_f1": {
+      "rules": 0.67,
+      "deberta-v3-small-open-int8-int4-block": 0.9982514320168828,
+      "modernbert-base-open-int8-int4-block": 0.9953023367863166,
+      "mdeberta-v3-base-open-int8-int4-block": 0.68410178338408,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9655578451574919,
+      "rules_modernbert-base-open-int8-int4-block": 0.962888901958478,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.7958746618575293
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0016666666666666668,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_ip_address": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.008709677419354838,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.008709677419354838
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_secret": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_url": {
+      "rules": 0.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "ms": {
+      "rules": 0.04345849993114825,
+      "deberta-v3-small-open-int8-int4-block": 27.146562504640315,
+      "modernbert-base-open-int8-int4-block": 96.3323330070125,
+      "mdeberta-v3-base-open-int8-int4-block": 59.55858299421379,
+      "rules_deberta-v3-small-open-int8-int4-block": 27.190021004571463,
+      "rules_modernbert-base-open-int8-int4-block": 96.37579150694364,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 59.60204149414494
+    },
+    "docs": 1600
+  },
+  "source": {
+    "path": "ml/results/m3open_int4_nz_test_names.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

@@ -8,7 +8,7 @@
 | Any-PII char recall | 38.6 | 78.1 | 99.3 | 99.5 | 99.1 | 90.1 | 99.3 | 99.6 | 99.2 |
 | Any-PII char F1 | 55.5 | 86.0 | 99.1 | 99.3 | 99.2 | 92.9 | 99.1 | 99.3 | 99.1 |
 | Exact-span F1 (all categories) | 39.5 | 65.1 | 96.2 | 96.4 | 81.6 | 70.8 | 95.6 | 95.7 | 83.0 |
-| Median ms per document | 0.02 | 394.82 | 11.41 | 22.02 | 23.25 | 394.85 | 11.43 | 22.04 | 23.27 |
+| Median ms per document | 0.02 | 394.82 | 10.88 | 22.02 | 23.25 | 394.85 | 10.91 | 22.04 | 23.27 |
 
 Span leak rate by category (lower is better):
 

@@ -1,0 +1,59 @@
+{
+  "name": "m3open_names_counterfactual",
+  "metrics": {
+    "maori": {
+      "openai-privacy-filter": 0.5238095238095238,
+      "deberta-v3-small-open": 0.002380952380952381,
+      "modernbert-base-open": 0.016904761904761905,
+      "mdeberta-v3-base-open": 0.01380952380952381,
+      "rules_openai-privacy-filter": 0.5238095238095238,
+      "rules_deberta-v3-small-open": 0.002380952380952381,
+      "rules_modernbert-base-open": 0.016904761904761905,
+      "rules_mdeberta-v3-base-open": 0.01380952380952381
+    },
+    "pakeha": {
+      "openai-privacy-filter": 0.14285714285714285,
+      "deberta-v3-small-open": 0.0016666666666666668,
+      "modernbert-base-open": 0.034523809523809526,
+      "mdeberta-v3-base-open": 0.007857142857142858,
+      "rules_openai-privacy-filter": 0.14285714285714285,
+      "rules_deberta-v3-small-open": 0.0016666666666666668,
+      "rules_modernbert-base-open": 0.034523809523809526,
+      "rules_mdeberta-v3-base-open": 0.007857142857142858
+    },
+    "pasifika": {
+      "openai-privacy-filter": 0.3738095238095238,
+      "deberta-v3-small-open": 0.0,
+      "modernbert-base-open": 0.0,
+      "mdeberta-v3-base-open": 0.008809523809523809,
+      "rules_openai-privacy-filter": 0.3738095238095238,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.008809523809523809
+    },
+    "asian_nz": {
+      "openai-privacy-filter": 0.14714285714285713,
+      "deberta-v3-small-open": 0.0,
+      "modernbert-base-open": 0.0038095238095238095,
+      "mdeberta-v3-base-open": 0.0,
+      "rules_openai-privacy-filter": 0.14714285714285713,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0038095238095238095,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "gap": {
+      "openai-privacy-filter": 0.380952380952381,
+      "deberta-v3-small-open": 0.0007142857142857144,
+      "modernbert-base-open": -0.01761904761904762,
+      "mdeberta-v3-base-open": 0.005952380952380952,
+      "rules_openai-privacy-filter": 0.380952380952381,
+      "rules_deberta-v3-small-open": 0.0007142857142857144,
+      "rules_modernbert-base-open": -0.01761904761904762,
+      "rules_mdeberta-v3-base-open": 0.005952380952380952
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_names_counterfactual.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

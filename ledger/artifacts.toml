@@ -4,7 +4,52 @@
 [artifacts.results]
 kind = "macros"
 output = "generated/results.tex"
-results = []                       # e.g. ["mba", "baselines"]
+# Every score file in ml/results/ (ml/scripts/export_ledger.py).
+results = [
+    "fa_baseline_false_alarms",
+    "fa_baseline_nz_test_false_alarm",
+    "m1_nz_synth_v0",
+    "m1_pii300k",
+    "m3_names_counterfactual",
+    "m3_nz_test_full",
+    "m3_nz_test_names",
+    "m3_pii300k_en_val",
+    "m3fa_false_alarms",
+    "m3fa_names_counterfactual",
+    "m3fa_nz_test_false_alarm",
+    "m3fa_nz_test_full",
+    "m3fa_nz_test_names",
+    "m3fa_open_en_test",
+    "m3fa_pii300k_en_val",
+    "m3open_int4_names_counterfactual",
+    "m3open_int4_nz_test_full",
+    "m3open_int4_nz_test_names",
+    "m3open_int4_open_en_test",
+    "m3open_int4_pii300k_en_val",
+    "m3open_names_counterfactual",
+    "m3open_nz_test_full",
+    "m3open_nz_test_names",
+    "m3open_open_en_test",
+    "m3open_pii300k_en_val",
+    "m3v2_fp16_nz_test_full",
+    "m3v2_int4_names_counterfactual",
+    "m3v2_int4_nz_test_full",
+    "m3v2_int4_nz_test_names",
+    "m3v2_int4_pii300k_en_val",
+    "m3v2_int8_names_counterfactual",
+    "m3v2_int8_nz_test_full",
+    "m3v2_int8_nz_test_names",
+    "m3v2_int8_pii300k_en_val",
+    "m3v2_names_counterfactual",
+    "m3v2_nz_test_full",
+    "m3v2_nz_test_names",
+    "m3v2_pii300k_en_val",
+    "txn_false_alarms",
+    "txn_nz_test_false_alarm",
+    "txn_nz_test_full",
+    "txn_open_en_test",
+    "txn_pii300k_en_val",
+]
 
 # A table built straight from results (one row per result):
 # [artifacts.table_main]
@@ -33,3 +78,70 @@ decimals = 3
 # [format.f1]
 # decimals = 1
 # percent = true                   # 0.912 -> 91.2
+
+# Rates are fractions in the results; the paper prints percentages with one
+# decimal (the % sign stays in the .tex), as in ml/results/*.md.
+[format.doc_leak]
+decimals = 1
+percent = true
+
+[format.span_leak]
+decimals = 1
+percent = true
+
+[format.precision]
+decimals = 1
+percent = true
+
+[format.recall]
+decimals = 1
+percent = true
+
+[format.f1]
+decimals = 1
+percent = true
+
+[format.exact_f1]
+decimals = 1
+percent = true
+
+[format.ms]
+decimals = 1
+
+[format.maori]
+decimals = 1
+percent = true
+
+[format.pakeha]
+decimals = 1
+percent = true
+
+[format.pasifika]
+decimals = 1
+percent = true
+
+[format.asian_nz]
+decimals = 1
+percent = true
+
+# Māori − Pākehā gap in percentage points, signed.
+[format.gap]
+decimals = 1
+percent = true
+sign = true
+
+[format."*/leak_*/*"]
+decimals = 1
+percent = true
+
+[format."*/*_redacted/*"]
+decimals = 1
+percent = true
+
+[format."*/*_flagged/*"]
+decimals = 1
+percent = true
+
+[format."*/*_leaked/*"]
+decimals = 1
+percent = true
