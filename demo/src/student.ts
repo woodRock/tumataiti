@@ -16,6 +16,8 @@ export interface StudentInfo {
   /** How the weights were quantised, e.g. `int8 embeddings, int4 encoder`. */
   precision: string;
   bytes: number;
+  /** Hugging Face repo of a published model, e.g. `woodrock/tumataiti-deberta-v3-small-open`. */
+  repo: string | null;
 }
 
 export interface StudentModel {

@@ -218,6 +218,16 @@ export function App({ redactor }: { redactor: Redactor }) {
           a research prototype trained on synthetic data. All examples are synthetic. Part of the Hiringa Te Mahara
           Atamai research programme.
         </p>
+        {__STUDENT_MODEL__?.repo && (
+          <p>
+            The model is{" "}
+            <a href={`https://huggingface.co/${__STUDENT_MODEL__.repo}`}>{__STUDENT_MODEL__.repo}</a>, fine-tuned from
+            DeBERTa-v3-small (Microsoft, MIT) on synthetic data including{" "}
+            <a href="https://huggingface.co/datasets/nvidia/Nemotron-PII">Nemotron-PII</a> (NVIDIA, CC BY 4.0) and{" "}
+            <a href="https://huggingface.co/datasets/gretelai/gretel-pii-masking-en-v1">gretel-pii-masking-en-v1</a>{" "}
+            (Gretel, Apache-2.0).
+          </p>
+        )}
       </footer>
     </>
   );

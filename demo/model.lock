@@ -1,0 +1,9 @@
+# The student the demo ships, pinned to a Hub commit (scripts/lock-model.sh).
+REPO=woodrock/tumataiti-deberta-v3-small-open
+REVISION=1e4fd1c7be1323f7d0cae6c030c3d171ce159905
+NAME=deberta-v3-small-open
+PRECISION="int8 embeddings, int4 encoder"
+MODEL_FILE=onnx/model_int4.onnx
+MODEL_SHA256=d5634ea780dc69c5071edf14f118146ccf56019fec2639b49387fb329faa2bd5
+TOKENIZER_SHA256=8196ef6e837c3ed355ae78bf29a244a33f4dc4179a7c364aedeb0cd6433e9948
+CONFIG_SHA256=453eca0aef93d0a3c848453b72de06117a2361319d2e83f61df39d9f2d75517b

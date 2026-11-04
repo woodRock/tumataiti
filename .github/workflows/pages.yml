@@ -34,6 +34,8 @@ jobs:
           cache-dependency-path: demo/package-lock.json
       - run: npm ci
         working-directory: demo
+      # The student pinned in demo/model.lock, served from this site.
+      - run: '[ ! -f demo/model.lock ] || scripts/fetch-model.sh'
       - run: npm run build -- --base=/${{ github.event.repository.name }}/
         working-directory: demo
       - uses: actions/upload-pages-artifact@v3

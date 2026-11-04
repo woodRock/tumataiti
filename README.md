@@ -17,6 +17,7 @@ demo/                    React + Vite demo site (static, no backend)
 ml/                      Python: synthetic NZ data, detectors, evaluation (uv project)
 scripts/build-wasm.sh    Builds the WebAssembly modules into demo/src/wasm and demo/src/wasm-student
 scripts/copy-model.sh    Copies an exported student model into the demo
+scripts/fetch-model.sh   Installs the published model pinned in demo/model.lock
 ```
 
 ## Requirements
@@ -53,10 +54,16 @@ uv sync --extra rules && uv run pytest
 
 ### The student model in the demo
 
-The demo runs the rules on their own unless a student model is copied in. The model is not committed or published yet. With an exported model (see [ml/results](ml/results/README.md)):
+The demo runs the rules on their own unless a student model is copied in. The published model ([woodrock/tumataiti-deberta-v3-small-open](https://huggingface.co/woodrock/tumataiti-deberta-v3-small-open)) is pinned to a Hub commit and file hashes in `demo/model.lock`; the Pages build installs it, and so does:
 
 ```bash
-./scripts/copy-model.sh ml/runs/m3-v2/deberta-v3-small/onnx model_int8_int4-block.onnx "int8 embeddings, int4 encoder"
+./scripts/fetch-model.sh
+```
+
+Publishing a new one: `ml/scripts/hf_upload.sh NAME REPO`, then `scripts/lock-model.sh REPO COMMIT NAME`. Only students trained without PII-Masking-300k may be published (SPEC §9.1). To try an exported model locally instead (see [ml/results](ml/results/README.md)):
+
+```bash
+./scripts/copy-model.sh ml/runs/m3-v2/deberta-v3-small-open/onnx model_int8_int4-block.onnx "int8 embeddings, int4 encoder"
 ```
 
 Then restart `npm --prefix demo run dev`. The page offers an "Add the name model" button. It downloads the model from the page's own origin, runs it with ONNX Runtime Web (WebAssembly, one thread), and merges its spans with the rules in Rust. The tokeniser is the Hugging Face `tokenizers` crate compiled to WebAssembly. It matches the Python tokeniser exactly (`cargo test -p tumataiti-student -- --ignored`, with `TUMATAITI_TOKENIZER` and `TUMATAITI_EXPECTED` set; see the test).
