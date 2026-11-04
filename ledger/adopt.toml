@@ -331,6 +331,17 @@ by = ""
 decided = "2026-11-04T22:43:06+13:00"
 result_hash = ""
 
+[decisions.8f70c493fa]
+file = "TAI_template.tex"
+literal = "3"
+context = "ted/deberta-small-open-v3}\\% by version~3) but not for te reo ones (Kaum\\={a}tua,"
+verdict = "not-a-result"
+key = ""
+reason = "Data version label (version 3 of the NZ generator), not the epoch setting."
+by = ""
+decided = "2026-11-04T23:40:44+13:00"
+result_hash = ""
+
 [decisions.92f8202f5c]
 file = "TAI_template.tex"
 literal = "3"
