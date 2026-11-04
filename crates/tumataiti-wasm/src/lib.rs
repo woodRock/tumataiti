@@ -109,6 +109,7 @@ pub fn redact_with(text: &str, policy_json: &str, model_json: &str, model_name: 
             note: None,
         });
     }
+    tumataiti_rules::review::review(&mut candidates);
     let spans = tumataiti_rules::merge(text, candidates);
     to_js(text, tumataiti_rules::redact::apply(text, spans, &policy))
 }
@@ -174,5 +175,20 @@ mod tests {
         let cats: Vec<&str> = out["findings"].as_array().unwrap().iter().map(|f| f["category"].as_str().unwrap()).collect();
         assert_eq!(cats, ["PERSON", "NZ_GOV_ID"]);
         assert!(!out["output"].as_str().unwrap().contains("Ngata"));
+    }
+
+    #[test]
+    fn kinship_words_are_flagged_and_names_redacted() {
+        let text = "Koro's IRD number. Nan Li will help.";
+        let span = |word: &str| {
+            let start = text[..text.find(word).unwrap()].encode_utf16().count();
+            format!(r#"{{"start":{start},"end":{},"label":"PERSON","confidence":0.99}}"#, start + word.encode_utf16().count())
+        };
+        let model = format!("[{},{}]", span("Koro"), span("Nan Li"));
+        let out: serde_json::Value = serde_json::from_str(&redact_with(text, "", &model, "student").unwrap()).unwrap();
+        let actions: Vec<&str> = out["findings"].as_array().unwrap().iter().map(|f| f["action"].as_str().unwrap()).collect();
+        assert_eq!(actions, ["flag", "pseudonymise"]);
+        let output = out["output"].as_str().unwrap();
+        assert!(output.starts_with("Koro's") && !output.contains("Nan"));
     }
 }

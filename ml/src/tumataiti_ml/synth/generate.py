@@ -146,9 +146,15 @@ PERSON_CATEGORY = {
 }
 
 
-def global_slot(rng: random.Random, name: str) -> tuple[str, str | None]:
+def global_slot(rng: random.Random, name: str, pool: NamePool | None = None) -> tuple[str, str | None]:
     """Slots not tied to a person: (value, Tūmataiti category or None)."""
     match name:
+        case "kin":  # a kinship word, from the held-out list in held-out splits
+            return rng.choice(lx.KINSHIP[1 if pool and pool.held_out else 0]), None
+        case "nan_full":  # a real person whose given name is also a kinship word
+            return f"Nan {rng.choice(lx.NAN_SURNAMES)}", "PERSON"
+        case "booking_code":  # NHI-shaped, failing the check character
+            return nzids.gen_nhi(rng, valid=False), None
         case "hui_date":
             return format_date(rng, _date(rng, 2026, 2027)), None
         case "death_date":
@@ -284,6 +290,31 @@ Moved by {p3.full}, seconded by Whaea {p4.given}, that the accounts be accepted.
 The chair thanked {p2.surname} for the report on the {town} kaupapa.""",
 }
 
+# Data v3 (rejected, SPEC §9.8): templates for false alarms seen in the demo,
+# kinship words on their own or before a name ("Koro's IRD number", "Nanny
+# Rīpeka"), and real people whose given name is a kinship word. Training on
+# them made the model skip held-out Māori names that are also words.
+V3_TEMPLATES: dict[str, str] = {
+    "kin_update": """Kia ora koutou, {kin} is home from the hospital and doing well. {kin} says thanks heaps for the kai. {p1.given} will pop round on {hui_date}. {filler}""",
+    "kin_titles": """{kin} {p1.given} will open with a karakia, then {kin} {p2.full} will speak about the whenua. Ring {p3.given} on {p3.mobile} if you need a ride.""",
+    "kin_tax": """Helping {kin} with the tax return this week. {kin}'s IRD number is {p1.ird}, and the NHI on the hospital letter is {p1.nhi}.""",
+    "named_nan": """{nan_full} chaired the meeting. {kin} {p1.given} sent apologies. Action: {nan_full} to send the notes to {p2.email}.""",
+}
+
+# Data v3ids (rejected) adds order and booking codes shaped like IRD numbers and NHIs,
+# unlabelled, beside labelled real ones. Kept separate because the open
+# English data labels order numbers as customer IDs, and nine-digit routing
+# numbers, SSNs and passports share the IRD shape (SPEC §9.8).
+V3_ID_TEMPLATES: dict[str, str] = {
+    "id_lookalikes": """Helping {kin} with the paperwork. The order reference {order_ref} and booking code {booking_code} are from the travel agent; the IRD number is {p1.ird}.""",
+    "order_confirmation": """Order confirmation
+Order number: {order_ref}
+Booking code: {booking_code}
+Customer: {p1.full}
+Email: {p1.email}
+NHI on the prescription: {p1.nhi}""",
+}
+
 TEST_TEMPLATES: dict[str, str] = {
     "group_chat": """[{hui_date}] {p1.plain}: kia ora whānau, who's bringing the hāngī stones?
 [{hui_date}] {p2.given}: me and {p3.given}. {p3.given} can you flick me ur number again
@@ -317,7 +348,29 @@ Permission slips are due {hui_date}.""",
 }
 
 
-def fill(template: str, rng: random.Random, pool: NamePool | None = None) -> tuple[str, list[Span]]:
+# Held-out false-alarm set: the same cases as V3_TEMPLATES with different
+# wording and the held-out kinship list. Its unlabelled slots are recorded in
+# meta["negatives"], so anything redacted there counts as a false alarm.
+FALSE_ALARM_TEMPLATES: dict[str, str] = {
+    "fa_text": """hey just letting u know {kin} is staying with us this week. {kin} wants to see the mokos before {hui_date}, {p1.plain} can pick them up""",
+    "fa_birthday": """Pānui: {kin} {p1.given} turns 80 on {hui_date}! Whānau welcome at the {town} hall. RSVP to {p2.full} on {p2.mobile}.""",
+    "fa_ids": """Could you double-check these for {kin}? NHI: {p1.nhi}. IRD number: {p1.ird}. The letter also lists claim number {order_ref} and reference {booking_code}, which I don't think are personal.""",
+    "fa_receipt": """TAX INVOICE
+Order no. {order_ref}
+Ref: {booking_code}
+{invoice}
+Billed to: {p1.full}, {p1.address}
+Thank you for your purchase.""",
+    "fa_treasurer": """Welcome to our new treasurer, {nan_full}! The treasurer can be reached at {p1.email}. {kin} {p2.given} will hand over the books.""",
+    "fa_appointment": """{kin}'s appointment is on {hui_date}. {kin} needs a ride, so {p1.given} {p1.surname} is driving. Call {p1.landline} to confirm.""",
+}
+
+
+def fill(
+    template: str, rng: random.Random, pool: NamePool | None = None, negatives: list | None = None
+) -> tuple[str, list[Span]]:
+    """Fill a template. Unlabelled slots are appended to `negatives` as
+    [start, end, slot] when it is given."""
     pool = pool or NamePool()
     people: dict[str, Person] = {}
     out: list[str] = []
@@ -336,11 +389,13 @@ def fill(template: str, rng: random.Random, pool: NamePool | None = None) -> tup
             value, category = person.get(attr), PERSON_CATEGORY[attr]
             label = f"{name}.{attr}"
         else:
-            value, category = global_slot(rng, name)
+            value, category = global_slot(rng, name, pool)
             label = name
         out.append(value)
         if category is not None:
             spans.append(Span(pos, pos + len(value), f"{category}:{label}", TUMATAITI[category]))
+        elif negatives is not None:
+            negatives.append([pos, pos + len(value), label])
         pos += len(value)
         cursor = m.end()
     out.append(template[cursor:])
@@ -356,6 +411,13 @@ SPLITS = {
     "dev": ({**TRAIN_TEMPLATES, **V2_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
     "test_names": (TRAIN_TEMPLATES, True, lx.GROUP_WEIGHTS),
     "test_full": (TEST_TEMPLATES, True, lx.GROUP_WEIGHTS),
+    # v3 and v3ids were tried and rejected: they leak Māori names that are
+    # also words (SPEC §9.8). Kept so the result can be reproduced.
+    "train_v3": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "dev_v3": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "train_v3ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "dev_v3ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "test_false_alarm": (FALSE_ALARM_TEMPLATES, True, lx.GROUP_WEIGHTS),
 }
 
 
@@ -370,7 +432,10 @@ def generate(n: int, seed: int = 0, split: str = "train", group: str | None = No
     docs = []
     for i in range(n):
         name = names[i % len(names)]
-        text, spans = fill(templates[name], rng, pool)
+        negatives = [] if split == "test_false_alarm" else None
+        text, spans = fill(templates[name], rng, pool, negatives)
         meta = {"template": name, "split": split, "group": group}
+        if negatives is not None:
+            meta["negatives"] = negatives
         docs.append(Doc(id=f"{prefix}-{i:05d}", text=text, spans=spans, meta=meta))
     return docs

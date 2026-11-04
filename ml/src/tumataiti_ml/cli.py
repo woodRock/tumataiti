@@ -142,6 +142,44 @@ def cmd_combine(a: argparse.Namespace) -> None:
     print(f"wrote {len(out)} combined predictions to {a.out}")
 
 
+def cmd_review(a: argparse.Namespace) -> None:
+    from .review import review
+
+    text = {d.id: d.text for d in read_jsonl(a.gold)}
+    out = [review(d, text[d.id]) for d in read_jsonl(a.pred) if d.id in text]
+    write_jsonl(a.out, out)
+    meta = a.pred.with_suffix(".meta.json")
+    if meta.exists():
+        a.out.with_suffix(".meta.json").write_text(meta.read_text())
+    n = sum(len(d.meta["flagged"]) for d in out)
+    print(f"wrote {len(out)} reviewed predictions to {a.out} ({n} spans flagged for review)")
+
+
+def cmd_false_alarms(a: argparse.Namespace) -> None:
+    from .analysis import false_alarms
+
+    gold = list(read_jsonl(a.gold))
+    rows = {p.parent.name: false_alarms(gold, {d.id: d for d in read_jsonl(p)}) for p in a.pred}
+    names = list(rows)
+    keys = list(next(iter(rows.values())))
+    lines = ["| Slot | n | " + " | ".join(names) + " |", "|---|---:|" + "---:|" * len(names)]
+    def cell(r: dict) -> str:
+        if "leaked" in r:
+            return f"{r['leaked'] * 100:.1f}% leaked"
+        return f"{r['redacted'] * 100:.1f}% redacted" + (f", {r['flagged'] * 100:.1f}% flagged" if r["flagged"] else "")
+
+    for k in keys:
+        lines.append(f"| {k} | {rows[names[0]][k]['n']} | " + " | ".join(cell(rows[n][k]) for n in names) + " |")
+    md = (f"## {a.title or a.gold.stem}\n\nFalse alarms on text that is not PII (lower is better), "
+          "and leaks of the PII beside it:\n\n" + "\n".join(lines) + "\n")
+    if a.markdown:
+        a.markdown.parent.mkdir(parents=True, exist_ok=True)
+        a.markdown.write_text(md)
+    if a.json:
+        a.json.write_text(json.dumps(rows, indent=2, ensure_ascii=False))
+    print(md)
+
+
 def cmd_names(a: argparse.Namespace) -> None:
     from .analysis import person_leak_by_group
 
@@ -217,7 +255,7 @@ def main(argv: list[str] | None = None) -> None:
     g = sub.add_parser("generate", help="synthetic NZ documents with gold spans")
     g.add_argument("--n", type=int, default=1600)
     g.add_argument("--seed", type=int, default=0)
-    g.add_argument("--split", default="train", choices=["train", "dev", "test_names", "test_full"])
+    g.add_argument("--split", default="train", choices=["train", "dev", "train_v3", "dev_v3", "train_v3ids", "dev_v3ids", "test_names", "test_full", "test_false_alarm"])
     g.add_argument("--group", help="counterfactual audit: every person from this community")
     g.add_argument("--out", type=Path, required=True)
     g.set_defaults(fn=cmd_generate)
@@ -278,6 +316,20 @@ def main(argv: list[str] | None = None) -> None:
     c.add_argument("--secondary", type=Path, required=True)
     c.add_argument("--out", type=Path, required=True)
     c.set_defaults(fn=cmd_combine)
+
+    rv = sub.add_parser("review", help="flag model spans that are probably not PII (review.py)")
+    rv.add_argument("--gold", type=Path, required=True, help="the documents the predictions are for")
+    rv.add_argument("--pred", type=Path, required=True)
+    rv.add_argument("--out", type=Path, required=True)
+    rv.set_defaults(fn=cmd_review)
+
+    fa = sub.add_parser("false-alarms", help="false alarms and leaks on the false-alarm set")
+    fa.add_argument("--gold", type=Path, required=True)
+    fa.add_argument("--pred", type=Path, nargs="+", required=True)
+    fa.add_argument("--title")
+    fa.add_argument("--markdown", type=Path)
+    fa.add_argument("--json", type=Path)
+    fa.set_defaults(fn=cmd_false_alarms)
 
     nm = sub.add_parser("names", help="PERSON leak rate by community (synthetic NZ data only)")
     nm.add_argument("--gold", type=Path, required=True)

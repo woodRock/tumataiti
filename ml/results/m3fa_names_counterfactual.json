@@ -1,0 +1,74 @@
+{
+  "deberta-small-open-v2": {
+    "Māori": 0.002380952380952381,
+    "Pākehā": 0.0016666666666666668,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "deberta-small-open-v2-1ep": {
+    "Māori": 0.0002380952380952381,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "deberta-small-open-v2-1ep-s1": {
+    "Māori": 0.0002380952380952381,
+    "Pākehā": 0.0002380952380952381,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "deberta-small-open-v3": {
+    "Māori": 0.008333333333333333,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "deberta-small-open-v3-s1": {
+    "Māori": 0.005,
+    "Pākehā": 0.0002380952380952381,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "deberta-small-open-v3ids": {
+    "Māori": 0.012142857142857143,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v2": {
+    "Māori": 0.002380952380952381,
+    "Pākehā": 0.0016666666666666668,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v2-1ep": {
+    "Māori": 0.0002380952380952381,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v2-1ep-s1": {
+    "Māori": 0.0002380952380952381,
+    "Pākehā": 0.0002380952380952381,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v3": {
+    "Māori": 0.008333333333333333,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v3-s1": {
+    "Māori": 0.005,
+    "Pākehā": 0.0002380952380952381,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  },
+  "rules+deberta-small-open-v3ids": {
+    "Māori": 0.012142857142857143,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0,
+    "Asian NZ": 0.0
+  }
+}

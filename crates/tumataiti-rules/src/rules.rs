@@ -10,7 +10,7 @@ use crate::span::{Category, Checksum, Source, Span};
 
 /// Confidence for an ID-shaped code with nothing nearby saying what it is.
 /// Sits below the default policy threshold so these are flagged, not redacted.
-const WEAK: f32 = 0.4;
+pub(crate) const WEAK: f32 = 0.4;
 
 /// Confidence for a number labelled as an ID ("IRD number: …") whose check
 /// digit fails. Most likely a typo of a real ID, which still identifies the

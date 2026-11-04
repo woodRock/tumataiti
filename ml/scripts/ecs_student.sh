@@ -6,7 +6,7 @@
 #
 # Extra arguments after NAME go to `tumataiti-ml train` (e.g. --max-steps 30 for a smoke test).
 # PREDICT_ONLY=1 skips training and re-predicts with the existing model (e.g. after a decoder change).
-# DATA=v2 trains on data/v2 and writes runs/m3-v2/NAME; evaluation sets are always data/v1.
+# DATA=v2 or v3 trains on data/DATA and writes runs/m3-DATA/NAME; evaluation sets are always data/v1.
 # EXTRA picks the English data trained alongside the NZ set: open (default:
 # Nemotron-PII + Gretel, scripts/make_data_open.sh), none, or pii300k. pii300k
 # only reproduces the M3 v1/v2 results: PII-Masking-300k's licence forbids
@@ -41,6 +41,11 @@ for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
     --gold "$V/$ds.jsonl" --out "$OUT/pred/$ds.jsonl" > /dev/null
 done
+# False-alarm set (scripts/make_data_v3.sh), when it has been built.
+if [ -f $V/nz_test_false_alarm.jsonl ]; then
+  "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
+    --gold $V/nz_test_false_alarm.jsonl --out "$OUT/pred/nz_test_false_alarm.jsonl" > /dev/null
+fi
 # Open English test set (none of the students trains on it), when it has been built.
 if [ -f data/open/open_en_test.jsonl ]; then
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \

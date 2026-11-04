@@ -101,6 +101,19 @@ SIGNOFFS = [
     "Kind regards,", "Regards,", "Cheers,", "Thanks,", "Many thanks,", "Best wishes,", "Yours sincerely,",
 ]
 
+# Kinship and address words, used on their own ("ask Koro", "Nan's IRD number")
+# or before a name ("Nanny Rīpeka"). On their own they are not PII, so they are
+# hard negatives; before a name, only the name is labelled. Training and
+# held-out lists, as for names (data v3).
+KINSHIP = (
+    ["Koro", "Nan", "Nanny", "Aunty", "Uncle", "Kuia", "Pāpā", "Māmā", "Mum", "Dad", "Matua", "Whaea"],
+    ["Nana", "Koroua", "Tāua", "Pōua", "Grandad", "Granny", "Auntie", "Kaumātua"],
+)
+
+# Real people whose given name is also a kinship word, so a model (or a rule)
+# that skips every "Nan" leaks them.
+NAN_SURNAMES = ["Zhou", "Li", "Chen", "Wang", "Liu", "Zhang"]
+
 STREET_NAMES = [
     "Kōwhai", "Rimu", "Pōhutukawa", "Tōtara", "Mānuka", "Kauri", "Tūī", "Kererū",
     "Harakeke", "Whero", "Te Rauparaha", "Matai", "Ngaio", "Karaka", "Puriri", "Hinau",

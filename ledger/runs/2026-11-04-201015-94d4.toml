@@ -1,0 +1,23 @@
+id = "2026-11-04-201015-94d4"
+status = "done"
+started = "2026-11-04T20:10:15+13:00"
+finished = "2026-11-04T20:10:16+13:00"
+exit_code = 0
+commit = "e6429d01a108a55248482f79b174a4cce413a56e"
+dirty = true
+changed_code = ["ml/scripts/ecs_student.sh", "ml/scripts/local_int8.sh", "ml/scripts/make_data_v2.sh", "ml/src/tumataiti_ml/analysis.py", "ml/src/tumataiti_ml/cli.py", "ml/src/tumataiti_ml/synth/generate.py", "ml/src/tumataiti_ml/synth/lexicon.py", "ml/src/tumataiti_ml/synth/nzids.py"]
+command = "bash -c 'cd ml && RUNS=runs/m3-v2 TAG=fa_baseline MODELS=deberta-v3-small-open-int8-int4-block uv run ./scripts/score_false_alarms.sh'"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+
+[outputs]
+"ml/results/fa_baseline_false_alarms.json" = "sha256:0f660df54734b392824cd45168cfd56ab8619e349cf095be2937e8df0773b6d9"
+"ml/results/fa_baseline_false_alarms.md" = "sha256:14865453cfabb101d0d4b703b0d7ae3bccede8b82b28bd8a02c535f3dfb0e042"
+"ml/results/fa_baseline_nz_test_false_alarm.json" = "sha256:9c592bf8cf790bc5edc46a110c1c472bf318b8d37db301dac47c28c9a9664e67"
+"ml/results/fa_baseline_nz_test_false_alarm.md" = "sha256:9ac4d5dc423a56a6d03bc7f5ce6c1e8a8ca816c5cd01cf6a3583835cdbc130b6"
+"ml/runs/m3-v2/deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.jsonl" = "sha256:5588b1505166fe38841df17558d02d0fe63decabd90b1c1f651bc0e3435f0537"
+"ml/runs/m3-v2/deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.meta.json" = "sha256:63e08d5294e77b172be33efb5957ca572d8e1120b793648305c6ed788e83fe04"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.jsonl" = "sha256:ba997a3f869b1f06d7ff8b2c7fffa73bb08794b280c166530dff245304d7bd1e"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.meta.json" = "sha256:78ab07cb9d6d528c2d8f15e4bc023ee1b0fbae00bde78f67400e04f3226b95b8"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_false_alarm.jsonl" = "sha256:631d1245d27aaa49994889c1af4ac6d4ac907e6fdc752124776874c2e529657c"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_false_alarm.meta.json" = "sha256:78ab07cb9d6d528c2d8f15e4bc023ee1b0fbae00bde78f67400e04f3226b95b8"

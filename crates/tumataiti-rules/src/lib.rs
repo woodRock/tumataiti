@@ -9,6 +9,7 @@ pub mod checksum;
 mod merge;
 pub mod policy;
 pub mod redact;
+pub mod review;
 pub mod rules;
 pub mod span;
 

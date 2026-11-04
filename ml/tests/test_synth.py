@@ -7,7 +7,15 @@ import tumataiti_rules
 from tumataiti_ml.analysis import name_group
 from tumataiti_ml.synth import nzids
 from tumataiti_ml.synth import lexicon as lx
-from tumataiti_ml.synth.generate import TEST_TEMPLATES, TRAIN_TEMPLATES, V2_TEMPLATES, generate
+from tumataiti_ml.synth.generate import (
+    FALSE_ALARM_TEMPLATES,
+    TEST_TEMPLATES,
+    TRAIN_TEMPLATES,
+    V2_TEMPLATES,
+    V3_ID_TEMPLATES,
+    V3_TEMPLATES,
+    generate,
+)
 
 
 def rule_hits(text: str) -> list[dict]:
@@ -42,15 +50,23 @@ def test_card_generator_agrees_with_rust():
 
 
 def test_gold_spans_match_text_and_are_deterministic():
-    n_train = len(TRAIN_TEMPLATES) + len(V2_TEMPLATES)
-    docs = generate(n_train * 3, seed=7) + generate(len(TEST_TEMPLATES) * 3, 7, "test_full")
-    assert {d.meta["template"] for d in docs} == set(TRAIN_TEMPLATES) | set(V2_TEMPLATES) | set(TEST_TEMPLATES)
+    n_train = len(TRAIN_TEMPLATES) + len(V2_TEMPLATES) + len(V3_TEMPLATES)
+    docs = (
+        generate(n_train * 3, seed=7, split="train_v3")
+        + generate(len(TEST_TEMPLATES) * 3, 7, "test_full")
+        + generate((n_train + len(V3_ID_TEMPLATES)) * 3, 7, "train_v3ids")
+        + generate(len(FALSE_ALARM_TEMPLATES) * 3, 7, "test_false_alarm")
+    )
+    assert {d.meta["template"] for d in docs} == (
+        set(TRAIN_TEMPLATES) | set(V2_TEMPLATES) | set(V3_TEMPLATES) | set(V3_ID_TEMPLATES)
+        | set(TEST_TEMPLATES) | set(FALSE_ALARM_TEMPLATES)
+    )
     for d in docs:
         assert d.spans, d.id
         for s in d.spans:
             assert 0 <= s.start < s.end <= len(d.text)
             assert d.text[s.start : s.end].strip() == d.text[s.start : s.end]
-    again = generate(n_train * 3, seed=7)
+    again = generate(n_train * 3, seed=7, split="train_v3")
     assert [d.text for d in docs[: len(again)]] == [d.text for d in again]
 
 
