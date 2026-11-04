@@ -43,7 +43,7 @@ def main() -> None:
     ax.minorticks_off()
     ax.set_xlabel("ONNX file size (MB, log scale)")
     ax.set_ylabel("Document leakage rate (%)")
-    ax.set_ylim(0, 70)
+    ax.set_ylim(0, 30)
     colours = [Line2D([], [], color=SERIES[j], marker="o", ls="", markersize=4, label=s) for j, (s, _) in enumerate(STUDENTS)]
     shapes = [Line2D([], [], color=INK2, marker=m, ls="", markersize=4, label=v) for v, m, *_ in VARIANTS]
     first = ax.legend(handles=colours, loc="upper right", handletextpad=0.2)
