@@ -1,0 +1,22 @@
+id = "2026-11-04-222624-e54f"
+status = "done"
+started = "2026-11-04T22:26:24+13:00"
+finished = "2026-11-04T22:26:25+13:00"
+exit_code = 0
+commit = "6b08a1df19a07292c696bc11dd4531e72f1c91a0"
+dirty = false
+command = "bash -c 'cd ml && RUNS=runs/m3-v2 TAG=fa_baseline MODELS=deberta-v3-small-open-int8-int4-block uv run ./scripts/score_false_alarms.sh'"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+
+[outputs]
+"ml/results/fa_baseline_false_alarms.json" = "sha256:7ace20b38bfe5ff0d46af4a5e85928219d73a60acec0abd18057e622984abbbf"
+"ml/results/fa_baseline_false_alarms.md" = "sha256:4c90f09a834c24f8dc1b909adad4e48ccf9ff832ce4a3cce4df12ad49be6ff87"
+"ml/results/fa_baseline_nz_test_false_alarm.json" = "sha256:87750a23897526f0fc81568b720c7648c599445489d37a55c57bc3fb8dd086fa"
+"ml/results/fa_baseline_nz_test_false_alarm.md" = "sha256:ca4085f18f26b72ca90926e13535b3298aad416f10893c0cf75f0594bc1b9449"
+"ml/runs/m3-v2/deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.jsonl" = "sha256:27c59a524c4bded798f4ac82ac69878bece6d4316be11ffe41622b602eec051a"
+"ml/runs/m3-v2/deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.meta.json" = "sha256:63e08d5294e77b172be33efb5957ca572d8e1120b793648305c6ed788e83fe04"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.jsonl" = "sha256:ae1589903b31792ed8f131b80aec53c49ee5fdb3156b00c0a6f704adcf7c0458"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block+review/nz_test_false_alarm.meta.json" = "sha256:78ab07cb9d6d528c2d8f15e4bc023ee1b0fbae00bde78f67400e04f3226b95b8"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_false_alarm.jsonl" = "sha256:631d1245d27aaa49994889c1af4ac6d4ac907e6fdc752124776874c2e529657c"
+"ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_false_alarm.meta.json" = "sha256:78ab07cb9d6d528c2d8f15e4bc023ee1b0fbae00bde78f67400e04f3226b95b8"
