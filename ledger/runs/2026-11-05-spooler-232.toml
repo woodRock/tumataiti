@@ -1,0 +1,18 @@
+id = "2026-11-05-spooler-232"
+status = "done"
+note = "ECS Grid (SGE) task, from `task info`: the daemon does not record SGE tasks, so this was written afterwards with taura record. Times are to the minute. The grid checkout was verified at this commit with task sync --check."
+started = "2026-11-05T14:06:00+13:00"
+finished = "2026-11-05T14:11:00+13:00"
+exit_code = 0
+commit = "60afa5c401c7655474b22f6d57a620d76f1ec8d8"
+dirty = false
+command = "bash scripts/grid_run.sh robust/nomacron/nz_cf_asian_nz/modernbert-base-open"
+cwd = "ml"
+host = "grid"
+spooler_job = 232
+runner = "gpu-spooler"
+inputs = ["ml/scripts/grid_run.sh"]
+
+[outputs]
+"ml/runs/robust/nomacron/modernbert-base-open/nz_cf_asian_nz.jsonl" = "sha256:c72769beb0e83c81dcd0ba00f92a7f5268da5d710ab42c3eac9f0f6785151c35"
+"ml/runs/robust/nomacron/modernbert-base-open/nz_cf_asian_nz.meta.json" = "sha256:212c4dfa052bb4963cffa418eaa9b4b0fdd13ef2f83b32220dbab8c6c3cb0538"

@@ -391,20 +391,20 @@
         }
       },
       "exact_all": {
-        "precision": 0.7458405761112491,
+        "precision": 0.745747982619491,
         "recall": 0.6161025641025641,
-        "f1": 0.6747921815322401,
+        "f1": 0.6747542825049144,
         "tp": 6007,
-        "fp": 2047,
+        "fp": 2048,
         "fn": 3743
       },
       "exact": {
         "PERSON": {
-          "precision": 0.5744812635490864,
+          "precision": 0.5743034055727554,
           "recall": 0.35333333333333333,
-          "f1": 0.4375515980658097,
+          "f1": 0.43750000000000006,
           "tp": 1855,
-          "fp": 1374,
+          "fp": 1375,
           "fn": 3395
         },
         "ADDRESS": {
@@ -643,8 +643,8 @@
       "detector": "rules",
       "gold": "data/robust/lower/nz_test_full.jsonl",
       "docs": 1750,
-      "seconds_total": 0.09661113600668614,
-      "seconds_median": 5.220849971010466e-05,
+      "seconds_total": 0.08494305803651514,
+      "seconds_median": 4.697949952969793e-05,
       "device": "cpu",
       "threshold": 0.5,
       "model": null,
@@ -657,8 +657,8 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.09661113600668614,
-          "seconds_median": 5.220849971010466e-05,
+          "seconds_total": 0.08494305803651514,
+          "seconds_median": 4.697949952969793e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
@@ -668,15 +668,15 @@
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 90.79157842601126,
-          "seconds_median": 0.05217583299963735,
+          "seconds_total": 101.2662772317417,
+          "seconds_median": 0.05738385347649455,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx",
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "chariot.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.052228041499347455
+      "seconds_median": 0.05743083297602425
     },
     "rules+modernbert-base-open": {
       "detector": "combined",
@@ -685,8 +685,8 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.09661113600668614,
-          "seconds_median": 5.220849971010466e-05,
+          "seconds_total": 0.08494305803651514,
+          "seconds_median": 4.697949952969793e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
@@ -696,15 +696,15 @@
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 282.41643006499,
-          "seconds_median": 0.1481164584997714,
+          "seconds_total": 246.77943113073707,
+          "seconds_median": 0.14462105371057987,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/modernbert-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "yokohama.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.1481686669994815
+      "seconds_median": 0.14466803321010957
     },
     "rules+mdeberta-v3-base-open": {
       "detector": "combined",
@@ -713,8 +713,8 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.09661113600668614,
-          "seconds_median": 5.220849971010466e-05,
+          "seconds_total": 0.08494305803651514,
+          "seconds_median": 4.697949952969793e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
@@ -724,15 +724,15 @@
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 176.4937914669772,
-          "seconds_median": 0.09941122950021963,
+          "seconds_total": 225.547960733762,
+          "seconds_median": 0.13248596200719476,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/mdeberta-v3-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "settlement.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.09946343799992974
+      "seconds_median": 0.13253294150672446
     }
   }
 }

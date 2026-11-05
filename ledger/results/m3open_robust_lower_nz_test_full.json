@@ -34,7 +34,7 @@
     "exact_f1": {
       "rules": 0.4905660377358491,
       "rules_deberta-v3-small-open": 0.5924580836511107,
-      "rules_modernbert-base-open": 0.6747921815322401,
+      "rules_modernbert-base-open": 0.6747542825049144,
       "rules_mdeberta-v3-base-open": 0.577305583854849
     },
     "leak_address": {
@@ -74,10 +74,10 @@
       "rules_mdeberta-v3-base-open": 0.0
     },
     "ms": {
-      "rules": 0.05220849971010466,
-      "rules_deberta-v3-small-open": 52.228041499347455,
-      "rules_modernbert-base-open": 148.1686669994815,
-      "rules_mdeberta-v3-base-open": 99.46343799992974
+      "rules": 0.04697949952969793,
+      "rules_deberta-v3-small-open": 57.43083297602425,
+      "rules_modernbert-base-open": 144.66803321010957,
+      "rules_mdeberta-v3-base-open": 132.53294150672446
     },
     "docs": 1750
   },

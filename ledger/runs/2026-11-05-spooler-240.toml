@@ -1,0 +1,18 @@
+id = "2026-11-05-spooler-240"
+status = "done"
+note = "ECS Grid (SGE) task, from `task info`: the daemon does not record SGE tasks, so this was written afterwards with taura record. Times are to the minute. The grid checkout was verified at this commit with task sync --check."
+started = "2026-11-05T14:06:00+13:00"
+finished = "2026-11-05T14:10:00+13:00"
+exit_code = 0
+commit = "60afa5c401c7655474b22f6d57a620d76f1ec8d8"
+dirty = false
+command = "bash scripts/grid_run.sh robust/lower/nz_cf_pakeha/deberta-v3-small-open"
+cwd = "ml"
+host = "grid"
+spooler_job = 240
+runner = "gpu-spooler"
+inputs = ["ml/scripts/grid_run.sh"]
+
+[outputs]
+"ml/runs/robust/lower/deberta-v3-small-open/nz_cf_pakeha.jsonl" = "sha256:145610de20f6583e2def0d0c64c016a8b86bc6b88659ca8d9f562da84b173405"
+"ml/runs/robust/lower/deberta-v3-small-open/nz_cf_pakeha.meta.json" = "sha256:1a366ca16ba444d2009a932c1b54e9cc9c9d23c1fbb0d45ffa94a7d1655a5cb6"
