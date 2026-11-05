@@ -13,10 +13,12 @@ In stage order, each stage needing the one before:
 - checksum, uncertainty: score existing predictions. uncertainty stays one job,
   because splitting its seeded bootstrap would change the numbers;
 - lowerint4/quantise, lowerint4/<typing>/<set>, lowertrain: quantise the retrained
-  DeBERTa-v3-small, predict with it and score (needs its ONNX export).
+  DeBERTa-v3-small, predict with it and score (needs its ONNX export);
+- lowercmp/<set>, lowerthreshold/<t>, lowercompare: its other evaluations, then
+  every comparison with the deployed student (compare_lower.py).
 
-thresholds.py, robustness.py, checksum_ablation.py and score_uncertainty.py also
-run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
+thresholds.py, robustness.py, checksum_ablation.py, score_uncertainty.py and
+compare_lower.py also run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
 
 The int4 models must be the deployed files, not re-quantised ones: quantising on
 another machine gives a different file. Check their hashes against demo/model.lock.
@@ -31,6 +33,7 @@ ML = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ML / "scripts"))
 
 import checksum_ablation  # noqa: E402
+import compare_lower  # noqa: E402
 import robustness  # noqa: E402
 import score_lower  # noqa: E402
 import score_uncertainty  # noqa: E402
@@ -47,7 +50,9 @@ def jobs() -> list[str]:
     out += ["report/threshold", *(f"report/robust/{v}" for v in VARIANTS)]
     out += ["checksum", "uncertainty", "lowerint4/quantise"]
     out += [f"lowerint4/{t}/{ds}" for t in score_lower.TYPINGS for ds in SETS]
-    return [*out, "lowertrain"]
+    out += ["lowertrain", *(f"lowercmp/{ds}" for ds in compare_lower.SETS)]
+    out += [f"lowerthreshold/{t}" for t in THRESHOLDS]
+    return [*out, "lowercompare"]
 
 
 def select(prefixes: list[str]) -> list[str]:
@@ -78,6 +83,12 @@ def run(job: str) -> None:
         score_lower.predict(*rest)
     elif job == "lowertrain":
         score_lower.report()
+    elif kind == "lowercmp":
+        compare_lower.predict(rest[0])
+    elif kind == "lowerthreshold":
+        compare_lower.predict_threshold(rest[0])
+    elif job == "lowercompare":
+        compare_lower.report()
     else:
         raise SystemExit(f"unknown job {job!r}")
 

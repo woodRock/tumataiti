@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 DEST=/vol/ecrg-solar/woodj4/tūmataiti/ml/
 R=runs/m3-v2
-paths=("$R/rules" "$R/rules+openai-privacy-filter" runs/m3-fa/rules)
+paths=("$R/rules" "$R/rules+openai-privacy-filter" runs/m3-fa/rules "$R/deberta-v3-small-open-int8-int4-block")
 for m in deberta-v3-small modernbert-base mdeberta-v3-base; do
   paths+=("$R/rules+$m-open-int8-int4-block" "$R/$m-open/onnx/model_int8_int4-block.onnx")
 done
