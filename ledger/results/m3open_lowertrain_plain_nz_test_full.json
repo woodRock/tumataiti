@@ -7,7 +7,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.013714285714285714,
       "rules_deberta-v3-small-open-lower": 0.0005714285714285715,
       "rules_modernbert-base-open-lower": 0.1422857142857143,
-      "rules_mdeberta-v3-base-open-lower": 0.0005714285714285715
+      "rules_mdeberta-v3-base-open-lower": 0.0005714285714285715,
+      "rules_deberta-v3-small-open-lower-int4": 0.0034285714285714284
     },
     "span_leak": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0012307692307692308,
@@ -15,7 +16,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0024615384615384616,
       "rules_deberta-v3-small-open-lower": 0.00010256410256410256,
       "rules_modernbert-base-open-lower": 0.032,
-      "rules_mdeberta-v3-base-open-lower": 0.00010256410256410256
+      "rules_mdeberta-v3-base-open-lower": 0.00010256410256410256,
+      "rules_deberta-v3-small-open-lower-int4": 0.0006153846153846154
     },
     "precision": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.9435420710321109,
@@ -23,7 +25,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.9376788041914241,
       "rules_deberta-v3-small-open-lower": 0.9278286694273644,
       "rules_modernbert-base-open-lower": 0.9249201142556852,
-      "rules_mdeberta-v3-base-open-lower": 0.9273554299474899
+      "rules_mdeberta-v3-base-open-lower": 0.9273554299474899,
+      "rules_deberta-v3-small-open-lower-int4": 0.929714683368128
     },
     "recall": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.9992967524388264,
@@ -31,7 +34,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.9988189047370034,
       "rules_deberta-v3-small-open-lower": 0.9999459040337558,
       "rules_modernbert-base-open-lower": 0.983852354076131,
-      "rules_mdeberta-v3-base-open-lower": 0.9999459040337558
+      "rules_mdeberta-v3-base-open-lower": 0.9999459040337558,
+      "rules_deberta-v3-small-open-lower-int4": 0.9997655841462755
     },
     "f1": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.9706194008284366,
@@ -39,7 +43,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.9672836811315813,
       "rules_deberta-v3-small-open-lower": 0.9625383490490304,
       "rules_modernbert-base-open-lower": 0.9534764848511326,
-      "rules_mdeberta-v3-base-open-lower": 0.9622836319465533
+      "rules_mdeberta-v3-base-open-lower": 0.9622836319465533,
+      "rules_deberta-v3-small-open-lower-int4": 0.9634685144557639
     },
     "exact_f1": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.9218057234985892,
@@ -47,7 +52,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.7304139746350802,
       "rules_deberta-v3-small-open-lower": 0.9045358116981513,
       "rules_modernbert-base-open-lower": 0.8745854687971057,
-      "rules_mdeberta-v3-base-open-lower": 0.6667302101701377
+      "rules_mdeberta-v3-base-open-lower": 0.6667302101701377,
+      "rules_deberta-v3-small-open-lower-int4": 0.9096233464606684
     },
     "leak_address": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
@@ -55,7 +61,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0
+      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_date": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
@@ -63,7 +70,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0
+      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_email": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
@@ -71,7 +79,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0
+      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_id": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
@@ -79,7 +88,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0
+      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_person": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.002285714285714286,
@@ -87,7 +97,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.004571428571428572,
       "rules_deberta-v3-small-open-lower": 0.00019047619047619048,
       "rules_modernbert-base-open-lower": 0.05942857142857143,
-      "rules_mdeberta-v3-base-open-lower": 0.00019047619047619048
+      "rules_mdeberta-v3-base-open-lower": 0.00019047619047619048,
+      "rules_deberta-v3-small-open-lower-int4": 0.001142857142857143
     },
     "leak_phone": {
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
@@ -95,7 +106,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0
+      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "ms": {
       "rules_deberta-v3-small-open-int8-int4-block": 29.48220849611971,
@@ -103,7 +115,8 @@
       "rules_mdeberta-v3-base-open-int8-int4-block": 78.272292003021,
       "rules_deberta-v3-small-open-lower": 8.979504547824035,
       "rules_modernbert-base-open-lower": 17.495827369202743,
-      "rules_mdeberta-v3-base-open-lower": 17.85276978444017
+      "rules_mdeberta-v3-base-open-lower": 17.85276978444017,
+      "rules_deberta-v3-small-open-lower-int4": 56.28377556968189
     },
     "docs": 1750
   },
