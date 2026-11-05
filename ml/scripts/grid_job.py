@@ -5,13 +5,15 @@ this only writes the student predictions those scripts then reuse:
     python scripts/grid_job.py list [PREFIX]   # job names, for grid_submit.sh
     python scripts/grid_job.py run JOB         # one job, on a grid machine
 
-Jobs: quantise/<student>, gold/<variant>, threshold/<student>/<t> and
-robust/<variant>/<set>/<student>.
+Jobs: gold/<variant>, threshold/<student>/<t> and robust/<variant>/<set>/<student>.
+
+The int4 models are copied from the laptop to the shared disk, not re-quantised
+here: quantising on another machine gives a different file, and these results
+describe the deployed models. Check their hashes against demo/model.lock.
 """
 
 from __future__ import annotations
 
-import hashlib
 import subprocess
 import sys
 from pathlib import Path
@@ -26,7 +28,7 @@ MODEL = "runs/m3-v2/{}/onnx/model_int8_int4-block.onnx"
 
 
 def jobs() -> list[str]:
-    out = [f"quantise/{m}" for m in STUDENTS] + [f"gold/{v}" for v in VARIANTS]
+    out = [f"gold/{v}" for v in VARIANTS]
     out += [f"threshold/{m}/{t}" for m in STUDENTS for t in THRESHOLDS]
     out += [f"robust/{v}/{ds}/{m}" for v in VARIANTS for ds in SETS for m in STUDENTS]
     return out
@@ -38,11 +40,7 @@ def cli(*args: str) -> None:
 
 def run(job: str) -> None:
     kind, *rest = job.split("/")
-    if kind == "quantise":
-        m = rest[0]
-        cli("quantise", "--onnx", f"runs/m3-v2/{m}/onnx/model.onnx", "--encoder", "int4-block")
-        print(m, hashlib.sha256((ML / MODEL.format(m)).read_bytes()).hexdigest())
-    elif kind == "gold":
+    if kind == "gold":
         for ds in SETS:
             write_variant(rest[0], ds)
     elif kind == "threshold":

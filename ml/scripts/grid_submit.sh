@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Submit grid jobs in stages and wait for each, from the repo root on the laptop,
 # with the code committed and synced (`task sync`). Prints a failed job's log.
-#   ml/scripts/grid_submit.sh quantise gold threshold robust
+#   ml/scripts/grid_submit.sh gold threshold robust
 #   task fetch ml/runs/thresholds ml/runs/robust
 set -uo pipefail
 PY=ml/.venv/bin/python
