@@ -14,6 +14,18 @@ spooler_job = 336
 runner = "gpu-spooler"
 inputs = ["ml/scripts/grid_run.sh"]
 
+[outputs]
+"ml/results/checksum_false_alarms.json" = "sha256:f436a02b2181ea47193631db239fe09b7d4a5b60c66ae6b9b96b14bcab54a239"
+"ml/results/checksum_nz_test_false_alarm.json" = "sha256:670ab40683131fd08412acbcc3ad9356f196da865126d55f90cbfffc07a30e25"
+"ml/results/checksum_nz_test_full.json" = "sha256:ef1e20abfda5b207108ec5906964658d1daa12d8aef17abb7ab62ef72f91a938"
+"ml/results/checksum_open_en_test.json" = "sha256:572a65e132ac7ac02a24f6757dfaecf97da81ddc1710005ddac2c1d5f68515df"
+"ml/results/checksum_pii300k_en_val.json" = "sha256:4a1d5ec3fc8fc9c08d66a9bf30027998602048ae53453c3b5c36a5065d63bcbe"
+"ml/results/checksum_false_alarms.md" = "sha256:1bbcb92cada093bed140872d1d6042c67a4567ab28bff22f332dd9be16ccb8cd"
+"ml/results/checksum_nz_test_false_alarm.md" = "sha256:0561cbb52d2d05adcd1d877c579a42755f11b9aca98dd3838131c614f101eb47"
+"ml/results/checksum_nz_test_full.md" = "sha256:e1ff8666cbf382a109ed36dd532fe5e02bacad134fee53d7bc384b698d554295"
+"ml/results/checksum_open_en_test.md" = "sha256:a834afaec74760742ee9e5bb41615959b61e557cd8917ccb6c2aef082dc80799"
+"ml/results/checksum_pii300k_en_val.md" = "sha256:e53cef00dfaf4d78d034cc55b4f4b6ca5a41ccd33b80594d40eb9bdffaa859ec"
+
 [env]
 python = "3.12.15"
 executable = "/usr/local/bin/python3"

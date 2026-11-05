@@ -14,6 +14,9 @@ spooler_job = 337
 runner = "gpu-spooler"
 inputs = ["ml/scripts/grid_run.sh"]
 
+[outputs]
+"ml/results/uncertainty_nz_test_full.json" = "sha256:0b1de9055c29d147b5a2db3568c577d53edab49e35ea06ff77ab40131956db78"
+
 [env]
 python = "3.12.15"
 executable = "/usr/local/bin/python3"

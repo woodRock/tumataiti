@@ -14,6 +14,10 @@ spooler_job = 333
 runner = "gpu-spooler"
 inputs = ["ml/scripts/grid_run.sh"]
 
+[outputs]
+"ml/results/m3open_thresholds_nz_test_full.json" = "sha256:dd783576c0c30177d8e49cfd05d896af884a4b879880da2b9b2c553cd6267a91"
+"ml/results/m3open_thresholds_nz_test_full.md" = "sha256:60ab127bb9174d39df8f146a185e68f42c24f73b8ae87dff72376f08652c440c"
+
 [env]
 python = "3.12.15"
 executable = "/usr/local/bin/python3"
