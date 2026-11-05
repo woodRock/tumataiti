@@ -1,0 +1,74 @@
+{
+  "name": "m3open_lowercmp_nz_test_names",
+  "metrics": {
+    "doc_leak": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.00125
+    },
+    "span_leak": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.00024096385542168674
+    },
+    "precision": {
+      "rules_deployed": 0.9366640749897353,
+      "rules_retrained": 0.9366399608586631
+    },
+    "recall": {
+      "rules_deployed": 1.0,
+      "rules_retrained": 0.9998694261278318
+    },
+    "f1": {
+      "rules_deployed": 0.9672963804987189,
+      "rules_retrained": 0.9672224327396741
+    },
+    "exact_f1": {
+      "rules_deployed": 0.9655578451574919,
+      "rules_retrained": 0.9665803718522005
+    },
+    "leak_address": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_date": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_email": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_id": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_ip_address": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_person": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0006451612903225806
+    },
+    "leak_phone": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_secret": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_url": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "ms": {
+      "rules_deployed": 27.190021004571463,
+      "rules_retrained": 56.311967977308086
+    },
+    "docs": 1600
+  },
+  "source": {
+    "path": "ml/results/m3open_lowercmp_nz_test_names.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

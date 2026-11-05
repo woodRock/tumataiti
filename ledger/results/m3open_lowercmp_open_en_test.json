@@ -1,0 +1,74 @@
+{
+  "name": "m3open_lowercmp_open_en_test",
+  "metrics": {
+    "doc_leak": {
+      "rules_deployed": 0.03194726166328601,
+      "rules_retrained": 0.04006085192697769
+    },
+    "span_leak": {
+      "rules_deployed": 0.011347846225104215,
+      "rules_retrained": 0.013432144511347846
+    },
+    "precision": {
+      "rules_deployed": 0.9890417588495575,
+      "rules_retrained": 0.9879207852353632
+    },
+    "recall": {
+      "rules_deployed": 0.9935409938535265,
+      "rules_retrained": 0.9926207591068514
+    },
+    "f1": {
+      "rules_deployed": 0.9912862711130359,
+      "rules_retrained": 0.9902651954755678
+    },
+    "exact_f1": {
+      "rules_deployed": 0.9535489095852375,
+      "rules_retrained": 0.9443220044078413
+    },
+    "leak_address": {
+      "rules_deployed": 0.02264600715137068,
+      "rules_retrained": 0.03814064362336114
+    },
+    "leak_date": {
+      "rules_deployed": 0.017488076311605722,
+      "rules_retrained": 0.025437201907790145
+    },
+    "leak_email": {
+      "rules_deployed": 0.003787878787878788,
+      "rules_retrained": 0.003787878787878788
+    },
+    "leak_id": {
+      "rules_deployed": 0.0017743080198722497,
+      "rules_retrained": 0.0014194464158978
+    },
+    "leak_ip_address": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_person": {
+      "rules_deployed": 0.0208851317752362,
+      "rules_retrained": 0.02486325211337643
+    },
+    "leak_phone": {
+      "rules_deployed": 0.0039603960396039604,
+      "rules_retrained": 0.0039603960396039604
+    },
+    "leak_secret": {
+      "rules_deployed": 0.04491017964071856,
+      "rules_retrained": 0.023952095808383235
+    },
+    "leak_url": {
+      "rules_deployed": 0.0025380710659898475,
+      "rules_retrained": 0.0025380710659898475
+    },
+    "ms": {
+      "rules_deployed": 50.5798335034342,
+      "rules_retrained": 74.8365899817145
+    },
+    "docs": 2000
+  },
+  "source": {
+    "path": "ml/results/m3open_lowercmp_open_en_test.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

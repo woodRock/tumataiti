@@ -1,0 +1,305 @@
+{
+  "gold": "data/v1/nz_test_false_alarm.jsonl",
+  "results": {
+    "rules+deployed": {
+      "docs": 600,
+      "docs_with_pii": 600,
+      "doc_leak_rate": 0.0,
+      "span_leak_rate": 0.0,
+      "char_any": {
+        "precision": 0.7002520161290322,
+        "recall": 1.0,
+        "f1": 0.8237037915394421,
+        "tp": 13893,
+        "fp": 5947,
+        "fn": 0
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.6702926993383425,
+          "recall": 0.9983297143811591,
+          "f1": 0.8020665593129361,
+          "tp": 5977,
+          "fp": 2940,
+          "fn": 10
+        },
+        "ADDRESS": {
+          "precision": 0.9455705705705706,
+          "recall": 1.0,
+          "f1": 0.9720239243681266,
+          "tp": 2519,
+          "fp": 145,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1913,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.995382247306311,
+          "recall": 1.0,
+          "f1": 0.9976857804062741,
+          "tp": 1940,
+          "fp": 9,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.3488742324312031,
+          "recall": 1.0,
+          "f1": 0.5172820772213792,
+          "tp": 1534,
+          "fp": 2863,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.49476190476190474,
+        "recall": 0.7421428571428571,
+        "f1": 0.5937142857142856,
+        "tp": 1039,
+        "fp": 1061,
+        "fn": 361
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.40404040404040403,
+          "recall": 0.55,
+          "f1": 0.46585494970884067,
+          "tp": 440,
+          "fp": 649,
+          "fn": 360
+        },
+        "ADDRESS": {
+          "precision": 0.8608695652173913,
+          "recall": 0.99,
+          "f1": 0.9209302325581394,
+          "tp": 99,
+          "fp": 16,
+          "fn": 1
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 100,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 0.9852216748768473,
+          "recall": 1.0,
+          "f1": 0.9925558312655086,
+          "tp": 200,
+          "fp": 3,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.3372681281618887,
+          "recall": 1.0,
+          "f1": 0.5044136191677175,
+          "tp": 200,
+          "fp": 393,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.0,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 100,
+        "EMAIL": 100,
+        "ID": 200,
+        "PERSON": 800,
+        "PHONE": 200
+      },
+      "_name": "rules+deployed"
+    },
+    "rules+retrained": {
+      "docs": 600,
+      "docs_with_pii": 600,
+      "doc_leak_rate": 0.0033333333333333335,
+      "span_leak_rate": 0.0014285714285714286,
+      "char_any": {
+        "precision": 0.6734099839906855,
+        "recall": 0.9991362556683222,
+        "f1": 0.8045557294383585,
+        "tp": 13881,
+        "fp": 6732,
+        "fn": 12
+      },
+      "char": {
+        "PERSON": {
+          "precision": 0.6477385275668538,
+          "recall": 0.9831301152497077,
+          "f1": 0.7809473265224891,
+          "tp": 5886,
+          "fp": 3201,
+          "fn": 101
+        },
+        "ADDRESS": {
+          "precision": 0.9636572302983932,
+          "recall": 1.0,
+          "f1": 0.9814923046951101,
+          "tp": 2519,
+          "fp": 95,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1913,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 1940,
+          "fp": 0,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.3033419023136247,
+          "recall": 1.0,
+          "f1": 0.4654832347140039,
+          "tp": 1534,
+          "fp": 3523,
+          "fn": 0
+        }
+      },
+      "exact_all": {
+        "precision": 0.45682326621923935,
+        "recall": 0.7292857142857143,
+        "f1": 0.5617606602475929,
+        "tp": 1021,
+        "fp": 1214,
+        "fn": 379
+      },
+      "exact": {
+        "PERSON": {
+          "precision": 0.37256637168141593,
+          "recall": 0.52625,
+          "f1": 0.43626943005181346,
+          "tp": 421,
+          "fp": 709,
+          "fn": 379
+        },
+        "ADDRESS": {
+          "precision": 0.8771929824561403,
+          "recall": 1.0,
+          "f1": 0.9345794392523363,
+          "tp": 100,
+          "fp": 14,
+          "fn": 0
+        },
+        "EMAIL": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 100,
+          "fp": 0,
+          "fn": 0
+        },
+        "PHONE": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tp": 200,
+          "fp": 0,
+          "fn": 0
+        },
+        "ID": {
+          "precision": 0.2894356005788712,
+          "recall": 1.0,
+          "f1": 0.4489337822671156,
+          "tp": 200,
+          "fp": 491,
+          "fn": 0
+        }
+      },
+      "span_leak_rate_by_category": {
+        "ADDRESS": 0.0,
+        "EMAIL": 0.0,
+        "ID": 0.0,
+        "PERSON": 0.0025,
+        "PHONE": 0.0
+      },
+      "gold_spans": {
+        "ADDRESS": 100,
+        "EMAIL": 100,
+        "ID": 200,
+        "PERSON": 800,
+        "PHONE": 200
+      },
+      "_name": "rules+retrained"
+    }
+  },
+  "timings": {
+    "rules+deployed": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 0.023591856923303567,
+          "seconds_median": 2.7166504878550768e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student-onnx",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 10.254292953104596,
+          "seconds_median": 0.016519832992344163,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx",
+          "host": "Jesses-MacBook-Air-2.local"
+        }
+      ],
+      "seconds_median": 0.016546999497222714
+    },
+    "rules+retrained": {
+      "detector": "combined",
+      "parts": [
+        {
+          "detector": "rules",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 0.023591856923303567,
+          "seconds_median": 2.7166504878550768e-05,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": null,
+          "host": "Jesses-MacBook-Air-2.local"
+        },
+        {
+          "detector": "student-onnx",
+          "gold": "data/v1/nz_test_false_alarm.jsonl",
+          "docs": 600,
+          "seconds_total": 21.690984562970698,
+          "seconds_median": 0.033866660203784704,
+          "device": "cpu",
+          "threshold": 0.5,
+          "model": "runs/m3-v2/deberta-v3-small-open-lower/onnx/model_int8_int4-block.onnx",
+          "host": "martin-bosleys.ecs.vuw.ac.nz"
+        }
+      ],
+      "seconds_median": 0.033893826708663255
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "deployed": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.2823529411764706,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.2364341085271318,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.1625,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.25806451612903225,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 0.9863013698630136,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 1.0,
+      "flagged": 0.0
+    }
+  },
+  "retrained": {
+    "not PII: kin_auntie": {
+      "n": 85,
+      "redacted": 0.32941176470588235,
+      "flagged": 0.0
+    },
+    "not PII: kin_english": {
+      "n": 258,
+      "redacted": 0.2713178294573643,
+      "flagged": 0.0
+    },
+    "not PII: kin_grandad": {
+      "n": 80,
+      "redacted": 0.1875,
+      "flagged": 0.0
+    },
+    "not PII: kin_granny": {
+      "n": 93,
+      "redacted": 0.2903225806451613,
+      "flagged": 0.0
+    },
+    "not PII: kin_kaumatua": {
+      "n": 96,
+      "redacted": 0.96875,
+      "flagged": 0.0
+    },
+    "not PII: kin_koroua": {
+      "n": 89,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_nana": {
+      "n": 73,
+      "redacted": 0.8904109589041096,
+      "flagged": 0.0
+    },
+    "not PII: kin_poua": {
+      "n": 99,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_taua": {
+      "n": 85,
+      "redacted": 1.0,
+      "flagged": 0.0
+    },
+    "not PII: kin_te_reo": {
+      "n": 369,
+      "redacted": 0.991869918699187,
+      "flagged": 0.0
+    }
+  }
+}

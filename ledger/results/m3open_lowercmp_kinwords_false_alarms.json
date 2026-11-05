@@ -1,0 +1,89 @@
+{
+  "name": "m3open_lowercmp_kinwords_false_alarms",
+  "metrics": {
+    "kin_auntie_redacted": {
+      "deployed": 0.2823529411764706,
+      "retrained": 0.32941176470588235
+    },
+    "kin_auntie_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_english_redacted": {
+      "deployed": 0.2364341085271318,
+      "retrained": 0.2713178294573643
+    },
+    "kin_english_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_grandad_redacted": {
+      "deployed": 0.1625,
+      "retrained": 0.1875
+    },
+    "kin_grandad_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_granny_redacted": {
+      "deployed": 0.25806451612903225,
+      "retrained": 0.2903225806451613
+    },
+    "kin_granny_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_kaumatua_redacted": {
+      "deployed": 1.0,
+      "retrained": 0.96875
+    },
+    "kin_kaumatua_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_koroua_redacted": {
+      "deployed": 1.0,
+      "retrained": 1.0
+    },
+    "kin_koroua_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_nana_redacted": {
+      "deployed": 0.9863013698630136,
+      "retrained": 0.8904109589041096
+    },
+    "kin_nana_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_poua_redacted": {
+      "deployed": 1.0,
+      "retrained": 1.0
+    },
+    "kin_poua_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_taua_redacted": {
+      "deployed": 1.0,
+      "retrained": 1.0
+    },
+    "kin_taua_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    },
+    "kin_te_reo_redacted": {
+      "deployed": 1.0,
+      "retrained": 0.991869918699187
+    },
+    "kin_te_reo_flagged": {
+      "deployed": 0.0,
+      "retrained": 0.0
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_lowercmp_kinwords_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

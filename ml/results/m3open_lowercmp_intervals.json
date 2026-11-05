@@ -1,0 +1,178 @@
+{
+  "bootstraps": 10000,
+  "confidence": 0.95,
+  "doc_leak": {
+    "nz_test_full/plain": {
+      "deployed": 0.006857142857142857,
+      "retrained": 0.0034285714285714284,
+      "deployed_minus_retrained_lo": -0.001142857142857143,
+      "deployed_minus_retrained_hi": 0.008
+    },
+    "nz_test_full/nomacron": {
+      "deployed": 0.008571428571428572,
+      "retrained": 0.0034285714285714284,
+      "deployed_minus_retrained_lo": 0.0005714285714285715,
+      "deployed_minus_retrained_hi": 0.009714285714285713
+    },
+    "nz_test_full/lower": {
+      "deployed": 0.9474285714285714,
+      "retrained": 0.07714285714285714,
+      "deployed_minus_retrained_lo": 0.8542857142857143,
+      "deployed_minus_retrained_hi": 0.8857142857142857
+    },
+    "nz_test_names": {
+      "deployed": 0.0,
+      "retrained": 0.00125,
+      "deployed_minus_retrained_lo": -0.003125,
+      "deployed_minus_retrained_hi": 0.0
+    },
+    "open_en_test": {
+      "deployed": 0.03194726166328601,
+      "retrained": 0.04006085192697769,
+      "deployed_minus_retrained_lo": -0.015205271160669031,
+      "deployed_minus_retrained_hi": -0.0015151515151515152
+    },
+    "pii300k_en_val": {
+      "deployed": 0.3322764743183259,
+      "retrained": 0.39743183259353204,
+      "deployed_minus_retrained_lo": -0.07374639685345959,
+      "deployed_minus_retrained_hi": -0.05658805940744831
+    },
+    "nz_test_false_alarm": {
+      "deployed": 0.0,
+      "retrained": 0.0033333333333333335,
+      "deployed_minus_retrained_lo": -0.008333333333333333,
+      "deployed_minus_retrained_hi": 0.0
+    }
+  },
+  "gap": {
+    "plain": {
+      "deployed": {
+        "gap": -0.0030952380952380953,
+        "lo": -0.006559899206709983,
+        "hi": 0.00023375955990788118
+      },
+      "retrained": {
+        "gap": 0.002380952380952381,
+        "lo": 0.0004728076526029307,
+        "hi": 0.004558623353372058
+      }
+    },
+    "nomacron": {
+      "deployed": {
+        "gap": -0.0030952380952380953,
+        "lo": -0.00694294827476313,
+        "hi": 0.0007144558228149556
+      },
+      "retrained": {
+        "gap": 0.0016666666666666668,
+        "lo": 0.0,
+        "hi": 0.0035595633602278124
+      }
+    },
+    "lower": {
+      "deployed": {
+        "gap": 0.2678571428571428,
+        "lo": 0.24570517700886788,
+        "hi": 0.2907033682156099
+      },
+      "retrained": {
+        "gap": 0.05904761904761904,
+        "lo": 0.04787962672362601,
+        "hi": 0.07051913536201233
+      }
+    }
+  },
+  "templates": {
+    "nz_test_full/plain": {
+      "cover_letter": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "discharge_summary": {
+        "deployed": 0.04,
+        "retrained": 0.0
+      },
+      "group_chat": {
+        "deployed": 0.0,
+        "retrained": 0.004
+      },
+      "school_newsletter": {
+        "deployed": 0.0,
+        "retrained": 0.016
+      },
+      "tenancy": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "tribunal_summary": {
+        "deployed": 0.008,
+        "retrained": 0.004
+      },
+      "voice_transcript": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      }
+    },
+    "nz_test_full/nomacron": {
+      "cover_letter": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "discharge_summary": {
+        "deployed": 0.028,
+        "retrained": 0.0
+      },
+      "group_chat": {
+        "deployed": 0.02,
+        "retrained": 0.008
+      },
+      "school_newsletter": {
+        "deployed": 0.0,
+        "retrained": 0.012
+      },
+      "tenancy": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "tribunal_summary": {
+        "deployed": 0.012,
+        "retrained": 0.004
+      },
+      "voice_transcript": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      }
+    },
+    "nz_test_full/lower": {
+      "cover_letter": {
+        "deployed": 0.944,
+        "retrained": 0.04
+      },
+      "discharge_summary": {
+        "deployed": 0.96,
+        "retrained": 0.02
+      },
+      "group_chat": {
+        "deployed": 0.996,
+        "retrained": 0.196
+      },
+      "school_newsletter": {
+        "deployed": 1.0,
+        "retrained": 0.148
+      },
+      "tenancy": {
+        "deployed": 0.844,
+        "retrained": 0.02
+      },
+      "tribunal_summary": {
+        "deployed": 0.988,
+        "retrained": 0.008
+      },
+      "voice_transcript": {
+        "deployed": 0.9,
+        "retrained": 0.108
+      }
+    }
+  }
+}

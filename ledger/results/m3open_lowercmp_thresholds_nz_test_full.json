@@ -1,0 +1,166 @@
+{
+  "name": "m3open_lowercmp_thresholds_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules_deberta-v3-small-open-t0.1": 0.0005714285714285715,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0017142857142857142,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.006857142857142857,
+      "rules_retrained-t0.5": 0.0034285714285714284,
+      "rules_deberta-v3-small-open-t0.7": 0.018857142857142857,
+      "rules_retrained-t0.7": 0.015428571428571429,
+      "rules_deberta-v3-small-open-t0.9": 0.05657142857142857,
+      "rules_retrained-t0.9": 0.12571428571428572
+    },
+    "span_leak": {
+      "rules_deberta-v3-small-open-t0.1": 0.00010256410256410256,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0003076923076923077,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0012307692307692308,
+      "rules_retrained-t0.5": 0.0006153846153846154,
+      "rules_deberta-v3-small-open-t0.7": 0.003384615384615385,
+      "rules_retrained-t0.7": 0.003076923076923077,
+      "rules_deberta-v3-small-open-t0.9": 0.010974358974358974,
+      "rules_retrained-t0.9": 0.02646153846153846
+    },
+    "precision": {
+      "rules_deberta-v3-small-open-t0.1": 0.9414456092695557,
+      "rules_retrained-t0.1": 0.9260505464594936,
+      "rules_deberta-v3-small-open-t0.3": 0.9430318389006055,
+      "rules_retrained-t0.3": 0.9276305335084095,
+      "rules_deberta-v3-small-open-t0.5": 0.9435420710321109,
+      "rules_retrained-t0.5": 0.929714683368128,
+      "rules_deberta-v3-small-open-t0.7": 0.9438527979809176,
+      "rules_retrained-t0.7": 0.9328616550852811,
+      "rules_deberta-v3-small-open-t0.9": 0.9445400895923803,
+      "rules_retrained-t0.9": 0.9433236031102271
+    },
+    "recall": {
+      "rules_deberta-v3-small-open-t0.1": 0.9999368880393819,
+      "rules_retrained-t0.1": 1.0,
+      "rules_deberta-v3-small-open-t0.3": 0.9998106641181456,
+      "rules_retrained-t0.3": 1.0,
+      "rules_deberta-v3-small-open-t0.5": 0.9992967524388264,
+      "rules_retrained-t0.5": 0.9997655841462755,
+      "rules_deberta-v3-small-open-t0.7": 0.9980345132264637,
+      "rules_retrained-t0.7": 0.9985574409001569,
+      "rules_deberta-v3-small-open-t0.9": 0.9942477955893756,
+      "rules_retrained-t0.9": 0.9877111996682114
+    },
+    "f1": {
+      "rules_deberta-v3-small-open-t0.1": 0.9698101163436356,
+      "rules_retrained-t0.1": 0.961605652729913,
+      "rules_deberta-v3-small-open-t0.3": 0.9705915818403018,
+      "rules_retrained-t0.3": 0.962456775178865,
+      "rules_deberta-v3-small-open-t0.5": 0.9706194008284366,
+      "rules_retrained-t0.5": 0.9634685144557639,
+      "rules_deberta-v3-small-open-t0.7": 0.9701877779968886,
+      "rules_retrained-t0.7": 0.9645922513161963,
+      "rules_deberta-v3-small-open-t0.9": 0.968756725891112,
+      "rules_retrained-t0.9": 0.9650072451959286
+    },
+    "exact_f1": {
+      "rules_deberta-v3-small-open-t0.1": 0.9154603940490551,
+      "rules_retrained-t0.1": 0.8826404635928446,
+      "rules_deberta-v3-small-open-t0.3": 0.9223643137649783,
+      "rules_retrained-t0.3": 0.9013942210547585,
+      "rules_deberta-v3-small-open-t0.5": 0.9218057234985892,
+      "rules_retrained-t0.5": 0.9096233464606684,
+      "rules_deberta-v3-small-open-t0.7": 0.9210048426150121,
+      "rules_retrained-t0.7": 0.9175971302985905,
+      "rules_deberta-v3-small-open-t0.9": 0.9158736586353512,
+      "rules_retrained-t0.9": 0.9120654396728017
+    },
+    "leak_address": {
+      "rules_deberta-v3-small-open-t0.1": 0.0,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0,
+      "rules_retrained-t0.5": 0.0,
+      "rules_deberta-v3-small-open-t0.7": 0.0,
+      "rules_retrained-t0.7": 0.0,
+      "rules_deberta-v3-small-open-t0.9": 0.0,
+      "rules_retrained-t0.9": 0.001
+    },
+    "leak_date": {
+      "rules_deberta-v3-small-open-t0.1": 0.0,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0,
+      "rules_retrained-t0.5": 0.0,
+      "rules_deberta-v3-small-open-t0.7": 0.0,
+      "rules_retrained-t0.7": 0.0,
+      "rules_deberta-v3-small-open-t0.9": 0.0,
+      "rules_retrained-t0.9": 0.0
+    },
+    "leak_email": {
+      "rules_deberta-v3-small-open-t0.1": 0.0,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0,
+      "rules_retrained-t0.5": 0.0,
+      "rules_deberta-v3-small-open-t0.7": 0.0,
+      "rules_retrained-t0.7": 0.0,
+      "rules_deberta-v3-small-open-t0.9": 0.0,
+      "rules_retrained-t0.9": 0.0
+    },
+    "leak_id": {
+      "rules_deberta-v3-small-open-t0.1": 0.0,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0,
+      "rules_retrained-t0.5": 0.0,
+      "rules_deberta-v3-small-open-t0.7": 0.0,
+      "rules_retrained-t0.7": 0.0,
+      "rules_deberta-v3-small-open-t0.9": 0.0,
+      "rules_retrained-t0.9": 0.0
+    },
+    "leak_person": {
+      "rules_deberta-v3-small-open-t0.1": 0.00019047619047619048,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0005714285714285715,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.002285714285714286,
+      "rules_retrained-t0.5": 0.001142857142857143,
+      "rules_deberta-v3-small-open-t0.7": 0.006285714285714286,
+      "rules_retrained-t0.7": 0.005714285714285714,
+      "rules_deberta-v3-small-open-t0.9": 0.02038095238095238,
+      "rules_retrained-t0.9": 0.048952380952380956
+    },
+    "leak_phone": {
+      "rules_deberta-v3-small-open-t0.1": 0.0,
+      "rules_retrained-t0.1": 0.0,
+      "rules_deberta-v3-small-open-t0.3": 0.0,
+      "rules_retrained-t0.3": 0.0,
+      "rules_deberta-v3-small-open-t0.5": 0.0,
+      "rules_retrained-t0.5": 0.0,
+      "rules_deberta-v3-small-open-t0.7": 0.0,
+      "rules_retrained-t0.7": 0.0,
+      "rules_deberta-v3-small-open-t0.9": 0.0,
+      "rules_retrained-t0.9": 0.0
+    },
+    "ms": {
+      "rules_deberta-v3-small-open-t0.1": 62.42814785036899,
+      "rules_retrained-t0.1": 58.98445946331776,
+      "rules_deberta-v3-small-open-t0.3": 62.77920849788643,
+      "rules_retrained-t0.3": 62.55311451786838,
+      "rules_deberta-v3-small-open-t0.5": 62.77019050139643,
+      "rules_retrained-t0.5": 58.77782738934911,
+      "rules_deberta-v3-small-open-t0.7": 62.77520555704541,
+      "rules_retrained-t0.7": 79.79185189287819,
+      "rules_deberta-v3-small-open-t0.9": 59.25327996192209,
+      "rules_retrained-t0.9": 56.45064179952897
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_lowercmp_thresholds_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}
