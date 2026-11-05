@@ -34,5 +34,11 @@
     "Pākehā": 0.0,
     "Pasifika": 0.0004761904761904762,
     "Asian NZ": 0.0
+  },
+  "rules+deberta-v3-small-open-lower-int4": {
+    "Māori": 0.075,
+    "Pākehā": 0.015952380952380954,
+    "Pasifika": 0.002142857142857143,
+    "Asian NZ": 0.005238095238095238
   }
 }
