@@ -175,7 +175,7 @@ def scoreboard() -> None:
     rows = []
 
     def row(name: str, deployed: float, retrained: float, higher_better: bool = False) -> None:
-        a, b = round(deployed * (1 if higher_better else 100), 1), round(retrained * (1 if higher_better else 100), 1)
+        a, b = round(deployed * 100, 1), round(retrained * 100, 1)
         winner = "tie" if a == b else ("retrained" if (b > a) == higher_better else "deployed")
         rows.append({"row": name, "deployed": a, "retrained": b, "winner": winner})
 
@@ -188,9 +188,8 @@ def scoreboard() -> None:
         data = json.loads((ML / f"results/m3open_lowercmp_{ds}.json").read_text())["results"]
         tables[ds] = (data["rules+deployed"], data["rules+retrained"])
     for view, (a, b) in tables.items():
-        if view != FA:
-            row(f"{view}: document leak", a["doc_leak_rate"], b["doc_leak_rate"])
-            row(f"{view}: span leak", a["span_leak_rate"], b["span_leak_rate"])
+        row(f"{view}: document leak", a["doc_leak_rate"], b["doc_leak_rate"])
+        row(f"{view}: span leak", a["span_leak_rate"], b["span_leak_rate"])
         row(f"{view}: char F1", a["char_any"]["f1"], b["char_any"]["f1"], True)
         row(f"{view}: exact-span F1", a["exact_all"]["f1"], b["exact_all"]["f1"], True)
     intervals = json.loads((ML / "results/m3open_lowercmp_intervals.json").read_text())
