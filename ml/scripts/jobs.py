@@ -10,8 +10,10 @@ In stage order, each stage needing the one before:
   the rules on them;
 - threshold/<student>/<t>, robust/<variant>/<set>/<student>: student predictions;
 - report/threshold, report/robust/<variant>: merge with the rules and score;
-- checksum, uncertainty, lowertrain: score existing predictions. uncertainty stays
-  one job, because splitting its seeded bootstrap would change the numbers.
+- checksum, uncertainty: score existing predictions. uncertainty stays one job,
+  because splitting its seeded bootstrap would change the numbers;
+- lowerint4/quantise, lowerint4/<typing>/<set>, lowertrain: quantise the retrained
+  DeBERTa-v3-small, predict with it and score (needs its ONNX export).
 
 thresholds.py, robustness.py, checksum_ablation.py and score_uncertainty.py also
 run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
@@ -43,7 +45,9 @@ def jobs() -> list[str]:
     out += [f"threshold/{m}/{t}" for m in STUDENTS for t in THRESHOLDS]
     out += [f"robust/{v}/{ds}/{m}" for v in VARIANTS for ds in SETS for m in STUDENTS]
     out += ["report/threshold", *(f"report/robust/{v}" for v in VARIANTS)]
-    return [*out, "checksum", "uncertainty", "lowertrain"]
+    out += ["checksum", "uncertainty", "lowerint4/quantise"]
+    out += [f"lowerint4/{t}/{ds}" for t in score_lower.TYPINGS for ds in SETS]
+    return [*out, "lowertrain"]
 
 
 def select(prefixes: list[str]) -> list[str]:
@@ -68,8 +72,12 @@ def run(job: str) -> None:
         checksum_ablation.main()
     elif job == "uncertainty":
         score_uncertainty.main()
+    elif job == "lowerint4/quantise":
+        score_lower.quantise()
+    elif kind == "lowerint4":
+        score_lower.predict(*rest)
     elif job == "lowertrain":
-        score_lower.main()
+        score_lower.report()
     else:
         raise SystemExit(f"unknown job {job!r}")
 
