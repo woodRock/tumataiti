@@ -1,0 +1,114 @@
+{
+  "name": "m3open_lowertrain_lower_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules_deberta-v3-small-open": 0.9474285714285714,
+      "rules_modernbert-base-open": 0.8331428571428572,
+      "rules_mdeberta-v3-base-open": 0.5342857142857143,
+      "rules_deberta-v3-small-open-lower": 0.05142857142857143,
+      "rules_modernbert-base-open-lower": 0.25257142857142856,
+      "rules_mdeberta-v3-base-open-lower": 0.009142857142857144
+    },
+    "span_leak": {
+      "rules_deberta-v3-small-open": 0.452,
+      "rules_modernbert-base-open": 0.3157948717948718,
+      "rules_mdeberta-v3-base-open": 0.1763076923076923,
+      "rules_deberta-v3-small-open-lower": 0.013025641025641025,
+      "rules_modernbert-base-open-lower": 0.09969230769230769,
+      "rules_mdeberta-v3-base-open-lower": 0.0026666666666666666
+    },
+    "precision": {
+      "rules_deberta-v3-small-open": 0.9352873138332757,
+      "rules_modernbert-base-open": 0.9204808369379338,
+      "rules_mdeberta-v3-base-open": 0.9252097607445132,
+      "rules_deberta-v3-small-open-lower": 0.9237214290502045,
+      "rules_modernbert-base-open-lower": 0.9179327576381887,
+      "rules_mdeberta-v3-base-open-lower": 0.9177278639899915
+    },
+    "recall": {
+      "rules_deberta-v3-small-open": 0.7071785347205943,
+      "rules_modernbert-base-open": 0.8250085651946553,
+      "rules_mdeberta-v3-base-open": 0.9106785437365887,
+      "rules_deberta-v3-small-open-lower": 0.993995347746903,
+      "rules_modernbert-base-open-lower": 0.9440106749373388,
+      "rules_mdeberta-v3-base-open-lower": 0.9986746488270192
+    },
+    "f1": {
+      "rules_deberta-v3-small-open": 0.8053928338561535,
+      "rules_modernbert-base-open": 0.8701336984842434,
+      "rules_mdeberta-v3-base-open": 0.9178866443117691,
+      "rules_deberta-v3-small-open-lower": 0.9575708094117239,
+      "rules_modernbert-base-open-lower": 0.9307890958711702,
+      "rules_mdeberta-v3-base-open-lower": 0.9564917037619112
+    },
+    "exact_f1": {
+      "rules_deberta-v3-small-open": 0.5924580836511107,
+      "rules_modernbert-base-open": 0.6747542825049144,
+      "rules_mdeberta-v3-base-open": 0.577305583854849,
+      "rules_deberta-v3-small-open-lower": 0.7929865920141447,
+      "rules_modernbert-base-open-lower": 0.8480336790224869,
+      "rules_mdeberta-v3-base-open-lower": 0.6188489660431525
+    },
+    "leak_address": {
+      "rules_deberta-v3-small-open": 0.153,
+      "rules_modernbert-base-open": 0.001,
+      "rules_mdeberta-v3-base-open": 0.105,
+      "rules_deberta-v3-small-open-lower": 0.0,
+      "rules_modernbert-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.0
+    },
+    "leak_date": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0,
+      "rules_deberta-v3-small-open-lower": 0.0,
+      "rules_modernbert-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.0
+    },
+    "leak_email": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0,
+      "rules_deberta-v3-small-open-lower": 0.0,
+      "rules_modernbert-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.0
+    },
+    "leak_id": {
+      "rules_deberta-v3-small-open": 0.032,
+      "rules_modernbert-base-open": 0.11466666666666667,
+      "rules_mdeberta-v3-base-open": 0.07333333333333333,
+      "rules_deberta-v3-small-open-lower": 0.0,
+      "rules_modernbert-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.0
+    },
+    "leak_person": {
+      "rules_deberta-v3-small-open": 0.8057142857142857,
+      "rules_modernbert-base-open": 0.5699047619047619,
+      "rules_mdeberta-v3-base-open": 0.29695238095238097,
+      "rules_deberta-v3-small-open-lower": 0.02419047619047619,
+      "rules_modernbert-base-open-lower": 0.18514285714285714,
+      "rules_mdeberta-v3-base-open-lower": 0.004952380952380952
+    },
+    "leak_phone": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0,
+      "rules_deberta-v3-small-open-lower": 0.0,
+      "rules_modernbert-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.0
+    },
+    "ms": {
+      "rules_deberta-v3-small-open": 57.277273619547486,
+      "rules_modernbert-base-open": 144.27023706957698,
+      "rules_mdeberta-v3-base-open": 119.78836241178215,
+      "rules_deberta-v3-small-open-lower": 9.257745230570436,
+      "rules_modernbert-base-open-lower": 13.73515254817903,
+      "rules_mdeberta-v3-base-open-lower": 17.776122083887458
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_lowertrain_lower_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

@@ -74,10 +74,10 @@
       "rules_mdeberta-v3-base-open": 0.0
     },
     "ms": {
-      "rules": 0.010416999430162832,
-      "rules_deberta-v3-small-open": 55.53680813682149,
-      "rules_modernbert-base-open": 150.21654292286257,
-      "rules_mdeberta-v3-base-open": 123.11799746748875
+      "rules": 0.011212498066015542,
+      "rules_deberta-v3-small-open": 61.81452302553225,
+      "rules_modernbert-base-open": 161.49192333978135,
+      "rules_mdeberta-v3-base-open": 131.5469716937514
     },
     "docs": 1750
   },
