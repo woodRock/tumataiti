@@ -1,0 +1,15 @@
+id = "2026-11-05-spooler-252"
+status = "done"
+note = "Backfilled from gpu-spooler's queue: the daemon could not find taura when this task ran, so it wrote no record. Times and commit are the task's own; [env] was not captured."
+started = "2026-11-05T16:06:04+13:00"
+finished = "2026-11-05T16:49:22+13:00"
+exit_code = 0
+commit = "ca4a468c0ef35f18682bc308a12e514bbd693492"
+dirty = false
+command = "./scripts/ecs_student_lower.sh answerdotai/ModernBERT-base modernbert-base-open-lower"
+cwd = "ml"
+host = "cuda08"
+gpus = "0"
+spooler_job = 252
+runner = "gpu-spooler"
+inputs = ["ml/scripts/ecs_student_lower.sh"]

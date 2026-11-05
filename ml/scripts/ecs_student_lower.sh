@@ -3,7 +3,7 @@
 # of the training documents lowercased, because the deployed students fail on
 # lowercase text (ml/results/m3open_robust_lower_*). The other arguments and all
 # evaluation sets are as ecs_student.sh. Build data/robust first on the shared
-# disk (grid_job.py run gold/lower). One GPU, a few hours:
+# disk (jobs.py run gold/lower). One GPU, a few hours:
 #   task submit -t "RTX A5000" -C ml -n lower-deberta -- ./scripts/ecs_student_lower.sh microsoft/deberta-v3-small deberta-v3-small-open-lower
 #   task fetch ml/runs/m3-v2/deberta-v3-small-open-lower
 # LOWER_FRACTION sets the share (default 0.25).

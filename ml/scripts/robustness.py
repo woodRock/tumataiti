@@ -1,7 +1,7 @@
 """Typing variation: the int4 open students on test_full and the name audit
 with macrons stripped and with all text lowercased, merged with the rules.
 Offsets are unchanged, so gold spans carry over. Student predictions already
-present (fetched from grid_job.py) are reused.
+present (from jobs.py) are reused.
 
     taura run -- ml/.venv/bin/python ml/scripts/robustness.py
 
@@ -29,7 +29,7 @@ VARIANTS = {"nomacron": lx.strip_macrons, "lower": str.lower}
 
 def cli(*args: str) -> None:
     env = {**os.environ, "PATH": f"{ML / '.venv/bin'}:{os.environ['PATH']}"}
-    subprocess.run(["tumataiti-ml", *args], cwd=ML, env=env, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run(["tumataiti-ml", *args], cwd=ML, env=env, check=True)
 
 
 def write_variant(variant: str, ds: str) -> Path:
@@ -49,29 +49,48 @@ def write_variant(variant: str, ds: str) -> Path:
     return path
 
 
+def gold(variant: str) -> None:
+    for ds in SETS:
+        write_variant(variant, ds)
+
+
+def rules(variant: str) -> None:
+    for ds in SETS:
+        cli("predict", "--detector", "rules", "--gold", f"data/robust/{variant}/{ds}.jsonl",
+            "--out", f"runs/robust/{variant}/rules/{ds}.jsonl")
+
+
+def predict(variant: str, ds: str, m: str) -> None:
+    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
+        "--gold", f"data/robust/{variant}/{ds}.jsonl", "--out", f"runs/robust/{variant}/{m}/{ds}.jsonl")
+
+
+def report(variant: str) -> None:
+    data = Path("data/robust") / variant
+    runs = Path("runs/robust") / variant
+    for ds in SETS:
+        for m in STUDENTS:
+            cli("combine", "--primary", str(runs / "rules" / f"{ds}.jsonl"), "--secondary", str(runs / m / f"{ds}.jsonl"),
+                "--out", str(runs / f"rules+{m}" / f"{ds}.jsonl"))
+    ds = "nz_test_full"
+    names = ["rules", *(f"rules+{m}" for m in STUDENTS)]
+    cli("score", "--gold", str(data / f"{ds}.jsonl"), "--pred", *(str(runs / n / f"{ds}.jsonl") for n in names),
+        "--title", f"int4 open students, {variant}: test_full",
+        "--markdown", f"results/m3open_robust_{variant}_{ds}.md", "--json", f"results/m3open_robust_{variant}_{ds}.json")
+    cli("counterfactual", "--data", str(data), "--runs", *(str(runs / n) for n in names[1:]),
+        "--markdown", f"results/m3open_robust_{variant}_names_counterfactual.md",
+        "--json", f"results/m3open_robust_{variant}_names_counterfactual.json")
+
+
 def main() -> None:
     for variant in VARIANTS:
-        data = Path("data/robust") / variant
-        runs = Path("runs/robust") / variant
+        gold(variant)
+        rules(variant)
         for ds in SETS:
-            write_variant(variant, ds)
-            gold = str(data / f"{ds}.jsonl")
-            rules = str(runs / "rules" / f"{ds}.jsonl")
-            cli("predict", "--detector", "rules", "--gold", gold, "--out", rules)
             for m in STUDENTS:
-                out = str(runs / m / f"{ds}.jsonl")
-                if not (ML / runs / m / f"{ds}.meta.json").exists():
-                    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
-                        "--gold", gold, "--out", out)
-                cli("combine", "--primary", rules, "--secondary", out, "--out", str(runs / f"rules+{m}" / f"{ds}.jsonl"))
-        ds = "nz_test_full"
-        names = ["rules", *(f"rules+{m}" for m in STUDENTS)]
-        cli("score", "--gold", str(data / f"{ds}.jsonl"), "--pred", *(str(runs / n / f"{ds}.jsonl") for n in names),
-            "--title", f"int4 open students, {variant}: test_full",
-            "--markdown", f"results/m3open_robust_{variant}_{ds}.md", "--json", f"results/m3open_robust_{variant}_{ds}.json")
-        cli("counterfactual", "--data", str(data), "--runs", *(str(runs / n) for n in names[1:]),
-            "--markdown", f"results/m3open_robust_{variant}_names_counterfactual.md",
-            "--json", f"results/m3open_robust_{variant}_names_counterfactual.json")
+                if not (ML / "runs/robust" / variant / m / f"{ds}.meta.json").exists():
+                    predict(variant, ds, m)
+        report(variant)
 
 
 if __name__ == "__main__":

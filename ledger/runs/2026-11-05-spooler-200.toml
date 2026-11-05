@@ -1,0 +1,15 @@
+id = "2026-11-05-spooler-200"
+status = "done"
+note = "Backfilled from gpu-spooler's queue: the daemon could not find taura when this task ran, so it wrote no record. Times and commit are the task's own; [env] was not captured. The grid machine was not captured, so host is the grid."
+started = "2026-11-05T13:49:41+13:00"
+finished = "2026-11-05T13:53:00+13:00"
+exit_code = 0
+commit = "624c614cfdb9ec6536303d3c96a91ddb0dae55ca"
+dirty = false
+command = "bash scripts/grid_run.sh quantise/deberta-v3-small-open"
+cwd = "ml"
+host = "grid"
+gpus = ""
+spooler_job = 200
+runner = "gpu-spooler"
+inputs = ["ml/scripts/grid_run.sh"]

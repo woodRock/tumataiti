@@ -1,0 +1,14 @@
+id = "2026-11-05-spooler-251"
+status = "done"
+started = "2026-11-05T16:06:01+13:00"
+finished = "2026-11-05T17:50:33+13:00"
+exit_code = 0
+commit = "ca4a468c0ef35f18682bc308a12e514bbd693492"
+dirty = false
+command = "./scripts/ecs_student_lower.sh microsoft/deberta-v3-small deberta-v3-small-open-lower"
+cwd = "ml"
+host = "cuda12"
+gpus = "2"
+spooler_job = 251
+runner = "gpu-spooler"
+inputs = ["ml/scripts/ecs_student_lower.sh"]

@@ -1,0 +1,16 @@
+id = "2026-11-05-spooler-258"
+status = "done"
+note = "Backfilled from gpu-spooler's queue: the daemon could not find taura when this task ran, so it wrote no record. Times and commit are the task's own; [env] was not captured. Host comes from the job's own output."
+started = "2026-11-05T16:27:41+13:00"
+finished = "2026-11-05T16:29:36+13:00"
+exit_code = 0
+commit = "b12779864f40aad57c24e3139bb925086a565485"
+base_commit = "ca4a468c0ef35f18682bc308a12e514bbd693492"
+dirty = true
+command = "bash scripts/grid_run.sh rules/nomacron"
+cwd = "ml"
+host = "big-thumb"
+gpus = ""
+spooler_job = 258
+runner = "gpu-spooler"
+inputs = ["ml/scripts/grid_run.sh"]
