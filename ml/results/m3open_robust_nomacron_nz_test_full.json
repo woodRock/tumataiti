@@ -627,12 +627,12 @@
       "detector": "rules",
       "gold": "data/robust/nomacron/nz_test_full.jsonl",
       "docs": 1750,
-      "seconds_total": 0.027018215969292214,
-      "seconds_median": 1.0416999430162832e-05,
+      "seconds_total": 0.03733916688361205,
+      "seconds_median": 1.1212498066015542e-05,
       "device": "cpu",
       "threshold": 0.5,
       "model": null,
-      "host": "Jesses-MacBook-Air-2.local"
+      "host": "brava.ecs.vuw.ac.nz"
     },
     "rules+deberta-v3-small-open": {
       "detector": "combined",
@@ -641,26 +641,26 @@
           "detector": "rules",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.027018215969292214,
-          "seconds_median": 1.0416999430162832e-05,
+          "seconds_total": 0.03733916688361205,
+          "seconds_median": 1.1212498066015542e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "brava.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 94.33440591953695,
-          "seconds_median": 0.05552639113739133,
+          "seconds_total": 104.52250660746358,
+          "seconds_median": 0.06180331052746624,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx",
-          "host": "wagamama.ecs.vuw.ac.nz"
+          "host": "stout.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.05553680813682149
+      "seconds_median": 0.06181452302553225
     },
     "rules+modernbert-base-open": {
       "detector": "combined",
@@ -669,26 +669,26 @@
           "detector": "rules",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.027018215969292214,
-          "seconds_median": 1.0416999430162832e-05,
+          "seconds_total": 0.03733916688361205,
+          "seconds_median": 1.1212498066015542e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "brava.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 249.3183428935008,
-          "seconds_median": 0.1502061259234324,
+          "seconds_total": 267.7139815669507,
+          "seconds_median": 0.16148071084171534,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/modernbert-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "the-dubliner.sms.vuw.ac.nz"
+          "host": "fusion-virtuoso.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.15021654292286257
+      "seconds_median": 0.16149192333978135
     },
     "rules+mdeberta-v3-base-open": {
       "detector": "combined",
@@ -697,26 +697,26 @@
           "detector": "rules",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.027018215969292214,
-          "seconds_median": 1.0416999430162832e-05,
+          "seconds_total": 0.03733916688361205,
+          "seconds_median": 1.1212498066015542e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "brava.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/nomacron/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 205.45438193436712,
-          "seconds_median": 0.12310758046805859,
+          "seconds_total": 218.73404611460865,
+          "seconds_median": 0.1315357591956854,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/mdeberta-v3-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "arbitrageur.ecs.vuw.ac.nz"
+          "host": "boxo.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.12311799746748875
+      "seconds_median": 0.1315469716937514
     }
   }
 }

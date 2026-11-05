@@ -643,12 +643,12 @@
       "detector": "rules",
       "gold": "data/robust/lower/nz_test_full.jsonl",
       "docs": 1750,
-      "seconds_total": 0.08494305803651514,
-      "seconds_median": 4.697949952969793e-05,
+      "seconds_total": 0.13675469788722694,
+      "seconds_median": 4.498637281358242e-05,
       "device": "cpu",
       "threshold": 0.5,
       "model": null,
-      "host": "Jesses-MacBook-Air-2.local"
+      "host": "babylon-kebab.ecs.vuw.ac.nz"
     },
     "rules+deberta-v3-small-open": {
       "detector": "combined",
@@ -657,26 +657,26 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.08494305803651514,
-          "seconds_median": 4.697949952969793e-05,
+          "seconds_total": 0.13675469788722694,
+          "seconds_median": 4.498637281358242e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "babylon-kebab.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 101.2662772317417,
-          "seconds_median": 0.05738385347649455,
+          "seconds_total": 100.97100204089656,
+          "seconds_median": 0.057232287246733904,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx",
-          "host": "chariot.ecs.vuw.ac.nz"
+          "host": "burrito-king.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.05743083297602425
+      "seconds_median": 0.057277273619547486
     },
     "rules+modernbert-base-open": {
       "detector": "combined",
@@ -685,26 +685,26 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.08494305803651514,
-          "seconds_median": 4.697949952969793e-05,
+          "seconds_total": 0.13675469788722694,
+          "seconds_median": 4.498637281358242e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "babylon-kebab.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 246.77943113073707,
-          "seconds_median": 0.14462105371057987,
+          "seconds_total": 246.16425752313808,
+          "seconds_median": 0.1442252506967634,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/modernbert-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "yokohama.ecs.vuw.ac.nz"
+          "host": "great-india.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.14466803321010957
+      "seconds_median": 0.14427023706957698
     },
     "rules+mdeberta-v3-base-open": {
       "detector": "combined",
@@ -713,26 +713,26 @@
           "detector": "rules",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 0.08494305803651514,
-          "seconds_median": 4.697949952969793e-05,
+          "seconds_total": 0.13675469788722694,
+          "seconds_median": 4.498637281358242e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
-          "host": "Jesses-MacBook-Air-2.local"
+          "host": "babylon-kebab.ecs.vuw.ac.nz"
         },
         {
           "detector": "student-onnx",
           "gold": "data/robust/lower/nz_test_full.jsonl",
           "docs": 1750,
-          "seconds_total": 225.547960733762,
-          "seconds_median": 0.13248596200719476,
+          "seconds_total": 204.18784999707714,
+          "seconds_median": 0.11974337603896856,
           "device": "cpu",
           "threshold": 0.5,
           "model": "runs/m3-v2/mdeberta-v3-base-open/onnx/model_int8_int4-block.onnx",
-          "host": "settlement.ecs.vuw.ac.nz"
+          "host": "zeta.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.13253294150672446
+      "seconds_median": 0.11978836241178215
     }
   }
 }

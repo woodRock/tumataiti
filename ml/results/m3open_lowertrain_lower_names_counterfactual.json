@@ -1,0 +1,38 @@
+{
+  "rules+deberta-v3-small-open": {
+    "Māori": 0.8895238095238095,
+    "Pākehā": 0.6216666666666667,
+    "Pasifika": 0.5392857142857143,
+    "Asian NZ": 0.7295238095238096
+  },
+  "rules+modernbert-base-open": {
+    "Māori": 0.6452380952380953,
+    "Pākehā": 0.539047619047619,
+    "Pasifika": 0.37047619047619046,
+    "Asian NZ": 0.5635714285714286
+  },
+  "rules+mdeberta-v3-base-open": {
+    "Māori": 0.4580952380952381,
+    "Pākehā": 0.045714285714285714,
+    "Pasifika": 0.27976190476190477,
+    "Asian NZ": 0.07666666666666666
+  },
+  "rules+deberta-v3-small-open-lower": {
+    "Māori": 0.05333333333333334,
+    "Pākehā": 0.007142857142857143,
+    "Pasifika": 0.0002380952380952381,
+    "Asian NZ": 0.0009523809523809524
+  },
+  "rules+modernbert-base-open-lower": {
+    "Māori": 0.30952380952380953,
+    "Pākehā": 0.05976190476190476,
+    "Pasifika": 0.0830952380952381,
+    "Asian NZ": 0.035
+  },
+  "rules+mdeberta-v3-base-open-lower": {
+    "Māori": 0.012142857142857143,
+    "Pākehā": 0.0,
+    "Pasifika": 0.0004761904761904762,
+    "Asian NZ": 0.0
+  }
+}

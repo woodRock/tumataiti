@@ -10,8 +10,8 @@ In stage order, each stage needing the one before:
   the rules on them;
 - threshold/<student>/<t>, robust/<variant>/<set>/<student>: student predictions;
 - report/threshold, report/robust/<variant>: merge with the rules and score;
-- checksum, uncertainty: score existing predictions. uncertainty stays one job,
-  because splitting its seeded bootstrap would change the numbers.
+- checksum, uncertainty, lowertrain: score existing predictions. uncertainty stays
+  one job, because splitting its seeded bootstrap would change the numbers.
 
 thresholds.py, robustness.py, checksum_ablation.py and score_uncertainty.py also
 run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
@@ -30,6 +30,7 @@ sys.path.insert(0, str(ML / "scripts"))
 
 import checksum_ablation  # noqa: E402
 import robustness  # noqa: E402
+import score_lower  # noqa: E402
 import score_uncertainty  # noqa: E402
 import thresholds  # noqa: E402
 from robustness import SETS, STUDENTS, VARIANTS  # noqa: E402
@@ -42,7 +43,7 @@ def jobs() -> list[str]:
     out += [f"threshold/{m}/{t}" for m in STUDENTS for t in THRESHOLDS]
     out += [f"robust/{v}/{ds}/{m}" for v in VARIANTS for ds in SETS for m in STUDENTS]
     out += ["report/threshold", *(f"report/robust/{v}" for v in VARIANTS)]
-    return [*out, "checksum", "uncertainty"]
+    return [*out, "checksum", "uncertainty", "lowertrain"]
 
 
 def select(prefixes: list[str]) -> list[str]:
@@ -67,6 +68,8 @@ def run(job: str) -> None:
         checksum_ablation.main()
     elif job == "uncertainty":
         score_uncertainty.main()
+    elif job == "lowertrain":
+        score_lower.main()
     else:
         raise SystemExit(f"unknown job {job!r}")
 
