@@ -1,0 +1,70 @@
+{
+  "name": "checksum_open_en_test",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.9639959432048681,
+      "rules-format-only": 0.9553752535496958
+    },
+    "span_leak": {
+      "rules": 0.7453682260305697,
+      "rules-format-only": 0.7143353404353867
+    },
+    "precision": {
+      "rules": 0.9882371253224228,
+      "rules-format-only": 0.9857801374655307
+    },
+    "recall": {
+      "rules": 0.38583012119317983,
+      "rules-format-only": 0.41586797235823175
+    },
+    "f1": {
+      "rules": 0.5549825174825174,
+      "rules-format-only": 0.5849604962694313
+    },
+    "exact_f1": {
+      "rules": 0.3947005244272702,
+      "rules-format-only": 0.4297316384180792
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "leak_date": {
+      "rules": 0.20349761526232116,
+      "rules-format-only": 0.20349761526232116
+    },
+    "leak_email": {
+      "rules": 0.003787878787878788,
+      "rules-format-only": 0.003787878787878788
+    },
+    "leak_id": {
+      "rules": 0.9151880766501065,
+      "rules-format-only": 0.8218594748048261
+    },
+    "leak_ip_address": {
+      "rules": 0.1592356687898089,
+      "rules-format-only": 0.1592356687898089
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "leak_phone": {
+      "rules": 0.9722772277227723,
+      "rules-format-only": 0.9623762376237623
+    },
+    "leak_secret": {
+      "rules": 0.9191616766467066,
+      "rules-format-only": 0.9191616766467066
+    },
+    "leak_url": {
+      "rules": 0.07360406091370558,
+      "rules-format-only": 0.07360406091370558
+    },
+    "docs": 2000
+  },
+  "source": {
+    "path": "ml/results/checksum_open_en_test.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

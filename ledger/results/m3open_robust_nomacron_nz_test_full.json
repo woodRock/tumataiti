@@ -1,0 +1,88 @@
+{
+  "name": "m3open_robust_nomacron_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.008571428571428572,
+      "rules_modernbert-base-open": 0.029714285714285714,
+      "rules_mdeberta-v3-base-open": 0.011428571428571429
+    },
+    "span_leak": {
+      "rules": 0.6410256410256411,
+      "rules_deberta-v3-small-open": 0.001641025641025641,
+      "rules_modernbert-base-open": 0.005538461538461538,
+      "rules_mdeberta-v3-base-open": 0.0020512820512820513
+    },
+    "precision": {
+      "rules": 0.8884762220931197,
+      "rules_deberta-v3-small-open": 0.936501364608066,
+      "rules_modernbert-base-open": 0.9194654299748174,
+      "rules_mdeberta-v3-base-open": 0.9460107927183306
+    },
+    "recall": {
+      "rules": 0.3860738950898895,
+      "rules_deberta-v3-small-open": 0.9992787204500785,
+      "rules_modernbert-base-open": 0.9974484735921525,
+      "rules_mdeberta-v3-base-open": 0.9989090646807436
+    },
+    "f1": {
+      "rules": 0.5382565520708944,
+      "rules_deberta-v3-small-open": 0.9668721075795049,
+      "rules_modernbert-base-open": 0.9568707159383312,
+      "rules_mdeberta-v3-base-open": 0.9717405604525721
+    },
+    "exact_f1": {
+      "rules": 0.5185185185185185,
+      "rules_deberta-v3-small-open": 0.9143801321850592,
+      "rules_modernbert-base-open": 0.8573541738573048,
+      "rules_mdeberta-v3-base-open": 0.7521699073849585
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.001,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.002857142857142857,
+      "rules_modernbert-base-open": 0.010285714285714285,
+      "rules_mdeberta-v3-base-open": 0.0038095238095238095
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "ms": {
+      "rules": 0.010624999958963599,
+      "rules_deberta-v3-small-open": 46.20366700009981,
+      "rules_modernbert-base-open": 114.3839794995074,
+      "rules_mdeberta-v3-base-open": 87.49006249990998
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_nomacron_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

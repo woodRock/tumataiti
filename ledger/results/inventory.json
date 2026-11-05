@@ -80,6 +80,16 @@
       "deberta-v3-small-open-fp32": 141.320504,
       "modernbert-base-open-fp32": 149.621102,
       "mdeberta-v3-base-open-fp32": 278.234936
+    },
+    "best_epoch": {
+      "deberta-v3-small-open": 1,
+      "modernbert-base-open": 2,
+      "mdeberta-v3-base-open": 1
+    },
+    "dev_char_f1": {
+      "deberta-v3-small-open": 1.0,
+      "modernbert-base-open": 1.0,
+      "mdeberta-v3-base-open": 1.0
     }
   },
   "source": {

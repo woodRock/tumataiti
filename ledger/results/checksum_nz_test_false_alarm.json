@@ -1,0 +1,54 @@
+{
+  "name": "checksum_nz_test_false_alarm",
+  "metrics": {
+    "doc_leak": {
+      "rules": 0.8333333333333334,
+      "rules-format-only": 0.8333333333333334
+    },
+    "span_leak": {
+      "rules": 0.6428571428571429,
+      "rules-format-only": 0.6428571428571429
+    },
+    "precision": {
+      "rules": 1.0,
+      "rules-format-only": 0.6369871112687714
+    },
+    "recall": {
+      "rules": 0.3877492262290362,
+      "rules-format-only": 0.3877492262290362
+    },
+    "f1": {
+      "rules": 0.558817427385892,
+      "rules-format-only": 0.4820581655480984
+    },
+    "exact_f1": {
+      "rules": 0.5263157894736842,
+      "rules-format-only": 0.5185185185185185
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "docs": 600
+  },
+  "source": {
+    "path": "ml/results/checksum_nz_test_false_alarm.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

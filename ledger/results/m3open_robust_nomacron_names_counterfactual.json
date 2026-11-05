@@ -1,0 +1,34 @@
+{
+  "name": "m3open_robust_nomacron_names_counterfactual",
+  "metrics": {
+    "maori": {
+      "rules_deberta-v3-small-open": 0.0038095238095238095,
+      "rules_modernbert-base-open": 0.0030952380952380953,
+      "rules_mdeberta-v3-base-open": 0.0035714285714285713
+    },
+    "pakeha": {
+      "rules_deberta-v3-small-open": 0.006904761904761905,
+      "rules_modernbert-base-open": 0.05071428571428571,
+      "rules_mdeberta-v3-base-open": 0.009761904761904762
+    },
+    "pasifika": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0002380952380952381,
+      "rules_mdeberta-v3-base-open": 0.002619047619047619
+    },
+    "asian_nz": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.024047619047619047,
+      "rules_mdeberta-v3-base-open": 0.0002380952380952381
+    },
+    "gap": {
+      "rules_deberta-v3-small-open": -0.0030952380952380953,
+      "rules_modernbert-base-open": -0.047619047619047616,
+      "rules_mdeberta-v3-base-open": -0.006190476190476191
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_nomacron_names_counterfactual.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

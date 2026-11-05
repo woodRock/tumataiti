@@ -1,0 +1,101 @@
+{
+  "name": "checksum_false_alarms",
+  "metrics": {
+    "booking_code_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 1.0
+    },
+    "booking_code_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "hui_date_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "hui_date_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "invoice_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "invoice_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "kin_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "kin_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "order_ref_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 1.0
+    },
+    "order_ref_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "town_redacted": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "town_flagged": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "address_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "email_leaked": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "full_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "given_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "ird_leaked": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "landline_leaked": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "mobile_leaked": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "nan_full_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "nhi_leaked": {
+      "rules": 0.0,
+      "rules-format-only": 0.0
+    },
+    "plain_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "surname_leaked": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    }
+  },
+  "source": {
+    "path": "ml/results/checksum_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

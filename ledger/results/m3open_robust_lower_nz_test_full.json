@@ -1,0 +1,88 @@
+{
+  "name": "m3open_robust_lower_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.9474285714285714,
+      "rules_modernbert-base-open": 0.8331428571428572,
+      "rules_mdeberta-v3-base-open": 0.5342857142857143
+    },
+    "span_leak": {
+      "rules": 0.6666666666666666,
+      "rules_deberta-v3-small-open": 0.452,
+      "rules_modernbert-base-open": 0.3157948717948718,
+      "rules_mdeberta-v3-base-open": 0.1763076923076923
+    },
+    "precision": {
+      "rules": 0.8842742109115963,
+      "rules_deberta-v3-small-open": 0.9352873138332757,
+      "rules_modernbert-base-open": 0.9204808369379338,
+      "rules_mdeberta-v3-base-open": 0.9252097607445132
+    },
+    "recall": {
+      "rules": 0.3702959049353553,
+      "rules_deberta-v3-small-open": 0.7071785347205943,
+      "rules_modernbert-base-open": 0.8250085651946553,
+      "rules_mdeberta-v3-base-open": 0.9106785437365887
+    },
+    "f1": {
+      "rules": 0.5220005083884087,
+      "rules_deberta-v3-small-open": 0.8053928338561535,
+      "rules_modernbert-base-open": 0.8701336984842434,
+      "rules_mdeberta-v3-base-open": 0.9178866443117691
+    },
+    "exact_f1": {
+      "rules": 0.4905660377358491,
+      "rules_deberta-v3-small-open": 0.5924580836511107,
+      "rules_modernbert-base-open": 0.6747921815322401,
+      "rules_mdeberta-v3-base-open": 0.577305583854849
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.153,
+      "rules_modernbert-base-open": 0.001,
+      "rules_mdeberta-v3-base-open": 0.105
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_id": {
+      "rules": 0.3333333333333333,
+      "rules_deberta-v3-small-open": 0.032,
+      "rules_modernbert-base-open": 0.11466666666666667,
+      "rules_mdeberta-v3-base-open": 0.07333333333333333
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.8057142857142857,
+      "rules_modernbert-base-open": 0.5699047619047619,
+      "rules_mdeberta-v3-base-open": 0.29695238095238097
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "ms": {
+      "rules": 0.05220849971010466,
+      "rules_deberta-v3-small-open": 52.228041499347455,
+      "rules_modernbert-base-open": 148.1686669994815,
+      "rules_mdeberta-v3-base-open": 99.46343799992974
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_lower_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}
