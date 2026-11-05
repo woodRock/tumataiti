@@ -35,7 +35,7 @@ def jobs() -> list[str]:
 
 
 def cli(*args: str) -> None:
-    subprocess.run(["tumataiti-ml", *args], cwd=ML, check=True, stdout=subprocess.DEVNULL)
+    subprocess.run(["tumataiti-ml", *args], cwd=ML, check=True)
 
 
 def run(job: str) -> None:
