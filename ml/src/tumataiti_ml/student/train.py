@@ -20,6 +20,7 @@ import torch
 
 from .. import metrics
 from ..spans import Doc, read_jsonl
+from .augment import lowercase_some
 from .encode import IGNORE_INDEX, TAG_ID, TAGS, encode_doc
 from .infer import spans_for
 
@@ -37,6 +38,7 @@ class Config:
     stride: int = 128
     warmup: float = 0.1
     weight_decay: float = 0.01
+    lower_fraction: float = 0.0  # share of training documents lowercased
     seed: int = 0
     max_steps: int | None = None  # for smoke tests
     dev_limit: int | None = None
@@ -96,7 +98,7 @@ def train(cfg: Config, device: str = "cuda") -> None:
         label2id=TAG_ID,
     ).to(device)
 
-    docs = [d for f in cfg.train for d in read_jsonl(Path(f))]
+    docs = lowercase_some([d for f in cfg.train for d in read_jsonl(Path(f))], cfg.lower_fraction, cfg.seed)
     examples = [ex for d in docs for ex in encode_doc(tokenizer, d, cfg.max_length, cfg.stride)]
     dev = list(read_jsonl(Path(cfg.dev)))[: cfg.dev_limit]
     print(f"{len(docs)} training documents -> {len(examples)} windows; {len(dev)} dev documents", flush=True)

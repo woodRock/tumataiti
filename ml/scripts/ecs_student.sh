@@ -51,4 +51,12 @@ if [ -f data/open/open_en_test.jsonl ]; then
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
     --gold data/open/open_en_test.jsonl --out "$OUT/pred/open_en_test.jsonl" > /dev/null
 fi
+# Typing variants of the evaluation sets (scripts/robustness.py), when built.
+for v in nomacron lower; do
+  for gold in data/robust/$v/*.jsonl; do
+    [ -f "$gold" ] || continue
+    "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
+      --gold "$gold" --out "$OUT/pred/robust/$v/$(basename "$gold")" > /dev/null
+  done
+done
 echo "done: $OUT"

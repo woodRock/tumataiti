@@ -6,6 +6,7 @@ closest laptop-side check of what the demo will ship.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 import numpy as np
@@ -14,7 +15,7 @@ from ..spans import Span
 from ..student.encode import decode, union, windows
 
 EVAL_CATEGORY = {"AFFILIATION": None}
-THREADS = 4  # ONNX Runtime intra-op threads, for the laptop CPU timings
+THREADS = 4  # ONNX Runtime intra-op threads, for the laptop CPU timings (grid jobs set TUMATAITI_THREADS)
 
 
 def make(model: str, threshold: float = 0.5, **_):
@@ -24,7 +25,7 @@ def make(model: str, threshold: float = 0.5, **_):
     path = Path(model)
     tokenizer = AutoTokenizer.from_pretrained(path.parent)
     opts = ort.SessionOptions()
-    opts.intra_op_num_threads = THREADS
+    opts.intra_op_num_threads = int(os.environ.get("TUMATAITI_THREADS", THREADS))
     session = ort.InferenceSession(str(path), opts, providers=["CPUExecutionProvider"])
 
     def predict(text: str) -> list[Span]:

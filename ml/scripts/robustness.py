@@ -1,6 +1,7 @@
 """Typing variation: the int4 open students on test_full and the name audit
 with macrons stripped and with all text lowercased, merged with the rules.
-Offsets are unchanged, so gold spans carry over.
+Offsets are unchanged, so gold spans carry over. Student predictions already
+present (fetched from grid_job.py) are reused.
 
     taura run -- ml/.venv/bin/python ml/scripts/robustness.py
 
@@ -31,25 +32,37 @@ def cli(*args: str) -> None:
     subprocess.run(["tumataiti-ml", *args], cwd=ML, env=env, check=True, stdout=subprocess.DEVNULL)
 
 
+def write_variant(variant: str, ds: str) -> Path:
+    """data/robust/<variant>/<ds>.jsonl, written atomically because grid jobs
+    for the same set may run at once. Returns its path under ml/."""
+    change = VARIANTS[variant]
+    docs = []
+    for d in read_jsonl(ML / "data/v1" / f"{ds}.jsonl"):
+        text = change(d.text)
+        assert len(text) == len(d.text), d.id
+        docs.append(Doc(id=d.id, text=text, spans=d.spans, meta=d.meta))
+    path = Path("data/robust") / variant / f"{ds}.jsonl"
+    (ML / path.parent).mkdir(parents=True, exist_ok=True)
+    tmp = ML / path.with_suffix(f".{os.getpid()}.tmp")
+    write_jsonl(tmp, docs)
+    tmp.replace(ML / path)
+    return path
+
+
 def main() -> None:
-    for variant, change in VARIANTS.items():
+    for variant in VARIANTS:
         data = Path("data/robust") / variant
         runs = Path("runs/robust") / variant
         for ds in SETS:
-            docs = []
-            for d in read_jsonl(ML / "data/v1" / f"{ds}.jsonl"):
-                text = change(d.text)
-                assert len(text) == len(d.text), d.id
-                docs.append(Doc(id=d.id, text=text, spans=d.spans, meta=d.meta))
-            (ML / data).mkdir(parents=True, exist_ok=True)
-            write_jsonl(ML / data / f"{ds}.jsonl", docs)
+            write_variant(variant, ds)
             gold = str(data / f"{ds}.jsonl")
             rules = str(runs / "rules" / f"{ds}.jsonl")
             cli("predict", "--detector", "rules", "--gold", gold, "--out", rules)
             for m in STUDENTS:
                 out = str(runs / m / f"{ds}.jsonl")
-                cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
-                    "--gold", gold, "--out", out)
+                if not (ML / runs / m / f"{ds}.meta.json").exists():
+                    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
+                        "--gold", gold, "--out", out)
                 cli("combine", "--primary", rules, "--secondary", out, "--out", str(runs / f"rules+{m}" / f"{ds}.jsonl"))
         ds = "nz_test_full"
         names = ["rules", *(f"rules+{m}" for m in STUDENTS)]

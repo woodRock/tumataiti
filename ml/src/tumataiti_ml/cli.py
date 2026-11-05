@@ -204,6 +204,7 @@ def cmd_train(a: argparse.Namespace) -> None:
         backbone=a.backbone, train=[str(p) for p in a.train], dev=str(a.dev), out=str(a.out),
         epochs=a.epochs, lr=a.lr, batch_size=a.batch_size, seed=a.seed, max_steps=a.max_steps, dev_limit=a.dev_limit,
         bf16=not a.no_bf16, log_every=a.log_every, deterministic=not a.no_deterministic,
+        lower_fraction=a.lower_fraction,
     )
     train(cfg, device=a.device)
 
@@ -303,6 +304,7 @@ def main(argv: list[str] | None = None) -> None:
     t.add_argument("--lr", type=float, default=5e-5)
     t.add_argument("--batch-size", type=int, default=16)
     t.add_argument("--seed", type=int, default=0)
+    t.add_argument("--lower-fraction", type=float, default=0.0, help="share of training documents to lowercase")
     t.add_argument("--max-steps", type=int)
     t.add_argument("--dev-limit", type=int)
     t.add_argument("--no-bf16", action="store_true", help="train in fp32")

@@ -3,13 +3,13 @@ int4 open student at each decoding threshold, merge with the rules and score.
 
     taura run -- ml/.venv/bin/python ml/scripts/thresholds.py
 
-Writes ml/results/m3open_thresholds_nz_test_full.{json,md}.
+Predictions already present (fetched from grid_job.py) are reused. Writes
+ml/results/m3open_thresholds_nz_test_full.{json,md}.
 """
 
 from __future__ import annotations
 
 import os
-import shutil
 import subprocess
 from pathlib import Path
 
@@ -34,11 +34,7 @@ def main() -> None:
         for t in THRESHOLDS:
             name = f"{m}-t{t}"
             out = RUNS / name / f"{DS}.jsonl"
-            if t == 0.5:  # already predicted at the default threshold
-                (ML / out.parent).mkdir(parents=True, exist_ok=True)
-                shutil.copy(ML / f"runs/m3-v2/{m}-int8-int4-block/{DS}.jsonl", ML / out)
-                shutil.copy(ML / f"runs/m3-v2/{m}-int8-int4-block/{DS}.meta.json", ML / out.with_suffix(".meta.json"))
-            elif not (ML / out.with_suffix(".meta.json")).exists():
+            if not (ML / out.with_suffix(".meta.json")).exists():
                 cli("predict", "--detector", "student-onnx", "--model", model, "--threshold", str(t),
                     "--gold", gold, "--out", str(out))
             merged = RUNS / f"rules+{name}" / f"{DS}.jsonl"
