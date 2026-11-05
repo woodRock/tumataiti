@@ -27,8 +27,8 @@ def main() -> None:
         ys = [100 * m["doc_leak"][k] for k in keys]
         ax.plot(xs, ys, color=SERIES[j], lw=1, marker="o", markersize=3.5, markeredgecolor="white",
                 markeredgewidth=0.4, label=label, zorder=3)
-        ax.annotate(f"t={keys[-1].rsplit('-t', 1)[1]}", (xs[-1], ys[-1]), xytext=(3, 3), textcoords="offset points",
-                    fontsize=5, color=INK2)
+        ax.annotate(f"t={keys[-1].rsplit('-t', 1)[1]}", (xs[-1], ys[-1]), xytext=(-3, 3), textcoords="offset points",
+                    fontsize=5, color=INK2, ha="right")
     ax.set_xlabel("Character precision (%)")
     ax.set_ylabel("Document leakage rate (%)")
     ax.legend(loc="upper left", handlelength=1.2)
