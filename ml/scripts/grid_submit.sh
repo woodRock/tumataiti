@@ -5,6 +5,8 @@
 # jobs run with `python ml/scripts/jobs.py all`.
 #   ml/scripts/grid_submit.sh gold rules threshold robust report checksum uncertainty
 #   task fetch --force ml/results ml/runs/thresholds ml/runs/robust
+# Jobs write ml/results in the shared copy, so `task sync` refuses until those
+# edits are gone: restore them there (git checkout -- ml/results) after fetching.
 set -uo pipefail
 PY=ml/.venv/bin/python
 for prefix in "$@"; do
