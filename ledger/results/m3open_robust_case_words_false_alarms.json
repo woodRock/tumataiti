@@ -1,0 +1,21 @@
+{
+  "name": "m3open_robust_case_words_false_alarms",
+  "metrics": {
+    "word_redacted": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.10038844947816726,
+      "rules_modernbert-base-open": 0.11913230682828661,
+      "rules_mdeberta-v3-base-open": 0.046590536809098144
+    },
+    "word_flagged": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_case_words_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

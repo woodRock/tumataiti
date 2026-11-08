@@ -1,0 +1,21 @@
+{
+  "name": "m3open_robust_case_upper_false_alarms",
+  "metrics": {
+    "word_redacted": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0929002667665091,
+      "rules_modernbert-base-open": 0.032269387373051905,
+      "rules_mdeberta-v3-base-open": 0.07628586137501756
+    },
+    "word_flagged": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    }
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_case_upper_false_alarms.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

@@ -1,0 +1,88 @@
+{
+  "name": "m3open_robust_case_words_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.01657142857142857,
+      "rules_modernbert-base-open": 0.12685714285714286,
+      "rules_mdeberta-v3-base-open": 0.036
+    },
+    "span_leak": {
+      "rules": 0.6410256410256411,
+      "rules_deberta-v3-small-open": 0.0029743589743589744,
+      "rules_modernbert-base-open": 0.023794871794871796,
+      "rules_mdeberta-v3-base-open": 0.007897435897435898
+    },
+    "precision": {
+      "rules": 0.8884762220931197,
+      "rules_deberta-v3-small-open": 0.8859831631509875,
+      "rules_modernbert-base-open": 0.8304872969596002,
+      "rules_mdeberta-v3-base-open": 0.8869218231888945
+    },
+    "recall": {
+      "rules": 0.3860738950898895,
+      "rules_deberta-v3-small-open": 0.9982148331139441,
+      "rules_modernbert-base-open": 0.9887841029987198,
+      "rules_mdeberta-v3-base-open": 0.9959698505148132
+    },
+    "f1": {
+      "rules": 0.5382565520708944,
+      "rules_deberta-v3-small-open": 0.9387564758052891,
+      "rules_modernbert-base-open": 0.9027489103548191,
+      "rules_mdeberta-v3-base-open": 0.938288068290404
+    },
+    "exact_f1": {
+      "rules": 0.5185185185185185,
+      "rules_deberta-v3-small-open": 0.8577951108151812,
+      "rules_modernbert-base-open": 0.7425266080518279,
+      "rules_mdeberta-v3-base-open": 0.6839923617903219
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.005523809523809524,
+      "rules_modernbert-base-open": 0.04419047619047619,
+      "rules_mdeberta-v3-base-open": 0.014666666666666666
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "ms": {
+      "rules": 0.045594992116093636,
+      "rules_deberta-v3-small-open": 59.13208099082112,
+      "rules_modernbert-base-open": 157.27735601831228,
+      "rules_mdeberta-v3-base-open": 125.60915399808437
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_case_words_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

@@ -1,0 +1,88 @@
+{
+  "name": "m3open_robust_case_names_nz_test_full",
+  "metrics": {
+    "doc_leak": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.9594285714285714,
+      "rules_modernbert-base-open": 0.9628571428571429,
+      "rules_mdeberta-v3-base-open": 0.5685714285714286
+    },
+    "span_leak": {
+      "rules": 0.6410256410256411,
+      "rules_deberta-v3-small-open": 0.4550769230769231,
+      "rules_modernbert-base-open": 0.4286153846153846,
+      "rules_mdeberta-v3-base-open": 0.21066666666666667
+    },
+    "precision": {
+      "rules": 0.8884762220931197,
+      "rules_deberta-v3-small-open": 0.9257945004450646,
+      "rules_modernbert-base-open": 0.9068301066457245,
+      "rules_mdeberta-v3-base-open": 0.9274404464041242
+    },
+    "recall": {
+      "rules": 0.3860738950898895,
+      "rules_deberta-v3-small-open": 0.6939160069964116,
+      "rules_modernbert-base-open": 0.7183493517500045,
+      "rules_mdeberta-v3-base-open": 0.8856230953711884
+    },
+    "f1": {
+      "rules": 0.5382565520708944,
+      "rules_deberta-v3-small-open": 0.7932573383905013,
+      "rules_modernbert-base-open": 0.8016601685322601,
+      "rules_mdeberta-v3-base-open": 0.9060495233527189
+    },
+    "exact_f1": {
+      "rules": 0.5185185185185185,
+      "rules_deberta-v3-small-open": 0.6386335403726707,
+      "rules_modernbert-base-open": 0.6322060416415934,
+      "rules_mdeberta-v3-base-open": 0.5798804475553059
+    },
+    "leak_address": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_date": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_email": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_id": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "leak_person": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.8451428571428572,
+      "rules_modernbert-base-open": 0.796,
+      "rules_mdeberta-v3-base-open": 0.3912380952380952
+    },
+    "leak_phone": {
+      "rules": 0.0,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "ms": {
+      "rules": 0.04605151480063796,
+      "rules_deberta-v3-small-open": 70.72477455949411,
+      "rules_modernbert-base-open": 165.13820103136823,
+      "rules_mdeberta-v3-base-open": 125.96498252241872
+    },
+    "docs": 1750
+  },
+  "source": {
+    "path": "ml/results/m3open_robust_case_names_nz_test_full.json"
+  },
+  "produced_by": "ml/scripts/export_ledger.py"
+}

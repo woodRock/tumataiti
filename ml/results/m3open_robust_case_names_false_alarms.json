@@ -1,0 +1,30 @@
+{
+  "rules": {
+    "not PII: word": {
+      "n": 42734,
+      "redacted": 0.0,
+      "flagged": 0.0
+    }
+  },
+  "rules+deberta-v3-small-open": {
+    "not PII: word": {
+      "n": 42734,
+      "redacted": 0.004563111339916694,
+      "flagged": 0.0
+    }
+  },
+  "rules+modernbert-base-open": {
+    "not PII: word": {
+      "n": 42734,
+      "redacted": 0.012800112322740675,
+      "flagged": 0.0
+    }
+  },
+  "rules+mdeberta-v3-base-open": {
+    "not PII: word": {
+      "n": 42734,
+      "redacted": 0.011536481490148359,
+      "flagged": 0.0
+    }
+  }
+}
