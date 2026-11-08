@@ -38,16 +38,17 @@ import robustness  # noqa: E402
 import score_lower  # noqa: E402
 import score_uncertainty  # noqa: E402
 import thresholds  # noqa: E402
-from robustness import SETS, STUDENTS, VARIANTS  # noqa: E402
+from robustness import CASINGS, SETS, STUDENTS, VARIANTS, sets  # noqa: E402
 from thresholds import THRESHOLDS  # noqa: E402
 
 
 def jobs() -> list[str]:
-    out = [f"gold/{v}" for v in VARIANTS]
-    out += [f"rules/{v}" for v in VARIANTS]
+    typings = [*VARIANTS, *CASINGS]
+    out = [f"gold/{v}" for v in typings]
+    out += [f"rules/{v}" for v in typings]
     out += [f"threshold/{m}/{t}" for m in STUDENTS for t in THRESHOLDS]
-    out += [f"robust/{v}/{ds}/{m}" for v in VARIANTS for ds in SETS for m in STUDENTS]
-    out += ["report/threshold", *(f"report/robust/{v}" for v in VARIANTS)]
+    out += [f"robust/{v}/{ds}/{m}" for v in typings for ds in sets(v) for m in STUDENTS]
+    out += ["report/threshold", *(f"report/robust/{v}" for v in typings)]
     out += ["checksum", "uncertainty", "lowerint4/quantise"]
     out += [f"lowerint4/{t}/{ds}" for t in score_lower.TYPINGS for ds in SETS]
     out += ["lowertrain", *(f"lowercmp/{ds}" for ds in compare_lower.SETS)]
