@@ -111,6 +111,19 @@ percent = true
 decimals = 0
 thousands = true
 
+# Affiliation (score_affiliation.py): spans not covered by any prediction, and
+# spans covered by AFFILIATION predictions, as percentages; spans as counts.
+[format.leaked]
+decimals = 1
+percent = true
+
+[format.tagged]
+decimals = 1
+percent = true
+
+[format.spans]
+decimals = 0
+
 [format.docs]                      # table column
 decimals = 0
 thousands = true
