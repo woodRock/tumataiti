@@ -19,8 +19,10 @@ from pathlib import Path
 ML = Path(__file__).resolve().parents[1]
 # Where each family's predictions live. Several hold detectors of the same
 # name (runs/m3/deberta-v3-small is the v1 student, runs/m3-v2/... the v2 one).
-RUN_DIRS = {"m1_": "runs", "m3_": "runs/m3", "m3v2": "runs/m3-v2", "m3open": "runs/m3-v2", "m3fa": "runs/m3-fa",
-            "fa_baseline": "runs/m3-v2", "txn": "runs/m3-v2"}
+# From data v4 the current students are in runs/m3-v4 and score on data/v4;
+# v2-era results (runs/m3-v2, data/v1) are reproducible from commit 3437c11.
+RUN_DIRS = {"m1_": "runs", "m3_": "runs/m3", "m3v2": "runs/m3-v2", "m3open": "runs/m3-v4", "m3fa": "runs/m3-v4kin",
+            "fa_baseline": "runs/m3-v4", "txn": "runs/m3-v4"}
 
 
 def find_run_dir(stem: str, names: list[str], file: str) -> str:
@@ -37,7 +39,8 @@ def rescore(stem: str) -> None:
     if "gold" not in data:  # counterfactual audit: {run: {community: leak}}
         names = list(data)
         r = find_run_dir(stem, names, "nz_cf_maori.jsonl")
-        cmd = ["counterfactual", "--data", "data/v1", "--runs", *[f"{r}/{n}" for n in names]]
+        data_dir = "data/v4" if r.startswith("runs/m3-v4") else "data/v1"
+        cmd = ["counterfactual", "--data", data_dir, "--runs", *[f"{r}/{n}" for n in names]]
     else:
         names = list(data["results"])
         ds = Path(data["gold"]).name

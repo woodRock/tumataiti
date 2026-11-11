@@ -49,5 +49,13 @@ for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
     --gold "$gold" --out "$OUT/pred/$ds.jsonl" > /dev/null
 done
-# The typing variants are scored on the int4 students (robustness.py), not here.
+# Typing variants of the v4 sets (robustness.py builds them in data/robust-v4), when
+# built; score_lower.py uses these for the students trained with lowercased text.
+for v in nomacron lower; do
+  for gold in data/robust-v4/$v/*.jsonl; do
+    [ -f "$gold" ] || continue
+    "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
+      --gold "$gold" --out "$OUT/pred/robust/$v/$(basename "$gold")" > /dev/null
+  done
+done
 echo "done: $OUT"

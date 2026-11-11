@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Score false alarms (SPEC §9.8) for each model on data/v1/nz_test_false_alarm.jsonl:
+# Score false alarms (SPEC §9.8) for each model on data/v4/nz_test_false_alarm.jsonl (the v1 file, regenerated):
 # the model alone, after the review layer (`tumataiti-ml review`), and each
 # merged with the rules. Model predictions must exist (ecs_student.sh or local_int8.sh).
-#   RUNS=runs/m3-v2 TAG=fa MODELS="deberta-v3-small-open-int8-int4-block" uv run ./scripts/score_false_alarms.sh
+#   RUNS=runs/m3-v4 TAG=fa MODELS="deberta-v3-small-open-int8-int4-block" uv run ./scripts/score_false_alarms.sh
 set -euo pipefail
 cd "$(dirname "$0")/.."
-R=${RUNS:-runs/m3-v2}
+R=${RUNS:-runs/m3-v4}
 TAG=${TAG:-fa}
 DS=nz_test_false_alarm
-GOLD=data/v1/$DS.jsonl
+GOLD=data/v4/$DS.jsonl
 [ -f "$GOLD" ] || tumataiti-ml generate --split test_false_alarm --n 600 --seed 6 --out "$GOLD"
 [ -f "$R/rules/$DS.jsonl" ] || tumataiti-ml predict --detector rules --gold "$GOLD" --out "$R/rules/$DS.jsonl" > /dev/null
 preds=("$R/rules/$DS.jsonl")
