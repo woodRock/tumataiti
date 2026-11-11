@@ -53,7 +53,9 @@ impl Default for Policy {
             (Financial, Mask),
             (OtherId, Mask),
             (Secret, Block),
-            (Affiliation, Flag),
+            // Flag would send it to the cloud unchanged; a placeholder keeps it on the
+            // device until the kaitiaki/legal workstream sets this policy (SPEC §6.2).
+            (Affiliation, Pseudonymise),
             (Health, Flag),
             (CulturalRestricted, Block),
         ];

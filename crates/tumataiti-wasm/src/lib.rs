@@ -191,4 +191,18 @@ mod tests {
         let output = out["output"].as_str().unwrap();
         assert!(output.starts_with("Koro's") && !output.contains("Nan"));
     }
+
+    #[test]
+    fn affiliation_gets_a_placeholder_by_default() {
+        let text = "I whakapapa to Ngāpuhi.";
+        let start = text[..text.find("Ngāpuhi").unwrap()].encode_utf16().count();
+        let model = format!(
+            r#"[{{"start":{start},"end":{},"label":"AFFILIATION","confidence":0.99}}]"#,
+            start + "Ngāpuhi".encode_utf16().count()
+        );
+        let out: serde_json::Value = serde_json::from_str(&redact_with(text, "", &model, "student").unwrap()).unwrap();
+        let actions: Vec<&str> = out["findings"].as_array().unwrap().iter().map(|f| f["action"].as_str().unwrap()).collect();
+        assert_eq!(actions, ["pseudonymise"]);
+        assert!(!out["output"].as_str().unwrap().contains("Ngāpuhi"));
+    }
 }

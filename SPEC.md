@@ -125,11 +125,11 @@ Components:
 | `NZ_GOV_ID` | IRD, NHI, licence, passport | Mask (no restore needed) |
 | `FINANCIAL` | bank account, card | Mask |
 | `SECRET` | API keys, passwords | Block request |
-| `AFFILIATION` | iwi, hapū, marae, whānau name | Policy-defined (default: flag for review) |
+| `AFFILIATION` | iwi, hapū, marae, whānau name | Policy-defined (interim default: pseudonymise) |
 | `HEALTH` | diagnoses linked to a person | Flag for review |
 | `CULTURAL_RESTRICTED` | content the steward marks tapu / restricted | Block request |
 
-`AFFILIATION`, `HEALTH` and `CULTURAL_RESTRICTED` are deliberately conservative. Combined, they re-identify people in small communities. Policy for them is set with the kaitiaki/legal workstream, not by the tech team alone.
+`AFFILIATION`, `HEALTH` and `CULTURAL_RESTRICTED` are deliberately conservative. Combined, they re-identify people in small communities. Policy for them is set with the kaitiaki/legal workstream, not by the tech team alone. Until it is, `AFFILIATION` defaults to a placeholder: flagging sends the text to the cloud unchanged, and a placeholder keeps it on the device.
 
 **Public figures and tūpuna:** names of public figures or ancestors discussed in a research capacity (e.g. a rangatira's published work) may be allow-listed per project so research questions remain answerable.
 
@@ -207,7 +207,7 @@ Each preset shows one feature of the redactor:
 |---|---|
 | Interview notes with te reo names, with and without macrons | Model detection of Māori names; consistent placeholders across variants |
 | IRD and NHI numbers, one valid and one with a bad check digit | Rules verify checksums; the invalid one is flagged, not treated as a real ID |
-| Hui transcript naming a marae, hapū and a whānau member's illness | `AFFILIATION` and `HEALTH` flagged for review, not silently redacted |
+| Hui transcript naming a marae, hapū and a whānau member's illness | `AFFILIATION` replaced by a placeholder and `HEALTH` flagged for review, both listed for the user |
 | Discussion of a rangatira's published work | Public-figure allow-list: research context kept |
 | Email signature with phone, email, address | Structured PII by rules, address by model |
 | Text containing an API key | `SECRET` blocks the request entirely |
