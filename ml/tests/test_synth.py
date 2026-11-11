@@ -152,3 +152,18 @@ def test_v4_pepeha_slots_need_a_v4_split():
 
     with pytest.raises(KeyError):
         fill("Ko {p1.maunga} te maunga", __import__("random").Random(0))
+
+
+def test_place_alarm_leaves_places_unlabelled():
+    from tumataiti_ml.synth import place_alarm
+
+    docs = place_alarm.generate(60, seed=7)
+    kinds = {k for d in docs for _, _, k in d.meta["negatives"]}
+    assert set(place_alarm.PLACES) <= kinds
+    for d in docs:
+        for a, b, k in d.meta["negatives"]:
+            if k in place_alarm.PLACES:
+                assert d.text[a:b] in place_alarm.PLACES[k]
+        assert all(s.category != "AFFILIATION" for s in d.spans)
+        for s in d.spans:
+            assert d.text[s.start:s.end].strip() == d.text[s.start:s.end]
