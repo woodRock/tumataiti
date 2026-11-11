@@ -1,0 +1,28 @@
+id = "2026-11-10-202719-1f40"
+status = "failed"
+started = "2026-11-10T20:27:19-10:00"
+finished = "2026-11-10T20:29:15-10:00"
+exit_code = 1
+commit = "f126d9ba8a8eaf0d06c218b0ad2ff719e77fb834"
+dirty = false
+changed_outputs = ["demo/src/presets.ts"]
+command = "ml/scripts/compare_deploy.sh runs/m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx runs/m3-v4/deberta-v3-small-open/onnx/model_int8_int4-block.onnx"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/compare_deploy.sh"]
+
+[outputs]
+"demo/public/models/student/config.json" = "sha256:453eca0aef93d0a3c848453b72de06117a2361319d2e83f61df39d9f2d75517b"
+"demo/public/models/student/manifest.json" = "sha256:d26c5fd9c3fb841333b36723b29cda39579b7b07ca74cacab1e5b09ff669cca7"
+"demo/public/models/student/model.onnx.part-aa" = "sha256:649f4ece7301035a2d5e434ad3c5f6644777ae6729036d02d598f215e207edba"
+"demo/public/models/student/model.onnx.part-ab" = "sha256:ec3d7cf7bbef954851d3b43a9d2e2bf235d92274f018ba9bfc6bcfeebd74a853"
+"demo/public/models/student/model.onnx.part-ac" = "sha256:fec2303ee66d503890537d0151b3de76cd949de1de62f5e22f37504351343700"
+"demo/public/models/student/model.onnx.part-ad" = "sha256:eeb49c85d7d18c03dc8972ae7794fd617ad9229443f99d3cf575042030ba2e63"
+"demo/public/models/student/tokenizer.json" = "sha256:e9ddd853a4a31023721c993458663f2019e3154a05dacf0d2b3c217e53d9bdc8"
+"ml/runs/deploy-check/old/nz_test_full.jsonl" = "sha256:ee5c5c62816ab367f9a3bc0449ae717b05b6d60765f3abd67dbd75e93cfcb481"
+"ml/runs/deploy-check/old/nz_test_full.meta.json" = "sha256:64dc79f73fc34b1f0545b50a2eee8ec9e416795bd3b23e7d785d324e37a8781f"
+"ml/runs/deploy-check/rules+new/nz_test_full.jsonl" = "sha256:2ab3dfde95dcd799adf0b8389495ba5c8cb5919b796da2fd7b900a4d35d0fca1"
+"ml/runs/deploy-check/rules+old/nz_test_full.jsonl" = "sha256:b62dd31f74b8bd46cbdc8cf57bfe67aa74701e78d36b0fa1a992adb42a7a4820"
+"ml/runs/deploy-check/rules+old/nz_test_full.meta.json" = "sha256:ad99a24a31fee51d45992cee76b3a0f0baab2fc4e1cda0979bddbe73ffdd3ee4"
+"ml/runs/deploy-check/rules/nz_test_full.jsonl" = "sha256:8a025399ed7f5444e8d9c4982eca54ba348da3cf10e868c44c935eab84dc44c8"
+"ml/runs/deploy-check/rules/nz_test_full.meta.json" = "sha256:bfae195163dffc10bf1dd9172343999f4d0f84b7d87174d71033b83b1c85a22a"

@@ -41,7 +41,7 @@ export function StudentPanel({ state, onChange }: { state: StudentState; onChang
             Add the name model
           </button>
           <span className="muted small">
-            Finds names, addresses and iwi. Downloads {mb(MODEL_SHIPPED.bytes)} from this site once, then runs on this
+            Finds names, addresses, and iwi, marae and the rest of a pepeha. Downloads {mb(MODEL_SHIPPED.bytes)} from this site once, then runs on this
             device. Your text is never uploaded.
           </span>
         </div>

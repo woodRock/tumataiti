@@ -22,9 +22,28 @@ I whānau mai a Nanny Rīpeka i te 12 o Hōngongoi 1948.
 Next hui: 14/03/2027 at the marae.`,
   },
   {
+    id: "pepeha",
+    title: "Pepeha",
+    shows:
+      "a pepeha, long and short: with the name model on, the maunga, awa, waka, iwi, hapū, marae and tupuna are each marked as an affiliation, and the speaker's name as a name",
+    text: `Tēnā koutou katoa.
+
+Ko Hikurangi te maunga
+Ko Waiapu te awa
+Ko Horouta te waka
+Ko Ngāti Porou te iwi
+Ko Te Whānau-a-Ruataupare te hapū
+Ko Ōwae te marae
+Ko Porourangi te tupuna
+Ko Mereana Tāwhiri tōku ingoa.
+
+Kia ora, I'm Mereana. I'm Ngāti Porou on Mum's side and Ngāi Tahu on Dad's.
+Get in touch on 027 012 3456 or mereana.t@example.nz.`,
+  },
+  {
     id: "checksums",
     title: "Checksums",
-    shows: "IRD and NHI check digits: a labelled number that fails is still redacted in case it is a typo. The rules ignore unlabelled look-alikes; with the name model on, they are redacted as another kind of ID, in case they are one",
+    shows: "IRD and NHI check digits: a labelled number that fails is still redacted in case it is a typo. The rules ignore unlabelled look-alikes such as the order reference; the name model sometimes redacts one as another kind of ID, in case it is one",
     text: `Kia ora, I've updated the whānau records.
 
 Koro's IRD number: 49-091-850

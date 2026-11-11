@@ -70,7 +70,7 @@ Then restart `npm --prefix demo run dev`. The page offers an "Add the name model
 
 ## What the rules detect
 
-IRD numbers (mod-11 check digit), NHI numbers (old and new formats), payment cards (Luhn), NZ bank accounts (format), NZ phone numbers, passports and driver licences (by label), emails, URLs, IPv4 addresses, dates of birth or death (by label, including Māori month names), and API keys and passwords. Names, addresses, iwi and hapū affiliation and health details need the model (milestone 3).
+IRD numbers (mod-11 check digit), NHI numbers (old and new formats), payment cards (Luhn), NZ bank accounts (format), NZ phone numbers, passports and driver licences (by label), emails, URLs, IPv4 addresses, dates of birth or death (by label, including Māori month names), and API keys and passwords. Names, addresses and affiliation (iwi, hapū, marae and the rest of a pepeha) need the model (milestone 3); health details are not detected yet.
 
 ## Licence
 

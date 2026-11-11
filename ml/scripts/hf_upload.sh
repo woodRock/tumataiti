@@ -4,10 +4,11 @@
 #   ml/scripts/hf_upload.sh deberta-v3-small-open woodrock/tumataiti-deberta-v3-small-open
 # Only models trained without PII-Masking-300k may be published (SPEC §9.1).
 # Prints the Hub commit; pin it in demo/model.lock (scripts/lock-model.sh).
+# RUNS picks the generation (default runs/m3-v4, data v4; runs/m3-v2 for the v2 model).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 NAME=$1 REPO=$2
-R=runs/m3-v2/$NAME
+R=${RUNS:-runs/m3-v4}/$NAME
 grep -q data/open/ "$R/config.json" && ! grep -q pii300k "$R/config.json" \
   || { echo "$R was not trained on the open data only" >&2; exit 1; }
 STAGE=$(mktemp -d)

@@ -214,7 +214,7 @@ export function App({ redactor }: { redactor: Redactor }) {
       <footer className="bottom muted small">
         <p>
           Deterministic rules for structured identifiers, plus an optional small model (milestone 3) for names,
-          addresses and iwi, hapū and marae. Health details and restricted mātauranga are not detected yet. The model is
+          addresses and affiliation: iwi, hapū and marae, and the maunga, awa, waka and tupuna of a pepeha. Health details and restricted mātauranga are not detected yet. The model is
           a research prototype trained on synthetic data. All examples are synthetic. Part of the Hiringa Te Mahara
           Atamai research programme.
         </p>

@@ -23,7 +23,7 @@ export const CATEGORIES: Record<Category, CategoryInfo> = {
   DATE: { label: "Birth or death date", hue: 90, rules: true },
   PERSON: { label: "Name", hue: 145, rules: false, model: true },
   ADDRESS: { label: "Address", hue: 120, rules: false, model: true },
-  AFFILIATION: { label: "Iwi, hapū, marae", hue: 70, rules: false, model: true },
+  AFFILIATION: { label: "Iwi, marae, pepeha", hue: 70, rules: false, model: true },
   HEALTH: { label: "Health", hue: 0, rules: false },
   CULTURAL_RESTRICTED: { label: "Restricted mātauranga", hue: 40, rules: false },
 };
