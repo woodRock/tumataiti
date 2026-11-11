@@ -1,0 +1,1 @@
+{"name": "deberta-v3-small-open", "precision": "int8 embeddings, int4 encoder", "bytes": 160285829, "repo": "woodrock/tumataiti-deberta-v3-small-open", "parts": ["model.onnx.part-aa","model.onnx.part-ab","model.onnx.part-ac","model.onnx.part-ad"]}
