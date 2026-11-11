@@ -1,0 +1,25 @@
+id = "2026-11-10-215926-f45d"
+status = "done"
+started = "2026-11-10T21:59:26-10:00"
+finished = "2026-11-10T21:59:58-10:00"
+exit_code = 0
+commit = "a28fa7b9dd211cb6ebb435f3b42e48eb2897ee57"
+dirty = false
+command = "ml/scripts/score_place_alarm.sh"
+host = "Jesses-MacBook-Air-2.local"
+runner = "taura"
+inputs = ["ml/scripts/score_place_alarm.sh"]
+
+[outputs]
+"ml/runs/place-alarm/results/place_alarm.json" = "sha256:16cb230a9fc64eb014e885f2bd43ba5a37c3e9d4fbc589ee21a51d70d74a0d10"
+"ml/runs/place-alarm/results/place_alarm.md" = "sha256:562b5873ef1ea2c74529ab4b4d10da431489a460b505c4db62c1c9bdb3f4697a"
+"ml/runs/place-alarm/rules+v2/nz_test_place_alarm.jsonl" = "sha256:f531ab5c2e52c34eb3e34cab9893a0698f36662b2d09f40862665047e36e019b"
+"ml/runs/place-alarm/rules+v2/nz_test_place_alarm.meta.json" = "sha256:c811ed24464ed15d36e7333c49c8dfa8c197fa675e975c1572395e81552417fe"
+"ml/runs/place-alarm/rules+v4/nz_test_place_alarm.jsonl" = "sha256:928d99a03c390b1e7ccd55180db54908069951368813b99edfa61ec0f61ed0dd"
+"ml/runs/place-alarm/rules+v4/nz_test_place_alarm.meta.json" = "sha256:25ed9e296db2606c0e802c07152c637093dcca9045fe445178c039f99dd52a85"
+"ml/runs/place-alarm/rules/nz_test_place_alarm.jsonl" = "sha256:05568cf94cd6d26870095b6150a416987bfcf7498b0f5e29096427566266bfb7"
+"ml/runs/place-alarm/rules/nz_test_place_alarm.meta.json" = "sha256:2b7c9faf292d158b7c91d755d6e071de657e1b43a6210e6275abd8e27c94344a"
+"ml/runs/place-alarm/v2/nz_test_place_alarm.jsonl" = "sha256:048d632a59e1d5f9ccf20605b8712b57bdac50bff7b84204dd20197f51d768cd"
+"ml/runs/place-alarm/v2/nz_test_place_alarm.meta.json" = "sha256:bf3aea833abe061123e415c01bf6b7590df881a07a1e2c43f324ab85f77ec3ad"
+"ml/runs/place-alarm/v4/nz_test_place_alarm.jsonl" = "sha256:9b48b085dd89ec92eb85d7802f4e3ce62b8f89890ce4a36d9c984e9f0ab97cdf"
+"ml/runs/place-alarm/v4/nz_test_place_alarm.meta.json" = "sha256:db1b719ad74565f64c9ec1851117a1117a99b2509f693217b483fbf0d6675916"
