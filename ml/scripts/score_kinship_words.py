@@ -1,5 +1,5 @@
 """Score kinship-word false alarms per word (SPEC §9.8, finding 2) for the
-data-v2 and v3 DeBERTa-v3-small runs: the share of standalone held-out kinship
+data-v4 and v4kin DeBERTa-v3-small runs (runs/m3-v4fa, score_fa.sh): the share of standalone held-out kinship
 words each model redacts, per word and per language group, with the same
 definition as `tumataiti-ml false-alarms` (analysis.false_alarms). Run from the
 repo root:
@@ -24,10 +24,10 @@ from tumataiti_ml.analysis import false_alarms  # noqa: E402
 from tumataiti_ml.spans import Doc, read_jsonl  # noqa: E402
 from tumataiti_ml.synth import lexicon as lx  # noqa: E402
 
-GOLD = ML / "data/v1/nz_test_false_alarm.jsonl"
-RUNS = ML / "runs/m3-fa"
-MODELS = ["deberta-small-open-v2", "deberta-small-open-v2-1ep", "deberta-small-open-v2-1ep-s1",
-          "deberta-small-open-v3", "deberta-small-open-v3-s1", "deberta-small-open-v3ids"]
+GOLD = ML / "data/v4/nz_test_false_alarm.jsonl"
+RUNS = ML / "runs/m3-v4fa"
+MODELS = ["deberta-small-open-v4", "deberta-small-open-v4-1ep", "deberta-small-open-v4-1ep-s1",
+          "deberta-small-open-v4kin", "deberta-small-open-v4kin-s1", "deberta-small-open-v4ids"]
 # Held-out kinship words by language. Nana is used in both NZ English and te
 # reo, so it is reported per word only.
 TE_REO = {"Koroua", "Tāua", "Pōua", "Kaumātua"}

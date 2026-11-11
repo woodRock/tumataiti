@@ -10,9 +10,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PATH="$PWD/.venv/bin:$PATH"
-R=runs/m3-v2
+R=runs/m3-v4
 ds=nz_test_full
-GOLD=data/v1/$ds.jsonl
+GOLD=data/v4/$ds.jsonl
 STUDENTS="deberta-v3-small-open modernbert-base-open mdeberta-v3-base-open"
 
 predict() {  # model file, output run name

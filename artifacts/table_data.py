@@ -10,12 +10,12 @@ from pathlib import Path
 
 # (set, role, inventory docs key, inventory templates key or None)
 ROWS = [
-    ("NZ synthetic, train", "Train", "nz_train", "train_v2"),
-    ("NZ synthetic, dev", "Dev", "nz_dev", "train_v2"),
+    ("NZ synthetic, train", "Train", "nz_train", "train_v4"),
+    ("NZ synthetic, dev", "Dev", "nz_dev", "train_v4"),
     ("Nemotron-PII, train sample", "Train", "nemotron_train", None),
     ("Gretel-en, train sample", "Train", "gretel_en_train", None),
     None,
-    ("NZ held-out names", "Test", "nz_test_names", "train_v1"),
+    ("NZ held-out names", "Test", "nz_test_names", "test_names"),
     ("NZ held-out templates, names", "Test", "nz_test_full", "test_full"),
     ("NZ name audit, per community", "Test", "nz_cf_maori", "test_full"),
     ("NZ false alarms", "Test", "nz_test_false_alarm", "false_alarm"),

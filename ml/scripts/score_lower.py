@@ -22,8 +22,8 @@ sys.path.insert(0, str(ML / "scripts"))
 
 from robustness import SETS, STUDENTS, VARIANTS  # noqa: E402
 
-RUNS = Path("runs/lowertrain")
-V2 = Path("runs/m3-v2")
+RUNS = Path("runs/lowertrain-v4")
+V2 = Path("runs/m3-v4")
 INT4 = "-int8-int4-block"
 QUANTISED = "deberta-v3-small-open-lower"
 ONNX = V2 / QUANTISED / "onnx"
@@ -36,7 +36,7 @@ def cli(*args: str) -> None:
 
 
 def gold(typing: str, ds: str) -> Path:
-    return Path("data/v1" if typing == "plain" else f"data/robust/{typing}") / f"{ds}.jsonl"
+    return Path("data/v4" if typing == "plain" else f"data/robust-v4/{typing}") / f"{ds}.jsonl"
 
 
 def prediction(typing: str, ds: str) -> Path:
@@ -55,8 +55,8 @@ def predict(typing: str, ds: str) -> None:
 def score(typing: str) -> None:
     plain = typing == "plain"
     data = gold(typing, "x").parent
-    rules = V2 / "rules" if plain else Path("runs/robust") / typing / "rules"
-    deployed = [V2 / f"rules+{m}{INT4}" if plain else Path("runs/robust") / typing / f"rules+{m}" for m in STUDENTS]
+    rules = V2 / "rules" if plain else Path("runs/robust-v4") / typing / "rules"
+    deployed = [V2 / f"rules+{m}{INT4}" if plain else Path("runs/robust-v4") / typing / f"rules+{m}" for m in STUDENTS]
     retrained = []
     for m in STUDENTS:
         pred = V2 / f"{m}-lower" / "pred" / ("" if plain else f"robust/{typing}")

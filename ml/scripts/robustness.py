@@ -74,15 +74,15 @@ def cli(*args: str) -> None:
 
 
 def write_variant(variant: str, ds: str) -> Path:
-    """data/robust/<variant>/<ds>.jsonl, written atomically because grid jobs
+    """data/robust-v4/<variant>/<ds>.jsonl, written atomically because grid jobs
     for the same set may run at once. Returns its path under ml/."""
     docs = []
-    for d in read_jsonl(ML / "data/v1" / f"{ds}.jsonl"):
+    for d in read_jsonl(ML / "data/v4" / f"{ds}.jsonl"):
         text = VARIANTS[variant](d.text) if variant in VARIANTS else CASINGS[variant](d)
         assert len(text) == len(d.text), d.id
         meta = d.meta if variant in VARIANTS else {**d.meta, "negatives": [[a, b, "word"] for a, b in other_words(d)]}
         docs.append(Doc(id=d.id, text=text, spans=d.spans, meta=meta))
-    path = Path("data/robust") / variant / f"{ds}.jsonl"
+    path = Path("data/robust-v4") / variant / f"{ds}.jsonl"
     (ML / path.parent).mkdir(parents=True, exist_ok=True)
     tmp = ML / path.with_suffix(f".{os.getpid()}.tmp")
     write_jsonl(tmp, docs)
@@ -97,18 +97,18 @@ def gold(variant: str) -> None:
 
 def rules(variant: str) -> None:
     for ds in sets(variant):
-        cli("predict", "--detector", "rules", "--gold", f"data/robust/{variant}/{ds}.jsonl",
-            "--out", f"runs/robust/{variant}/rules/{ds}.jsonl")
+        cli("predict", "--detector", "rules", "--gold", f"data/robust-v4/{variant}/{ds}.jsonl",
+            "--out", f"runs/robust-v4/{variant}/rules/{ds}.jsonl")
 
 
 def predict(variant: str, ds: str, m: str) -> None:
-    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
-        "--gold", f"data/robust/{variant}/{ds}.jsonl", "--out", f"runs/robust/{variant}/{m}/{ds}.jsonl")
+    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v4/{m}/onnx/model_int8_int4-block.onnx",
+        "--gold", f"data/robust-v4/{variant}/{ds}.jsonl", "--out", f"runs/robust-v4/{variant}/{m}/{ds}.jsonl")
 
 
 def report(variant: str) -> None:
-    data = Path("data/robust") / variant
-    runs = Path("runs/robust") / variant
+    data = Path("data/robust-v4") / variant
+    runs = Path("runs/robust-v4") / variant
     for ds in sets(variant):
         for m in STUDENTS:
             cli("combine", "--primary", str(runs / "rules" / f"{ds}.jsonl"), "--secondary", str(runs / m / f"{ds}.jsonl"),
@@ -138,7 +138,7 @@ def main() -> None:
         rules(variant)
         for ds in sets(variant):
             for m in STUDENTS:
-                if not (ML / "runs/robust" / variant / m / f"{ds}.meta.json").exists():
+                if not (ML / "runs/robust-v4" / variant / m / f"{ds}.meta.json").exists():
                     predict(variant, ds, m)
         report(variant)
 

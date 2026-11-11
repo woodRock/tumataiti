@@ -6,8 +6,7 @@ artifacts/data/example_redaction.json (synthetic text, safe to commit):
 
 The document is the first in test_full (by id) where the rules merged with the
 teacher leak a Māori person name, the rules merged with the int4 student leak
-nothing, every gold span is an evaluated category (no affiliation, which is
-flagged rather than redacted), and the text fits the figure.
+nothing, every gold span is an evaluated category, and the text fits the figure.
 """
 
 from __future__ import annotations
@@ -22,10 +21,10 @@ sys.path.insert(0, str(ML / "src"))
 
 from tumataiti_ml.synth import lexicon as lx  # noqa: E402
 
-GOLD = ML / "data/v1/nz_test_full.jsonl"
+GOLD = ML / "data/v4/nz_test_full.jsonl"
 PRED = {
-    "teacher": ML / "runs/m3-v2/rules+openai-privacy-filter/nz_test_full.jsonl",
-    "student": ML / "runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_full.jsonl",
+    "teacher": ML / "runs/m3-v4/rules+openai-privacy-filter/nz_test_full.jsonl",
+    "student": ML / "runs/m3-v4/rules+deberta-v3-small-open-int8-int4-block/nz_test_full.jsonl",
 }
 OUT = ROOT / "artifacts/data/example_redaction.json"
 MAX_CHARS = 420

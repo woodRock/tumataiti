@@ -6,6 +6,7 @@ from the files rather than typed, to the taura result ledger/results/inventory.j
 - docs/<set>: documents in each data file (ml/data/);
 - templates/<split>: generator templates per split (synth.generate);
 - names/<community>/<part>/<train|held_out>: name-list lengths (synth.lexicon);
+- affiliations/<kind>.<train|held_out>: pepeha list lengths (lexicon.PEPEHA), and their totals;
 - mb/<run>: ONNX file sizes in MB (10^6 bytes) of the exported students (ml/runs/);
 - params/<run>: parameters of each fp32 ONNX export, in millions;
 - best_epoch/<student> and dev_char_f1/<student>: the selected checkpoint.
@@ -28,12 +29,12 @@ from tumataiti_ml.synth import lexicon as lx  # noqa: E402
 
 DATA = {
     # data set: file under ml/data/
-    "nz_train": "v1/nz_train.jsonl",  # v2 has the same size (make_data_v2.sh)
-    "nz_dev": "v1/nz_dev.jsonl",
-    "nz_test_names": "v1/nz_test_names.jsonl",
-    "nz_test_full": "v1/nz_test_full.jsonl",
-    "nz_cf_maori": "v1/nz_cf_maori.jsonl",
-    "nz_test_false_alarm": "v1/nz_test_false_alarm.jsonl",
+    "nz_train": "v4/nz_train.jsonl",
+    "nz_dev": "v4/nz_dev.jsonl",
+    "nz_test_names": "v4/nz_test_names.jsonl",
+    "nz_test_full": "v4/nz_test_full.jsonl",
+    "nz_cf_maori": "v4/nz_cf_maori.jsonl",
+    "nz_test_false_alarm": "v4/nz_test_false_alarm.jsonl",
     "nemotron_train": "open/nemotron_train.jsonl",
     "gretel_en_train": "open/gretel_en_train.jsonl",
     "gretel_en_train_all": "open/gretel-en_train_all.jsonl",
@@ -50,42 +51,25 @@ TEMPLATES = {
     "train_v1": g.TRAIN_TEMPLATES,
     "v2_added": g.V2_TEMPLATES,
     "train_v2": {**g.TRAIN_TEMPLATES, **g.V2_TEMPLATES},
-    "test_full": g.TEST_TEMPLATES,
-    "false_alarm": g.FALSE_ALARM_TEMPLATES,
     "v3_added": g.V3_TEMPLATES,
+    "v3ids_added": g.V3_ID_TEMPLATES,
+    "v4_added": g.V4_TEMPLATES,
+    "train_v4": {**g.TRAIN_TEMPLATES, **g.V2_TEMPLATES, **g.V4_TEMPLATES},
+    "test_names": g.SPLITS["test_names_v4"][0],
+    "v4_test_added": g.V4_TEST_TEMPLATES,
+    "test_full": g.SPLITS["test_full_v4"][0],
+    "false_alarm": g.FALSE_ALARM_TEMPLATES,
 }
 
 ONNX = {
-    # run: file under ml/runs/
-    "deberta-v3-small-open-fp32": "m3-v2/deberta-v3-small-open/onnx/model.onnx",
-    "deberta-v3-small-open-int4": "m3-v2/deberta-v3-small-open/onnx/model_int8_int4-block.onnx",
-    "modernbert-base-open-fp32": "m3-v2/modernbert-base-open/onnx/model.onnx",
-    "modernbert-base-open-int4": "m3-v2/modernbert-base-open/onnx/model_int8_int4-block.onnx",
-    "mdeberta-v3-base-open-fp32": "m3-v2/mdeberta-v3-base-open/onnx/model.onnx",
-    "mdeberta-v3-base-open-int4": "m3-v2/mdeberta-v3-base-open/onnx/model_int8_int4-block.onnx",
-    "deberta-v3-small-open-int8": "m3-v2/deberta-v3-small-open/onnx/model_int8.onnx",
-    "deberta-v3-small-open-fp16": "m3-v2/deberta-v3-small-open/onnx/model_int8_fp16.onnx",
-    "modernbert-base-open-int8": "m3-v2/modernbert-base-open/onnx/model_int8.onnx",
-    "modernbert-base-open-fp16": "m3-v2/modernbert-base-open/onnx/model_int8_fp16.onnx",
-    "mdeberta-v3-base-open-int8": "m3-v2/mdeberta-v3-base-open/onnx/model_int8.onnx",
-    "mdeberta-v3-base-open-fp16": "m3-v2/mdeberta-v3-base-open/onnx/model_int8_fp16.onnx",
-    "mdeberta-v3-base-open-int8-gather": "m3-v2/mdeberta-v3-base-open/onnx/model_int8_gather.onnx",
-    "mdeberta-v3-base-open-int8-matmul": "m3-v2/mdeberta-v3-base-open/onnx/model_int8_matmul.onnx",
-    "deberta-v3-small-fp32": "m3-v2/deberta-v3-small/onnx/model.onnx",
-    "modernbert-base-fp32": "m3-v2/modernbert-base/onnx/model.onnx",
-    "mdeberta-v3-base-fp32": "m3-v2/mdeberta-v3-base/onnx/model.onnx",
-    "deberta-v3-small-int8": "m3-v2/deberta-v3-small/onnx/model_int8.onnx",
-    "deberta-v3-small-fp16": "m3-v2/deberta-v3-small/onnx/model_int8_fp16.onnx",
-    "modernbert-base-int8": "m3-v2/modernbert-base/onnx/model_int8.onnx",
-    "modernbert-base-fp16": "m3-v2/modernbert-base/onnx/model_int8_fp16.onnx",
-    "mdeberta-v3-base-int8": "m3-v2/mdeberta-v3-base/onnx/model_int8.onnx",
-    "deberta-v3-small-int4": "m3-v2/deberta-v3-small/onnx/model_int8_int4-block.onnx",
-    "modernbert-base-int4": "m3-v2/modernbert-base/onnx/model_int8_int4-block.onnx",
-    "mdeberta-v3-base-int4": "m3-v2/mdeberta-v3-base/onnx/model_int8_int4-block.onnx",
-    "mdeberta-v3-base-int8-gather": "m3-v2/mdeberta-v3-base/onnx/model_int8_gather.onnx",
-    "mdeberta-v3-base-int8-matmul": "m3-v2/mdeberta-v3-base/onnx/model_int8_matmul.onnx",
-    "mdeberta-v3-base-fp16": "m3-v2/mdeberta-v3-base/onnx/model_int8_fp16.onnx",
+    # run: file under ml/runs/ (the data-v4 open students)
 }
+for _m in ("deberta-v3-small-open", "modernbert-base-open", "mdeberta-v3-base-open"):
+    _d = f"m3-v4/{_m}/onnx"
+    ONNX |= {f"{_m}-fp32": f"{_d}/model.onnx", f"{_m}-int4": f"{_d}/model_int8_int4-block.onnx",
+             f"{_m}-int8": f"{_d}/model_int8.onnx", f"{_m}-fp16": f"{_d}/model_int8_fp16.onnx"}
+ONNX |= {f"mdeberta-v3-base-open-int8-{_v}": f"m3-v4/mdeberta-v3-base-open/onnx/model_int8_{_v}.onnx"
+         for _v in ("gather", "matmul")}
 
 
 def lines(path: Path) -> int:
@@ -115,12 +99,20 @@ def main() -> None:
             names[f"{key}.{part}.train"] = len(train)
             names[f"{key}.{part}.held_out"] = len(held_out)
 
+    affiliations = {}
+    for kind, (train, held_out) in lx.PEPEHA.items():
+        affiliations[f"{kind}.train"] = len(train)
+        affiliations[f"{kind}.held_out"] = len(held_out)
+    affiliations["all.train"] = sum(len(t) for t, _ in lx.PEPEHA.values())
+    affiliations["all.held_out"] = sum(len(h) for _, h in lx.PEPEHA.values())
+    affiliations["kinds"] = len(lx.PEPEHA)
+
     mb = {k: (ML / "runs" / v).stat().st_size / 1e6 for k, v in ONNX.items()}
     fp32 = {k: params(ML / "runs" / v) for k, v in ONNX.items() if k.endswith("-open-fp32")}
 
     # Selected checkpoints (1-based epoch), and development F1 there.
     students = ["deberta-v3-small-open", "modernbert-base-open", "mdeberta-v3-base-open"]
-    best = {m: json.loads((ML / "runs/m3-v2" / m / "best.json").read_text()) for m in students}
+    best = {m: json.loads((ML / "runs/m3-v4" / m / "best.json").read_text()) for m in students}
 
     result = {
         "name": "inventory",
@@ -128,6 +120,7 @@ def main() -> None:
             "docs": docs,
             "templates": {k: len(v) for k, v in TEMPLATES.items()},
             "names": names,
+            "affiliations": affiliations,
             "mb": mb,
             "params": fp32,
             "best_epoch": {m: b["epoch"] + 1 for m, b in best.items()},

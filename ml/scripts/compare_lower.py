@@ -31,12 +31,12 @@ from thresholds import RUNS as THRESHOLD_RUNS  # noqa: E402
 from tumataiti_ml.analysis import false_alarms  # noqa: E402
 from tumataiti_ml.spans import read_jsonl  # noqa: E402
 
-SETS = {"nz_test_names": "data/v1", "open_en_test": "data/open", "pii300k_en_val": "data/v1",
-        "nz_test_false_alarm": "data/v1"}
+SETS = {"nz_test_names": "data/v4", "open_en_test": "data/open", "pii300k_en_val": "data/v1",
+        "nz_test_false_alarm": "data/v4"}
 FA = "nz_test_false_alarm"
 FULL = "nz_test_full"
 DEPLOYED = "deberta-v3-small-open"
-OURS = Path("runs/lowercmp")
+OURS = Path("runs/lowercmp-v4")
 SLOTS = ["booking_code", "hui_date", "invoice", "kin", "order_ref", "town"]
 
 
@@ -57,7 +57,7 @@ def predict(ds: str) -> None:
 
 def predict_threshold(t: float | str) -> None:
     cli("predict", "--detector", "student-onnx", "--model", str(ONNX / "model_int8_int4-block.onnx"),
-        "--threshold", str(t), "--gold", f"data/v1/{FULL}.jsonl", "--out", str(threshold_prediction(t)))
+        "--threshold", str(t), "--gold", f"data/v4/{FULL}.jsonl", "--out", str(threshold_prediction(t)))
 
 
 def merged(name: str, ds: str) -> Path:
@@ -78,7 +78,7 @@ def score_sets() -> None:
 
 
 def score_false_alarms() -> None:
-    gold_file = f"data/v1/{FA}.jsonl"
+    gold_file = f"data/v4/{FA}.jsonl"
     runs = []
     for m in ("deployed", "retrained"):
         runs.append(merged(m, FA))
@@ -95,13 +95,13 @@ def score_thresholds() -> None:
     for t in THRESHOLDS:
         runs.append(THRESHOLD_RUNS / f"rules+{DEPLOYED}-t{t}" / f"{FULL}.jsonl")
         runs.append(merge(threshold_prediction(t), f"retrained-t{t}", FULL))
-    cli("score", "--gold", f"data/v1/{FULL}.jsonl", "--pred", *map(str, runs), "--title", "Deployed and retrained, int4, across decoding thresholds",
+    cli("score", "--gold", f"data/v4/{FULL}.jsonl", "--pred", *map(str, runs), "--title", "Deployed and retrained, int4, across decoding thresholds",
         "--markdown", "results/m3open_lowercmp_thresholds_nz_test_full.md",
         "--json", "results/m3open_lowercmp_thresholds_nz_test_full.json")
 
 
 def score_kinship() -> None:
-    docs = [relabel(d) for d in read_jsonl(ML / "data/v1" / f"{FA}.jsonl")]
+    docs = [relabel(d) for d in read_jsonl(ML / "data/v4" / f"{FA}.jsonl")]
     rows = {}
     for m in ("deployed", "retrained"):
         preds = {d.id: d for d in read_jsonl(ML / student(m, FA))}
@@ -126,7 +126,7 @@ def views() -> dict[str, tuple[Path, Path, Path]]:
     """Name: gold file and the deployed and retrained runs, all merged with the rules."""
     out = {}
     for t in TYPINGS:
-        deployed = V2 / f"rules+{DEPLOYED}-int8-int4-block" if t == "plain" else Path("runs/robust") / t / f"rules+{DEPLOYED}"
+        deployed = V2 / f"rules+{DEPLOYED}-int8-int4-block" if t == "plain" else Path("runs/robust-v4") / t / f"rules+{DEPLOYED}"
         out[f"{FULL}/{t}"] = (gold(t, FULL), deployed / f"{FULL}.jsonl", RUNS / t / "rules+deberta-v3-small-open-lower-int4" / f"{FULL}.jsonl")
     for ds, folder in SETS.items():
         out[ds] = (Path(folder) / f"{ds}.jsonl", merged("deployed", ds), merged("retrained", ds))

@@ -23,10 +23,10 @@ from tumataiti_ml.spans import Doc, Span, read_jsonl, write_jsonl  # noqa: E402
 
 IRD = re.compile(r"(?<![\w+])\d{2,3}[- ]?\d{3}[- ]?\d{3}(?!\w)", re.ASCII)
 NHI = re.compile(r"\b(?:[A-HJ-NP-Z]{3}\d{4}|[A-HJ-NP-Z]{3}\d{2}[A-HJ-NP-Z]{2})\b")
-SETS = {"nz_test_false_alarm": "data/v1", "nz_test_full": "data/v1", "open_en_test": "data/open",
+SETS = {"nz_test_false_alarm": "data/v4", "nz_test_full": "data/v4", "open_en_test": "data/open",
         "pii300k_en_val": "data/v1"}
-RUNS = Path("runs/checksum")
-RULES = {"nz_test_false_alarm": "runs/m3-fa/rules"}
+RUNS = Path("runs/checksum-v4")
+RULES: dict[str, str] = {}  # every set's rules are in runs/m3-v4/rules
 
 
 def cli(*args: str) -> None:
@@ -37,7 +37,7 @@ def cli(*args: str) -> None:
 def main() -> None:
     for ds, folder in SETS.items():
         gold = f"{folder}/{ds}.jsonl"
-        shipped = {d.id: d for d in read_jsonl(ML / RULES.get(ds, "runs/m3-v2/rules") / f"{ds}.jsonl")}
+        shipped = {d.id: d for d in read_jsonl(ML / RULES.get(ds, "runs/m3-v4/rules") / f"{ds}.jsonl")}
         kept, wide = [], []
         for g in read_jsonl(ML / gold):
             spans = shipped[g.id].spans if g.id in shipped else []

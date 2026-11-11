@@ -17,7 +17,7 @@ ML = Path(__file__).resolve().parents[1]
 THRESHOLDS = [0.1, 0.3, 0.5, 0.7, 0.9]
 STUDENTS = ["deberta-v3-small-open", "modernbert-base-open", "mdeberta-v3-base-open"]
 DS = "nz_test_full"
-RUNS = Path("runs/thresholds")
+RUNS = Path("runs/thresholds-v4")
 
 
 def cli(*args: str) -> None:
@@ -30,8 +30,8 @@ def prediction(m: str, t: float | str) -> Path:
 
 
 def predict(m: str, t: float | str) -> None:
-    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v2/{m}/onnx/model_int8_int4-block.onnx",
-        "--threshold", str(t), "--gold", f"data/v1/{DS}.jsonl", "--out", str(prediction(m, t)))
+    cli("predict", "--detector", "student-onnx", "--model", f"runs/m3-v4/{m}/onnx/model_int8_int4-block.onnx",
+        "--threshold", str(t), "--gold", f"data/v4/{DS}.jsonl", "--out", str(prediction(m, t)))
 
 
 def report() -> None:
@@ -39,9 +39,9 @@ def report() -> None:
     for m in STUDENTS:
         for t in THRESHOLDS:
             merged.append(str(RUNS / f"rules+{m}-t{t}" / f"{DS}.jsonl"))
-            cli("combine", "--primary", f"runs/m3-v2/rules/{DS}.jsonl", "--secondary", str(prediction(m, t)),
+            cli("combine", "--primary", f"runs/m3-v4/rules/{DS}.jsonl", "--secondary", str(prediction(m, t)),
                 "--out", merged[-1])
-    cli("score", "--gold", f"data/v1/{DS}.jsonl", "--pred", *merged, "--title", "int4 open students across decoding thresholds",
+    cli("score", "--gold", f"data/v4/{DS}.jsonl", "--pred", *merged, "--title", "int4 open students across decoding thresholds",
         "--markdown", f"results/m3open_thresholds_{DS}.md", "--json", f"results/m3open_thresholds_{DS}.json")
 
 

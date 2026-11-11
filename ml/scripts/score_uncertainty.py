@@ -26,8 +26,8 @@ from tumataiti_ml.spans import read_jsonl  # noqa: E402
 BOOTSTRAPS = 10000
 CONFIDENCE = 0.95
 SEED = 0
-RUNS = ML / "runs/m3-v2"
-DATA = ML / "data/v1"
+RUNS = ML / "runs/m3-v4"
+DATA = ML / "data/v4"
 INT4 = "-open-int8-int4-block"
 DETECTORS = {
     "rules_openai-privacy-filter": "rules+openai-privacy-filter",
