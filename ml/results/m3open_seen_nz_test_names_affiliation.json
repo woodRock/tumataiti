@@ -1,0 +1,35 @@
+{
+  "title": "Affiliation, names seen in training: nz_test_names",
+  "metrics": {
+    "docs": {
+      "rules_deberta-v3-small-open": 1600,
+      "rules_modernbert-base-open": 1600,
+      "rules_mdeberta-v3-base-open": 1600
+    },
+    "spans": {
+      "rules_deberta-v3-small-open": 500,
+      "rules_modernbert-base-open": 500,
+      "rules_mdeberta-v3-base-open": 500
+    },
+    "predicted": {
+      "rules_deberta-v3-small-open": 513,
+      "rules_modernbert-base-open": 503,
+      "rules_mdeberta-v3-base-open": 564
+    },
+    "precision": {
+      "rules_deberta-v3-small-open": 0.9746588693957114,
+      "rules_modernbert-base-open": 0.9940357852882704,
+      "rules_mdeberta-v3-base-open": 0.9964539007092199
+    },
+    "leaked": {
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0,
+      "rules_mdeberta-v3-base-open": 0.0
+    },
+    "tagged": {
+      "rules_deberta-v3-small-open": 1.0,
+      "rules_modernbert-base-open": 1.0,
+      "rules_mdeberta-v3-base-open": 1.0
+    }
+  }
+}
