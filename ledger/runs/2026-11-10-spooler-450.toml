@@ -1,0 +1,12 @@
+id = "2026-11-10-spooler-450"
+status = "running"
+started = "2026-11-10T16:49:52-10:00"
+commit = "6fdd607474d23d6634479ce878bae2386d289c0b"
+dirty = false
+command = "./scripts/ecs_teacher.sh"
+cwd = "ml"
+host = "cuda17"
+gpus = "0"
+spooler_job = 450
+runner = "gpu-spooler"
+inputs = ["ml/scripts/ecs_teacher.sh"]

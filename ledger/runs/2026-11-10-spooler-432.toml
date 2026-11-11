@@ -1,0 +1,12 @@
+id = "2026-11-10-spooler-432"
+status = "running"
+started = "2026-11-10T16:21:27-10:00"
+commit = "a5b1fb923774a29bf83162b3b1b78c6547b49b5a"
+dirty = false
+command = "env DATA=v4ids EXTRA=open ./scripts/ecs_student.sh microsoft/deberta-v3-small deberta-v3-small-open --lr 5e-5 --epochs 1"
+cwd = "ml"
+host = "cuda17"
+gpus = "0"
+spooler_job = 432
+runner = "gpu-spooler"
+inputs = ["ml/scripts/ecs_student.sh"]

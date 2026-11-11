@@ -1,33 +1,35 @@
-## NZ synthetic v1, held-out templates and names (1,750 documents)
+## NZ synthetic v4, held-out templates, names and affiliations
 
 | Metric | rules | openai-privacy-filter | deberta-v3-small-open | modernbert-base-open | mdeberta-v3-base-open | rules+openai-privacy-filter | rules+deberta-v3-small-open | rules+modernbert-base-open | rules+mdeberta-v3-base-open |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| **Document leak rate** (lower is better) | **100.0%** | **47.4%** | **0.3%** | **12.8%** | **5.4%** | **44.2%** | **0.3%** | **4.1%** | **2.7%** |
-| Span leak rate | 64.1% | 22.1% | 0.1% | 2.4% | 1.0% | 19.2% | 0.1% | 0.8% | 0.5% |
-| Any-PII char precision | 88.8 | 89.6 | 99.0 | 93.4 | 98.8 | 85.6 | 94.4 | 92.1 | 94.4 |
-| Any-PII char recall | 38.6 | 85.1 | 100.0 | 98.3 | 99.5 | 87.7 | 100.0 | 99.6 | 99.7 |
-| Any-PII char F1 | 53.8 | 87.3 | 99.5 | 95.8 | 99.2 | 86.6 | 97.1 | 95.7 | 97.0 |
-| Exact-span F1 (all categories) | 51.9 | 59.3 | 93.4 | 85.4 | 62.7 | 64.2 | 92.2 | 87.8 | 73.3 |
-| Median ms per document | 0.05 | 369.41 | 11.38 | 17.96 | 23.40 | 369.45 | 11.43 | 18.01 | 23.45 |
+| **Document leak rate** (lower is better) | **100.0%** | **66.7%** | **2.3%** | **6.9%** | **2.7%** | **64.7%** | **2.0%** | **3.8%** | **2.5%** |
+| Span leak rate | 76.6% | 42.7% | 0.4% | 1.2% | 0.5% | 40.8% | 0.4% | 0.7% | 0.4% |
+| Any-PII char precision | 90.0 | 89.2 | 94.5 | 96.2 | 94.8 | 86.0 | 92.0 | 93.6 | 92.4 |
+| Any-PII char recall | 26.0 | 62.5 | 99.8 | 99.4 | 99.7 | 64.2 | 99.8 | 99.7 | 99.7 |
+| Any-PII char F1 | 40.4 | 73.5 | 97.1 | 97.7 | 97.2 | 73.5 | 95.7 | 96.5 | 95.9 |
+| Exact-span F1 (all categories) | 37.5 | 45.7 | 83.9 | 87.4 | 69.9 | 49.3 | 83.5 | 87.4 | 76.1 |
+| Median ms per document | 0.05 | 293.44 | 9.86 | 13.80 | 18.52 | 293.49 | 9.91 | 13.84 | 18.56 |
 
 Span leak rate by category (lower is better):
 
 | Metric | rules | openai-privacy-filter | deberta-v3-small-open | modernbert-base-open | mdeberta-v3-base-open | rules+openai-privacy-filter | rules+deberta-v3-small-open | rules+modernbert-base-open | rules+mdeberta-v3-base-open |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| PERSON (5250 spans) | 100.0% | 35.0% | 0.1% | 1.5% | 1.0% | 35.0% | 0.1% | 1.5% | 1.0% |
-| ADDRESS (1000 spans) | 100.0% | 3.3% | 0.0% | 0.0% | 0.0% | 3.3% | 0.0% | 0.0% | 0.0% |
-| EMAIL (750 spans) | 0.0% | 0.3% | 0.0% | 0.5% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
-| PHONE (1500 spans) | 0.0% | 12.3% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
-| DATE (500 spans) | 0.0% | 12.8% | 0.0% | 30.4% | 9.8% | 0.0% | 0.0% | 0.0% | 0.0% |
-| ID (750 spans) | 0.0% | 4.3% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| PERSON (6250 spans) | 100.0% | 40.9% | 0.1% | 1.2% | 1.1% | 40.9% | 0.1% | 1.2% | 1.1% |
+| ADDRESS (1000 spans) | 100.0% | 4.0% | 0.0% | 0.0% | 0.0% | 4.0% | 0.0% | 0.0% | 0.0% |
+| EMAIL (1000 spans) | 0.0% | 0.5% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| PHONE (1500 spans) | 0.0% | 12.7% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| DATE (500 spans) | 0.0% | 12.8% | 1.4% | 17.0% | 0.6% | 0.0% | 0.0% | 0.0% | 0.0% |
+| ID (750 spans) | 0.0% | 6.1% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| AFFILIATION (5000 spans) | 100.0% | 78.7% | 1.0% | 0.6% | 0.0% | 78.7% | 1.0% | 0.6% | 0.0% |
 
 Character-level F1 by category (category must match):
 
 | Metric | rules | openai-privacy-filter | deberta-v3-small-open | modernbert-base-open | mdeberta-v3-base-open | rules+openai-privacy-filter | rules+deberta-v3-small-open | rules+modernbert-base-open | rules+mdeberta-v3-base-open |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| PERSON | 0.0 | 76.0 | 98.5 | 94.8 | 98.3 | 76.7 | 98.5 | 94.8 | 98.3 |
-| ADDRESS | 0.0 | 95.8 | 100.0 | 99.2 | 100.0 | 96.0 | 100.0 | 99.2 | 100.0 |
-| EMAIL | 100.0 | 99.9 | 100.0 | 99.9 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
-| PHONE | 100.0 | 84.3 | 100.0 | 99.0 | 99.7 | 99.8 | 100.0 | 99.0 | 99.9 |
-| DATE | 100.0 | 54.8 | 100.0 | 83.9 | 97.2 | 63.6 | 100.0 | 98.6 | 100.0 |
-| ID | 100.0 | 80.3 | 100.0 | 99.9 | 99.6 | 100.0 | 100.0 | 100.0 | 100.0 |
+| PERSON | 0.0 | 64.1 | 96.2 | 94.8 | 96.0 | 64.4 | 96.2 | 94.8 | 96.0 |
+| ADDRESS | 0.0 | 93.0 | 96.3 | 97.8 | 97.4 | 93.4 | 96.3 | 97.8 | 97.4 |
+| EMAIL | 100.0 | 99.9 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| PHONE | 100.0 | 84.6 | 100.0 | 98.6 | 100.0 | 99.8 | 100.0 | 98.6 | 100.0 |
+| DATE | 100.0 | 49.2 | 99.7 | 92.1 | 99.9 | 57.2 | 100.0 | 98.2 | 100.0 |
+| ID | 100.0 | 81.1 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 | 100.0 |
+| AFFILIATION | 0.0 | 0.0 | 91.7 | 95.3 | 95.6 | 0.0 | 91.7 | 95.3 | 95.6 |
