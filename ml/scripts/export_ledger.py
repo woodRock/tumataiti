@@ -17,7 +17,9 @@ names are as in the tables, with "+" written "_" (rules_deberta-v3-small-open).
   document) and ms_p90, per detector (rules, the shipped student, both merged);
 - uncertainty (uncertainty_*.json, score_uncertainty.py): doc_leak_lo/hi,
   gap_lo/hi, diff_lo/hi (deployed student minus another) and tmpl_<template>
-  (document leak rate per held-out template), per detector.
+  (document leak rate per held-out template), per detector;
+- affiliation (*_affiliation.json, score_affiliation.py): spans, predicted,
+  leaked, tagged and precision, per detector.
 
 Rates are fractions; ledger/artifacts.toml formats them as percentages. Each
 result names its source file, which taura links to the run that wrote it.
@@ -103,7 +105,7 @@ def main() -> None:
             metrics = from_counterfactual(data)
         elif path.stem.startswith("browser_"):
             metrics = from_browser(data)
-        elif path.stem.startswith("uncertainty_"):
+        elif path.stem.startswith("uncertainty_") or path.stem.endswith("_affiliation"):
             metrics = data["metrics"]
         else:
             continue

@@ -15,10 +15,13 @@ In stage order, each stage needing the one before:
 - lowerint4/quantise, lowerint4/<typing>/<set>, lowertrain: quantise the retrained
   DeBERTa-v3-small, predict with it and score (needs its ONNX export);
 - lowercmp/<set>, lowerthreshold/<t>, lowercompare: its other evaluations, then
-  every comparison with the deployed student (compare_lower.py).
+  every comparison with the deployed student (compare_lower.py);
+- affiliation/gold, affiliation/rules, affiliation/<set>/<student>,
+  report/affiliation: affiliation on the test sets with held-out iwi and marae
+  names, then scored with the seen names too (score_affiliation.py).
 
 thresholds.py, robustness.py, checksum_ablation.py, score_uncertainty.py and
-compare_lower.py also run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
+compare_lower.py and score_affiliation.py also run on their own. For the ECS Grid, see grid_push.sh, grid_submit.sh and grid_run.sh.
 
 The int4 models must be the deployed files, not re-quantised ones: quantising on
 another machine gives a different file. Check their hashes against demo/model.lock.
@@ -35,6 +38,7 @@ sys.path.insert(0, str(ML / "scripts"))
 import checksum_ablation  # noqa: E402
 import compare_lower  # noqa: E402
 import robustness  # noqa: E402
+import score_affiliation  # noqa: E402
 import score_lower  # noqa: E402
 import score_uncertainty  # noqa: E402
 import thresholds  # noqa: E402
@@ -53,7 +57,9 @@ def jobs() -> list[str]:
     out += [f"lowerint4/{t}/{ds}" for t in score_lower.TYPINGS for ds in SETS]
     out += ["lowertrain", *(f"lowercmp/{ds}" for ds in compare_lower.SETS)]
     out += [f"lowerthreshold/{t}" for t in THRESHOLDS]
-    return [*out, "lowercompare"]
+    out += ["lowercompare", "affiliation/gold", "affiliation/rules"]
+    out += [f"affiliation/{ds}/{m}" for ds in score_affiliation.SETS for m in STUDENTS]
+    return [*out, "report/affiliation"]
 
 
 def select(prefixes: list[str]) -> list[str]:
@@ -70,6 +76,14 @@ def run(job: str) -> None:
         thresholds.predict(*rest)
     elif kind == "robust":
         robustness.predict(*rest)
+    elif job == "affiliation/gold":
+        score_affiliation.gold()
+    elif job == "affiliation/rules":
+        score_affiliation.rules()
+    elif kind == "affiliation":
+        score_affiliation.predict(*rest)
+    elif job == "report/affiliation":
+        score_affiliation.report()
     elif job == "report/threshold":
         thresholds.report()
     elif kind == "report":
