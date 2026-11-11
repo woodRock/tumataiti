@@ -115,6 +115,10 @@ def train(cfg: Config, device: str = "cuda") -> None:
     gen = torch.Generator().manual_seed(cfg.seed)
     pad_id = tokenizer.pad_token_id
 
+    if cfg.bf16 and device.startswith("cuda") and torch.cuda.get_device_capability(device)[0] < 8:
+        raise RuntimeError(f"{torch.cuda.get_device_name(device)} has no bf16 (needs compute capability 8.0+); "
+                           "submit with a GPU type list that leaves it out")
+
     best = None
     step = 0
     model.train()

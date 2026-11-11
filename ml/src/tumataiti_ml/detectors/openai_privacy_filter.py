@@ -77,6 +77,8 @@ def make(device: str = "cuda", **_):
     import torch
     from transformers import AutoModelForTokenClassification, AutoTokenizer
 
+    if device.startswith("cuda") and torch.cuda.get_device_capability(device)[0] < 8:
+        raise RuntimeError(f"{torch.cuda.get_device_name(device)} has no bf16, which the teacher runs in")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
     model = AutoModelForTokenClassification.from_pretrained(MODEL_ID, dtype=torch.bfloat16).to(device).eval()
     labels = [model.config.id2label[i] for i in range(model.config.num_labels)]
