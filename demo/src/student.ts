@@ -16,6 +16,8 @@ export interface StudentInfo {
   /** How the weights were quantised, e.g. `int8 embeddings, int4 encoder`. */
   precision: string;
   bytes: number;
+  /** The model file in order: it is stored in parts because GitHub refuses files over 100 MB. */
+  parts: string[];
   /** Hugging Face repo of a published model, e.g. `woodrock/tumataiti-deberta-v3-small-open`. */
   repo: string | null;
 }
@@ -50,6 +52,16 @@ async function download(url: string, onBytes: (n: number) => void): Promise<Uint
   return out;
 }
 
+function join(chunks: Uint8Array[]): Uint8Array {
+  const out = new Uint8Array(chunks.reduce((n, c) => n + c.length, 0));
+  let at = 0;
+  for (const c of chunks) {
+    out.set(c, at);
+    at += c.length;
+  }
+  return out;
+}
+
 /**
  * Download the student model from this site and start it. Everything after
  * this runs on the device: the files are static, and no text is ever sent.
@@ -65,7 +77,7 @@ export async function loadStudent(onProgress: (fraction: number) => void): Promi
   const [tokenizer, config, weights] = await Promise.all([
     text("tokenizer.json"),
     text("config.json"),
-    download(BASE + "model.onnx", tick),
+    Promise.all(info.parts.map((p) => download(BASE + p, tick))).then(join),
     initStudent(),
   ]);
   const student = new Student(tokenizer, config);
