@@ -6,7 +6,9 @@
 #
 # Extra arguments after NAME go to `tumataiti-ml train` (e.g. --max-steps 30 for a smoke test).
 # PREDICT_ONLY=1 skips training and re-predicts with the existing model (e.g. after a decoder change).
-# DATA=v2 or v3 trains on data/DATA and writes runs/m3-DATA/NAME; evaluation sets are always data/v1.
+# DATA=v2, v3 or v4 trains on data/DATA and writes runs/m3-DATA/NAME. The NZ evaluation
+# sets are data/v4 (affiliation is scored from v4; v2-era runs used data/v1, commit 3437c11);
+# PII-Masking-300k validation is data/v1.
 # EXTRA picks the English data trained alongside the NZ set: open (default:
 # Nemotron-PII + Gretel, scripts/make_data_open.sh), none, or pii300k. pii300k
 # only reproduces the M3 v1/v2 results: PII-Masking-300k's licence forbids
@@ -18,10 +20,12 @@ BACKBONE=$1 NAME=$2
 shift 2
 DATA=${DATA:-v1}
 V=data/v1
+E=data/v4
 T=data/$DATA
 OUT=runs/m3$([ "$DATA" = v1 ] || echo "-$DATA")/$NAME
 
 [ -f $V/pii300k_en_val.jsonl ] || ./scripts/make_data_v1.sh "$CLI"
+( flock 9; [ -f $E/nz_test_false_alarm.jsonl ] || ./scripts/make_data_v4.sh "$CLI" ) 9>"$STORE/venvs/.tumataiti-data.lock"
 # Jobs submitted together would race to write the same files.
 ( flock 9; [ -f $T/nz_dev.jsonl ] || "./scripts/make_data_$DATA.sh" "$CLI" ) 9>"$STORE/venvs/.tumataiti-data.lock"
 TRAIN=($T/nz_train.jsonl)
@@ -37,26 +41,13 @@ esac
 
 LIMIT=()
 [[ " $* " == *" --max-steps "* ]] && LIMIT=(--limit 50)
-for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_cf_asian_nz pii300k_en_val; do
+for ds in nz_test_names nz_test_full nz_cf_maori nz_cf_pakeha nz_cf_pasifika nz_cf_asian_nz nz_test_false_alarm pii300k_en_val open_en_test; do
+  gold=$E/$ds.jsonl
+  [ "$ds" = pii300k_en_val ] && gold=$V/$ds.jsonl
+  [ "$ds" = open_en_test ] && gold=data/open/$ds.jsonl
+  [ -f "$gold" ] || continue
   "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
-    --gold "$V/$ds.jsonl" --out "$OUT/pred/$ds.jsonl" > /dev/null
+    --gold "$gold" --out "$OUT/pred/$ds.jsonl" > /dev/null
 done
-# False-alarm set (scripts/make_data_v3.sh), when it has been built.
-if [ -f $V/nz_test_false_alarm.jsonl ]; then
-  "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
-    --gold $V/nz_test_false_alarm.jsonl --out "$OUT/pred/nz_test_false_alarm.jsonl" > /dev/null
-fi
-# Open English test set (none of the students trains on it), when it has been built.
-if [ -f data/open/open_en_test.jsonl ]; then
-  "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
-    --gold data/open/open_en_test.jsonl --out "$OUT/pred/open_en_test.jsonl" > /dev/null
-fi
-# Typing variants of the evaluation sets (scripts/robustness.py), when built.
-for v in nomacron lower; do
-  for gold in data/robust/$v/*.jsonl; do
-    [ -f "$gold" ] || continue
-    "$CLI" predict --detector student --model "$OUT/model" --device cuda "${LIMIT[@]}" \
-      --gold "$gold" --out "$OUT/pred/robust/$v/$(basename "$gold")" > /dev/null
-  done
-done
+# The typing variants are scored on the int4 students (robustness.py), not here.
 echo "done: $OUT"

@@ -11,9 +11,8 @@ import numpy as np
 from ..spans import Doc, Span
 from ..taxonomy import EVAL_CATEGORIES
 
-# The student also learns AFFILIATION (iwi, hapū, marae), which the teacher
-# has no category for; it is not scored yet (taxonomy.TUMATAITI maps it to None).
-LABELS = (*EVAL_CATEGORIES, "AFFILIATION")
+# AFFILIATION is last, as it was before it was scored, so older models' tag ids still match.
+LABELS = EVAL_CATEGORIES
 TAGS = ("O", *(f"{p}-{c}" for c in LABELS for p in ("B", "I")))
 TAG_ID = {t: i for i, t in enumerate(TAGS)}
 IGNORE_INDEX = -100

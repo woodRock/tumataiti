@@ -57,6 +57,14 @@ class NamePool:
     held_out: bool = False
     group: str | None = None
     weights: dict[str, float] = field(default_factory=lambda: lx.GROUP_WEIGHTS)
+    # Data v4: draw affiliations from lexicon.PEPEHA (training or held-out
+    # lists, as for names). False keeps the v1-v3 lists, so those splits are unchanged.
+    pepeha: bool = False
+
+    def affiliation(self, rng: random.Random, kind: str) -> str:
+        if not self.pepeha:  # v1-v3: iwi and marae only, one list for every split
+            return rng.choice({"iwi": lx.IWI, "marae": lx.MARAE}[kind])
+        return rng.choice(lx.PEPEHA[kind][1 if self.held_out else 0])
 
     def draw(self, rng: random.Random, part: str) -> str:
         # Always draw the community, even when it is fixed, so counterfactual
@@ -130,10 +138,12 @@ class Person:
                 return f"{street}, {town} {postcode}" if rng.random() < 0.7 else f"{street}, {town}"
             case "url":
                 return f"https://{rng.choice(lx.EMAIL_DOMAINS)}/people/{local(self.given)}-{local(self.surname)}"
-            case "iwi":
-                return rng.choice(lx.IWI)
-            case "marae":
-                return rng.choice(lx.MARAE)
+            case "iwi" | "marae":
+                return self.pool.affiliation(rng, attr)
+            case "maunga" | "awa" | "moana" | "waka" | "hapu" | "wharenui" | "tupuna":
+                if not self.pool.pepeha:
+                    raise KeyError(f"{attr} needs a v4 split")
+                return self.pool.affiliation(rng, attr)
         raise KeyError(attr)
 
 
@@ -142,7 +152,7 @@ PERSON_CATEGORY = {
     "email": "EMAIL", "phone": "PHONE", "mobile": "PHONE", "landline": "PHONE",
     "dob": "DATE", "ird": "NZ_GOV_ID", "nhi": "NZ_GOV_ID", "passport": "NZ_GOV_ID",
     "licence": "NZ_GOV_ID", "card": "FINANCIAL", "bank": "FINANCIAL", "address": "ADDRESS",
-    "url": "URL", "iwi": "AFFILIATION", "marae": "AFFILIATION",
+    "url": "URL", **{k: "AFFILIATION" for k in lx.PEPEHA},
 }
 
 
@@ -315,6 +325,38 @@ Email: {p1.email}
 NHI on the prescription: {p1.nhi}""",
 }
 
+# Data v4: pepeha, long and short, in te reo and English, and affiliation in
+# the places it appears in everyday writing (signatures, introductions, notes).
+# Every place a pepeha names is labelled AFFILIATION.
+V4_TEMPLATES: dict[str, str] = {
+    "pepeha_long": """Tēnā koutou katoa.
+Ko {p1.maunga} te maunga
+Ko {p1.awa} te awa
+Ko {p1.waka} te waka
+Ko {p1.iwi} te iwi
+Ko {p1.hapu} te hapū
+Ko {p1.marae} te marae
+Ko {p1.wharenui} te whare tupuna
+Ko {p1.full} tōku ingoa
+Nō reira, tēnā koutou, tēnā koutou, tēnā tātou katoa.""",
+    "pepeha_moana": """Ko {p1.maunga} te maunga, ko {p1.moana} te moana.
+Ko {p1.waka} te waka. Ko {p1.iwi} te iwi. Ko {p1.marae} te marae.
+Ko {p1.given} ahau. {filler}""",
+    "pepeha_tupuna": """Ko {p1.tupuna} te tupuna.
+Ko {p1.iwi} te iwi, ko {p1.hapu} te hapū.
+Ko {p1.wharenui} te wharenui, kei {p1.marae}.
+Ko {p1.given} {p1.surname} tōku ingoa.""",
+    "pepeha_english": """My mountain is {p1.maunga} and my river is {p1.awa}. My waka is {p1.waka}.
+I am {p1.iwi}, from the hapū {p1.hapu}, and my marae is {p1.marae}.
+My name is {p1.full}, and you can reach me on {p1.mobile}.""",
+    "intro_sides": """Kia ora, I'm {p1.given}. I'm {p1.iwi} on my dad's side and {p2.iwi} on my mum's side, and I grew up going back to {p1.marae} for tangihanga. {filler}""",
+    "signature_iwi": """Ngā mihi,
+{p1.full} ({p1.iwi}, {p1.hapu})
+Kaiārahi | Navigator
+M: {p1.mobile}""",
+    "whakapapa_note": """Interview 7 notes: {p1.given} whakapapa to {p1.iwi} through {p1.hapu} and grew up near {p1.maunga}. Their whānau still gathers at {p1.marae}. Follow up by email: {p1.email}.""",
+}
+
 TEST_TEMPLATES: dict[str, str] = {
     "group_chat": """[{hui_date}] {p1.plain}: kia ora whānau, who's bringing the hāngī stones?
 [{hui_date}] {p2.given}: me and {p3.given}. {p3.given} can you flick me ur number again
@@ -347,6 +389,25 @@ Permission slips are due {hui_date}.""",
     "voice_transcript": """um yeah so this is {p1.plain} calling about my nan {p2.plain} she lives at {p2.address} you can call me back on {p1.mobile} thanks""",
 }
 
+
+# Data v4 held-out pepeha: different wording, order and genres from V4_TEMPLATES.
+V4_TEST_TEMPLATES: dict[str, str] = {
+    "pepeha_formal": """Tihei mauri ora!
+Ko {p1.maunga} te maunga e tū mai rā, ko {p1.awa} te awa e rere ana.
+Ko {p1.waka} te waka, ko {p1.iwi} te iwi, ko {p1.hapu} te hapū.
+He uri ahau nō {p1.tupuna}.
+Ko {p1.marae} te marae, ko {p1.wharenui} te whare.
+Ko {p1.full} ahau.""",
+    "pepeha_brief": """Nō {p1.moana} ahau, nō {p1.iwi} hoki. Ko {p1.given} tōku ingoa, ā, kei {town} ahau e noho ana.""",
+    "author_bio": """About the author: {p1.full} ({p1.iwi}, {p1.hapu}) grew up beneath {p1.maunga} and now lives in {town}. Contact: {p1.email}.""",
+    "consent_form": """KAUPAPA MĀORI RESEARCH CONSENT
+Participant: {p1.full}
+Iwi affiliation(s): {p1.iwi}; {p2.iwi}
+Hapū: {p1.hapu}
+Marae: {p1.marae}
+Waka: {p1.waka}
+Date: {hui_date}""",
+}
 
 # Held-out false-alarm set: the same cases as V3_TEMPLATES with different
 # wording and the held-out kinship list. Its unlabelled slots are recorded in
@@ -418,6 +479,19 @@ SPLITS = {
     "train_v3ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
     "dev_v3ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
     "test_false_alarm": (FALSE_ALARM_TEMPLATES, True, lx.GROUP_WEIGHTS),
+    # v4: pepeha. Training lists for training splits, held-out lists (names and
+    # every affiliation) for test splits. Affiliation is scored from v4 on.
+    "train_v4": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "dev_v4": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "test_names_v4": ({**TRAIN_TEMPLATES, **V4_TEMPLATES}, True, lx.GROUP_WEIGHTS),
+    "test_full_v4": ({**TEST_TEMPLATES, **V4_TEST_TEMPLATES}, True, lx.GROUP_WEIGHTS),
+    # v4 ablations (SPEC §9.8 on v3): v4 plus the kinship and ID-lookalike templates.
+    "train_v4kin": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES, **V3_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "dev_v4kin": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES, **V3_TEMPLATES}, False, lx.BALANCED_WEIGHTS),
+    "train_v4ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False,
+                    lx.BALANCED_WEIGHTS),
+    "dev_v4ids": ({**TRAIN_TEMPLATES, **V2_TEMPLATES, **V4_TEMPLATES, **V3_TEMPLATES, **V3_ID_TEMPLATES}, False,
+                  lx.BALANCED_WEIGHTS),
 }
 
 
@@ -425,7 +499,7 @@ def generate(n: int, seed: int = 0, split: str = "train", group: str | None = No
     """`n` documents cycling through the split's templates. With `group`, every
     person comes from that community (the counterfactual name audit)."""
     templates, held_out, weights = SPLITS[split]
-    pool = NamePool(held_out=held_out, group=group, weights=weights)
+    pool = NamePool(held_out=held_out, group=group, weights=weights, pepeha="v4" in split)
     rng = random.Random(seed)
     names = sorted(templates)
     prefix = f"nz-{split}" + (f"-{group}" if group else "")

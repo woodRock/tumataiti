@@ -120,3 +120,35 @@ def test_v2_closings_put_the_name_last():
         if d.meta["template"] in ("email_reply", "short_reply"):
             last = d.spans[-1]
             assert last.category == "PERSON" and d.text[last.start :] == d.text[last.start : last.end]
+
+
+def _affiliations(split: str, n: int = 400) -> set[str]:
+    return {d.text[s.start:s.end] for d in generate(n, seed=0, split=split) for s in d.spans
+            if s.label.startswith("AFFILIATION:")}
+
+
+def test_v4_training_uses_only_training_affiliations():
+    train = {v for train, _ in lx.PEPEHA.values() for v in train}
+    found = _affiliations("train_v4")
+    assert found and found <= train
+
+
+def test_v4_test_splits_use_only_held_out_affiliations():
+    held = {v for _, held in lx.PEPEHA.values() for v in held}
+    for split in ("test_full_v4", "test_names_v4"):
+        found = _affiliations(split)
+        assert found and found <= held, split
+
+
+def test_v4_affiliation_is_scored():
+    docs = generate(40, seed=0, split="test_full_v4")
+    aff = [s for d in docs for s in d.spans if s.label.startswith("AFFILIATION:")]
+    assert aff and all(s.category == "AFFILIATION" for s in aff)
+
+
+def test_v4_pepeha_slots_need_a_v4_split():
+    import pytest
+    from tumataiti_ml.synth.generate import fill
+
+    with pytest.raises(KeyError):
+        fill("Ko {p1.maunga} te maunga", __import__("random").Random(0))

@@ -14,7 +14,6 @@ import numpy as np
 from ..spans import Span
 from ..student.encode import decode, union, windows
 
-EVAL_CATEGORY = {"AFFILIATION": None}
 THREADS = 4  # ONNX Runtime intra-op threads, for the laptop CPU timings (grid jobs set TUMATAITI_THREADS)
 
 
@@ -41,6 +40,6 @@ def make(model: str, threshold: float = 0.5, **_):
             probs /= probs.sum(-1, keepdims=True)
             offsets = [(a, b) if not sp else (0, 0) for (a, b), sp in zip(enc["offset_mapping"][w], enc["special_tokens_mask"][w])]
             found += decode(text, offsets, probs, threshold)
-        return [Span(a, b, label, EVAL_CATEGORY.get(label, label), conf) for a, b, label, conf in union(found)]
+        return [Span(a, b, label, label, conf) for a, b, label, conf in union(found)]
 
     return predict

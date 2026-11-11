@@ -19,6 +19,9 @@ EVAL_CATEGORIES = (
     "DATE",
     "ID",
     "SECRET",
+    # Scored from data v4, whose test sets hold held-out iwi, hapū, marae and the
+    # other places a pepeha names. Detectors without the category leak it.
+    "AFFILIATION",
 )
 
 # Tūmataiti categories (SPEC §6.2), used by the rules and the synthetic NZ data.
@@ -34,8 +37,8 @@ TUMATAITI = {
     "FINANCIAL": "ID",
     "OTHER_ID": "ID",
     "SECRET": "SECRET",
-    # Not yet scored: no detector covers these, so they are reported separately.
-    "AFFILIATION": None,
+    "AFFILIATION": "AFFILIATION",
+    # Not yet scored: no detector covers these.
     "HEALTH": None,
     "CULTURAL_RESTRICTED": None,
 }

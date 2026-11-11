@@ -256,7 +256,9 @@ def main(argv: list[str] | None = None) -> None:
     g = sub.add_parser("generate", help="synthetic NZ documents with gold spans")
     g.add_argument("--n", type=int, default=1600)
     g.add_argument("--seed", type=int, default=0)
-    g.add_argument("--split", default="train", choices=["train", "dev", "train_v3", "dev_v3", "train_v3ids", "dev_v3ids", "test_names", "test_full", "test_false_alarm"])
+    from .synth.generate import SPLITS
+
+    g.add_argument("--split", default="train", choices=list(SPLITS))
     g.add_argument("--group", help="counterfactual audit: every person from this community")
     g.add_argument("--out", type=Path, required=True)
     g.set_defaults(fn=cmd_generate)

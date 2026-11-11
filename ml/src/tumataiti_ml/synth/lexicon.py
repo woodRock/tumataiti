@@ -134,6 +134,63 @@ EMAIL_DOMAINS = ["example.co.nz", "example.nz", "example.org.nz", "example.ac.nz
 IWI = ["Ngāti Porou", "Ngāpuhi", "Ngāi Tahu", "Tūhoe", "Ngāti Raukawa", "Te Āti Awa", "Waikato-Tainui", "Ngāti Kahungunu"]
 MARAE = ["Rāukawa Marae", "Te Pou o Tainui Marae", "Hīona Marae", "Tukorehe Marae", "Ngātokowaru Marae"]
 
+# Data v4: every place a pepeha (formal introduction) names, as (training,
+# held-out) lists like the names, so test sets hold affiliations the students
+# never saw. IWI and MARAE above are the v1-v3 lists, kept so those splits
+# regenerate unchanged; the v4 training lists extend them, and the held-out iwi
+# and marae are those of score_affiliation.py. Values are drawn independently,
+# so a document's mountain, river and iwi need not belong together.
+# To be checked by a Māori colleague.
+PEPEHA = {
+    "maunga": (  # mountain
+        ["Hikurangi", "Taranaki", "Tongariro", "Ruapehu", "Pirongia", "Tararua", "Maungatautari", "Pūtauaki",
+         "Kakepuku", "Rangitoto", "Maungakiekie", "Titiraupenga"],
+        ["Taupiri", "Aoraki", "Ngongotahā", "Kahuranaki", "Maungapōhatu", "Karioi", "Moehau", "Te Aroha"],
+    ),
+    "awa": (  # river
+        ["Waiapu", "Whanganui", "Waiwhakaiho", "Rangitīkei", "Manawatū", "Ōtaki", "Waipā", "Rangitaiki", "Waihou",
+         "Mōkau"],
+        ["Mataura", "Tukituki", "Ngaruroro", "Whakatāne", "Waitaki", "Waimakariri"],
+    ),
+    "moana": (  # sea, harbour or lake
+        ["Tauranga", "Kaipara", "Manukau", "Taupō-nui-a-Tia", "Rotoiti"],
+        ["Waitematā", "Hokianga", "Ōhiwa", "Rotorua-nui-a-Kahumatamomoe"],
+    ),
+    "waka": (  # ancestral canoe
+        ["Tainui", "Mātaatua", "Aotea", "Kurahaupō", "Horouta"],
+        ["Tākitimu", "Tokomaru", "Ngātokimatawhaorua", "Māhuhu-ki-te-rangi", "Āraiteuru"],
+    ),
+    "iwi": (  # tribe
+        [*IWI, "Ngāti Hauā", "Muaūpoko", "Ngāti Apa", "Te Whānau-ā-Apanui", "Ngāti Mutunga", "Ngāti Pūkenga"],
+        ["Te Arawa", "Ngāti Whātua", "Ngāti Maniapoto", "Te Rarawa", "Ngāti Awa", "Ngāti Tūwharetoa", "Whakatōhea",
+         "Ngāti Ruanui", "Ngāti Toa Rangatira", "Rongowhakaata", "Ngāi Te Rangi", "Rangitāne"],
+    ),
+    "hapu": (  # sub-tribe
+        ["Ngāti Whakaue", "Te Whānau-a-Ruataupare", "Ngāti Rāhiri", "Ngāti Wairere", "Ngāti Huia", "Ngāti Pikiao",
+         "Ngāti Uenuku"],
+        ["Ngāti Mahuta", "Ngāi Tūāhuriri", "Ngāti Tūrangitukua", "Ngāti Pāmoana", "Ngāti Kurī",
+         "Ngāti Korokī Kahukura", "Te Aitanga-a-Hauiti"],
+    ),
+    "marae": (
+        [*MARAE, "Te Papaiouru Marae", "Ōwae Marae", "Kohupātiki Marae", "Ruapotaka Marae", "Tapu Te Ranga Marae"],
+        ["Tūrangawaewae Marae", "Ōrākei Marae", "Waiwhetū Marae", "Pipitea Marae", "Hoani Waititi Marae",
+         "Takahanga Marae", "Tuahiwi Marae", "Koriniti Marae"],
+    ),
+    "wharenui": (  # meeting house
+        ["Tama-te-kapua", "Rongopai", "Te Tokanganui-a-Noho", "Ruatepupuke", "Hotunui"],
+        ["Mahinaarangi", "Te Hau ki Tūranga", "Te Whai-a-te-Motu", "Te Mānuka Tūtahi"],
+    ),
+    "tupuna": (  # eponymous ancestor
+        ["Hoturoa", "Tamatekapua", "Kahungunu", "Tamatea", "Porourangi", "Rāhiri"],
+        ["Toroa", "Ngātoroirangi", "Tūtānekai", "Awanuiārangi", "Tahu Pōtiki", "Whātonga"],
+    ),
+}
+# No held-out value may appear in, or contain, a training value of any kind.
+_TRAIN = {v for train, _ in PEPEHA.values() for v in train}
+for _, _held in PEPEHA.values():
+    for _v in _held:
+        assert not any(t == _v or t in _v.split() or _v in t.split() or _v in t for t in _TRAIN), _v
+
 MONTHS_EN = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
