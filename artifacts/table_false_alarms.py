@@ -11,12 +11,12 @@ import json
 import os
 from pathlib import Path
 
-RUNS = [("Deployed", "deberta-small-open-v2"),
-        ("Control A", "deberta-small-open-v2-1ep"),
-        ("Control B", "deberta-small-open-v2-1ep-s1"),
-        ("Kinship negatives A", "deberta-small-open-v3"),
-        ("Kinship negatives B", "deberta-small-open-v3-s1"),
-        ("Kinship and ID negatives", "deberta-small-open-v3ids")]
+RUNS = [("Deployed", "deberta-small-open-v4"),
+        ("Control A", "deberta-small-open-v4-1ep"),
+        ("Control B", "deberta-small-open-v4-1ep-s1"),
+        ("Kinship negatives A", "deberta-small-open-v4kin"),
+        ("Kinship negatives B", "deberta-small-open-v4kin-s1"),
+        ("Kinship and ID negatives", "deberta-small-open-v4ids")]
 
 
 def main() -> None:
