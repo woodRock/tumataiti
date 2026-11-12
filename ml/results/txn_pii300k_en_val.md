@@ -2,36 +2,36 @@
 
 | Metric | rules+deberta-v3-small-open+review | rules+deberta-v3-small-open+review+txn |
 |---|---:|---:|
-| **Document leak rate** (lower is better) | **31.4%** | **31.4%** |
-| Span leak rate | 11.0% | 11.0% |
+| **Document leak rate** (lower is better) | **32.3%** | **32.3%** |
+| Span leak rate | 11.4% | 11.4% |
 | Any-PII char precision | 94.9 | 94.9 |
-| Any-PII char recall | 93.2 | 93.2 |
-| Any-PII char F1 | 94.0 | 94.0 |
-| Exact-span F1 (all categories) | 76.8 | 76.8 |
-| Median ms per document | 11.91 | 11.91 |
+| Any-PII char recall | 93.0 | 93.0 |
+| Any-PII char F1 | 93.9 | 93.9 |
+| Exact-span F1 (all categories) | 77.9 | 77.9 |
+| Median ms per document | 17.09 | 17.09 |
 
 Span leak rate by category (lower is better):
 
 | Metric | rules+deberta-v3-small-open+review | rules+deberta-v3-small-open+review+txn |
 |---|---:|---:|
-| PERSON (5808 spans) | 7.4% | 7.4% |
-| ADDRESS (8852 spans) | 15.1% | 15.1% |
+| PERSON (5808 spans) | 5.4% | 5.4% |
+| ADDRESS (8852 spans) | 18.4% | 18.4% |
 | EMAIL (2612 spans) | 0.1% | 0.1% |
-| PHONE (1997 spans) | 1.8% | 1.8% |
+| PHONE (1997 spans) | 1.9% | 1.9% |
 | IP_ADDRESS (2166 spans) | 0.6% | 0.6% |
-| DATE (2317 spans) | 54.3% | 54.3% |
-| ID (10054 spans) | 3.2% | 3.2% |
-| SECRET (1620 spans) | 31.4% | 31.4% |
+| DATE (2317 spans) | 56.3% | 56.3% |
+| ID (10054 spans) | 3.4% | 3.4% |
+| SECRET (1620 spans) | 24.1% | 24.1% |
 
 Character-level F1 by category (category must match):
 
 | Metric | rules+deberta-v3-small-open+review | rules+deberta-v3-small-open+review+txn |
 |---|---:|---:|
-| PERSON | 89.9 | 89.9 |
-| ADDRESS | 90.6 | 90.6 |
-| EMAIL | 97.2 | 97.2 |
-| PHONE | 82.1 | 82.1 |
-| IP_ADDRESS | 92.1 | 92.1 |
-| DATE | 70.9 | 70.9 |
-| ID | 91.3 | 91.3 |
-| SECRET | 74.4 | 74.4 |
+| PERSON | 91.3 | 91.3 |
+| ADDRESS | 90.1 | 90.1 |
+| EMAIL | 97.3 | 97.3 |
+| PHONE | 84.6 | 84.6 |
+| IP_ADDRESS | 93.4 | 93.4 |
+| DATE | 69.0 | 69.0 |
+| ID | 92.3 | 92.3 |
+| SECRET | 78.7 | 78.7 |

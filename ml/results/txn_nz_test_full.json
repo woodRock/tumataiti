@@ -1,41 +1,41 @@
 {
-  "gold": "data/v1/nz_test_full.jsonl",
+  "gold": "data/v4/nz_test_full.jsonl",
   "results": {
     "rules+deberta-v3-small-open+review": {
-      "docs": 1750,
-      "docs_with_pii": 1750,
-      "doc_leak_rate": 0.002857142857142857,
-      "span_leak_rate": 0.0005128205128205128,
+      "docs": 2750,
+      "docs_with_pii": 2750,
+      "doc_leak_rate": 0.020363636363636365,
+      "span_leak_rate": 0.0035,
       "char_any": {
-        "precision": 0.9444387659494727,
-        "recall": 0.9996844401969093,
-        "f1": 0.9712766516582281,
-        "tp": 110879,
-        "fp": 6523,
-        "fn": 35
+        "precision": 0.9228013945684173,
+        "recall": 0.9984888758432127,
+        "f1": 0.9591543154921193,
+        "tp": 183691,
+        "fp": 15367,
+        "fn": 278
       },
       "char": {
         "PERSON": {
-          "precision": 0.9741208295761947,
-          "recall": 0.9962650435744916,
-          "f1": 0.9850685025189779,
-          "tp": 43212,
-          "fp": 1148,
-          "fn": 162
+          "precision": 0.9806376833624686,
+          "recall": 0.9555629617286008,
+          "f1": 0.9679379577444976,
+          "tp": 51609,
+          "fp": 1019,
+          "fn": 2400
         },
         "ADDRESS": {
-          "precision": 0.9994339546355072,
+          "precision": 0.9290831491502172,
           "recall": 1.0,
-          "f1": 0.9997168971932379,
-          "tp": 24719,
-          "fp": 14,
+          "f1": 0.9632380538490409,
+          "tp": 24381,
+          "fp": 1861,
           "fn": 0
         },
         "EMAIL": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 14700,
+          "tp": 19660,
           "fp": 0,
           "fn": 0
         },
@@ -43,7 +43,7 @@
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 14893,
+          "tp": 14879,
           "fp": 0,
           "fn": 0
         },
@@ -52,14 +52,14 @@
           "recall": 0.0,
           "f1": 0.0,
           "tp": 0,
-          "fp": 5375,
+          "fp": 5301,
           "fn": 0
         },
         "DATE": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 5578,
+          "tp": 5666,
           "fp": 0,
           "fn": 0
         },
@@ -67,41 +67,49 @@
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 7650,
+          "tp": 7655,
           "fp": 0,
           "fn": 0
+        },
+        "AFFILIATION": {
+          "precision": 0.853372521521178,
+          "recall": 0.9909908349070496,
+          "f1": 0.9170474403988905,
+          "tp": 57199,
+          "fp": 9828,
+          "fn": 520
         }
       },
       "exact_all": {
-        "precision": 0.9063644462040978,
-        "recall": 0.9391794871794872,
-        "f1": 0.9224802296882083,
-        "tp": 9157,
-        "fp": 946,
-        "fn": 593
+        "precision": 0.8025834476451761,
+        "recall": 0.877625,
+        "f1": 0.8384284690709339,
+        "tp": 14042,
+        "fp": 3454,
+        "fn": 1958
       },
       "exact": {
         "PERSON": {
-          "precision": 0.8732684387869711,
-          "recall": 0.8885714285714286,
-          "f1": 0.8808534743202416,
-          "tp": 4665,
-          "fp": 677,
-          "fn": 585
+          "precision": 0.8006309148264984,
+          "recall": 0.81216,
+          "f1": 0.8063542494042891,
+          "tp": 5076,
+          "fp": 1264,
+          "fn": 1174
         },
         "ADDRESS": {
-          "precision": 0.9812067260138477,
-          "recall": 0.992,
-          "f1": 0.9865738438587768,
-          "tp": 992,
-          "fp": 19,
-          "fn": 8
+          "precision": 0.7715654952076677,
+          "recall": 0.966,
+          "f1": 0.8579040852575487,
+          "tp": 966,
+          "fp": 286,
+          "fn": 34
         },
         "EMAIL": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 750,
+          "tp": 1000,
           "fp": 0,
           "fn": 0
         },
@@ -136,61 +144,71 @@
           "tp": 750,
           "fp": 0,
           "fn": 0
+        },
+        "AFFILIATION": {
+          "precision": 0.7198509485094851,
+          "recall": 0.85,
+          "f1": 0.7795304475421864,
+          "tp": 4250,
+          "fp": 1654,
+          "fn": 750
         }
       },
       "span_leak_rate_by_category": {
         "ADDRESS": 0.0,
+        "AFFILIATION": 0.0104,
         "DATE": 0.0,
         "EMAIL": 0.0,
         "ID": 0.0,
-        "PERSON": 0.0009523809523809524,
+        "PERSON": 0.00064,
         "PHONE": 0.0
       },
       "gold_spans": {
         "ADDRESS": 1000,
+        "AFFILIATION": 5000,
         "DATE": 500,
-        "EMAIL": 750,
+        "EMAIL": 1000,
         "ID": 750,
-        "PERSON": 5250,
+        "PERSON": 6250,
         "PHONE": 1500
       },
       "_name": "rules+deberta-v3-small-open+review"
     },
     "rules+deberta-v3-small-open+review+txn": {
-      "docs": 1750,
-      "docs_with_pii": 1750,
-      "doc_leak_rate": 0.002857142857142857,
-      "span_leak_rate": 0.0005128205128205128,
+      "docs": 2750,
+      "docs_with_pii": 2750,
+      "doc_leak_rate": 0.020363636363636365,
+      "span_leak_rate": 0.0035,
       "char_any": {
-        "precision": 0.9444387659494727,
-        "recall": 0.9996844401969093,
-        "f1": 0.9712766516582281,
-        "tp": 110879,
-        "fp": 6523,
-        "fn": 35
+        "precision": 0.9228013945684173,
+        "recall": 0.9984888758432127,
+        "f1": 0.9591543154921193,
+        "tp": 183691,
+        "fp": 15367,
+        "fn": 278
       },
       "char": {
         "PERSON": {
-          "precision": 0.9741208295761947,
-          "recall": 0.9962650435744916,
-          "f1": 0.9850685025189779,
-          "tp": 43212,
-          "fp": 1148,
-          "fn": 162
+          "precision": 0.9806376833624686,
+          "recall": 0.9555629617286008,
+          "f1": 0.9679379577444976,
+          "tp": 51609,
+          "fp": 1019,
+          "fn": 2400
         },
         "ADDRESS": {
-          "precision": 0.9994339546355072,
+          "precision": 0.9290831491502172,
           "recall": 1.0,
-          "f1": 0.9997168971932379,
-          "tp": 24719,
-          "fp": 14,
+          "f1": 0.9632380538490409,
+          "tp": 24381,
+          "fp": 1861,
           "fn": 0
         },
         "EMAIL": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 14700,
+          "tp": 19660,
           "fp": 0,
           "fn": 0
         },
@@ -198,7 +216,7 @@
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 14893,
+          "tp": 14879,
           "fp": 0,
           "fn": 0
         },
@@ -207,14 +225,14 @@
           "recall": 0.0,
           "f1": 0.0,
           "tp": 0,
-          "fp": 5375,
+          "fp": 5301,
           "fn": 0
         },
         "DATE": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 5578,
+          "tp": 5666,
           "fp": 0,
           "fn": 0
         },
@@ -222,41 +240,49 @@
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 7650,
+          "tp": 7655,
           "fp": 0,
           "fn": 0
+        },
+        "AFFILIATION": {
+          "precision": 0.853372521521178,
+          "recall": 0.9909908349070496,
+          "f1": 0.9170474403988905,
+          "tp": 57199,
+          "fp": 9828,
+          "fn": 520
         }
       },
       "exact_all": {
-        "precision": 0.9063644462040978,
-        "recall": 0.9391794871794872,
-        "f1": 0.9224802296882083,
-        "tp": 9157,
-        "fp": 946,
-        "fn": 593
+        "precision": 0.8025834476451761,
+        "recall": 0.877625,
+        "f1": 0.8384284690709339,
+        "tp": 14042,
+        "fp": 3454,
+        "fn": 1958
       },
       "exact": {
         "PERSON": {
-          "precision": 0.8732684387869711,
-          "recall": 0.8885714285714286,
-          "f1": 0.8808534743202416,
-          "tp": 4665,
-          "fp": 677,
-          "fn": 585
+          "precision": 0.8006309148264984,
+          "recall": 0.81216,
+          "f1": 0.8063542494042891,
+          "tp": 5076,
+          "fp": 1264,
+          "fn": 1174
         },
         "ADDRESS": {
-          "precision": 0.9812067260138477,
-          "recall": 0.992,
-          "f1": 0.9865738438587768,
-          "tp": 992,
-          "fp": 19,
-          "fn": 8
+          "precision": 0.7715654952076677,
+          "recall": 0.966,
+          "f1": 0.8579040852575487,
+          "tp": 966,
+          "fp": 286,
+          "fn": 34
         },
         "EMAIL": {
           "precision": 1.0,
           "recall": 1.0,
           "f1": 1.0,
-          "tp": 750,
+          "tp": 1000,
           "fp": 0,
           "fn": 0
         },
@@ -291,22 +317,32 @@
           "tp": 750,
           "fp": 0,
           "fn": 0
+        },
+        "AFFILIATION": {
+          "precision": 0.7198509485094851,
+          "recall": 0.85,
+          "f1": 0.7795304475421864,
+          "tp": 4250,
+          "fp": 1654,
+          "fn": 750
         }
       },
       "span_leak_rate_by_category": {
         "ADDRESS": 0.0,
+        "AFFILIATION": 0.0104,
         "DATE": 0.0,
         "EMAIL": 0.0,
         "ID": 0.0,
-        "PERSON": 0.0009523809523809524,
+        "PERSON": 0.00064,
         "PHONE": 0.0
       },
       "gold_spans": {
         "ADDRESS": 1000,
+        "AFFILIATION": 5000,
         "DATE": 500,
-        "EMAIL": 750,
+        "EMAIL": 1000,
         "ID": 750,
-        "PERSON": 5250,
+        "PERSON": 6250,
         "PHONE": 1500
       },
       "_name": "rules+deberta-v3-small-open+review+txn"
@@ -318,10 +354,10 @@
       "parts": [
         {
           "detector": "rules",
-          "gold": "data/v1/nz_test_full.jsonl",
-          "docs": 1750,
-          "seconds_total": 0.08475028498469328,
-          "seconds_median": 4.654199983633589e-05,
+          "gold": "data/v4/nz_test_full.jsonl",
+          "docs": 2750,
+          "seconds_total": 0.12327622604425414,
+          "seconds_median": 4.641600025934167e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
@@ -329,27 +365,27 @@
         },
         {
           "detector": "student",
-          "gold": "data/v1/nz_test_full.jsonl",
-          "docs": 1750,
-          "seconds_total": 22.77287372481078,
-          "seconds_median": 0.011383678298443556,
+          "gold": "data/v4/nz_test_full.jsonl",
+          "docs": 2750,
+          "seconds_total": 29.100196894723922,
+          "seconds_median": 0.00986345240380615,
           "device": "cuda",
           "threshold": 0.5,
-          "model": "runs/m3-v2/deberta-v3-small-open/model",
-          "host": "cuda08.ecs.vuw.ac.nz"
+          "model": "runs/m3-v4/deberta-v3-small-open/model",
+          "host": "gryphon.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.011430220298279892
+      "seconds_median": 0.009909868404065492
     },
     "rules+deberta-v3-small-open+review+txn": {
       "detector": "combined",
       "parts": [
         {
           "detector": "rules",
-          "gold": "data/v1/nz_test_full.jsonl",
-          "docs": 1750,
-          "seconds_total": 0.08475028498469328,
-          "seconds_median": 4.654199983633589e-05,
+          "gold": "data/v4/nz_test_full.jsonl",
+          "docs": 2750,
+          "seconds_total": 0.12327622604425414,
+          "seconds_median": 4.641600025934167e-05,
           "device": "cpu",
           "threshold": 0.5,
           "model": null,
@@ -357,17 +393,17 @@
         },
         {
           "detector": "student",
-          "gold": "data/v1/nz_test_full.jsonl",
-          "docs": 1750,
-          "seconds_total": 22.77287372481078,
-          "seconds_median": 0.011383678298443556,
+          "gold": "data/v4/nz_test_full.jsonl",
+          "docs": 2750,
+          "seconds_total": 29.100196894723922,
+          "seconds_median": 0.00986345240380615,
           "device": "cuda",
           "threshold": 0.5,
-          "model": "runs/m3-v2/deberta-v3-small-open/model",
-          "host": "cuda08.ecs.vuw.ac.nz"
+          "model": "runs/m3-v4/deberta-v3-small-open/model",
+          "host": "gryphon.ecs.vuw.ac.nz"
         }
       ],
-      "seconds_median": 0.011430220298279892
+      "seconds_median": 0.009909868404065492
     }
   }
 }

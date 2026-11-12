@@ -93,17 +93,17 @@
     },
     "not PII: kin": {
       "n": 700,
-      "redacted": 0.7171428571428572,
+      "redacted": 0.7557142857142857,
       "flagged": 0.0
     },
     "not PII: order_ref": {
       "n": 200,
-      "redacted": 0.945,
+      "redacted": 0.975,
       "flagged": 0.0
     },
     "not PII: town": {
       "n": 100,
-      "redacted": 0.17,
+      "redacted": 0.05,
       "flagged": 0.0
     },
     "PII: address": {
@@ -169,17 +169,17 @@
     },
     "not PII: kin": {
       "n": 700,
-      "redacted": 0.22714285714285715,
-      "flagged": 0.49
+      "redacted": 0.22142857142857142,
+      "flagged": 0.5342857142857143
     },
     "not PII: order_ref": {
       "n": 200,
-      "redacted": 0.945,
+      "redacted": 0.975,
       "flagged": 0.0
     },
     "not PII: town": {
       "n": 100,
-      "redacted": 0.17,
+      "redacted": 0.05,
       "flagged": 0.0
     },
     "PII: address": {
@@ -212,7 +212,7 @@
     },
     "PII: nan_full": {
       "n": 100,
-      "leaked": 0.0
+      "leaked": 0.06
     },
     "PII: nhi": {
       "n": 100,
@@ -245,17 +245,17 @@
     },
     "not PII: kin": {
       "n": 700,
-      "redacted": 0.7171428571428572,
+      "redacted": 0.7557142857142857,
       "flagged": 0.0
     },
     "not PII: order_ref": {
       "n": 200,
-      "redacted": 0.945,
+      "redacted": 0.975,
       "flagged": 0.0
     },
     "not PII: town": {
       "n": 100,
-      "redacted": 0.17,
+      "redacted": 0.05,
       "flagged": 0.0
     },
     "PII: address": {
@@ -321,17 +321,17 @@
     },
     "not PII: kin": {
       "n": 700,
-      "redacted": 0.22714285714285715,
-      "flagged": 0.49
+      "redacted": 0.22142857142857142,
+      "flagged": 0.5342857142857143
     },
     "not PII: order_ref": {
       "n": 200,
-      "redacted": 0.945,
+      "redacted": 0.975,
       "flagged": 0.0
     },
     "not PII: town": {
       "n": 100,
-      "redacted": 0.17,
+      "redacted": 0.05,
       "flagged": 0.0
     },
     "PII: address": {
@@ -364,7 +364,7 @@
     },
     "PII: nan_full": {
       "n": 100,
-      "leaked": 0.0
+      "leaked": 0.06
     },
     "PII: nhi": {
       "n": 100,
