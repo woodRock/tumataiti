@@ -2,67 +2,76 @@
   "name": "m3open_lowertrain_lower_nz_test_full",
   "metrics": {
     "doc_leak": {
-      "rules_deberta-v3-small-open": 0.9474285714285714,
-      "rules_modernbert-base-open": 0.8331428571428572,
-      "rules_mdeberta-v3-base-open": 0.5342857142857143,
-      "rules_deberta-v3-small-open-lower": 0.05142857142857143,
-      "rules_modernbert-base-open-lower": 0.25257142857142856,
-      "rules_mdeberta-v3-base-open-lower": 0.009142857142857144,
-      "rules_deberta-v3-small-open-lower-int4": 0.07714285714285714
+      "rules_deberta-v3-small-open": 0.9654545454545455,
+      "rules_modernbert-base-open": 0.98,
+      "rules_mdeberta-v3-base-open": 0.5756363636363636,
+      "rules_deberta-v3-small-open-lower": 0.16545454545454547,
+      "rules_modernbert-base-open-lower": 0.1610909090909091,
+      "rules_mdeberta-v3-base-open-lower": 0.112,
+      "rules_deberta-v3-small-open-lower-int4": 0.18545454545454546
     },
     "span_leak": {
-      "rules_deberta-v3-small-open": 0.452,
-      "rules_modernbert-base-open": 0.3157948717948718,
-      "rules_mdeberta-v3-base-open": 0.1763076923076923,
-      "rules_deberta-v3-small-open-lower": 0.013025641025641025,
-      "rules_modernbert-base-open-lower": 0.09969230769230769,
-      "rules_mdeberta-v3-base-open-lower": 0.0026666666666666666,
-      "rules_deberta-v3-small-open-lower-int4": 0.019794871794871795
+      "rules_deberta-v3-small-open": 0.6123125,
+      "rules_modernbert-base-open": 0.5384375,
+      "rules_mdeberta-v3-base-open": 0.166,
+      "rules_deberta-v3-small-open-lower": 0.0365,
+      "rules_modernbert-base-open-lower": 0.0368125,
+      "rules_mdeberta-v3-base-open-lower": 0.021625,
+      "rules_deberta-v3-small-open-lower-int4": 0.0433125
     },
     "precision": {
-      "rules_deberta-v3-small-open": 0.9352873138332757,
-      "rules_modernbert-base-open": 0.9204808369379338,
-      "rules_mdeberta-v3-base-open": 0.9252097607445132,
-      "rules_deberta-v3-small-open-lower": 0.9237214290502045,
-      "rules_modernbert-base-open-lower": 0.9179327576381887,
-      "rules_mdeberta-v3-base-open-lower": 0.9177278639899915,
-      "rules_deberta-v3-small-open-lower-int4": 0.9240183493960692
+      "rules_deberta-v3-small-open": 0.9368654568710528,
+      "rules_modernbert-base-open": 0.9214786057895181,
+      "rules_mdeberta-v3-base-open": 0.9293619142572284,
+      "rules_deberta-v3-small-open-lower": 0.9260422395493352,
+      "rules_modernbert-base-open-lower": 0.8982127897235409,
+      "rules_mdeberta-v3-base-open-lower": 0.9098369668435942,
+      "rules_deberta-v3-small-open-lower-int4": 0.9258215962441314
     },
     "recall": {
-      "rules_deberta-v3-small-open": 0.7071785347205943,
-      "rules_modernbert-base-open": 0.8250085651946553,
-      "rules_mdeberta-v3-base-open": 0.9106785437365887,
-      "rules_deberta-v3-small-open-lower": 0.993995347746903,
-      "rules_modernbert-base-open-lower": 0.9440106749373388,
-      "rules_mdeberta-v3-base-open-lower": 0.9986746488270192,
-      "rules_deberta-v3-small-open-lower-int4": 0.9897578303911139
+      "rules_deberta-v3-small-open": 0.5096184683289032,
+      "rules_modernbert-base-open": 0.5935021661258146,
+      "rules_mdeberta-v3-base-open": 0.9120395283988063,
+      "rules_deberta-v3-small-open-lower": 0.9793389103598976,
+      "rules_modernbert-base-open-lower": 0.9790997396300464,
+      "rules_mdeberta-v3-base-open-lower": 0.9895254091721974,
+      "rules_deberta-v3-small-open-lower-int4": 0.9754469503014095
     },
     "f1": {
-      "rules_deberta-v3-small-open": 0.8053928338561535,
-      "rules_modernbert-base-open": 0.8701336984842434,
-      "rules_mdeberta-v3-base-open": 0.9178866443117691,
-      "rules_deberta-v3-small-open-lower": 0.9575708094117239,
-      "rules_modernbert-base-open-lower": 0.9307890958711702,
-      "rules_mdeberta-v3-base-open-lower": 0.9564917037619112,
-      "rules_deberta-v3-small-open-lower-int4": 0.9557589925082384
+      "rules_deberta-v3-small-open": 0.6601441341214824,
+      "rules_modernbert-base-open": 0.7219887654194452,
+      "rules_mdeberta-v3-base-open": 0.9206192439692846,
+      "rules_deberta-v3-small-open-lower": 0.9519451768174446,
+      "rules_modernbert-base-open-lower": 0.9369136942302442,
+      "rules_mdeberta-v3-base-open-lower": 0.9480095091537322,
+      "rules_deberta-v3-small-open-lower-int4": 0.9499866331038463
     },
     "exact_f1": {
-      "rules_deberta-v3-small-open": 0.5924580836511107,
-      "rules_modernbert-base-open": 0.6747542825049144,
-      "rules_mdeberta-v3-base-open": 0.577305583854849,
-      "rules_deberta-v3-small-open-lower": 0.7929865920141447,
-      "rules_modernbert-base-open-lower": 0.8480336790224869,
-      "rules_mdeberta-v3-base-open-lower": 0.6188489660431525,
-      "rules_deberta-v3-small-open-lower-int4": 0.7879086254430878
+      "rules_deberta-v3-small-open": 0.45395462906192524,
+      "rules_modernbert-base-open": 0.47859849195333304,
+      "rules_mdeberta-v3-base-open": 0.5963070025367234,
+      "rules_deberta-v3-small-open-lower": 0.7888512018876271,
+      "rules_modernbert-base-open-lower": 0.7824056283070737,
+      "rules_mdeberta-v3-base-open-lower": 0.6345470813111731,
+      "rules_deberta-v3-small-open-lower-int4": 0.7875899227330591
     },
     "leak_address": {
-      "rules_deberta-v3-small-open": 0.153,
-      "rules_modernbert-base-open": 0.001,
-      "rules_mdeberta-v3-base-open": 0.105,
+      "rules_deberta-v3-small-open": 0.223,
+      "rules_modernbert-base-open": 0.006,
+      "rules_mdeberta-v3-base-open": 0.088,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
       "rules_mdeberta-v3-base-open-lower": 0.0,
       "rules_deberta-v3-small-open-lower-int4": 0.0
+    },
+    "leak_affiliation": {
+      "rules_deberta-v3-small-open": 0.8744,
+      "rules_modernbert-base-open": 0.779,
+      "rules_mdeberta-v3-base-open": 0.1542,
+      "rules_deberta-v3-small-open-lower": 0.0586,
+      "rules_modernbert-base-open-lower": 0.0332,
+      "rules_mdeberta-v3-base-open-lower": 0.048,
+      "rules_deberta-v3-small-open-lower-int4": 0.0622
     },
     "leak_date": {
       "rules_deberta-v3-small-open": 0.0,
@@ -83,22 +92,22 @@
       "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_id": {
-      "rules_deberta-v3-small-open": 0.032,
-      "rules_modernbert-base-open": 0.11466666666666667,
-      "rules_mdeberta-v3-base-open": 0.07333333333333333,
+      "rules_deberta-v3-small-open": 0.02666666666666667,
+      "rules_modernbert-base-open": 0.21066666666666667,
+      "rules_mdeberta-v3-base-open": 0.30266666666666664,
       "rules_deberta-v3-small-open-lower": 0.0,
       "rules_modernbert-base-open-lower": 0.0,
-      "rules_mdeberta-v3-base-open-lower": 0.0,
+      "rules_mdeberta-v3-base-open-lower": 0.006666666666666667,
       "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "leak_person": {
-      "rules_deberta-v3-small-open": 0.8057142857142857,
-      "rules_modernbert-base-open": 0.5699047619047619,
-      "rules_mdeberta-v3-base-open": 0.29695238095238097,
-      "rules_deberta-v3-small-open-lower": 0.02419047619047619,
-      "rules_modernbert-base-open-lower": 0.18514285714285714,
-      "rules_mdeberta-v3-base-open-lower": 0.004952380952380952,
-      "rules_deberta-v3-small-open-lower-int4": 0.03676190476190476
+      "rules_deberta-v3-small-open": 0.82912,
+      "rules_modernbert-base-open": 0.72896,
+      "rules_mdeberta-v3-base-open": 0.2512,
+      "rules_deberta-v3-small-open-lower": 0.04656,
+      "rules_modernbert-base-open-lower": 0.06768,
+      "rules_mdeberta-v3-base-open-lower": 0.01616,
+      "rules_deberta-v3-small-open-lower-int4": 0.06112
     },
     "leak_phone": {
       "rules_deberta-v3-small-open": 0.0,
@@ -110,15 +119,15 @@
       "rules_deberta-v3-small-open-lower-int4": 0.0
     },
     "ms": {
-      "rules_deberta-v3-small-open": 57.277273619547486,
-      "rules_modernbert-base-open": 144.27023706957698,
-      "rules_mdeberta-v3-base-open": 119.78836241178215,
-      "rules_deberta-v3-small-open-lower": 9.257745230570436,
-      "rules_modernbert-base-open-lower": 13.73515254817903,
-      "rules_mdeberta-v3-base-open-lower": 17.776122083887458,
-      "rules_deberta-v3-small-open-lower-int4": 57.29811894707382
+      "rules_deberta-v3-small-open": 68.90620902413502,
+      "rules_modernbert-base-open": 170.69021292263642,
+      "rules_mdeberta-v3-base-open": 118.10424603754655,
+      "rules_deberta-v3-small-open-lower": 9.21864021802321,
+      "rules_modernbert-base-open-lower": 17.19436765415594,
+      "rules_mdeberta-v3-base-open-lower": 17.041444370988756,
+      "rules_deberta-v3-small-open-lower-int4": 56.42595567042008
     },
-    "docs": 1750
+    "docs": 2750
   },
   "source": {
     "path": "ml/results/m3open_lowertrain_lower_nz_test_full.json"

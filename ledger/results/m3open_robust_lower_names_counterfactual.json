@@ -2,29 +2,29 @@
   "name": "m3open_robust_lower_names_counterfactual",
   "metrics": {
     "maori": {
-      "rules_deberta-v3-small-open": 0.8895238095238095,
-      "rules_modernbert-base-open": 0.6452380952380953,
-      "rules_mdeberta-v3-base-open": 0.4580952380952381
+      "rules_deberta-v3-small-open": 0.9008,
+      "rules_modernbert-base-open": 0.7816,
+      "rules_mdeberta-v3-base-open": 0.463
     },
     "pakeha": {
-      "rules_deberta-v3-small-open": 0.6216666666666667,
-      "rules_modernbert-base-open": 0.539047619047619,
-      "rules_mdeberta-v3-base-open": 0.045714285714285714
+      "rules_deberta-v3-small-open": 0.5824,
+      "rules_modernbert-base-open": 0.706,
+      "rules_mdeberta-v3-base-open": 0.049
     },
     "pasifika": {
-      "rules_deberta-v3-small-open": 0.5392857142857143,
-      "rules_modernbert-base-open": 0.37047619047619046,
-      "rules_mdeberta-v3-base-open": 0.27976190476190477
+      "rules_deberta-v3-small-open": 0.6374,
+      "rules_modernbert-base-open": 0.6518,
+      "rules_mdeberta-v3-base-open": 0.1702
     },
     "asian_nz": {
-      "rules_deberta-v3-small-open": 0.7295238095238096,
-      "rules_modernbert-base-open": 0.5635714285714286,
-      "rules_mdeberta-v3-base-open": 0.07666666666666666
+      "rules_deberta-v3-small-open": 0.7528,
+      "rules_modernbert-base-open": 0.7476,
+      "rules_mdeberta-v3-base-open": 0.1006
     },
     "gap": {
-      "rules_deberta-v3-small-open": 0.2678571428571428,
-      "rules_modernbert-base-open": 0.10619047619047628,
-      "rules_mdeberta-v3-base-open": 0.4123809523809524
+      "rules_deberta-v3-small-open": 0.3184,
+      "rules_modernbert-base-open": 0.0756,
+      "rules_mdeberta-v3-base-open": 0.41400000000000003
     }
   },
   "source": {

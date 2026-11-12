@@ -3,9 +3,9 @@
   "metrics": {
     "word_redacted": {
       "rules": 0.0,
-      "rules_deberta-v3-small-open": 0.0929002667665091,
-      "rules_modernbert-base-open": 0.032269387373051905,
-      "rules_mdeberta-v3-base-open": 0.07628586137501756
+      "rules_deberta-v3-small-open": 0.17741562262404548,
+      "rules_modernbert-base-open": 0.016462265710224456,
+      "rules_mdeberta-v3-base-open": 0.04583319559683977
     },
     "word_flagged": {
       "rules": 0.0,

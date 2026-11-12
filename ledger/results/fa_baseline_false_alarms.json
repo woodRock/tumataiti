@@ -45,24 +45,24 @@
     },
     "kin_redacted": {
       "rules": 0.0,
-      "deberta-v3-small-open-int8-int4-block": 0.7171428571428572,
-      "deberta-v3-small-open-int8-int4-block_review": 0.22714285714285715,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.7171428571428572,
-      "rules_deberta-v3-small-open-int8-int4-block_review": 0.22714285714285715
+      "deberta-v3-small-open-int8-int4-block": 0.7557142857142857,
+      "deberta-v3-small-open-int8-int4-block_review": 0.22142857142857142,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.7557142857142857,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.22142857142857142
     },
     "kin_flagged": {
       "rules": 0.0,
       "deberta-v3-small-open-int8-int4-block": 0.0,
-      "deberta-v3-small-open-int8-int4-block_review": 0.49,
+      "deberta-v3-small-open-int8-int4-block_review": 0.5342857142857143,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_deberta-v3-small-open-int8-int4-block_review": 0.49
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.5342857142857143
     },
     "order_ref_redacted": {
       "rules": 0.0,
-      "deberta-v3-small-open-int8-int4-block": 0.945,
-      "deberta-v3-small-open-int8-int4-block_review": 0.945,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.945,
-      "rules_deberta-v3-small-open-int8-int4-block_review": 0.945
+      "deberta-v3-small-open-int8-int4-block": 0.975,
+      "deberta-v3-small-open-int8-int4-block_review": 0.975,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.975,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.975
     },
     "order_ref_flagged": {
       "rules": 0.0,
@@ -73,10 +73,10 @@
     },
     "town_redacted": {
       "rules": 0.0,
-      "deberta-v3-small-open-int8-int4-block": 0.17,
-      "deberta-v3-small-open-int8-int4-block_review": 0.17,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.17,
-      "rules_deberta-v3-small-open-int8-int4-block_review": 0.17
+      "deberta-v3-small-open-int8-int4-block": 0.05,
+      "deberta-v3-small-open-int8-int4-block_review": 0.05,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.05,
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.05
     },
     "town_flagged": {
       "rules": 0.0,
@@ -137,9 +137,9 @@
     "nan_full_leaked": {
       "rules": 1.0,
       "deberta-v3-small-open-int8-int4-block": 0.0,
-      "deberta-v3-small-open-int8-int4-block_review": 0.0,
+      "deberta-v3-small-open-int8-int4-block_review": 0.06,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_deberta-v3-small-open-int8-int4-block_review": 0.0
+      "rules_deberta-v3-small-open-int8-int4-block_review": 0.06
     },
     "nhi_leaked": {
       "rules": 0.0,

@@ -2,64 +2,64 @@
   "name": "m3open_lowercmp_pii300k_en_val",
   "metrics": {
     "doc_leak": {
-      "rules_deployed": 0.3322764743183259,
-      "rules_retrained": 0.39743183259353204
+      "rules_deployed": 0.3216550412175016,
+      "rules_retrained": 0.33069118579581486
     },
     "span_leak": {
-      "rules_deployed": 0.1177666120928132,
-      "rules_retrained": 0.14012307344887936
+      "rules_deployed": 0.11336306667419409,
+      "rules_retrained": 0.11073787613617117
     },
     "precision": {
-      "rules_deployed": 0.9487820909264872,
-      "rules_retrained": 0.9484639852972362
+      "rules_deployed": 0.9486374558460398,
+      "rules_retrained": 0.9447350122441576
     },
     "recall": {
-      "rules_deployed": 0.928135801062404,
-      "rules_retrained": 0.9100646232480915
+      "rules_deployed": 0.9296903401537718,
+      "rules_retrained": 0.9325579628755446
     },
     "f1": {
-      "rules_deployed": 0.9383453903383961,
-      "rules_retrained": 0.9288676165383449
+      "rules_deployed": 0.9390683360873843,
+      "rules_retrained": 0.9386069943818307
     },
     "exact_f1": {
-      "rules_deployed": 0.7615870990196647,
-      "rules_retrained": 0.7551424742147894
+      "rules_deployed": 0.7745576306901827,
+      "rules_retrained": 0.7525900416128569
     },
     "leak_address": {
-      "rules_deployed": 0.17046995029371895,
-      "rules_retrained": 0.2226615454134659
+      "rules_deployed": 0.18470402169001357,
+      "rules_retrained": 0.16629010393131496
     },
     "leak_date": {
-      "rules_deployed": 0.5369011652999568,
-      "rules_retrained": 0.6296935692706086
+      "rules_deployed": 0.5416486836426413,
+      "rules_retrained": 0.5666810530858869
     },
     "leak_email": {
       "rules_deployed": 0.0007656967840735069,
-      "rules_retrained": 0.0011485451761102604
+      "rules_retrained": 0.0007656967840735069
     },
     "leak_id": {
-      "rules_deployed": 0.033518997413964594,
-      "rules_retrained": 0.03540879252038989
+      "rules_deployed": 0.03580664412174259,
+      "rules_retrained": 0.03282275711159737
     },
     "leak_ip_address": {
-      "rules_deployed": 0.006001846722068329,
-      "rules_retrained": 0.006463527239150508
+      "rules_deployed": 0.00554016620498615,
+      "rules_retrained": 0.00554016620498615
     },
     "leak_person": {
-      "rules_deployed": 0.08109504132231404,
-      "rules_retrained": 0.14101239669421486
+      "rules_deployed": 0.04855371900826446,
+      "rules_retrained": 0.07265840220385675
     },
     "leak_phone": {
-      "rules_deployed": 0.016524787180771158,
-      "rules_retrained": 0.013019529293940912
+      "rules_deployed": 0.020030045067601403,
+      "rules_retrained": 0.015022533800701052
     },
     "leak_secret": {
-      "rules_deployed": 0.3475308641975309,
-      "rules_retrained": 0.19506172839506172
+      "rules_deployed": 0.2654320987654321,
+      "rules_retrained": 0.2111111111111111
     },
     "ms": {
-      "rules_deployed": 49.2861454931699,
-      "rules_retrained": 80.38749882143748
+      "rules_deployed": 52.09627050135168,
+      "rules_retrained": 89.12144247733522
     },
     "docs": 7946
   },

@@ -6,26 +6,30 @@
       "rules-format-only": 1.0
     },
     "span_leak": {
-      "rules": 0.6410256410256411,
-      "rules-format-only": 0.6410256410256411
+      "rules": 0.765625,
+      "rules-format-only": 0.765625
     },
     "precision": {
-      "rules": 0.8884762220931197,
-      "rules-format-only": 0.8884762220931197
+      "rules": 0.9002840428133406,
+      "rules-format-only": 0.9002840428133406
     },
     "recall": {
-      "rules": 0.3860738950898895,
-      "rules-format-only": 0.3860738950898895
+      "rules": 0.2601525256972642,
+      "rules-format-only": 0.2601525256972642
     },
     "f1": {
-      "rules": 0.5382565520708944,
-      "rules-format-only": 0.5382565520708944
+      "rules": 0.4036604394214144,
+      "rules-format-only": 0.4036604394214144
     },
     "exact_f1": {
-      "rules": 0.5185185185185185,
-      "rules-format-only": 0.5517241379310345
+      "rules": 0.375,
+      "rules-format-only": 0.4047619047619047
     },
     "leak_address": {
+      "rules": 1.0,
+      "rules-format-only": 1.0
+    },
+    "leak_affiliation": {
       "rules": 1.0,
       "rules-format-only": 1.0
     },
@@ -49,7 +53,7 @@
       "rules": 0.0,
       "rules-format-only": 0.0
     },
-    "docs": 1750
+    "docs": 2750
   },
   "source": {
     "path": "ml/results/checksum_nz_test_full.json"

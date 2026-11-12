@@ -1,16 +1,16 @@
 {
   "name": "browser_latency",
   "metrics": {
-    "docs": 1750,
+    "docs": 2750,
     "ms": {
-      "rules": 0.09999999403953552,
-      "deberta-v3-small-open-int4": 224.79999999701977,
-      "rules_deberta-v3-small-open-int4": 224.89999999850988
+      "rules": 0.10000000149011612,
+      "deberta-v3-small-open-int4": 219.09999999776483,
+      "rules_deberta-v3-small-open-int4": 219.19999999925494
     },
     "ms_p90": {
-      "rules": 0.19999998807907104,
-      "deberta-v3-small-open-int4": 280.8299999982119,
-      "rules_deberta-v3-small-open-int4": 281.029999999702
+      "rules": 0.19999999552965164,
+      "deberta-v3-small-open-int4": 291.4100000053644,
+      "rules_deberta-v3-small-open-int4": 291.6000000014901
     }
   },
   "source": {

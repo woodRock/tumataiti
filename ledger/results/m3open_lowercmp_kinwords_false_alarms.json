@@ -2,32 +2,32 @@
   "name": "m3open_lowercmp_kinwords_false_alarms",
   "metrics": {
     "kin_auntie_redacted": {
-      "deployed": 0.2823529411764706,
-      "retrained": 0.32941176470588235
+      "deployed": 0.3411764705882353,
+      "retrained": 0.29411764705882354
     },
     "kin_auntie_flagged": {
       "deployed": 0.0,
       "retrained": 0.0
     },
     "kin_english_redacted": {
-      "deployed": 0.2364341085271318,
-      "retrained": 0.2713178294573643
+      "deployed": 0.3449612403100775,
+      "retrained": 0.313953488372093
     },
     "kin_english_flagged": {
       "deployed": 0.0,
       "retrained": 0.0
     },
     "kin_grandad_redacted": {
-      "deployed": 0.1625,
-      "retrained": 0.1875
+      "deployed": 0.3625,
+      "retrained": 0.2625
     },
     "kin_grandad_flagged": {
       "deployed": 0.0,
       "retrained": 0.0
     },
     "kin_granny_redacted": {
-      "deployed": 0.25806451612903225,
-      "retrained": 0.2903225806451613
+      "deployed": 0.3333333333333333,
+      "retrained": 0.3763440860215054
     },
     "kin_granny_flagged": {
       "deployed": 0.0,
@@ -35,7 +35,7 @@
     },
     "kin_kaumatua_redacted": {
       "deployed": 1.0,
-      "retrained": 0.96875
+      "retrained": 1.0
     },
     "kin_kaumatua_flagged": {
       "deployed": 0.0,
@@ -50,8 +50,8 @@
       "retrained": 0.0
     },
     "kin_nana_redacted": {
-      "deployed": 0.9863013698630136,
-      "retrained": 0.8904109589041096
+      "deployed": 0.9726027397260274,
+      "retrained": 0.958904109589041
     },
     "kin_nana_flagged": {
       "deployed": 0.0,
@@ -75,7 +75,7 @@
     },
     "kin_te_reo_redacted": {
       "deployed": 1.0,
-      "retrained": 0.991869918699187
+      "retrained": 1.0
     },
     "kin_te_reo_flagged": {
       "deployed": 0.0,

@@ -37,9 +37,9 @@
       "rules_deployed": 0.0,
       "rules_deployed_review": 0.0,
       "rules_deployed_txn": 0.0,
-      "rules_retrained": 0.92,
-      "rules_retrained_review": 0.92,
-      "rules_retrained_txn": 0.92
+      "rules_retrained": 0.79,
+      "rules_retrained_review": 0.79,
+      "rules_retrained_txn": 0.79
     },
     "invoice_flagged": {
       "rules_deployed": 0.0,
@@ -50,44 +50,44 @@
       "rules_retrained_txn": 0.0
     },
     "kin_redacted": {
-      "rules_deployed": 0.7171428571428572,
-      "rules_deployed_review": 0.22714285714285715,
-      "rules_deployed_txn": 0.22714285714285715,
-      "rules_retrained": 0.7157142857142857,
-      "rules_retrained_review": 0.2342857142857143,
-      "rules_retrained_txn": 0.2342857142857143
+      "rules_deployed": 0.7557142857142857,
+      "rules_deployed_review": 0.22142857142857142,
+      "rules_deployed_txn": 0.22142857142857142,
+      "rules_retrained": 0.7428571428571429,
+      "rules_retrained_review": 0.24571428571428572,
+      "rules_retrained_txn": 0.24571428571428572
     },
     "kin_flagged": {
       "rules_deployed": 0.0,
-      "rules_deployed_review": 0.49,
-      "rules_deployed_txn": 0.49,
+      "rules_deployed_review": 0.5342857142857143,
+      "rules_deployed_txn": 0.5342857142857143,
       "rules_retrained": 0.0,
-      "rules_retrained_review": 0.48142857142857143,
-      "rules_retrained_txn": 0.48142857142857143
+      "rules_retrained_review": 0.49714285714285716,
+      "rules_retrained_txn": 0.49714285714285716
     },
     "order_ref_redacted": {
-      "rules_deployed": 0.945,
-      "rules_deployed_review": 0.945,
+      "rules_deployed": 0.975,
+      "rules_deployed_review": 0.975,
       "rules_deployed_txn": 0.5,
-      "rules_retrained": 1.0,
-      "rules_retrained_review": 1.0,
-      "rules_retrained_txn": 0.5
+      "rules_retrained": 0.92,
+      "rules_retrained_review": 0.92,
+      "rules_retrained_txn": 0.425
     },
     "order_ref_flagged": {
       "rules_deployed": 0.0,
       "rules_deployed_review": 0.0,
-      "rules_deployed_txn": 0.445,
+      "rules_deployed_txn": 0.475,
       "rules_retrained": 0.0,
       "rules_retrained_review": 0.0,
-      "rules_retrained_txn": 0.5
+      "rules_retrained_txn": 0.495
     },
     "town_redacted": {
-      "rules_deployed": 0.17,
-      "rules_deployed_review": 0.17,
-      "rules_deployed_txn": 0.17,
-      "rules_retrained": 0.0,
-      "rules_retrained_review": 0.0,
-      "rules_retrained_txn": 0.0
+      "rules_deployed": 0.05,
+      "rules_deployed_review": 0.05,
+      "rules_deployed_txn": 0.05,
+      "rules_retrained": 0.01,
+      "rules_retrained_review": 0.01,
+      "rules_retrained_txn": 0.01
     },
     "town_flagged": {
       "rules_deployed": 0.0,
@@ -125,9 +125,9 @@
       "rules_deployed": 0.0,
       "rules_deployed_review": 0.0,
       "rules_deployed_txn": 0.0,
-      "rules_retrained": 0.006666666666666667,
-      "rules_retrained_review": 0.006666666666666667,
-      "rules_retrained_txn": 0.006666666666666667
+      "rules_retrained": 0.0,
+      "rules_retrained_review": 0.0,
+      "rules_retrained_txn": 0.0
     },
     "ird_leaked": {
       "rules_deployed": 0.0,
@@ -155,8 +155,8 @@
     },
     "nan_full_leaked": {
       "rules_deployed": 0.0,
-      "rules_deployed_review": 0.0,
-      "rules_deployed_txn": 0.0,
+      "rules_deployed_review": 0.06,
+      "rules_deployed_txn": 0.06,
       "rules_retrained": 0.0,
       "rules_retrained_review": 0.0,
       "rules_retrained_txn": 0.0

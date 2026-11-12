@@ -2,54 +2,54 @@
   "name": "m3open_names_counterfactual",
   "metrics": {
     "maori": {
-      "openai-privacy-filter": 0.5238095238095238,
-      "deberta-v3-small-open": 0.002380952380952381,
-      "modernbert-base-open": 0.016904761904761905,
-      "mdeberta-v3-base-open": 0.01380952380952381,
-      "rules_openai-privacy-filter": 0.5238095238095238,
-      "rules_deberta-v3-small-open": 0.002380952380952381,
-      "rules_modernbert-base-open": 0.016904761904761905,
-      "rules_mdeberta-v3-base-open": 0.01380952380952381
+      "openai-privacy-filter": 0.5374,
+      "deberta-v3-small-open": 0.0006,
+      "modernbert-base-open": 0.0172,
+      "mdeberta-v3-base-open": 0.0128,
+      "rules_openai-privacy-filter": 0.5374,
+      "rules_deberta-v3-small-open": 0.0006,
+      "rules_modernbert-base-open": 0.0172,
+      "rules_mdeberta-v3-base-open": 0.0128
     },
     "pakeha": {
-      "openai-privacy-filter": 0.14285714285714285,
-      "deberta-v3-small-open": 0.0016666666666666668,
-      "modernbert-base-open": 0.034523809523809526,
-      "mdeberta-v3-base-open": 0.007857142857142858,
-      "rules_openai-privacy-filter": 0.14285714285714285,
-      "rules_deberta-v3-small-open": 0.0016666666666666668,
-      "rules_modernbert-base-open": 0.034523809523809526,
-      "rules_mdeberta-v3-base-open": 0.007857142857142858
+      "openai-privacy-filter": 0.2208,
+      "deberta-v3-small-open": 0.001,
+      "modernbert-base-open": 0.0274,
+      "mdeberta-v3-base-open": 0.0236,
+      "rules_openai-privacy-filter": 0.2208,
+      "rules_deberta-v3-small-open": 0.001,
+      "rules_modernbert-base-open": 0.0274,
+      "rules_mdeberta-v3-base-open": 0.0236
     },
     "pasifika": {
-      "openai-privacy-filter": 0.3738095238095238,
+      "openai-privacy-filter": 0.4082,
       "deberta-v3-small-open": 0.0,
-      "modernbert-base-open": 0.0,
-      "mdeberta-v3-base-open": 0.008809523809523809,
-      "rules_openai-privacy-filter": 0.3738095238095238,
-      "rules_deberta-v3-small-open": 0.0,
-      "rules_modernbert-base-open": 0.0,
-      "rules_mdeberta-v3-base-open": 0.008809523809523809
-    },
-    "asian_nz": {
-      "openai-privacy-filter": 0.14714285714285713,
-      "deberta-v3-small-open": 0.0,
-      "modernbert-base-open": 0.0038095238095238095,
+      "modernbert-base-open": 0.0022,
       "mdeberta-v3-base-open": 0.0,
-      "rules_openai-privacy-filter": 0.14714285714285713,
+      "rules_openai-privacy-filter": 0.4082,
       "rules_deberta-v3-small-open": 0.0,
-      "rules_modernbert-base-open": 0.0038095238095238095,
+      "rules_modernbert-base-open": 0.0022,
       "rules_mdeberta-v3-base-open": 0.0
     },
+    "asian_nz": {
+      "openai-privacy-filter": 0.2186,
+      "deberta-v3-small-open": 0.0,
+      "modernbert-base-open": 0.0096,
+      "mdeberta-v3-base-open": 0.0066,
+      "rules_openai-privacy-filter": 0.2186,
+      "rules_deberta-v3-small-open": 0.0,
+      "rules_modernbert-base-open": 0.0096,
+      "rules_mdeberta-v3-base-open": 0.0066
+    },
     "gap": {
-      "openai-privacy-filter": 0.380952380952381,
-      "deberta-v3-small-open": 0.0007142857142857144,
-      "modernbert-base-open": -0.01761904761904762,
-      "mdeberta-v3-base-open": 0.005952380952380952,
-      "rules_openai-privacy-filter": 0.380952380952381,
-      "rules_deberta-v3-small-open": 0.0007142857142857144,
-      "rules_modernbert-base-open": -0.01761904761904762,
-      "rules_mdeberta-v3-base-open": 0.005952380952380952
+      "openai-privacy-filter": 0.3166,
+      "deberta-v3-small-open": -0.0004000000000000001,
+      "modernbert-base-open": -0.0102,
+      "mdeberta-v3-base-open": -0.010799999999999999,
+      "rules_openai-privacy-filter": 0.3166,
+      "rules_deberta-v3-small-open": -0.0004000000000000001,
+      "rules_modernbert-base-open": -0.0102,
+      "rules_mdeberta-v3-base-open": -0.010799999999999999
     }
   },
   "source": {

@@ -1,0 +1,16 @@
+id = "2026-11-11-browser-latency"
+status = "done"
+note = "In-browser latency of the shipped v4 int4 student (HF b48e3be, sha256 9eb92686…) on the 2,750 held-out v4 documents: Chrome 155, visible tab, ONNX Runtime Web, WebAssembly, one thread, on this laptop (8 logical cores). The page POSTs timings to the dev server, which writes ml/results/browser_latency.json. Start time not recorded; the run took about 20 minutes."
+started = "2026-11-11T16:14:50-10:00"
+finished = "2026-11-11T16:14:25-10:00"
+exit_code = 0
+commit = "c6b64c705ef42d0ef4de225c35f4fff5ad486fcf"
+dirty = false
+changed_outputs = ["ml/results/browser_latency.json"]
+command = "open http://localhost:5174/bench.html (npm --prefix demo run dev; demo/src/bench.ts)"
+cwd = "demo"
+host = "Jesses-MacBook-Air-2.local"
+runner = "chrome"
+
+[outputs]
+"ml/results/browser_latency.json" = "sha256:58e8bf5f4a62ac3c6dd36e1b26adf53ebb767faa1ce012cea7cf40d5d92ea65f"

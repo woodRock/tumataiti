@@ -3,72 +3,81 @@
   "metrics": {
     "doc_leak": {
       "rules": 1.0,
-      "deberta-v3-small-open-int8-int4-block": 0.0074285714285714285,
-      "modernbert-base-open-int8-int4-block": 0.07085714285714285,
-      "mdeberta-v3-base-open-int8-int4-block": 0.09314285714285714,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.006857142857142857,
-      "rules_modernbert-base-open-int8-int4-block": 0.027428571428571427,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.013714285714285714
+      "deberta-v3-small-open-int8-int4-block": 0.02181818181818182,
+      "modernbert-base-open-int8-int4-block": 0.07709090909090908,
+      "mdeberta-v3-base-open-int8-int4-block": 0.027636363636363636,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.021454545454545455,
+      "rules_modernbert-base-open-int8-int4-block": 0.06509090909090909,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.02327272727272727
     },
     "span_leak": {
-      "rules": 0.6410256410256411,
-      "deberta-v3-small-open-int8-int4-block": 0.0013333333333333333,
-      "modernbert-base-open-int8-int4-block": 0.014153846153846154,
-      "mdeberta-v3-base-open-int8-int4-block": 0.017025641025641025,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.0012307692307692308,
-      "rules_modernbert-base-open-int8-int4-block": 0.0056410256410256415,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0024615384615384616
+      "rules": 0.765625,
+      "deberta-v3-small-open-int8-int4-block": 0.00375,
+      "modernbert-base-open-int8-int4-block": 0.014,
+      "mdeberta-v3-base-open-int8-int4-block": 0.00475,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0036875,
+      "rules_modernbert-base-open-int8-int4-block": 0.0119375,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004
     },
     "precision": {
-      "rules": 0.8884762220931197,
-      "deberta-v3-small-open-int8-int4-block": 0.9887858971728328,
-      "modernbert-base-open-int8-int4-block": 0.9305075434222203,
-      "mdeberta-v3-base-open-int8-int4-block": 0.9783983514531372,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.9435420710321109,
-      "rules_modernbert-base-open-int8-int4-block": 0.9235239113010953,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9376788041914241
+      "rules": 0.9002840428133406,
+      "deberta-v3-small-open-int8-int4-block": 0.9479687637097481,
+      "modernbert-base-open-int8-int4-block": 0.9523491960945722,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9447871715912953,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9227244868226713,
+      "rules_modernbert-base-open-int8-int4-block": 0.9268221027945073,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9237681480437365
     },
     "recall": {
-      "rules": 0.3860738950898895,
-      "deberta-v3-small-open-int8-int4-block": 0.9992787204500785,
-      "modernbert-base-open-int8-int4-block": 0.99259786861893,
-      "mdeberta-v3-base-open-int8-int4-block": 0.9931298122869971,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.9992967524388264,
-      "rules_modernbert-base-open-int8-int4-block": 0.9973132336765422,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9988189047370034
+      "rules": 0.2601525256972642,
+      "deberta-v3-small-open-int8-int4-block": 0.9983638547798814,
+      "modernbert-base-open-int8-int4-block": 0.9936021829764797,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9972984578923623,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9983855975735042,
+      "rules_modernbert-base-open-int8-int4-block": 0.9946023514831304,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9974560931461279
     },
     "f1": {
-      "rules": 0.5382565520708944,
-      "deberta-v3-small-open-int8-int4-block": 0.9940046187305217,
-      "modernbert-base-open-int8-int4-block": 0.9605503666639038,
-      "mdeberta-v3-base-open-int8-int4-block": 0.9857090443762361,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.9706194008284366,
-      "rules_modernbert-base-open-int8-int4-block": 0.9590012570982704,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9672836811315813
+      "rules": 0.4036604394214144,
+      "deberta-v3-small-open-int8-int4-block": 0.972513886020788,
+      "modernbert-base-open-int8-int4-block": 0.9725384204071752,
+      "mdeberta-v3-base-open-int8-int4-block": 0.9703328987764535,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.9590651214156852,
+      "rules_modernbert-base-open-int8-int4-block": 0.9595167177077653,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.9591989817387281
     },
     "exact_f1": {
-      "rules": 0.5185185185185185,
-      "deberta-v3-small-open-int8-int4-block": 0.9334625982243085,
-      "modernbert-base-open-int8-int4-block": 0.8570436507936507,
-      "mdeberta-v3-base-open-int8-int4-block": 0.6189491104675218,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.9218057234985892,
-      "rules_modernbert-base-open-int8-int4-block": 0.8708633988554367,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.7304139746350802
+      "rules": 0.375,
+      "deberta-v3-small-open-int8-int4-block": 0.856225044282326,
+      "modernbert-base-open-int8-int4-block": 0.8545132743362831,
+      "mdeberta-v3-base-open-int8-int4-block": 0.6976979225154407,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.8509002026946465,
+      "rules_modernbert-base-open-int8-int4-block": 0.8513766842413591,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.7604823160378716
     },
     "leak_address": {
       "rules": 1.0,
       "deberta-v3-small-open-int8-int4-block": 0.0,
-      "modernbert-base-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.001,
       "mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.001,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "leak_affiliation": {
+      "rules": 1.0,
+      "deberta-v3-small-open-int8-int4-block": 0.0114,
+      "modernbert-base-open-int8-int4-block": 0.0122,
+      "mdeberta-v3-base-open-int8-int4-block": 0.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0114,
+      "rules_modernbert-base-open-int8-int4-block": 0.0122,
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
     },
     "leak_date": {
       "rules": 0.0,
       "deberta-v3-small-open-int8-int4-block": 0.002,
-      "modernbert-base-open-int8-int4-block": 0.164,
-      "mdeberta-v3-base-open-int8-int4-block": 0.284,
+      "modernbert-base-open-int8-int4-block": 0.062,
+      "mdeberta-v3-base-open-int8-int4-block": 0.024,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
       "rules_modernbert-base-open-int8-int4-block": 0.0,
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
@@ -76,7 +85,7 @@
     "leak_email": {
       "rules": 0.0,
       "deberta-v3-small-open-int8-int4-block": 0.0,
-      "modernbert-base-open-int8-int4-block": 0.0013333333333333333,
+      "modernbert-base-open-int8-int4-block": 0.0,
       "mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
       "rules_modernbert-base-open-int8-int4-block": 0.0,
@@ -93,32 +102,32 @@
     },
     "leak_person": {
       "rules": 1.0,
-      "deberta-v3-small-open-int8-int4-block": 0.002285714285714286,
-      "modernbert-base-open-int8-int4-block": 0.010476190476190476,
-      "mdeberta-v3-base-open-int8-int4-block": 0.004571428571428572,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.002285714285714286,
-      "rules_modernbert-base-open-int8-int4-block": 0.010476190476190476,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004571428571428572
+      "deberta-v3-small-open-int8-int4-block": 0.00032,
+      "modernbert-base-open-int8-int4-block": 0.02064,
+      "mdeberta-v3-base-open-int8-int4-block": 0.01024,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.00032,
+      "rules_modernbert-base-open-int8-int4-block": 0.02064,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.01024
     },
     "leak_phone": {
       "rules": 0.0,
       "deberta-v3-small-open-int8-int4-block": 0.0,
-      "modernbert-base-open-int8-int4-block": 0.0,
+      "modernbert-base-open-int8-int4-block": 0.0013333333333333333,
       "mdeberta-v3-base-open-int8-int4-block": 0.0,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
       "rules_modernbert-base-open-int8-int4-block": 0.0,
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
     },
     "ms": {
-      "rules": 0.04654199983633589,
-      "deberta-v3-small-open-int8-int4-block": 29.435666496283375,
-      "modernbert-base-open-int8-int4-block": 103.709417002392,
-      "mdeberta-v3-base-open-int8-int4-block": 78.22575000318466,
-      "rules_deberta-v3-small-open-int8-int4-block": 29.48220849611971,
-      "rules_modernbert-base-open-int8-int4-block": 103.75595900222834,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 78.272292003021
+      "rules": 0.04641600025934167,
+      "deberta-v3-small-open-int8-int4-block": 29.808812501869397,
+      "modernbert-base-open-int8-int4-block": 81.40847900176595,
+      "mdeberta-v3-base-open-int8-int4-block": 61.118104002162,
+      "rules_deberta-v3-small-open-int8-int4-block": 29.85522850212874,
+      "rules_modernbert-base-open-int8-int4-block": 81.4548950020253,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 61.16452000242134
     },
-    "docs": 1750
+    "docs": 2750
   },
   "source": {
     "path": "ml/results/m3open_int4_nz_test_full.json"

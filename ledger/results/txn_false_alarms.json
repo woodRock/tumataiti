@@ -26,24 +26,24 @@
       "rules_deberta-v3-small-open_review_txn": 0.0
     },
     "kin_redacted": {
-      "rules_deberta-v3-small-open_review": 0.2357142857142857,
-      "rules_deberta-v3-small-open_review_txn": 0.2357142857142857
+      "rules_deberta-v3-small-open_review": 0.21571428571428572,
+      "rules_deberta-v3-small-open_review_txn": 0.21571428571428572
     },
     "kin_flagged": {
-      "rules_deberta-v3-small-open_review": 0.5842857142857143,
-      "rules_deberta-v3-small-open_review_txn": 0.5842857142857143
+      "rules_deberta-v3-small-open_review": 0.55,
+      "rules_deberta-v3-small-open_review_txn": 0.55
     },
     "order_ref_redacted": {
-      "rules_deberta-v3-small-open_review": 0.99,
+      "rules_deberta-v3-small-open_review": 0.98,
       "rules_deberta-v3-small-open_review_txn": 0.5
     },
     "order_ref_flagged": {
       "rules_deberta-v3-small-open_review": 0.0,
-      "rules_deberta-v3-small-open_review_txn": 0.49
+      "rules_deberta-v3-small-open_review_txn": 0.48
     },
     "town_redacted": {
-      "rules_deberta-v3-small-open_review": 0.14,
-      "rules_deberta-v3-small-open_review_txn": 0.14
+      "rules_deberta-v3-small-open_review": 0.02,
+      "rules_deberta-v3-small-open_review_txn": 0.02
     },
     "town_flagged": {
       "rules_deberta-v3-small-open_review": 0.0,
@@ -78,8 +78,8 @@
       "rules_deberta-v3-small-open_review_txn": 0.0
     },
     "nan_full_leaked": {
-      "rules_deberta-v3-small-open_review": 0.0,
-      "rules_deberta-v3-small-open_review_txn": 0.0
+      "rules_deberta-v3-small-open_review": 0.09,
+      "rules_deberta-v3-small-open_review_txn": 0.09
     },
     "nhi_leaked": {
       "rules_deberta-v3-small-open_review": 0.0,

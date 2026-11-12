@@ -2,30 +2,34 @@
   "name": "m3open_lowercmp_nz_test_names",
   "metrics": {
     "doc_leak": {
-      "rules_deployed": 0.0,
-      "rules_retrained": 0.00125
+      "rules_deployed": 0.0008695652173913044,
+      "rules_retrained": 0.004347826086956522
     },
     "span_leak": {
-      "rules_deployed": 0.0,
-      "rules_retrained": 0.00024096385542168674
+      "rules_deployed": 0.00015267175572519084,
+      "rules_retrained": 0.0007633587786259542
     },
     "precision": {
-      "rules_deployed": 0.9366640749897353,
-      "rules_retrained": 0.9366399608586631
+      "rules_deployed": 0.958197318609184,
+      "rules_retrained": 0.9582034537114954
     },
     "recall": {
-      "rules_deployed": 1.0,
-      "rules_retrained": 0.9998694261278318
+      "rules_deployed": 0.9999134472120729,
+      "rules_retrained": 0.9996414241643019
     },
     "f1": {
-      "rules_deployed": 0.9672963804987189,
-      "rules_retrained": 0.9672224327396741
+      "rules_deployed": 0.9786110169901737,
+      "rules_retrained": 0.9784839196724933
     },
     "exact_f1": {
-      "rules_deployed": 0.9655578451574919,
-      "rules_retrained": 0.9665803718522005
+      "rules_deployed": 0.9739254583709047,
+      "rules_retrained": 0.9754997745378025
     },
     "leak_address": {
+      "rules_deployed": 0.0,
+      "rules_retrained": 0.0
+    },
+    "leak_affiliation": {
       "rules_deployed": 0.0,
       "rules_retrained": 0.0
     },
@@ -46,8 +50,8 @@
       "rules_retrained": 0.0
     },
     "leak_person": {
-      "rules_deployed": 0.0,
-      "rules_retrained": 0.0006451612903225806
+      "rules_deployed": 0.0005128205128205128,
+      "rules_retrained": 0.002564102564102564
     },
     "leak_phone": {
       "rules_deployed": 0.0,
@@ -62,10 +66,10 @@
       "rules_retrained": 0.0
     },
     "ms": {
-      "rules_deployed": 27.190021004571463,
-      "rules_retrained": 56.311967977308086
+      "rules_deployed": 27.476167000713758,
+      "rules_retrained": 56.083665487676626
     },
-    "docs": 1600
+    "docs": 2300
   },
   "source": {
     "path": "ml/results/m3open_lowercmp_nz_test_names.json"

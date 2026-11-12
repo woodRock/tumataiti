@@ -3,27 +3,27 @@
   "metrics": {
     "doc_leak": {
       "rules_deployed": 0.0,
-      "rules_retrained": 0.0033333333333333335
+      "rules_retrained": 0.0
     },
     "span_leak": {
       "rules_deployed": 0.0,
-      "rules_retrained": 0.0014285714285714286
+      "rules_retrained": 0.0
     },
     "precision": {
-      "rules_deployed": 0.7002520161290322,
-      "rules_retrained": 0.6734099839906855
+      "rules_deployed": 0.700923263205691,
+      "rules_retrained": 0.6914004180352344
     },
     "recall": {
       "rules_deployed": 1.0,
-      "rules_retrained": 0.9991362556683222
+      "rules_retrained": 1.0
     },
     "f1": {
-      "rules_deployed": 0.8237037915394421,
-      "rules_retrained": 0.8045557294383585
+      "rules_deployed": 0.8241680014237409,
+      "rules_retrained": 0.8175478859563952
     },
     "exact_f1": {
-      "rules_deployed": 0.5937142857142856,
-      "rules_retrained": 0.5617606602475929
+      "rules_deployed": 0.5935706084959816,
+      "rules_retrained": 0.5806451612903226
     },
     "leak_address": {
       "rules_deployed": 0.0,
@@ -39,15 +39,15 @@
     },
     "leak_person": {
       "rules_deployed": 0.0,
-      "rules_retrained": 0.0025
+      "rules_retrained": 0.0
     },
     "leak_phone": {
       "rules_deployed": 0.0,
       "rules_retrained": 0.0
     },
     "ms": {
-      "rules_deployed": 16.546999497222714,
-      "rules_retrained": 33.893826708663255
+      "rules_deployed": 19.41010450173053,
+      "rules_retrained": 35.696582090167794
     },
     "docs": 600
   },

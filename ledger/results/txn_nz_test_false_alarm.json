@@ -2,28 +2,28 @@
   "name": "txn_nz_test_false_alarm",
   "metrics": {
     "doc_leak": {
-      "rules_deberta-v3-small-open_review": 0.0,
-      "rules_deberta-v3-small-open_review_txn": 0.0
+      "rules_deberta-v3-small-open_review": 0.015,
+      "rules_deberta-v3-small-open_review_txn": 0.015
     },
     "span_leak": {
-      "rules_deberta-v3-small-open_review": 0.0,
-      "rules_deberta-v3-small-open_review_txn": 0.0
+      "rules_deberta-v3-small-open_review": 0.0064285714285714285,
+      "rules_deberta-v3-small-open_review_txn": 0.0064285714285714285
     },
     "precision": {
-      "rules_deberta-v3-small-open_review": 0.7699512303258701,
-      "rules_deberta-v3-small-open_review_txn": 0.8028779472954231
+      "rules_deberta-v3-small-open_review": 0.7727374052608114,
+      "rules_deberta-v3-small-open_review_txn": 0.808041958041958
     },
     "recall": {
-      "rules_deberta-v3-small-open_review": 1.0,
-      "rules_deberta-v3-small-open_review_txn": 1.0
+      "rules_deberta-v3-small-open_review": 0.9980565752537249,
+      "rules_deberta-v3-small-open_review_txn": 0.9980565752537249
     },
     "f1": {
-      "rules_deberta-v3-small-open_review": 0.8700253624322886,
-      "rules_deberta-v3-small-open_review_txn": 0.8906625637080489
+      "rules_deberta-v3-small-open_review": 0.8710619719194648,
+      "rules_deberta-v3-small-open_review_txn": 0.8930538112259685
     },
     "exact_f1": {
-      "rules_deberta-v3-small-open_review": 0.6562897077509531,
-      "rules_deberta-v3-small-open_review_txn": 0.6778215223097114
+      "rules_deberta-v3-small-open_review": 0.659892029215624,
+      "rules_deberta-v3-small-open_review_txn": 0.6813114754098359
     },
     "leak_address": {
       "rules_deberta-v3-small-open_review": 0.0,
@@ -38,16 +38,16 @@
       "rules_deberta-v3-small-open_review_txn": 0.0
     },
     "leak_person": {
-      "rules_deberta-v3-small-open_review": 0.0,
-      "rules_deberta-v3-small-open_review_txn": 0.0
+      "rules_deberta-v3-small-open_review": 0.01125,
+      "rules_deberta-v3-small-open_review_txn": 0.01125
     },
     "leak_phone": {
       "rules_deberta-v3-small-open_review": 0.0,
       "rules_deberta-v3-small-open_review_txn": 0.0
     },
     "ms": {
-      "rules_deberta-v3-small-open_review": 10.711693030316383,
-      "rules_deberta-v3-small-open_review_txn": 10.711693030316383
+      "rules_deberta-v3-small-open_review": 16.654820217809174,
+      "rules_deberta-v3-small-open_review_txn": 16.654820217809174
     },
     "docs": 600
   },

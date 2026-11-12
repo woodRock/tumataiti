@@ -3,45 +3,51 @@
   "metrics": {
     "doc_leak": {
       "rules": 1.0,
-      "rules_deberta-v3-small-open": 0.31257142857142856,
-      "rules_modernbert-base-open": 0.676,
-      "rules_mdeberta-v3-base-open": 0.1382857142857143
+      "rules_deberta-v3-small-open": 0.2887272727272727,
+      "rules_modernbert-base-open": 0.9912727272727273,
+      "rules_mdeberta-v3-base-open": 0.33054545454545453
     },
     "span_leak": {
-      "rules": 0.6410256410256411,
-      "rules_deberta-v3-small-open": 0.08297435897435898,
-      "rules_modernbert-base-open": 0.23405128205128206,
-      "rules_mdeberta-v3-base-open": 0.03487179487179487
+      "rules": 0.765625,
+      "rules_deberta-v3-small-open": 0.065875,
+      "rules_modernbert-base-open": 0.6361875,
+      "rules_mdeberta-v3-base-open": 0.1043125
     },
     "precision": {
-      "rules": 0.8884762220931197,
-      "rules_deberta-v3-small-open": 0.8249821840445667,
-      "rules_modernbert-base-open": 0.8948027379984098,
-      "rules_mdeberta-v3-base-open": 0.8450520933599255
+      "rules": 0.9002840428133406,
+      "rules_deberta-v3-small-open": 0.7800674182618567,
+      "rules_modernbert-base-open": 0.9076897494257891,
+      "rules_mdeberta-v3-base-open": 0.8971887716322912
     },
     "recall": {
-      "rules": 0.3860738950898895,
-      "rules_deberta-v3-small-open": 0.9706709703013146,
-      "rules_modernbert-base-open": 0.8827740411489984,
-      "rules_mdeberta-v3-base-open": 0.9894242385992751
+      "rules": 0.2601525256972642,
+      "rules_deberta-v3-small-open": 0.9786322695671553,
+      "rules_modernbert-base-open": 0.4747375916594644,
+      "rules_mdeberta-v3-base-open": 0.9431969516603341
     },
     "f1": {
-      "rules": 0.5382565520708944,
-      "rules_deberta-v3-small-open": 0.8919164095023094,
-      "rules_modernbert-base-open": 0.8887476910369118,
-      "rules_mdeberta-v3-base-open": 0.9115571670051541
+      "rules": 0.4036604394214144,
+      "rules_deberta-v3-small-open": 0.8681404258294416,
+      "rules_modernbert-base-open": 0.6234171342098876,
+      "rules_mdeberta-v3-base-open": 0.9196177776835589
     },
     "exact_f1": {
-      "rules": 0.5185185185185185,
-      "rules_deberta-v3-small-open": 0.760598852665454,
-      "rules_modernbert-base-open": 0.6627584736729908,
-      "rules_mdeberta-v3-base-open": 0.5490229396771453
+      "rules": 0.375,
+      "rules_deberta-v3-small-open": 0.523435300140791,
+      "rules_modernbert-base-open": 0.4119906479625918,
+      "rules_mdeberta-v3-base-open": 0.4396485447556288
     },
     "leak_address": {
       "rules": 1.0,
-      "rules_deberta-v3-small-open": 0.033,
-      "rules_modernbert-base-open": 0.005,
-      "rules_mdeberta-v3-base-open": 0.006
+      "rules_deberta-v3-small-open": 0.027,
+      "rules_modernbert-base-open": 0.021,
+      "rules_mdeberta-v3-base-open": 0.008
+    },
+    "leak_affiliation": {
+      "rules": 1.0,
+      "rules_deberta-v3-small-open": 0.0886,
+      "rules_modernbert-base-open": 0.9996,
+      "rules_mdeberta-v3-base-open": 0.183
     },
     "leak_date": {
       "rules": 0.0,
@@ -63,9 +69,9 @@
     },
     "leak_person": {
       "rules": 1.0,
-      "rules_deberta-v3-small-open": 0.1478095238095238,
-      "rules_modernbert-base-open": 0.4337142857142857,
-      "rules_mdeberta-v3-base-open": 0.06361904761904762
+      "rules_deberta-v3-small-open": 0.09344,
+      "rules_modernbert-base-open": 0.8256,
+      "rules_mdeberta-v3-base-open": 0.11936
     },
     "leak_phone": {
       "rules": 0.0,
@@ -74,12 +80,12 @@
       "rules_mdeberta-v3-base-open": 0.0
     },
     "ms": {
-      "rules": 0.04669549525715411,
-      "rules_deberta-v3-small-open": 66.43193101626821,
-      "rules_modernbert-base-open": 192.14480349910446,
-      "rules_mdeberta-v3-base-open": 144.04780900804326
+      "rules": 0.049456022679805756,
+      "rules_deberta-v3-small-open": 64.34532930143178,
+      "rules_modernbert-base-open": 188.77491302555427,
+      "rules_mdeberta-v3-base-open": 139.9212580290623
     },
-    "docs": 1750
+    "docs": 2750
   },
   "source": {
     "path": "ml/results/m3open_robust_case_upper_nz_test_full.json"
