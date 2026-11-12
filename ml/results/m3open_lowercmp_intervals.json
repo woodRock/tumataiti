@@ -3,111 +3,127 @@
   "confidence": 0.95,
   "doc_leak": {
     "nz_test_full/plain": {
-      "deployed": 0.006857142857142857,
-      "retrained": 0.0034285714285714284,
-      "deployed_minus_retrained_lo": -0.001142857142857143,
-      "deployed_minus_retrained_hi": 0.008
+      "deployed": 0.021454545454545455,
+      "retrained": 0.025818181818181817,
+      "deployed_minus_retrained_lo": -0.012363636363636363,
+      "deployed_minus_retrained_hi": 0.0036363636363636364
     },
     "nz_test_full/nomacron": {
-      "deployed": 0.008571428571428572,
-      "retrained": 0.0034285714285714284,
-      "deployed_minus_retrained_lo": 0.0005714285714285715,
-      "deployed_minus_retrained_hi": 0.009714285714285713
+      "deployed": 0.058545454545454546,
+      "retrained": 0.12618181818181817,
+      "deployed_minus_retrained_lo": -0.08072727272727273,
+      "deployed_minus_retrained_hi": -0.05527272727272727
     },
     "nz_test_full/lower": {
-      "deployed": 0.9474285714285714,
-      "retrained": 0.07714285714285714,
-      "deployed_minus_retrained_lo": 0.8542857142857143,
-      "deployed_minus_retrained_hi": 0.8857142857142857
+      "deployed": 0.9654545454545455,
+      "retrained": 0.18545454545454546,
+      "deployed_minus_retrained_lo": 0.7647272727272727,
+      "deployed_minus_retrained_hi": 0.7956363636363636
     },
     "nz_test_names": {
-      "deployed": 0.0,
-      "retrained": 0.00125,
-      "deployed_minus_retrained_lo": -0.003125,
-      "deployed_minus_retrained_hi": 0.0
+      "deployed": 0.0008695652173913044,
+      "retrained": 0.004347826086956522,
+      "deployed_minus_retrained_lo": -0.006521739130434782,
+      "deployed_minus_retrained_hi": -0.0008695652173913044
     },
     "open_en_test": {
-      "deployed": 0.03194726166328601,
-      "retrained": 0.04006085192697769,
-      "deployed_minus_retrained_lo": -0.015205271160669031,
-      "deployed_minus_retrained_hi": -0.0015151515151515152
+      "deployed": 0.034482758620689655,
+      "retrained": 0.03144016227180527,
+      "deployed_minus_retrained_lo": -0.003051881993896236,
+      "deployed_minus_retrained_hi": 0.009155645981688708
     },
     "pii300k_en_val": {
-      "deployed": 0.3322764743183259,
-      "retrained": 0.39743183259353204,
-      "deployed_minus_retrained_lo": -0.07374639685345959,
-      "deployed_minus_retrained_hi": -0.05658805940744831
+      "deployed": 0.3216550412175016,
+      "retrained": 0.33069118579581486,
+      "deployed_minus_retrained_lo": -0.016760417910711832,
+      "deployed_minus_retrained_hi": -0.0012716427708019948
     },
     "nz_test_false_alarm": {
       "deployed": 0.0,
-      "retrained": 0.0033333333333333335,
-      "deployed_minus_retrained_lo": -0.008333333333333333,
+      "retrained": 0.0,
+      "deployed_minus_retrained_lo": 0.0,
       "deployed_minus_retrained_hi": 0.0
     }
   },
   "gap": {
     "plain": {
       "deployed": {
-        "gap": -0.0030952380952380953,
-        "lo": -0.006559899206709983,
-        "hi": 0.00023375955990788118
+        "gap": -0.0006,
+        "lo": -0.002785515320334262,
+        "hi": 0.0010185581456099377
       },
       "retrained": {
-        "gap": 0.002380952380952381,
-        "lo": 0.0004728076526029307,
-        "hi": 0.004558623353372058
+        "gap": 0.009399999999999999,
+        "lo": 0.0066651905619240955,
+        "hi": 0.012276139789466971
       }
     },
     "nomacron": {
       "deployed": {
-        "gap": -0.0030952380952380953,
-        "lo": -0.00694294827476313,
-        "hi": 0.0007144558228149556
+        "gap": -0.0018,
+        "lo": -0.004020100502512562,
+        "hi": -0.0001986876681443198
       },
       "retrained": {
-        "gap": 0.0016666666666666668,
-        "lo": 0.0,
-        "hi": 0.0035595633602278124
+        "gap": 0.0026000000000000003,
+        "lo": 0.0009834727415215917,
+        "hi": 0.004392094230385306
       }
     },
     "lower": {
       "deployed": {
-        "gap": 0.2678571428571428,
-        "lo": 0.24570517700886788,
-        "hi": 0.2907033682156099
+        "gap": 0.3184,
+        "lo": 0.2987444480530005,
+        "hi": 0.33824180872784176
       },
       "retrained": {
-        "gap": 0.05904761904761904,
-        "lo": 0.04787962672362601,
-        "hi": 0.07051913536201233
+        "gap": 0.0886,
+        "lo": 0.0760163833627777,
+        "hi": 0.1008186499488709
       }
     }
   },
   "templates": {
     "nz_test_full/plain": {
+      "author_bio": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "consent_form": {
+        "deployed": 0.228,
+        "retrained": 0.22
+      },
       "cover_letter": {
         "deployed": 0.0,
         "retrained": 0.0
       },
       "discharge_summary": {
-        "deployed": 0.04,
+        "deployed": 0.008,
         "retrained": 0.0
       },
       "group_chat": {
         "deployed": 0.0,
-        "retrained": 0.004
+        "retrained": 0.048
+      },
+      "pepeha_brief": {
+        "deployed": 0.0,
+        "retrained": 0.0
+      },
+      "pepeha_formal": {
+        "deployed": 0.0,
+        "retrained": 0.016
       },
       "school_newsletter": {
         "deployed": 0.0,
-        "retrained": 0.016
+        "retrained": 0.0
       },
       "tenancy": {
         "deployed": 0.0,
         "retrained": 0.0
       },
       "tribunal_summary": {
-        "deployed": 0.008,
-        "retrained": 0.004
+        "deployed": 0.0,
+        "retrained": 0.0
       },
       "voice_transcript": {
         "deployed": 0.0,
@@ -115,29 +131,45 @@
       }
     },
     "nz_test_full/nomacron": {
+      "author_bio": {
+        "deployed": 0.312,
+        "retrained": 0.4
+      },
+      "consent_form": {
+        "deployed": 0.228,
+        "retrained": 0.444
+      },
       "cover_letter": {
-        "deployed": 0.0,
+        "deployed": 0.076,
         "retrained": 0.0
       },
       "discharge_summary": {
-        "deployed": 0.028,
+        "deployed": 0.004,
         "retrained": 0.0
       },
       "group_chat": {
-        "deployed": 0.02,
-        "retrained": 0.008
+        "deployed": 0.0,
+        "retrained": 0.004
+      },
+      "pepeha_brief": {
+        "deployed": 0.024,
+        "retrained": 0.06
+      },
+      "pepeha_formal": {
+        "deployed": 0.0,
+        "retrained": 0.48
       },
       "school_newsletter": {
         "deployed": 0.0,
-        "retrained": 0.012
+        "retrained": 0.0
       },
       "tenancy": {
         "deployed": 0.0,
         "retrained": 0.0
       },
       "tribunal_summary": {
-        "deployed": 0.012,
-        "retrained": 0.004
+        "deployed": 0.0,
+        "retrained": 0.0
       },
       "voice_transcript": {
         "deployed": 0.0,
@@ -145,33 +177,49 @@
       }
     },
     "nz_test_full/lower": {
+      "author_bio": {
+        "deployed": 0.896,
+        "retrained": 0.004
+      },
+      "consent_form": {
+        "deployed": 1.0,
+        "retrained": 0.576
+      },
       "cover_letter": {
-        "deployed": 0.944,
-        "retrained": 0.04
+        "deployed": 1.0,
+        "retrained": 0.096
       },
       "discharge_summary": {
         "deployed": 0.96,
-        "retrained": 0.02
+        "retrained": 0.004
       },
       "group_chat": {
-        "deployed": 0.996,
-        "retrained": 0.196
+        "deployed": 1.0,
+        "retrained": 0.272
+      },
+      "pepeha_brief": {
+        "deployed": 1.0,
+        "retrained": 0.024
+      },
+      "pepeha_formal": {
+        "deployed": 1.0,
+        "retrained": 0.6
       },
       "school_newsletter": {
         "deployed": 1.0,
-        "retrained": 0.148
+        "retrained": 0.344
       },
       "tenancy": {
-        "deployed": 0.844,
-        "retrained": 0.02
+        "deployed": 0.82,
+        "retrained": 0.04
       },
       "tribunal_summary": {
-        "deployed": 0.988,
-        "retrained": 0.008
+        "deployed": 0.996,
+        "retrained": 0.036
       },
       "voice_transcript": {
-        "deployed": 0.9,
-        "retrained": 0.108
+        "deployed": 0.948,
+        "retrained": 0.044
       }
     }
   }

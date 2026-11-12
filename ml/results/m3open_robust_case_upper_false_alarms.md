@@ -2,7 +2,7 @@
 
 | Detector | n | Redacted |
 |---|---:|---:|
-| rules | 42734 | 0.0% |
-| rules+deberta-v3-small-open | 42734 | 9.3% |
-| rules+modernbert-base-open | 42734 | 3.2% |
-| rules+mdeberta-v3-base-open | 42734 | 7.6% |
+| rules | 60502 | 0.0% |
+| rules+deberta-v3-small-open | 60502 | 17.7% |
+| rules+modernbert-base-open | 60502 | 1.6% |
+| rules+mdeberta-v3-base-open | 60502 | 4.6% |

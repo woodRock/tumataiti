@@ -2,22 +2,22 @@
   "deployed": {
     "not PII: kin_auntie": {
       "n": 85,
-      "redacted": 0.2823529411764706,
+      "redacted": 0.3411764705882353,
       "flagged": 0.0
     },
     "not PII: kin_english": {
       "n": 258,
-      "redacted": 0.2364341085271318,
+      "redacted": 0.3449612403100775,
       "flagged": 0.0
     },
     "not PII: kin_grandad": {
       "n": 80,
-      "redacted": 0.1625,
+      "redacted": 0.3625,
       "flagged": 0.0
     },
     "not PII: kin_granny": {
       "n": 93,
-      "redacted": 0.25806451612903225,
+      "redacted": 0.3333333333333333,
       "flagged": 0.0
     },
     "not PII: kin_kaumatua": {
@@ -32,7 +32,7 @@
     },
     "not PII: kin_nana": {
       "n": 73,
-      "redacted": 0.9863013698630136,
+      "redacted": 0.9726027397260274,
       "flagged": 0.0
     },
     "not PII: kin_poua": {
@@ -54,27 +54,27 @@
   "retrained": {
     "not PII: kin_auntie": {
       "n": 85,
-      "redacted": 0.32941176470588235,
+      "redacted": 0.29411764705882354,
       "flagged": 0.0
     },
     "not PII: kin_english": {
       "n": 258,
-      "redacted": 0.2713178294573643,
+      "redacted": 0.313953488372093,
       "flagged": 0.0
     },
     "not PII: kin_grandad": {
       "n": 80,
-      "redacted": 0.1875,
+      "redacted": 0.2625,
       "flagged": 0.0
     },
     "not PII: kin_granny": {
       "n": 93,
-      "redacted": 0.2903225806451613,
+      "redacted": 0.3763440860215054,
       "flagged": 0.0
     },
     "not PII: kin_kaumatua": {
       "n": 96,
-      "redacted": 0.96875,
+      "redacted": 1.0,
       "flagged": 0.0
     },
     "not PII: kin_koroua": {
@@ -84,7 +84,7 @@
     },
     "not PII: kin_nana": {
       "n": 73,
-      "redacted": 0.8904109589041096,
+      "redacted": 0.958904109589041,
       "flagged": 0.0
     },
     "not PII: kin_poua": {
@@ -99,7 +99,7 @@
     },
     "not PII: kin_te_reo": {
       "n": 369,
-      "redacted": 0.991869918699187,
+      "redacted": 1.0,
       "flagged": 0.0
     }
   }

@@ -1,29 +1,29 @@
 {
   "rules": {
     "not PII: word": {
-      "n": 42734,
+      "n": 60502,
       "redacted": 0.0,
       "flagged": 0.0
     }
   },
   "rules+deberta-v3-small-open": {
     "not PII: word": {
-      "n": 42734,
-      "redacted": 0.0929002667665091,
+      "n": 60502,
+      "redacted": 0.17741562262404548,
       "flagged": 0.0
     }
   },
   "rules+modernbert-base-open": {
     "not PII: word": {
-      "n": 42734,
-      "redacted": 0.032269387373051905,
+      "n": 60502,
+      "redacted": 0.016462265710224456,
       "flagged": 0.0
     }
   },
   "rules+mdeberta-v3-base-open": {
     "not PII: word": {
-      "n": 42734,
-      "redacted": 0.07628586137501756,
+      "n": 60502,
+      "redacted": 0.04583319559683977,
       "flagged": 0.0
     }
   }

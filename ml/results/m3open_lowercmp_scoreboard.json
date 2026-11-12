@@ -1,194 +1,194 @@
 {
   "wins": {
-    "retrained": 12,
-    "deployed": 20,
-    "tie": 5
+    "retrained": 15,
+    "deployed": 16,
+    "tie": 6
   },
   "rows": [
     {
       "row": "nz_test_full/plain: document leak",
-      "deployed": 0.7,
-      "retrained": 0.3,
-      "winner": "retrained"
+      "deployed": 2.1,
+      "retrained": 2.6,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_full/plain: span leak",
-      "deployed": 0.1,
-      "retrained": 0.1,
-      "winner": "tie"
+      "deployed": 0.4,
+      "retrained": 0.5,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_full/plain: char F1",
-      "deployed": 97.1,
-      "retrained": 96.3,
-      "winner": "deployed"
+      "deployed": 95.9,
+      "retrained": 96.5,
+      "winner": "retrained"
     },
     {
       "row": "nz_test_full/plain: exact-span F1",
-      "deployed": 92.2,
-      "retrained": 91.0,
-      "winner": "deployed"
+      "deployed": 85.1,
+      "retrained": 87.5,
+      "winner": "retrained"
     },
     {
       "row": "nz_test_full/nomacron: document leak",
-      "deployed": 0.9,
-      "retrained": 0.3,
-      "winner": "retrained"
+      "deployed": 5.9,
+      "retrained": 12.6,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_full/nomacron: span leak",
-      "deployed": 0.2,
-      "retrained": 0.1,
-      "winner": "retrained"
+      "deployed": 1.2,
+      "retrained": 3.1,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_full/nomacron: char F1",
-      "deployed": 96.7,
-      "retrained": 96.4,
-      "winner": "deployed"
+      "deployed": 95.1,
+      "retrained": 95.3,
+      "winner": "retrained"
     },
     {
       "row": "nz_test_full/nomacron: exact-span F1",
-      "deployed": 91.4,
-      "retrained": 90.9,
-      "winner": "deployed"
+      "deployed": 79.5,
+      "retrained": 82.2,
+      "winner": "retrained"
     },
     {
       "row": "nz_test_full/lower: document leak",
-      "deployed": 94.7,
-      "retrained": 7.7,
+      "deployed": 96.5,
+      "retrained": 18.5,
       "winner": "retrained"
     },
     {
       "row": "nz_test_full/lower: span leak",
-      "deployed": 45.2,
-      "retrained": 2.0,
+      "deployed": 61.2,
+      "retrained": 4.3,
       "winner": "retrained"
     },
     {
       "row": "nz_test_full/lower: char F1",
-      "deployed": 80.5,
-      "retrained": 95.6,
+      "deployed": 66.0,
+      "retrained": 95.0,
       "winner": "retrained"
     },
     {
       "row": "nz_test_full/lower: exact-span F1",
-      "deployed": 59.2,
+      "deployed": 45.4,
       "retrained": 78.8,
       "winner": "retrained"
     },
     {
       "row": "nz_test_names: document leak",
-      "deployed": 0.0,
-      "retrained": 0.1,
+      "deployed": 0.1,
+      "retrained": 0.4,
       "winner": "deployed"
     },
     {
       "row": "nz_test_names: span leak",
       "deployed": 0.0,
-      "retrained": 0.0,
-      "winner": "tie"
+      "retrained": 0.1,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_names: char F1",
-      "deployed": 96.7,
-      "retrained": 96.7,
-      "winner": "tie"
+      "deployed": 97.9,
+      "retrained": 97.8,
+      "winner": "deployed"
     },
     {
       "row": "nz_test_names: exact-span F1",
-      "deployed": 96.6,
-      "retrained": 96.7,
+      "deployed": 97.4,
+      "retrained": 97.5,
       "winner": "retrained"
     },
     {
       "row": "open_en_test: document leak",
-      "deployed": 3.2,
-      "retrained": 4.0,
-      "winner": "deployed"
+      "deployed": 3.4,
+      "retrained": 3.1,
+      "winner": "retrained"
     },
     {
       "row": "open_en_test: span leak",
-      "deployed": 1.1,
-      "retrained": 1.3,
-      "winner": "deployed"
+      "deployed": 1.2,
+      "retrained": 1.1,
+      "winner": "retrained"
     },
     {
       "row": "open_en_test: char F1",
       "deployed": 99.1,
-      "retrained": 99.0,
-      "winner": "deployed"
+      "retrained": 99.1,
+      "winner": "tie"
     },
     {
       "row": "open_en_test: exact-span F1",
-      "deployed": 95.4,
+      "deployed": 95.7,
       "retrained": 94.4,
       "winner": "deployed"
     },
     {
       "row": "pii300k_en_val: document leak",
-      "deployed": 33.2,
-      "retrained": 39.7,
+      "deployed": 32.2,
+      "retrained": 33.1,
       "winner": "deployed"
     },
     {
       "row": "pii300k_en_val: span leak",
-      "deployed": 11.8,
-      "retrained": 14.0,
-      "winner": "deployed"
+      "deployed": 11.3,
+      "retrained": 11.1,
+      "winner": "retrained"
     },
     {
       "row": "pii300k_en_val: char F1",
-      "deployed": 93.8,
-      "retrained": 92.9,
-      "winner": "deployed"
+      "deployed": 93.9,
+      "retrained": 93.9,
+      "winner": "tie"
     },
     {
       "row": "pii300k_en_val: exact-span F1",
-      "deployed": 76.2,
-      "retrained": 75.5,
+      "deployed": 77.5,
+      "retrained": 75.3,
       "winner": "deployed"
     },
     {
       "row": "nz_test_false_alarm: document leak",
       "deployed": 0.0,
-      "retrained": 0.3,
-      "winner": "deployed"
+      "retrained": 0.0,
+      "winner": "tie"
     },
     {
       "row": "nz_test_false_alarm: span leak",
       "deployed": 0.0,
-      "retrained": 0.1,
-      "winner": "deployed"
+      "retrained": 0.0,
+      "winner": "tie"
     },
     {
       "row": "nz_test_false_alarm: char F1",
       "deployed": 82.4,
-      "retrained": 80.5,
+      "retrained": 81.8,
       "winner": "deployed"
     },
     {
       "row": "nz_test_false_alarm: exact-span F1",
       "deployed": 59.4,
-      "retrained": 56.2,
+      "retrained": 58.1,
       "winner": "deployed"
     },
     {
       "row": "plain: size of the Māori − Pākehā gap",
-      "deployed": 0.3,
-      "retrained": 0.2,
-      "winner": "retrained"
+      "deployed": 0.1,
+      "retrained": 0.9,
+      "winner": "deployed"
     },
     {
       "row": "nomacron: size of the Māori − Pākehā gap",
-      "deployed": 0.3,
-      "retrained": 0.2,
-      "winner": "retrained"
+      "deployed": 0.2,
+      "retrained": 0.3,
+      "winner": "deployed"
     },
     {
       "row": "lower: size of the Māori − Pākehā gap",
-      "deployed": 26.8,
-      "retrained": 5.9,
+      "deployed": 31.8,
+      "retrained": 8.9,
       "winner": "retrained"
     },
     {
@@ -206,25 +206,25 @@
     {
       "row": "false alarm after review: invoice",
       "deployed": 0.0,
-      "retrained": 92.0,
+      "retrained": 79.0,
       "winner": "deployed"
     },
     {
       "row": "false alarm after review: kin",
-      "deployed": 22.7,
-      "retrained": 23.4,
+      "deployed": 22.1,
+      "retrained": 24.6,
       "winner": "deployed"
     },
     {
       "row": "false alarm after review: order_ref",
-      "deployed": 94.5,
-      "retrained": 100.0,
-      "winner": "deployed"
+      "deployed": 97.5,
+      "retrained": 92.0,
+      "winner": "retrained"
     },
     {
       "row": "false alarm after review: town",
-      "deployed": 17.0,
-      "retrained": 0.0,
+      "deployed": 5.0,
+      "retrained": 1.0,
       "winner": "retrained"
     }
   ]

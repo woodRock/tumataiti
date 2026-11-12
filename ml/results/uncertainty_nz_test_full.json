@@ -3,90 +3,114 @@
   "confidence": 0.95,
   "metrics": {
     "doc_leak": {
-      "rules_openai-privacy-filter": 0.4417142857142857,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.006857142857142857,
-      "rules_modernbert-base-open-int8-int4-block": 0.027428571428571427,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.013714285714285714
+      "rules_openai-privacy-filter": 0.6469090909090909,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.021454545454545455,
+      "rules_modernbert-base-open-int8-int4-block": 0.06509090909090909,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.02327272727272727
     },
     "doc_leak_lo": {
-      "rules_openai-privacy-filter": 0.4188571428571429,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.0034285714285714284,
-      "rules_modernbert-base-open-int8-int4-block": 0.02,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.008571428571428572
+      "rules_openai-privacy-filter": 0.6287272727272727,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.016363636363636365,
+      "rules_modernbert-base-open-int8-int4-block": 0.056,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.01781818181818182
     },
     "doc_leak_hi": {
-      "rules_openai-privacy-filter": 0.46514285714285714,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.010857142857142857,
-      "rules_modernbert-base-open-int8-int4-block": 0.03542857142857143,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.019428571428571427
+      "rules_openai-privacy-filter": 0.6643636363636364,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.02690909090909091,
+      "rules_modernbert-base-open-int8-int4-block": 0.07454545454545454,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.02909090909090909
     },
-    "tmpl_cover_letter": {
-      "rules_openai-privacy-filter": 0.692,
+    "tmpl_author_bio": {
+      "rules_openai-privacy-filter": 0.92,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
       "rules_modernbert-base-open-int8-int4-block": 0.0,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.04
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.016
+    },
+    "tmpl_consent_form": {
+      "rules_openai-privacy-filter": 0.756,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.228,
+      "rules_modernbert-base-open-int8-int4-block": 0.136,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004
+    },
+    "tmpl_cover_letter": {
+      "rules_openai-privacy-filter": 0.968,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.076
     },
     "tmpl_discharge_summary": {
-      "rules_openai-privacy-filter": 0.184,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.04,
-      "rules_modernbert-base-open-int8-int4-block": 0.004,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.024
+      "rules_openai-privacy-filter": 0.208,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.008,
+      "rules_modernbert-base-open-int8-int4-block": 0.012,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004
     },
     "tmpl_group_chat": {
-      "rules_openai-privacy-filter": 0.944,
+      "rules_openai-privacy-filter": 0.948,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_modernbert-base-open-int8-int4-block": 0.112,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.028
+      "rules_modernbert-base-open-int8-int4-block": 0.428,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.004
+    },
+    "tmpl_pepeha_brief": {
+      "rules_openai-privacy-filter": 1.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
+    },
+    "tmpl_pepeha_formal": {
+      "rules_openai-privacy-filter": 1.0,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.108,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.048
     },
     "tmpl_school_newsletter": {
-      "rules_openai-privacy-filter": 0.532,
+      "rules_openai-privacy-filter": 0.552,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.0,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.064
+    },
+    "tmpl_tenancy": {
+      "rules_openai-privacy-filter": 0.048,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.016,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.028
+    },
+    "tmpl_tribunal_summary": {
+      "rules_openai-privacy-filter": 0.248,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
+      "rules_modernbert-base-open-int8-int4-block": 0.016,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.008
+    },
+    "tmpl_voice_transcript": {
+      "rules_openai-privacy-filter": 0.468,
       "rules_deberta-v3-small-open-int8-int4-block": 0.0,
       "rules_modernbert-base-open-int8-int4-block": 0.0,
       "rules_mdeberta-v3-base-open-int8-int4-block": 0.004
     },
-    "tmpl_tenancy": {
-      "rules_openai-privacy-filter": 0.04,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_modernbert-base-open-int8-int4-block": 0.012,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
-    },
-    "tmpl_tribunal_summary": {
-      "rules_openai-privacy-filter": 0.204,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.008,
-      "rules_modernbert-base-open-int8-int4-block": 0.064,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
-    },
-    "tmpl_voice_transcript": {
-      "rules_openai-privacy-filter": 0.496,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_modernbert-base-open-int8-int4-block": 0.0,
-      "rules_mdeberta-v3-base-open-int8-int4-block": 0.0
-    },
     "diff_lo": {
-      "rules_modernbert-base-open-int8-int4-block": -0.029142857142857144,
-      "rules_mdeberta-v3-base-open-int8-int4-block": -0.013714285714285714
+      "rules_modernbert-base-open-int8-int4-block": -0.05309090909090909,
+      "rules_mdeberta-v3-base-open-int8-int4-block": -0.009818181818181818
     },
     "diff_hi": {
-      "rules_modernbert-base-open-int8-int4-block": -0.012,
-      "rules_mdeberta-v3-base-open-int8-int4-block": -0.0005714285714285715
+      "rules_modernbert-base-open-int8-int4-block": -0.034545454545454546,
+      "rules_mdeberta-v3-base-open-int8-int4-block": 0.005818181818181818
     },
     "gap": {
-      "rules_openai-privacy-filter": 0.380952380952381,
-      "rules_deberta-v3-small-open-int8-int4-block": -0.0030952380952380953,
-      "rules_modernbert-base-open-int8-int4-block": -0.04285714285714286,
-      "rules_mdeberta-v3-base-open-int8-int4-block": -0.004761904761904762
+      "rules_openai-privacy-filter": 0.3166,
+      "rules_deberta-v3-small-open-int8-int4-block": -0.0006,
+      "rules_modernbert-base-open-int8-int4-block": -0.0294,
+      "rules_mdeberta-v3-base-open-int8-int4-block": -0.011000000000000001
     },
     "gap_lo": {
-      "rules_openai-privacy-filter": 0.35627165560712415,
-      "rules_deberta-v3-small-open-int8-int4-block": -0.006504652863798271,
-      "rules_modernbert-base-open-int8-int4-block": -0.05093911170924134,
-      "rules_mdeberta-v3-base-open-int8-int4-block": -0.008363251882919741
+      "rules_openai-privacy-filter": 0.2955215778727176,
+      "rules_deberta-v3-small-open-int8-int4-block": -0.0028277115734195108,
+      "rules_modernbert-base-open-int8-int4-block": -0.03598596561375449,
+      "rules_mdeberta-v3-base-open-int8-int4-block": -0.01652423956962699
     },
     "gap_hi": {
-      "rules_openai-privacy-filter": 0.4065256120911148,
-      "rules_deberta-v3-small-open-int8-int4-block": 0.0,
-      "rules_modernbert-base-open-int8-int4-block": -0.03488924621942568,
-      "rules_mdeberta-v3-base-open-int8-int4-block": -0.0012007684918347748
+      "rules_openai-privacy-filter": 0.3380343166508193,
+      "rules_deberta-v3-small-open-int8-int4-block": 0.001016053647632595,
+      "rules_modernbert-base-open-int8-int4-block": -0.02293278089128488,
+      "rules_mdeberta-v3-base-open-int8-int4-block": -0.005608722005598885
     }
   }
 }

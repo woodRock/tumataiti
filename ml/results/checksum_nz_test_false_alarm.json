@@ -1,5 +1,5 @@
 {
-  "gold": "data/v1/nz_test_false_alarm.jsonl",
+  "gold": "data/v4/nz_test_false_alarm.jsonl",
   "results": {
     "rules": {
       "docs": 600,
