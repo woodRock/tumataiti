@@ -31,7 +31,7 @@ function contentSecurityPolicy(): Plugin {
 
 // Latency benchmark (bench.html, src/bench.ts), dev server only: serves the
 // held-out NZ documents and writes the timings to ml/results/.
-const BENCH_DOCS = "../ml/data/v1/nz_test_full.jsonl";
+const BENCH_DOCS = "../ml/data/v4/nz_test_full.jsonl";
 const BENCH_OUT = "../ml/results/browser_latency.json";
 
 function bench(): Plugin {

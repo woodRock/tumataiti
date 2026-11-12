@@ -1,6 +1,6 @@
 {
-  "id": "nz-test_full-00001",
-  "text": "DISCHARGE SUMMARY\nPatient: Mataele, Tūī\nNHI: GFK2965    DOB: 1st April 1994\nResidential address: 217 Te Rauparaha Crescent, Porirua 5022\nNext of kin: Rongo Te Kanawa (tamāhine), ph +64 27 686 6107\nGP to follow up. Clinic letter copied to gtekanawa@example.ac.nz.",
+  "id": "nz-test_full_v4-00003",
+  "text": "DISCHARGE SUMMARY\nPatient: Mataele, Yuki\nNHI: SGP4332    DOB: 25 September 1991\nResidential address: 116 Kauri Rd, Lower Hutt 5010\nNext of kin: Sefa Takerei (tamāhine), ph 0276319759\nGP to follow up. Clinic letter copied to viliami.wong@example.ac.nz.",
   "gold": [
     {
       "start": 27,
@@ -9,84 +9,84 @@
     },
     {
       "start": 36,
-      "end": 39,
+      "end": 40,
       "category": "PERSON"
     },
     {
-      "start": 45,
-      "end": 52,
+      "start": 46,
+      "end": 53,
       "category": "ID"
     },
     {
-      "start": 61,
-      "end": 75,
+      "start": 62,
+      "end": 79,
       "category": "DATE"
     },
     {
-      "start": 97,
-      "end": 136,
+      "start": 101,
+      "end": 130,
       "category": "ADDRESS"
     },
     {
-      "start": 150,
-      "end": 165,
+      "start": 144,
+      "end": 156,
       "category": "PERSON"
     },
     {
-      "start": 181,
-      "end": 196,
+      "start": 172,
+      "end": 182,
       "category": "PHONE"
     },
     {
-      "start": 238,
-      "end": 261,
+      "start": 224,
+      "end": 250,
       "category": "EMAIL"
     }
   ],
   "teacher": [
     {
-      "start": 45,
-      "end": 52,
-      "category": "ID"
-    },
-    {
-      "start": 61,
-      "end": 75,
-      "category": "DATE"
-    },
-    {
-      "start": 97,
-      "end": 100,
-      "category": "ADDRESS"
-    },
-    {
-      "start": 101,
-      "end": 122,
-      "category": "ADDRESS"
-    },
-    {
-      "start": 124,
-      "end": 131,
-      "category": "ADDRESS"
-    },
-    {
-      "start": 132,
-      "end": 136,
-      "category": "ADDRESS"
-    },
-    {
-      "start": 150,
-      "end": 165,
+      "start": 27,
+      "end": 40,
       "category": "PERSON"
     },
     {
-      "start": 181,
-      "end": 196,
+      "start": 46,
+      "end": 53,
+      "category": "ID"
+    },
+    {
+      "start": 62,
+      "end": 79,
+      "category": "DATE"
+    },
+    {
+      "start": 101,
+      "end": 104,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 105,
+      "end": 113,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 115,
+      "end": 125,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 126,
+      "end": 130,
+      "category": "ADDRESS"
+    },
+    {
+      "start": 172,
+      "end": 182,
       "category": "PHONE"
     },
     {
-      "start": 238,
-      "end": 261,
+      "start": 224,
+      "end": 250,
       "category": "EMAIL"
     }
   ],
@@ -98,43 +98,43 @@
     },
     {
       "start": 36,
-      "end": 39,
+      "end": 40,
       "category": "PERSON"
     },
     {
-      "start": 45,
-      "end": 52,
+      "start": 46,
+      "end": 53,
       "category": "ID"
     },
     {
-      "start": 61,
-      "end": 75,
+      "start": 62,
+      "end": 79,
       "category": "DATE"
     },
     {
-      "start": 97,
-      "end": 136,
+      "start": 101,
+      "end": 130,
       "category": "ADDRESS"
     },
     {
-      "start": 150,
-      "end": 165,
+      "start": 144,
+      "end": 156,
       "category": "PERSON"
     },
     {
-      "start": 181,
-      "end": 196,
+      "start": 172,
+      "end": 182,
       "category": "PHONE"
     },
     {
-      "start": 238,
-      "end": 261,
+      "start": 224,
+      "end": 250,
       "category": "EMAIL"
     }
   ],
   "source": {
-    "gold": "ml/data/v1/nz_test_full.jsonl",
-    "teacher": "ml/runs/m3-v2/rules+openai-privacy-filter/nz_test_full.jsonl",
-    "student": "ml/runs/m3-v2/rules+deberta-v3-small-open-int8-int4-block/nz_test_full.jsonl"
+    "gold": "ml/data/v4/nz_test_full.jsonl",
+    "teacher": "ml/runs/m3-v4/rules+openai-privacy-filter/nz_test_full.jsonl",
+    "student": "ml/runs/m3-v4/rules+deberta-v3-small-open-int8-int4-block/nz_test_full.jsonl"
   }
 }
